@@ -1,6 +1,6 @@
 <?php
 echo "gerson";
-// session_start();
+session_start();
 global $smarty, $context;
 // autoload do Composer
 // require 'vendor/autoload.php';
