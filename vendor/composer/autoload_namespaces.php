@@ -6,7 +6,22 @@ $vendorDir = dirname(dirname(__FILE__));
 $baseDir = dirname($vendorDir);
 
 return array(
-    'Twig_Extensions_' => array($vendorDir . '/twig/extensions/lib'),
+    'vierbergenlars\\SemVer' => array($vendorDir . '/vierbergenlars/php-semver/src'),
     'Twig_' => array($vendorDir . '/twig/twig/lib'),
-    'BaconQrCode' => array($vendorDir . '/bacon/bacon-qr-code/src'),
+    'Prophecy\\' => array($vendorDir . '/phpspec/prophecy/src'),
+    'PHPSQLParser\\' => array($vendorDir . '/greenlion/php-sql-parser/src'),
+    'PHPExcel' => array($vendorDir . '/phpoffice/phpexcel/Classes'),
+    'PEAR' => array($vendorDir . '/pear/pear_exception'),
+    'HTMLPurifier' => array($vendorDir . '/ezyang/htmlpurifier/library'),
+    'Guzzle\\Tests' => array($vendorDir . '/guzzle/guzzle/tests'),
+    'Guzzle' => array($vendorDir . '/guzzle/guzzle/src'),
+    'Doctrine\\Common\\Lexer\\' => array($vendorDir . '/doctrine/lexer/lib'),
+    'Dissect' => array($vendorDir . '/jakubledl/dissect/src'),
+    'Detection' => array($vendorDir . '/mobiledetect/mobiledetectlib/namespaced'),
+    'Console' => array($vendorDir . '/pear/console_getopt'),
+    'Behat\\Gherkin' => array($vendorDir . '/behat/gherkin/src'),
+    'AspectMock' => array($vendorDir . '/codeception/aspect-mock/src'),
+    'Archive_Tar' => array($vendorDir . '/pear/archive_tar'),
+    'Analog' => array($vendorDir . '/analog/analog/lib'),
+    '' => array($vendorDir . '/pear/pear-core-minimal/src'),
 );

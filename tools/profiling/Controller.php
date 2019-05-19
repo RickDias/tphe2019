@@ -1,27 +1,32 @@
 <?php
 /**
- * 2007-2017 PrestaShop
+ * 2007-2016 PrestaShop
+ *
+ * thirty bees is an extension to the PrestaShop e-commerce software developed by PrestaShop SA
+ * Copyright (C) 2017-2018 thirty bees
  *
  * NOTICE OF LICENSE
  *
  * This source file is subject to the Open Software License (OSL 3.0)
  * that is bundled with this package in the file LICENSE.txt.
  * It is also available through the world-wide-web at this URL:
- * https://opensource.org/licenses/OSL-3.0
+ * http://opensource.org/licenses/osl-3.0.php
  * If you did not receive a copy of the license and are unable to
  * obtain it through the world-wide-web, please send an email
- * to license@prestashop.com so we can send you a copy immediately.
+ * to license@thirtybees.com so we can send you a copy immediately.
  *
  * DISCLAIMER
  *
  * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
  * versions in the future. If you wish to customize PrestaShop for your
- * needs please refer to http://www.prestashop.com for more information.
+ * needs please refer to https://www.thirtybees.com for more information.
  *
- * @author    PrestaShop SA <contact@prestashop.com>
- * @copyright 2007-2017 PrestaShop SA
- * @license   https://opensource.org/licenses/OSL-3.0 Open Software License (OSL 3.0)
- * International Registered Trademark & Property of PrestaShop SA
+ *  @author    thirty bees <contact@thirtybees.com>
+ *  @author    PrestaShop SA <contact@prestashop.com>
+ *  @copyright 2017-2018 thirty bees
+ *  @copyright 2007-2016 PrestaShop SA
+ *  @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ *  PrestaShop is an internationally registered trademark & property of PrestaShop SA
  */
 
 abstract class Controller extends ControllerCore
@@ -245,7 +250,7 @@ abstract class Controller extends ControllerCore
     {
         $start_memory = memory_get_usage();
         try {
-            $tmp = Tools::unSerialize(serialize($var));
+            $tmp = json_decode(json_encode($var));
         } catch (Exception $e) {
             $tmp = $this->getVarData($var);
         }
@@ -287,6 +292,40 @@ abstract class Controller extends ControllerCore
 
         $cache = Cache::retrieveAll();
         $this->total_cache_size = $this->getVarSize($cache);
+
+        // Retrieve module perfs
+        $result = Db::getInstance()->ExecuteS('
+    		SELECT *
+    		FROM '._DB_PREFIX_.'modules_perfs
+    		WHERE session = '.(int)Module::$_log_modules_perfs_session.'
+    		AND time_start >= '.(float)$start_time.'
+    		AND time_end <= '.(float)$this->profiler[count($this->profiler) - 1]['time']
+        );
+
+        foreach ($result as $row) {
+            $tmp_time = $row['time_end'] - $row['time_start'];
+            $tmp_memory = $row['memory_end'] - $row['memory_start'];
+            $this->total_modules_time += $tmp_time;
+            $this->total_modules_memory += $tmp_memory;
+
+            if (!isset($this->modules_perfs[$row['module']])) {
+                $this->modules_perfs[$row['module']] = array('time' => 0, 'memory' => 0, 'methods' => array());
+            }
+            $this->modules_perfs[$row['module']]['time'] += $tmp_time;
+            $this->modules_perfs[$row['module']]['methods'][$row['method']]['time'] = $tmp_time;
+            $this->modules_perfs[$row['module']]['memory'] += $tmp_memory;
+            $this->modules_perfs[$row['module']]['methods'][$row['method']]['memory'] = $tmp_memory;
+
+            if (!isset($this->hooks_perfs[$row['method']])) {
+                $this->hooks_perfs[$row['method']] = array('time' => 0, 'memory' => 0, 'modules' => array());
+            }
+            $this->hooks_perfs[$row['method']]['time'] += $tmp_time;
+            $this->hooks_perfs[$row['method']]['modules'][$row['module']]['time'] = $tmp_time;
+            $this->hooks_perfs[$row['method']]['memory'] += $tmp_memory;
+            $this->hooks_perfs[$row['method']]['modules'][$row['module']]['memory'] = $tmp_memory;
+        }
+        uasort($this->modules_perfs, 'prestashop_querytime_sort');
+        uasort($this->hooks_perfs, 'prestashop_querytime_sort');
 
         $queries = Db::getInstance()->queries;
         uasort($queries, 'prestashop_querytime_sort');
@@ -415,12 +454,12 @@ abstract class Controller extends ControllerCore
         echo '
 		<div class="col-4">
 			<table class="table table-condensed">
-				<tr><td>Load Time</td><td>'.$this->getLoadTimeColor($this->profiler[count($this->profiler) - 1]['time'] - $start_time, true).'</td></tr>
-				<tr><td>Querying Time</td><td>'.$this->getTotalQueriyingTimeColor(round(1000 * $this->total_query_time)).' ms</span>
+				<tr><td>Load time</td><td>'.$this->getLoadTimeColor($this->profiler[count($this->profiler) - 1]['time'] - $start_time, true).'</td></tr>
+				<tr><td>Querying time</td><td>'.$this->getTotalQueriyingTimeColor(round(1000 * $this->total_query_time)).' ms</span>
 				<tr><td>Queries</td><td>'.$this->getNbQueriesColor(count($this->array_queries)).'</td></tr>
-				<tr><td>Memory Peak Usage</td><td>'.$this->getPeakMemoryColor($this->profiler[count($this->profiler) - 1]['peak_memory_usage']).' Mb</td></tr>
-				<tr><td>Included Files</td><td>'.count(get_included_files()).' files - '.$this->getMemoryColor($this->total_filesize).' Mb</td></tr>
-				<tr><td>PrestaShop Cache</td><td>'.$this->getMemoryColor($this->total_cache_size).' Mb</td></tr>
+				<tr><td>Memory peak usage</td><td>'.$this->getPeakMemoryColor($this->profiler[count($this->profiler) - 1]['peak_memory_usage']).' Mb</td></tr>
+				<tr><td>Included files</td><td>'.count(get_included_files()).' files - '.$this->getMemoryColor($this->total_filesize).' Mb</td></tr>
+				<tr><td>thirty bees cache</td><td>'.$this->getMemoryColor($this->total_cache_size).' Mb</td></tr>
 				<tr><td><a href="javascript:void(0);" onclick="$(\'.global_vars_detail\').toggle();">Global vars</a></td><td>'.$this->getMemoryColor($this->total_global_var_size).' Mb</td></tr>';
         foreach ($this->global_var_size as $global => $size) {
             echo '<tr class="global_vars_detail" style="display:none"><td>- global $'.$global.'</td><td>'.$size.'k</td></tr>';
@@ -435,12 +474,13 @@ abstract class Controller extends ControllerCore
         echo '
 		<div class="col-4">
 			<table class="table table-condensed">
-				<tr><td>PrestaShop Version</td><td>'._PS_VERSION_.'</td></tr>
-				<tr><td>PHP Version</td><td>'.$this->getPhpVersionColor(phpversion()).'</td></tr>
-				<tr><td>MySQL Version</td><td>'.$this->getMySQLVersionColor(Db::getInstance()->getVersion()).'</td></tr>
-				<tr><td>Memory Limit</td><td>'.ini_get('memory_limit').'</td></tr>
-				<tr><td>Max Execution Time</td><td>'.ini_get('max_execution_time').'s</td></tr>
-				<tr><td>Smarty Cache</td><td><span style="color:'.(Configuration::get('PS_SMARTY_CACHE') ? 'green">enabled' : 'red">disabled').'</td></tr>
+				<tr><td>thirty bees version</td><td>'._TB_VERSION_.'</td></tr>
+				<tr><td>PrestaShop (emulated) version</td><td>'._PS_VERSION_.'</td></tr>
+				<tr><td>PHP version</td><td>'.$this->getPhpVersionColor(phpversion()).'</td></tr>
+				<tr><td>MySQL version</td><td>'.$this->getMySQLVersionColor(Db::getInstance()->getVersion()).'</td></tr>
+				<tr><td>Memory limit</td><td>'.ini_get('memory_limit').'</td></tr>
+				<tr><td>Max execution time</td><td>'.ini_get('max_execution_time').'s</td></tr>
+				<tr><td>Smarty cache</td><td><span style="color:'.(Configuration::get('PS_SMARTY_CACHE') ? 'green">enabled' : 'red">disabled').'</td></tr>
 				<tr><td>Smarty Compilation</td><td><span style="color:'.(Configuration::get('PS_SMARTY_FORCE_COMPILE') == 0 ? 'green">never recompile' : (Configuration::get('PS_SMARTY_FORCE_COMPILE') == 1 ? '#EF8B00">auto' : 'red">force compile')).'</td></tr>
 			</table>
 		</div>';

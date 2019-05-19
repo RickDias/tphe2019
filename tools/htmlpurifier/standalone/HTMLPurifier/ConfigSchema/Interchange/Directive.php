@@ -1,90 +1,36 @@
 <?php
-
 /**
- * Interchange component class describing configuration directives.
+ * 2007-2016 PrestaShop
+ *
+ * thirty bees is an extension to the PrestaShop e-commerce software developed by PrestaShop SA
+ * Copyright (C) 2017-2018 thirty bees
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@thirtybees.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+ * versions in the future. If you wish to customize PrestaShop for your
+ * needs please refer to https://www.thirtybees.com for more information.
+ *
+ *  @author    thirty bees <contact@thirtybees.com>
+ *  @author    PrestaShop SA <contact@prestashop.com>
+ *  @copyright 2017-2018 thirty bees
+ *  @copyright 2007-2016 PrestaShop SA
+ *  @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ *  PrestaShop is an internationally registered trademark & property of PrestaShop SA
  */
-class HTMLPurifier_ConfigSchema_Interchange_Directive
-{
 
-    /**
-     * ID of directive.
-     * @type HTMLPurifier_ConfigSchema_Interchange_Id
-     */
-    public $id;
-
-    /**
-     * Type, e.g. 'integer' or 'istring'.
-     * @type string
-     */
-    public $type;
-
-    /**
-     * Default value, e.g. 3 or 'DefaultVal'.
-     * @type mixed
-     */
-    public $default;
-
-    /**
-     * HTML description.
-     * @type string
-     */
-    public $description;
-
-    /**
-     * Whether or not null is allowed as a value.
-     * @type bool
-     */
-    public $typeAllowsNull = false;
-
-    /**
-     * Lookup table of allowed scalar values.
-     * e.g. array('allowed' => true).
-     * Null if all values are allowed.
-     * @type array
-     */
-    public $allowed;
-
-    /**
-     * List of aliases for the directive.
-     * e.g. array(new HTMLPurifier_ConfigSchema_Interchange_Id('Ns', 'Dir'))).
-     * @type HTMLPurifier_ConfigSchema_Interchange_Id[]
-     */
-    public $aliases = array();
-
-    /**
-     * Hash of value aliases, e.g. array('alt' => 'real'). Null if value
-     * aliasing is disabled (necessary for non-scalar types).
-     * @type array
-     */
-    public $valueAliases;
-
-    /**
-     * Version of HTML Purifier the directive was introduced, e.g. '1.3.1'.
-     * Null if the directive has always existed.
-     * @type string
-     */
-    public $version;
-
-    /**
-     * ID of directive that supercedes this old directive.
-     * Null if not deprecated.
-     * @type HTMLPurifier_ConfigSchema_Interchange_Id
-     */
-    public $deprecatedUse;
-
-    /**
-     * Version of HTML Purifier this directive was deprecated. Null if not
-     * deprecated.
-     * @type string
-     */
-    public $deprecatedVersion;
-
-    /**
-     * List of external projects this directive depends on, e.g. array('CSSTidy').
-     * @type array
-     */
-    public $external = array();
+if (defined('_PS_ROOT_DIR_')) {
+    require_once _PS_ROOT_DIR_.'/vendor/autoload.php';
+} else {
+    require_once __DIR__.'../../../../../../vendor/autoload.php';
 }
-
-// vim: et sw=4 sts=4
-

@@ -31,6 +31,8 @@ class usuarioDAO {
             $objVO->setEmail(stripslashes($rs['EMAIL']));
             $objVO->setSenha(stripslashes($rs['SENHA']));
             $objVO->setId_tipo_usuario(stripslashes($rs['ID_TIPO_USUARIO']));
+            $objVO->setId_facebook(stripslashes($rs['id_facebook']));
+
 
             $return [] = clone $objVO;
         }

@@ -1,131 +1,36 @@
 <?php
-
 /**
- * Fluent interface for validating the contents of member variables.
- * This should be immutable. See HTMLPurifier_ConfigSchema_Validator for
- * use-cases. We name this an 'atom' because it's ONLY for validations that
- * are independent and usually scalar.
+ * 2007-2016 PrestaShop
+ *
+ * thirty bees is an extension to the PrestaShop e-commerce software developed by PrestaShop SA
+ * Copyright (C) 2017-2018 thirty bees
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@thirtybees.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+ * versions in the future. If you wish to customize PrestaShop for your
+ * needs please refer to https://www.thirtybees.com for more information.
+ *
+ *  @author    thirty bees <contact@thirtybees.com>
+ *  @author    PrestaShop SA <contact@prestashop.com>
+ *  @copyright 2017-2018 thirty bees
+ *  @copyright 2007-2016 PrestaShop SA
+ *  @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ *  PrestaShop is an internationally registered trademark & property of PrestaShop SA
  */
-class HTMLPurifier_ConfigSchema_ValidatorAtom
-{
-    /**
-     * @type string
-     */
-    protected $context;
 
-    /**
-     * @type object
-     */
-    protected $obj;
-
-    /**
-     * @type string
-     */
-    protected $member;
-
-    /**
-     * @type mixed
-     */
-    protected $contents;
-
-    public function __construct($context, $obj, $member)
-    {
-        $this->context = $context;
-        $this->obj = $obj;
-        $this->member = $member;
-        $this->contents =& $obj->$member;
-    }
-
-    /**
-     * @return HTMLPurifier_ConfigSchema_ValidatorAtom
-     */
-    public function assertIsString()
-    {
-        if (!is_string($this->contents)) {
-            $this->error('must be a string');
-        }
-        return $this;
-    }
-
-    /**
-     * @return HTMLPurifier_ConfigSchema_ValidatorAtom
-     */
-    public function assertIsBool()
-    {
-        if (!is_bool($this->contents)) {
-            $this->error('must be a boolean');
-        }
-        return $this;
-    }
-
-    /**
-     * @return HTMLPurifier_ConfigSchema_ValidatorAtom
-     */
-    public function assertIsArray()
-    {
-        if (!is_array($this->contents)) {
-            $this->error('must be an array');
-        }
-        return $this;
-    }
-
-    /**
-     * @return HTMLPurifier_ConfigSchema_ValidatorAtom
-     */
-    public function assertNotNull()
-    {
-        if ($this->contents === null) {
-            $this->error('must not be null');
-        }
-        return $this;
-    }
-
-    /**
-     * @return HTMLPurifier_ConfigSchema_ValidatorAtom
-     */
-    public function assertAlnum()
-    {
-        $this->assertIsString();
-        if (!ctype_alnum($this->contents)) {
-            $this->error('must be alphanumeric');
-        }
-        return $this;
-    }
-
-    /**
-     * @return HTMLPurifier_ConfigSchema_ValidatorAtom
-     */
-    public function assertNotEmpty()
-    {
-        if (empty($this->contents)) {
-            $this->error('must not be empty');
-        }
-        return $this;
-    }
-
-    /**
-     * @return HTMLPurifier_ConfigSchema_ValidatorAtom
-     */
-    public function assertIsLookup()
-    {
-        $this->assertIsArray();
-        foreach ($this->contents as $v) {
-            if ($v !== true) {
-                $this->error('must be a lookup array');
-            }
-        }
-        return $this;
-    }
-
-    /**
-     * @param string $msg
-     * @throws HTMLPurifier_ConfigSchema_Exception
-     */
-    protected function error($msg)
-    {
-        throw new HTMLPurifier_ConfigSchema_Exception(ucfirst($this->member) . ' in ' . $this->context . ' ' . $msg);
-    }
+if (defined('_PS_ROOT_DIR_')) {
+    require_once _PS_ROOT_DIR_.'/vendor/autoload.php';
+} else {
+    require_once __DIR__.'../../../../../vendor/autoload.php';
 }
-
-// vim: et sw=4 sts=4
-

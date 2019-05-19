@@ -1,184 +1,36 @@
 <?php
 /**
- * ReferenceDefinitionProcessor.php
+ * 2007-2016 PrestaShop
  *
- * This file implements the processor reference definition part of the CREATE TABLE statements.
+ * thirty bees is an extension to the PrestaShop e-commerce software developed by PrestaShop SA
+ * Copyright (C) 2017-2018 thirty bees
  *
- * Copyright (c) 2010-2012, Justin Swanhart
- * with contributions by André Rothe <arothe@phosco.info, phosco@gmx.de>
+ * NOTICE OF LICENSE
  *
- * All rights reserved.
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@thirtybees.com so we can send you a copy immediately.
  *
- * Redistribution and use in source and binary forms, with or without modification,
- * are permitted provided that the following conditions are met:
+ * DISCLAIMER
  *
- *   * Redistributions of source code must retain the above copyright notice,
- *     this list of conditions and the following disclaimer.
- *   * Redistributions in binary form must reproduce the above copyright notice,
- *     this list of conditions and the following disclaimer in the documentation
- *     and/or other materials provided with the distribution.
+ * Do not edit or add to this file if you wish to upgrade PrestaShop to newer
+ * versions in the future. If you wish to customize PrestaShop for your
+ * needs please refer to https://www.thirtybees.com for more information.
  *
- * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS "AS IS" AND ANY
- * EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT LIMITED TO, THE IMPLIED WARRANTIES
- * OF MERCHANTABILITY AND FITNESS FOR A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT
- * SHALL THE COPYRIGHT HOLDER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT,
- * INCIDENTAL, SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT LIMITED
- * TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE, DATA, OR PROFITS; OR
- * BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN
- * CONTRACT, STRICT LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN
- * ANY WAY OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH
- * DAMAGE.
+ *  @author    thirty bees <contact@thirtybees.com>
+ *  @author    PrestaShop SA <contact@prestashop.com>
+ *  @copyright 2017-2018 thirty bees
+ *  @copyright 2007-2016 PrestaShop SA
+ *  @license   http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ *  PrestaShop is an internationally registered trademark & property of PrestaShop SA
  */
 
-require_once(dirname(__FILE__) . '/AbstractProcessor.php');
-require_once(dirname(__FILE__) . '/IndexColumnListProcessor.php');
-require_once(dirname(__FILE__) . '/../utils/ExpressionType.php');
-
-/**
- *
- * This class processes the reference definition part of the CREATE TABLE statements.
- *
- * @author arothe
- */
-class ReferenceDefinitionProcessor extends AbstractProcessor {
-
-    protected function buildReferenceDef($expr, $base_expr, $key) {
-        $expr['till'] = $key;
-        $expr['base_expr'] = $base_expr;
-        return $expr;
-    }
-
-    public function process($tokens) {
-
-        $expr = array('expr_type' => ExpressionType::REFERENCE, 'base_expr' => false, 'sub_tree' => array());
-        $base_expr = '';
-
-        foreach ($tokens as $key => $token) {
-
-            $trim = trim($token);
-            $base_expr .= $token;
-
-            if ($trim === '') {
-                continue;
-            }
-
-            $upper = strtoupper($trim);
-
-            switch ($upper) {
-
-            case ',':
-            # we stop on a single comma
-            # or at the end of the array $tokens
-                $expr = $this->buildReferenceDef($expr, trim(substr($base_expr, 0, -strlen($token))), $key - 1);
-                break 2;
-
-            case 'REFERENCES':
-                $expr['sub_tree'][] = array('expr_type' => ExpressionType::RESERVED, 'base_expr' => $trim);
-                $currCategory = $upper;
-                break;
-
-            case 'MATCH':
-                if ($currCategory === 'REF_COL_LIST') {
-                    $expr['sub_tree'][] = array('expr_type' => ExpressionType::RESERVED, 'base_expr' => $trim);
-                    $currCategory = 'REF_MATCH';
-                    continue 2;
-                }
-                # else?
-                break;
-
-            case 'FULL':
-            case 'PARTIAL':
-            case 'SIMPLE':
-                if ($currCategory === 'REF_MATCH') {
-                    $expr['sub_tree'][] = array('expr_type' => ExpressionType::RESERVED, 'base_expr' => $trim);
-                    $expr['match'] = $upper;
-                    $currCategory = 'REF_COL_LIST';
-                    continue 2;
-                }
-                # else?
-                break;
-
-            case 'ON':
-                if ($currCategory === 'REF_COL_LIST') {
-                    $expr['sub_tree'][] = array('expr_type' => ExpressionType::RESERVED, 'base_expr' => $trim);
-                    $currCategory = 'REF_ACTION';
-                    continue 2;
-                }
-                # else ?
-                break;
-
-            case 'UPDATE':
-            case 'DELETE':
-                if ($currCategory === 'REF_ACTION') {
-                    $expr['sub_tree'][] = array('expr_type' => ExpressionType::RESERVED, 'base_expr' => $trim);
-                    $currCategory = 'REF_OPTION_' . $upper;
-                    continue 2;
-                }
-                # else ?
-                break;
-
-            case 'RESTRICT':
-            case 'CASCADE':
-                if (strpos($currCategory, 'REF_OPTION_') === 0) {
-                    $expr['sub_tree'][] = array('expr_type' => ExpressionType::RESERVED, 'base_expr' => $trim);
-                    $expr['on_' . strtolower(substr($currCategory, -6))] = $upper;
-                    continue 2;
-                }
-                # else ?
-                break;
-
-            case 'SET':
-            case 'NO':
-                if (strpos($currCategory, 'REF_OPTION_') === 0) {
-                    $expr['sub_tree'][] = array('expr_type' => ExpressionType::RESERVED, 'base_expr' => $trim);
-                    $expr['on_' . strtolower(substr($currCategory, -6))] = $upper;
-                    $currCategory = 'SEC_' . $currCategory;
-                    continue 2;
-                }
-                # else ?
-                break;
-
-            case 'NULL':
-            case 'ACTION':
-                if (strpos($currCategory, 'SEC_REF_OPTION_') === 0) {
-                    $expr['sub_tree'][] = array('expr_type' => ExpressionType::RESERVED, 'base_expr' => $trim);
-                    $expr['on_' . strtolower(substr($currCategory, -6))] .= ' ' . $upper;
-                    $currCategory = 'REF_COL_LIST';
-                    continue 2;
-                }
-                # else ?
-                break;
-
-            default:
-                switch ($currCategory) {
-
-                case 'REFERENCES':
-                    if ($upper[0] === '(' && substr($upper, -1) === ')') {
-                        # index_col_name list
-                        $processor = new IndexColumnListProcessor();
-                        $cols = $processor->process($this->removeParenthesisFromStart($trim));
-                        $expr['sub_tree'][] = array('expr_type' => ExpressionType::COLUMN_LIST, 'base_expr' => $trim,
-                                                    'sub_tree' => $cols);
-                        $currCategory = 'REF_COL_LIST';
-                        continue 3;
-                    }
-                    # foreign key reference table name
-                    $expr['sub_tree'][] = array('expr_type' => ExpressionType::TABLE, 'table' => $trim,
-                                                'base_expr' => $trim, 'no_quotes' => $this->revokeQuotation($trim));
-                    continue 3;
-
-                default:
-                # else ?
-                    break;
-                }
-                break;
-            }
-        }
-
-        if (!isset($expr['till'])) {
-            $expr = $this->buildReferenceDef($expr, trim($base_expr), -1);
-        }
-        return $expr;
-    }
+if (defined('_PS_ROOT_DIR_')) {
+    require_once _PS_ROOT_DIR_.'/vendor/autoload.php';
+} else {
+    require_once __DIR__.'/../../../vendor/autoload.php';
 }
-?>

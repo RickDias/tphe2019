@@ -7,6 +7,12 @@ class usuarioVO {
     public $email;
     public $senha;
     public $id_tipo_usuario;
+    public $id_facebook;
+
+
+    function getId_facebook() {
+        return $this->id_facebook;
+    }
 
     function getId_usuario() {
         return $this->id_usuario;
@@ -46,6 +52,10 @@ class usuarioVO {
 
     function setId_tipo_usuario($id_tipo_usuario) {
         $this->id_tipo_usuario = $id_tipo_usuario;
+    }
+
+    function setId_facebook($id_facebook) {
+        $this->id_facebook = $id_facebook;
     }
 
 
