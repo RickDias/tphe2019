@@ -14,39 +14,24 @@
  *   PRIMARY KEY (`name`)
  * ) ENGINE=InnoDB DEFAULT CHARSET=utf8;</pre>
  * Demo data:
- * <pre>INSERT INTO `templates` (`name`, `modified`, `source`) VALUES ('test.tpl', "2010-12-25 22:00:00", '{$x="hello
- * world"}{$x}');</pre>
- *
+ * <pre>INSERT INTO `templates` (`name`, `modified`, `source`) VALUES ('test.tpl', "2010-12-25 22:00:00", '{$x="hello world"}{$x}');</pre>
  *
  * @package Resource-examples
  * @author  Rodney Rehm
  */
 class Smarty_Resource_Mysqls extends Smarty_Resource_Custom
 {
-    /**
-     * PDO instance
-     *
-     * @var \PDO
-     */
+    // PDO instance
     protected $db;
-
-    /**
-     * prepared fetch() statement
-     *
-     * @var \PDOStatement
-     */
+    // prepared fetch() statement
     protected $fetch;
 
-    /**
-     * Smarty_Resource_Mysqls constructor.
-     *
-     * @throws \SmartyException
-     */
     public function __construct()
     {
         try {
             $this->db = new PDO("mysql:dbname=test;host=127.0.0.1", "smarty");
-        } catch (PDOException $e) {
+        }
+        catch (PDOException $e) {
             throw new SmartyException('Mysql Resource failed: ' . $e->getMessage());
         }
         $this->fetch = $this->db->prepare('SELECT modified, source FROM templates WHERE name = :name');
@@ -55,9 +40,9 @@ class Smarty_Resource_Mysqls extends Smarty_Resource_Custom
     /**
      * Fetch a template and its modification time from database
      *
-     * @param string  $name   template name
-     * @param string  $source template source
-     * @param integer $mtime  template modification timestamp (epoch)
+     * @param  string  $name   template name
+     * @param  string  $source template source
+     * @param  integer $mtime  template modification timestamp (epoch)
      *
      * @return void
      */
@@ -67,8 +52,8 @@ class Smarty_Resource_Mysqls extends Smarty_Resource_Custom
         $row = $this->fetch->fetch();
         $this->fetch->closeCursor();
         if ($row) {
-            $source = $row[ 'source' ];
-            $mtime = strtotime($row[ 'modified' ]);
+            $source = $row['source'];
+            $mtime = strtotime($row['modified']);
         } else {
             $source = null;
             $mtime = null;
