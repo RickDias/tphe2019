@@ -1,6 +1,6 @@
 <?php
-// require 'vendor/autoload.php';
-include_once 'includes.php';
+require 'vendor/autoload.php';
+// include_once 'includes.php';
 
 $theme = Configuration::get('theme');
 // var_dump($theme);

@@ -1,0 +1,12 @@
+.env
+.well-known/
+cgi-bin/
+storage/
+vendor/
+template_base/
+composer.lock
+composer.phar
+composer-setup.php
+error_log
+test/
+exemplos/
