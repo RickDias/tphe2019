@@ -1,7 +1,12 @@
 {
   "autoload": {
-    "classmap": ["classes/","config/","functions/", "controller/", "modules/"],
-    "files": ["vendor/smarty/smarty/libs/Smarty.class.php"]
+    "classmap": ["classes/","config/", "controller/", "modules/"],
+    "files": [
+      "vendor/smarty/smarty/libs/Smarty.class.php",
+      "functions/functions.php",
+      "config/config.php"
+    ]
+
   },
   "require": {
     "smarty/smarty": "^3.1"

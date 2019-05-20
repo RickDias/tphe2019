@@ -9,6 +9,8 @@ class ComposerStaticInit424f0f9fe40432e9f01ca219e6bc9682
     public static $files = array (
         'f084d01b0a599f67676cffef638aa95b' => __DIR__ . '/..' . '/smarty/smarty/libs/bootstrap.php',
         'b06d61ba3f2b2cfc0d93c23271ebfe3e' => __DIR__ . '/..' . '/smarty/smarty/libs/Smarty.class.php',
+        'eced4e538a13968705d18d7831b24361' => __DIR__ . '/../..' . '/functions/functions.php',
+        '42e3dc2cf7383276e8c418f14b63f194' => __DIR__ . '/../..' . '/config/config.php',
     );
 
     public static $classMap = array (
@@ -16,13 +18,12 @@ class ComposerStaticInit424f0f9fe40432e9f01ca219e6bc9682
         'Base\\Produto' => __DIR__ . '/../..' . '/classes/Produto.php',
         'Configuration' => __DIR__ . '/../..' . '/classes/configuration/Configuration.php',
         'ContentController' => __DIR__ . '/../..' . '/controller/core/ContentController.php',
-        'DashboardController' => __DIR__ . '/../..' . '/modules/dashboard/controllers/DashboardController.php',
         'FooterController' => __DIR__ . '/../..' . '/controller/core/FooterController.php',
         'HeaderController' => __DIR__ . '/../..' . '/controller/core/HeaderController.php',
         'IndexController' => __DIR__ . '/../..' . '/controller/IndexController.php',
-        'Modules\\Dashboard\\Dashboard' => __DIR__ . '/../..' . '/modules/dashboard/classes/Dashboard.php',
-        'Modules\\Dashboard\\Graph' => __DIR__ . '/../..' . '/modules/dashboard/classes/Graph.php',
-        'Modules\\Dashboard\\Kpi' => __DIR__ . '/../..' . '/modules/dashboard/classes/Kpi.php',
+        'Modules\\Dashboard\\Dashboard' => __DIR__ . '/../..' . '/modules/teste/classes/Dashboard.php',
+        'Modules\\Dashboard\\Graph' => __DIR__ . '/../..' . '/modules/teste/classes/Graph.php',
+        'Modules\\Dashboard\\Kpi' => __DIR__ . '/../..' . '/modules/teste/classes/Kpi.php',
         'Pagination' => __DIR__ . '/../..' . '/classes/Pagination.php',
         'Template' => __DIR__ . '/../..' . '/classes/Template.php',
         'TesteController' => __DIR__ . '/../..' . '/modules/teste/controllers/TesteController.php',
