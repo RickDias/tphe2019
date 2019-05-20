@@ -24,6 +24,8 @@ $theme = Configuration::get('theme');
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <!-- cruzxadas -->
+    <link href="theme/<?php echo $theme ?>/paginas/css/main.css" rel="stylesheet">
     <!-- Theme CSS -->
     <link href="theme/<?php echo $theme ?>/css/agency.css" rel="stylesheet">
 
@@ -40,15 +42,15 @@ $theme = Configuration::get('theme');
     if(Tools::getValue('pag') == 'jogos'){
       if (Tools::getValue('jogo')){
         $jogo = Tools::getValue('jogo');
-        require "theme/".$theme."/paginas/".$jogo.".php";
+        require "theme/".$theme."/".$jogo.".php";
       }else{
-      require "theme/".$theme."/paginas/home_jogos.php";
+      require "theme/".$theme."/home_jogos.php";
       }
     }else{
       require "theme/".$theme."/".$tpl.".php"; // onde 'pagina' é a variavel passada pela URL (GET)
     }
   }else{
-    require 'theme/'.$theme.'/paginas/home.php'; //primeiro acesso, padrao 'home.php'
+    require 'theme/'.$theme.'/home.php'; //primeiro acesso, padrao 'home.php'
   }
   ?>
 
@@ -95,6 +97,11 @@ $theme = Configuration::get('theme');
 
     <!-- Theme JavaScript -->
     <script src="theme/<?php echo $theme ?>/js/agency.min.js"></script>
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
+    <script src="theme/<?php echo $theme ?>/paginas/js/jquery.crossword.js"></script>
+    <script src="theme/<?php echo $theme ?>/paginas/js/script.js"></script>
+
 
 </body>
 
