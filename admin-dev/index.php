@@ -1,62 +1,62 @@
-<!DOCTYPE html>
-<html lang="en">
-
+<?php
+require '../vendor/autoload.php';
+$theme = Configuration::get('theme');
+?>
 <head>
-
+  <title>TPhE - Admin</title>
     <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="description" content="">
-    <meta name="author" content="">
-
-    <title>SB Admin 2 - Bootstrap Admin Theme</title>
-
     <!-- Bootstrap Core CSS -->
-    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- MetisMenu CSS -->
-    <link href="vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
-
-    <!-- Custom CSS -->
-    <link href="dist/css/sb-admin-2.css" rel="stylesheet">
-
-    <!-- Morris Charts CSS -->
-    <link href="vendor/morrisjs/morris.css" rel="stylesheet">
-
+    <link href="theme/<?php echo $theme ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-
+    <link href="theme/<?php echo $theme ?>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
+    <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
+    <!-- Theme CSS -->
+      <link href="theme/<?php echo $theme ?>/css/menu.css" rel="stylesheet">
 
 </head>
+<?php
+$smarty = new Smarty;
+if(!isset($_SESSION)){
+  $smarty->display('themes/'.$theme.'/template/login.tpl');
+}
 
-<body>
+  if (Tools::geValue('form_login')==1 && Tools::geValue('email') && Tools::geValue('senha')){
+     $conn = conecta_db();
+     $email = Tools::geValue('email');
+     $senha = Tools::geValue('senha');
 
-  <?php
-  require "themes/default/index.html";
-  ?>
+     $sql = "SELECT * FROM `usuario` WHERE (`EMAIL` = '". $email ."') AND (`senha` = '". sha1($senha) ."') LIMIT 1";
+     // echo "teste: ".$sql."<br/>";
 
-<!-- jQuery -->
-<script src="vendor/jquery/jquery.min.js"></script>
+     $query = mysqli_query($conn, $sql) or die(mysqli_error($cx)); //caso haja um erro na consulta
+     var_dump(mysqli_fetch_assoc($query));
+     if (mysqli_num_rows($query) == 0) {
+       return false;
+     } else {
+       $resultado = mysqli_fetch_assoc($query);
+     }
 
-<!-- Bootstrap Core JavaScript -->
-<script src="vendor/bootstrap/js/bootstrap.min.js"></script>
+     if (!isset($_SESSION)) session_start();
 
-<!-- Metis Menu Plugin JavaScript -->
-<script src="vendor/metisMenu/metisMenu.min.js"></script>
+     $_SESSION['UsuarioID'] = $resultado['ID_USUARIO'];
+     $_SESSION['UsuarioNome'] = $resultado['NOME'];
+     $_SESSION['UsuarioEmail'] = $resultado['EMAIL'];
+     $_SESSION['UsuarioNivel'] = $resultado['ID_TIPO_USUARIO'];
+     $_SESSION['IdFacebook'] = $resultado['id_facebook'];
+     $_SESSION['Theme'] = $resultado['theme'];
+     $_SESSION['ImgPerfil'] = $resultado['img_perfil'];
+     $_SESSION['ImgCapa'] = $resultado['img_capa'];
 
-<!-- Morris Charts JavaScript -->
-<script src="vendor/raphael/raphael.min.js"></script>
-<script src="vendor/morrisjs/morris.min.js"></script>
-<script src="data/morris-data.js"></script>
+     // var_dump($_SESSION);
+     $fecha_conn = desconecta_db($conn);
 
-<!-- Custom Theme JavaScript -->
-<script src="dist/js/sb-admin-2.js"></script>
+     $smarty->display('themes/'.$theme.'/index.php');
+   }
+   ?>
 
-</body>
-
-</html>
-
-
-</body>
-
-</html>
+   <!-- jQuery -->
+     <script src="vendor/jquery/jquery.min.js"></script>
+     <script src="vendor/bootstrap/js/bootstrap.min.js"></script>

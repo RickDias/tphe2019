@@ -18,11 +18,12 @@ class Configuration
     public function get($campo){
 
       $con = conecta_db();
-      $query = "SELECT $campo FROM configuration";
+      $query = "SELECT `valor` FROM configuration where `campo`= '$campo' ";
+      // var_dump($query);
       $resultado = mysqli_query($con, $query);
       while ($rs = mysqli_fetch_array($resultado))
       {
-          $return =$rs[$campo];
+          $return =$rs['valor'];
       }
       return $return;
     }

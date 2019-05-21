@@ -9,7 +9,7 @@
         <div class="row">
             <div class="col-lg-12">
       <div class="row">
-         <form action="index.php?pag=login&form_login=1" method="post">
+         <form name="loginAdmin" name="loginAdmin" action="index.php?pag=login&form_login=1" method="post">
                         <div class="col-md-6" >
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="Seu Email *" id="email" name="email"
@@ -26,11 +26,7 @@
                         <div class="col-lg-12">
                             <div id="success"></div>
                             <button type="submit" class="btn btn-xl">Entrar</button>
-            <h3 class="section-heading"><a href='#'>OU FAÇA AQUI O SEU CADASTRO</a></h3>
-            <h3 class="section-heading"><a href='admin-dev/index.php'>admin-TESTE</a></h3>
-
                         </div>
-
         </form>
       </div>
 

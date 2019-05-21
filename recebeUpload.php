@@ -26,7 +26,7 @@ if ( isset( $_FILES[ 'arquivo' ][ 'name' ] ) && $_FILES[ 'arquivo' ][ 'error' ] 
         // Cria um nome único para esta imagem
         // Evita que duplique as imagens no servidor.
         // Evita nomes com acentos, espaços e caracteres não alfanuméricos
-        $novoNome = uniqid ( time () ) . '.' . $extensao;
+        $novoNome = uniqid ( time () ) . '.' . $extensao; //salvar novoNome no banco como imagem
 
         // Concatena a pasta com o nome
         $destino = 'img/users/'.$novoNome;

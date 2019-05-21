@@ -1,4 +1,4 @@
-<?php /* Smarty version Smarty-3.1.19-dev, created on 2019-05-19 23:53:25
+<?php /* Smarty version Smarty-3.1.19-dev, created on 2019-05-21 03:10:52
          compiled from "theme\default\paginas\login.tpl" */ ?>
 <?php /*%%SmartyHeaderCode:18586677175ce1cf75a71e29-42680102%%*/if(!defined('SMARTY_DIR')) exit('no direct access allowed');
 $_valid = $_smarty_tpl->decodeProperties(array (
@@ -7,7 +7,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
     '4dcc96e109b0d687022573e42b9943ca68819fcc' => 
     array (
       0 => 'theme\\default\\paginas\\login.tpl',
-      1 => 1558302804,
+      1 => 1558401049,
       2 => 'file',
     ),
   ),
@@ -30,7 +30,7 @@ $_valid = $_smarty_tpl->decodeProperties(array (
         <div class="row">
             <div class="col-lg-12">
       <div class="row">
-         <form action="../sessao/validate.php" method="post">
+         <form action="index.php?pag=login&form_login=1" method="post">
                         <div class="col-md-6" >
                             <div class="form-group">
                                 <input type="email" class="form-control" placeholder="Seu Email *" id="email" name="email"
