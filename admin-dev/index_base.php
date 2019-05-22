@@ -13,6 +13,8 @@ if($_SESSION["UsuarioID"] == NULL){
     session_destroy();
     header("Location: index.php"); exit;
 }
+require '../vendor/autoload.php';
+$theme = Configuration::get('theme_admin');
 ?>
 <!DOCTYPE html>
 <html lang="en">

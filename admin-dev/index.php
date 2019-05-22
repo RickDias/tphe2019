@@ -24,6 +24,8 @@ require ('themes/default/template/login.tpl');
        $_SESSION['Theme'] = $resultado['theme'];
        $_SESSION['ImgPerfil'] = $resultado['img_perfil'];
        $_SESSION['ImgCapa'] = $resultado['img_capa'];
+       $_SESSION['DescPerfil'] = $resultado['desc'];
+
        // var_dump($_SESSION["UsuarioID"]);
        header("Location: index_base.php");// exit;
      }else{

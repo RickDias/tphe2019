@@ -13,7 +13,7 @@
                 <!-- /input-group -->
             </li>
             <li>
-                <a href="index.php"><i class="fa fa-dashboard fa-fw"></i>Estatísticas</a>
+                <a href="index_base.php"><i class="fa fa-dashboard fa-fw"></i>Estatísticas</a>
             </li>
             <li>
                 <a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Charts<span class="fa arrow"></span></a>
