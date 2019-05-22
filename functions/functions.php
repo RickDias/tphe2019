@@ -41,10 +41,8 @@ function testalogin($email,$senha){
      $_SESSION['ImgPerfil'] = $resultado['img_perfil'];
      $_SESSION['ImgCapa'] = $resultado['img_capa'];
 
-     // var_dump($_SESSION);
      $fecha_conn = desconecta_db($conn);
-
-     return $_SESSION;
+     return true;
    }
    }
 

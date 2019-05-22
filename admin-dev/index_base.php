@@ -1,3 +1,19 @@
+<?php
+session_start();
+if($_SESSION["UsuarioID"] == NULL){
+    unset($_SESSION['UsuarioID']);
+    unset($_SESSION['UsuarioNome']);
+    unset($_SESSION['UsuarioEmail']);
+    unset($_SESSION['UsuarioNivel']);
+    unset($_SESSION['IdFacebook']);
+    unset($_SESSION['Theme']);
+    unset($_SESSION['ImgPerfil']);
+    unset($_SESSION['ImgCapa']);
+    
+    session_destroy();
+    header("Location: index.php"); exit;
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
