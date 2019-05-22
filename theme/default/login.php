@@ -6,14 +6,22 @@ if(Tools::getValue('form_login') == 1){
   // var_dump($email);
   // var_dump($senha);
 
-  $cessao = testalogin($email,$senha);
+  $resultado = testalogin($email,$senha);
 
-  // var_dump($login);
+  if($resultado != false){
+    if (!isset($_SESSION)) session_start();
 
-
-  if($cessao){
+    $_SESSION['UsuarioID'] = $resultado['ID_USUARIO'];
+    $_SESSION['UsuarioNome'] = $resultado['NOME'];
+    $_SESSION['UsuarioEmail'] = $resultado['EMAIL'];
+    $_SESSION['UsuarioNivel'] = $resultado['ID_TIPO_USUARIO'];
+    $_SESSION['IdFacebook'] = $resultado['id_facebook'];
+    $_SESSION['Theme'] = $resultado['theme'];
+    $_SESSION['ImgPerfil'] = $resultado['img_perfil'];
+    $_SESSION['ImgCapa'] = $resultado['img_capa'];
+    $_SESSION['DescPerfil'] = $resultado['desc'];
     // include 'admin-dev/index.php';
-    // header("Location: admin-dev/index.php");
+    header("Location: index.php");
   }else{
     echo 'usuario ou senha incorreto!';
   }

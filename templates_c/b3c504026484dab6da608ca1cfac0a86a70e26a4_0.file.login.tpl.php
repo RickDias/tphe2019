@@ -1,4 +1,27 @@
-<section id="contact">
+<?php
+/* Smarty version 3.1.33, created on 2019-05-22 15:29:26
+  from 'C:\xampp\htdocs\tphe2019\theme\default\paginas\login.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5ce54eb66e2915_56142084',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    'b3c504026484dab6da608ca1cfac0a86a70e26a4' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\tphe2019\\theme\\default\\paginas\\login.tpl',
+      1 => 1558531514,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5ce54eb66e2915_56142084 (Smarty_Internal_Template $_smarty_tpl) {
+?><section id="contact">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
@@ -36,3 +59,5 @@
         </div>
     </div>
 </section>
+<?php }
+}

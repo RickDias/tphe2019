@@ -1,7 +1,6 @@
 <?php
 require 'vendor/autoload.php';
 // include_once 'includes.php';
-
 $theme = Configuration::get('theme');
 // var_dump($theme);
 ?>
@@ -39,6 +38,9 @@ $theme = Configuration::get('theme');
 
   if (Tools::getValue('pag')){
     $tpl = Tools::getValue('pag');
+    if($tpl=='loggout'){
+      $loggout = destroiCessao();
+    }
     if(Tools::getValue('pag') == 'jogos'){
       if (Tools::getValue('jogo')){
         $jogo = Tools::getValue('jogo');

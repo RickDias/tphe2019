@@ -11,7 +11,6 @@ require ('themes/default/template/login.tpl');
      $senha = Tools::getValue('senha');
 
      $resultado = testalogin($email,$senha);
-     // var_dump($resultado);
 
      if($resultado != false){
        if (!isset($_SESSION)) session_start();

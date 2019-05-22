@@ -14,11 +14,11 @@ function conecta_db() {
 }
 
 function testalogin($email,$senha){
-  if (!$email ){//AND !$senha
+  if (!$email AND !$senha){
      return false;
    }else{
      $conn = conecta_db();
-     $sql = "SELECT * FROM `usuario` WHERE (`EMAIL` = '". $email ."')  LIMIT 1";//AND (`senha` = '". sha1($senha) ."')
+     $sql = "SELECT * FROM `usuario` WHERE (`EMAIL` = '". $email ."') AND (`senha` = '". sha1($senha) ."') LIMIT 1";
      $query = mysqli_query($conn, $sql) or die(mysqli_error($cx)); //caso haja um erro na consulta
 
      if (mysqli_num_rows($query) == 0) {
@@ -43,4 +43,11 @@ function include_DAO($DAO){
 function include_VO($VO){
   $string_VO = 'classes/'.$VO.'/'.$VO.'VO.php';
   return $string_VO;
+}
+
+function destroiCessao(){
+  session_start();
+  unset($_SESSION);
+  session_destroy();
+  header("Location: index.php"); exit;
 }
