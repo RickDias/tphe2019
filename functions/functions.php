@@ -14,35 +14,20 @@ function conecta_db() {
 }
 
 function testalogin($email,$senha){
-  if (!$email AND !$senha){
+  if (!$email ){//AND !$senha
      return false;
    }else{
      $conn = conecta_db();
-
-     $sql = "SELECT * FROM `usuario` WHERE (`EMAIL` = '". $email ."') AND (`senha` = '". sha1($senha) ."') LIMIT 1";
-     // echo "teste: ".$sql."<br/>";
-
+     $sql = "SELECT * FROM `usuario` WHERE (`EMAIL` = '". $email ."')  LIMIT 1";//AND (`senha` = '". sha1($senha) ."')
      $query = mysqli_query($conn, $sql) or die(mysqli_error($cx)); //caso haja um erro na consulta
-     var_dump(mysqli_fetch_assoc($query));
+
      if (mysqli_num_rows($query) == 0) {
        return false;
      } else {
        $resultado = mysqli_fetch_assoc($query);
      }
-
-     if (!isset($_SESSION)) session_start();
-
-     $_SESSION['UsuarioID'] = $resultado['ID_USUARIO'];
-     $_SESSION['UsuarioNome'] = $resultado['NOME'];
-     $_SESSION['UsuarioEmail'] = $resultado['EMAIL'];
-     $_SESSION['UsuarioNivel'] = $resultado['ID_TIPO_USUARIO'];
-     $_SESSION['IdFacebook'] = $resultado['id_facebook'];
-     $_SESSION['Theme'] = $resultado['theme'];
-     $_SESSION['ImgPerfil'] = $resultado['img_perfil'];
-     $_SESSION['ImgCapa'] = $resultado['img_capa'];
-
      $fecha_conn = desconecta_db($conn);
-     return true;
+     return $resultado;
    }
    }
 

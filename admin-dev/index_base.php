@@ -9,7 +9,7 @@ if($_SESSION["UsuarioID"] == NULL){
     unset($_SESSION['Theme']);
     unset($_SESSION['ImgPerfil']);
     unset($_SESSION['ImgCapa']);
-    
+
     session_destroy();
     header("Location: index.php"); exit;
 }
