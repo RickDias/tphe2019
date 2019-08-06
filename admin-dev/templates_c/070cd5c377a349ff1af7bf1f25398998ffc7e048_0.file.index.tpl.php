@@ -1,4 +1,27 @@
-<div id="wrapper">
+<?php
+/* Smarty version 3.1.33, created on 2019-08-06 02:31:07
+  from 'C:\xampp\htdocs\tphe2019\admin-dev\themes\default\template\index.tpl' */
+
+/* @var Smarty_Internal_Template $_smarty_tpl */
+if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
+  'version' => '3.1.33',
+  'unifunc' => 'content_5d48ca4b4258b0_66163528',
+  'has_nocache_code' => false,
+  'file_dependency' => 
+  array (
+    '070cd5c377a349ff1af7bf1f25398998ffc7e048' => 
+    array (
+      0 => 'C:\\xampp\\htdocs\\tphe2019\\admin-dev\\themes\\default\\template\\index.tpl',
+      1 => 1565051466,
+      2 => 'file',
+    ),
+  ),
+  'includes' => 
+  array (
+  ),
+),false)) {
+function content_5d48ca4b4258b0_66163528 (Smarty_Internal_Template $_smarty_tpl) {
+?><div id="wrapper">
   <div id="page-wrapper">
     <div class="row">
       <div class="col-lg-12">
@@ -119,19 +142,26 @@
           <!-- /.panel-heading -->
           <div class="panel-body">
             <form role="form" action="_menuquiz.php" method="POST">
-              {$arr|var_dump}
-              {foreach from=$arr item=quiz}
+              <?php echo var_dump($_smarty_tpl->tpl_vars['arr']->value);?>
+
+              <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['arr']->value, 'quiz');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['quiz']->value) {
+?>
               <div class="col-lg-4">
                 <div class="panel panel-success">
                   <div class="panel-heading">
                     Quiz!#
-                    <!-- <?php 	echo $aux['ID_QUIZ'];
+                    <!-- <?php echo '<?php 	';?>echo $aux['ID_QUIZ'];
                     echo "<input type='hidden' name='id-quiz' value=".$aux['ID_QUIZ'].">";
-                    ?> -->
+                    <?php echo '?>';?> -->
                   </div>
                   <div class="panel-body">
-                    <!-- {$aux['DESCRICAO']|var_dump} -->
-                    <h1>{$nome_usuario}</h1>
+                    <!-- <?php echo var_dump($_smarty_tpl->tpl_vars['aux']->value['DESCRICAO']);?>
+ -->
+                    <h1><?php echo $_smarty_tpl->tpl_vars['nome_usuario']->value;?>
+</h1>
                     <p>
                       <!-- echo "Data de Início: ".$aux['DT_INICIO'].'<br/>'; -->
                       <!-- echo "Data de Fim: ".$aux['DT_FIM'].'<br/>'; -->
@@ -149,11 +179,15 @@
                   </div>
                 </div>
               </div>
-              {/foreach}
+              <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               <!-- /.col-lg-4 -->
             </form>
-            <?php
-            ?>
+            <?php echo '<?php
+            ';
+echo '?>';?>
 
 
 
@@ -355,3 +389,5 @@
         <!-- /#page-wrapper -->
 
       </div>
+<?php }
+}

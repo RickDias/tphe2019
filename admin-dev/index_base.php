@@ -15,6 +15,7 @@ if($_SESSION["UsuarioID"] == NULL){
 }
 require '../vendor/autoload.php';
 $theme = Configuration::get('theme_admin');
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -73,7 +74,7 @@ $theme = Configuration::get('theme_admin');
               $tpl = Tools::getValue('pag');
               require "themes/".$theme."/".$tpl.".php"; // onde 'pagina' é a variavel passada pela URL (GET)
             }else{
-              require 'themes/'.$theme.'/template/index.tpl'; //primeiro acesso, padrao 'home.php'
+              require 'themes/'.$theme.'/index.php'; //primeiro acesso, padrao 'home.php'
             }
             ?>
   				</div>
