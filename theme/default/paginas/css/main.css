@@ -75,3 +75,29 @@
     margin: .3em;
     line-height: 1.6em;
   }
+  .dropdown-item{
+    display: inline-block !important;
+    color:black !important;
+  }
+  /* migrar para user css */
+
+  #user_front_container{
+    margin-top: 50px;
+    display: flex;
+    background: silver;
+  }
+
+  .fb-profile img.fb-image-lg{
+      z-index: 0;
+      width: 100%;
+      height: 250px;
+      /* margin-bottom: 10px; */
+      object-fit: cover;
+  }
+
+  .fb-image-profile
+  {
+      margin: -90px 10px 0px 50px;
+      z-index: 9;
+      width: 20%;
+  }

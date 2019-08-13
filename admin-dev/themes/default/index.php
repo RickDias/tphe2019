@@ -7,32 +7,32 @@ $smarty->caching = false;
 
 
 // Tenta se conectar ao servidor MySQL
-$cx = mysqli_connect("localhost", "root", "");
-//$cx = mysqli_connect("192.168.4.3", "karlise", "270346");
-
-// Tenta se conectar a um banco de dados MySQL
-$db = mysqli_select_db($cx, "tphe");
-//$db = mysqli_select_db($cx, "karlise");
+$con = conecta_db();
 
 //criando a query de consulta à tabela
-$sql = mysqli_query($cx, "SELECT `quiz`.`ID_QUIZ`, `quiz`.`ID_USUARIO`, `quiz`.`DESCRICAO`,
-              date_format(`quiz`.`DT_INICIO`, '%d-%m-%Y') AS 'DT_INICIO',
-              date_format(`quiz`.`DT_FIM`, '%d-%m-%Y') AS 'DT_FIM', `PUBLICACAO` ,
-              `turma`.`SIGLA`, `turma`.`ID_TURMA`
-              FROM `quiz`,`turma_quiz`, `turma`
-              WHERE `quiz`.`ID_QUIZ` = `turma_quiz`.`ID_QUIZ`
-              AND `turma_quiz`.`ID_TURMA` = `turma`.`ID_TURMA`
-              AND `quiz`.`ID_USUARIO` = ".$_SESSION['UsuarioID']) or die(
-              mysqli_error($cx) //caso haja um erro na consulta
-              );
-var_dump($sql);
-var_dump($cx);
-while($arr = mysqli_fetch_assoc($sql)) {
+$sql = "SELECT q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
+              date_format(q.`DT_INICIO`, '%d-%m-%Y') AS 'DT_INICIO',
+              date_format(q.`DT_FIM`, '%d-%m-%Y') AS 'DT_FIM', `PUBLICACAO` ,
+              t.`SIGLA`, t.`ID_TURMA`, u.`NOME`
+              FROM `quiz` q,`turma_quiz`tq, `turma` t, `usuario` u
+              WHERE q.`ID_QUIZ` = tq.`ID_QUIZ`
+              AND tq.`ID_TURMA` = t.`ID_TURMA`
+              AND u.`ID_USUARIO` = ".$_SESSION['UsuarioID']."
+              AND q.`ID_USUARIO` = ".$_SESSION['UsuarioID'];
+
+$query = mysqli_query($con, $sql) or die(mysqli_error($con)); //caso haja um erro na consulta
+// var_dump($query);
+$object = mysqli_fetch_assoc($query);
+// while($arr = mysqli_fetch_assoc($query)) {
   //percorrendo os registros da consulta.
+$resultados = $query->num_rows;
+$count = 0;
+while($count <= $resultados) {
   $smarty->assign(array(
-    'arr' => $arr,
-    'nome_usuario' => "teste"
+    'objeto' => $object,
+    'resultados' => count($resultados)
   ));
+  $count=$count+1;
 }
 
 

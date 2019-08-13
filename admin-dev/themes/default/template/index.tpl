@@ -119,24 +119,24 @@
           <!-- /.panel-heading -->
           <div class="panel-body">
             <form role="form" action="_menuquiz.php" method="POST">
-              {$arr|var_dump}
-              {foreach from=$arr item=quiz}
+              <!-- {$objeto|var_dump} -->
+              {foreach from=$resultados item=quiz}
               <div class="col-lg-4">
                 <div class="panel panel-success">
                   <div class="panel-heading">
-                    Quiz!#
+                    Quiz {$objeto["ID_QUIZ"]}
                     <!-- <?php 	echo $aux['ID_QUIZ'];
                     echo "<input type='hidden' name='id-quiz' value=".$aux['ID_QUIZ'].">";
                     ?> -->
                   </div>
                   <div class="panel-body">
                     <!-- {$aux['DESCRICAO']|var_dump} -->
-                    <h1>{$nome_usuario}</h1>
+                    <h1>{$objeto["DESCRICAO"]}</h1>
                     <p>
-                      <!-- echo "Data de Início: ".$aux['DT_INICIO'].'<br/>'; -->
-                      <!-- echo "Data de Fim: ".$aux['DT_FIM'].'<br/>'; -->
-                      <!-- echo "Turma: ".$aux['SIGLA'].'<br/>'; -->
-                      <!-- echo "<input type='hidden' name='id-turma' value=".$aux['ID_TURMA'].">"; -->
+                      Data de Início: {$objeto["DT_INICIO"]}<br/>
+                      Data de Fim: {$objeto["DT_FIM"]}<br/>
+                      Turma: {$objeto["SIGLA"]}<br/>
+                      <input type='hidden' name='id-turma' value="{$objeto["ID_TURMA"]}">
 
 
                     </p>
