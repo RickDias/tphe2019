@@ -11,9 +11,7 @@
 
 <ul class="nav navbar-top-links navbar-right">
   <li>
-    <?php
-    echo $_SESSION['UsuarioNome'].'-ID ('.$_SESSION['UsuarioID'].')'.', bem vindo à página do Professor! <br/>';
-    ?>
+    Bem vindo à página do Professor, <?php echo $_SESSION['UsuarioNome'];?>! <br/>
   </li>
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">

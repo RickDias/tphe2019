@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-14 00:27:35
+/* Smarty version 3.1.33, created on 2019-08-15 03:06:26
   from 'C:\xampp\htdocs\tphe2019\admin-dev\themes\default\template\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d53395765fc85_61137505',
+  'unifunc' => 'content_5d54b0121c8696_51019299',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '070cd5c377a349ff1af7bf1f25398998ffc7e048' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\admin-dev\\themes\\default\\template\\index.tpl',
-      1 => 1565654537,
+      1 => 1565831173,
       2 => 'file',
     ),
   ),
@@ -20,9 +20,8 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d53395765fc85_61137505 (Smarty_Internal_Template $_smarty_tpl) {
-?><div id="wrapper">
-  <div id="page-wrapper">
+function content_5d54b0121c8696_51019299 (Smarty_Internal_Template $_smarty_tpl) {
+?><div id="wrapper" style="background:tomato">
     <div class="row">
       <div class="col-lg-12">
         <h1 class="page-header">Visão Geral</h1>
@@ -141,8 +140,8 @@ function content_5d53395765fc85_61137505 (Smarty_Internal_Template $_smarty_tpl)
           </div>
           <!-- /.panel-heading -->
           <div class="panel-body">
-            <form role="form" action="_menuquiz.php" method="POST">
-              <!-- <?php echo var_dump($_smarty_tpl->tpl_vars['objeto']->value);?>
+            <form role="form" action="index_base.php?pag=menu_quiz" method="POST">
+              <!-- <?php echo var_dump($_smarty_tpl->tpl_vars['resultados']->value);?>
  -->
               <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['resultados']->value, 'quiz');
@@ -172,6 +171,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['quiz']->value) {
 <br/>
                       <input type='hidden' name='id-turma' value="<?php echo $_smarty_tpl->tpl_vars['objeto']->value["ID_TURMA"];?>
 ">
+                      <input type='hidden' name='id-quiz' value="<?php echo $_smarty_tpl->tpl_vars['objeto']->value["ID_QUIZ"];?>
+">
+
 
 
                     </p>
@@ -390,7 +392,6 @@ echo '?>';?>
             <!-- FIM - IMPLEMENTAÇÃO FUTURA DO PAINEL DE NOTIFICAÇÕES DO PROFESSOR-->
           </div>
           <!-- /.row -->
-        </div>
         <!-- /#page-wrapper -->
 
       </div>

@@ -1,5 +1,4 @@
-<div id="wrapper">
-  <div id="page-wrapper">
+<div id="wrapper" style="background:tomato">
     <div class="row">
       <div class="col-lg-12">
         <h1 class="page-header">Visão Geral</h1>
@@ -118,8 +117,8 @@
           </div>
           <!-- /.panel-heading -->
           <div class="panel-body">
-            <form role="form" action="_menuquiz.php" method="POST">
-              <!-- {$objeto|var_dump} -->
+            <form role="form" action="index_base.php?pag=menu_quiz" method="POST">
+              <!-- {$resultados|var_dump} -->
               {foreach from=$resultados item=quiz}
               <div class="col-lg-4">
                 <div class="panel panel-success">
@@ -137,6 +136,8 @@
                       Data de Fim: {$objeto["DT_FIM"]}<br/>
                       Turma: {$objeto["SIGLA"]}<br/>
                       <input type='hidden' name='id-turma' value="{$objeto["ID_TURMA"]}">
+                      <input type='hidden' name='id-quiz' value="{$objeto["ID_QUIZ"]}">
+
 
 
                     </p>
@@ -351,7 +352,6 @@
             <!-- FIM - IMPLEMENTAÇÃO FUTURA DO PAINEL DE NOTIFICAÇÕES DO PROFESSOR-->
           </div>
           <!-- /.row -->
-        </div>
         <!-- /#page-wrapper -->
 
       </div>

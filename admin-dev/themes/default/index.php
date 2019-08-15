@@ -22,17 +22,13 @@ $sql = "SELECT q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
 
 $query = mysqli_query($con, $sql) or die(mysqli_error($con)); //caso haja um erro na consulta
 // var_dump($query);
-$object = mysqli_fetch_assoc($query);
-// while($arr = mysqli_fetch_assoc($query)) {
   //percorrendo os registros da consulta.
 $resultados = $query->num_rows;
-$count = 0;
-while($count <= $resultados) {
+while($object = mysqli_fetch_assoc($query)) {
   $smarty->assign(array(
     'objeto' => $object,
     'resultados' => count($resultados)
   ));
-  $count=$count+1;
 }
 
 

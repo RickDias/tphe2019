@@ -40,6 +40,8 @@ $theme = Configuration::get('theme_admin');
     <!-- Morris Charts CSS -->
     <link href="vendor/morrisjs/morris.css" rel="stylesheet">
     <link href="themes/<?php echo $theme ?>/css/user_info.css" rel="stylesheet">
+    <link href="themes/<?php echo $theme ?>/css/overrides.css" rel="stylesheet">
+
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">

@@ -45,6 +45,16 @@ function include_VO($VO){
   return $string_VO;
 }
 
+function include_DAO2($DAO){
+  $string_DAO = '../classes/'.$DAO.'/'.$DAO.'DAO.php';
+  return $string_DAO;
+}
+
+function include_VO2($VO){
+  $string_VO = '../classes/'.$VO.'/'.$VO.'VO.php';
+  return $string_VO;
+}
+
 function destroiCessao(){
   session_start();
   unset($_SESSION);
