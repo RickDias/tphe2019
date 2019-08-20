@@ -23,18 +23,14 @@ $query .= " AND `pergunta`.`ID_CATEGORIA` = `categoria`.`ID_CATEGORIA`";
 $query .= " AND `pergunta_quiz`.`ID_PERGUNTA` in (SELECT `ID_PERGUNTA` FROM `pergunta_quiz` where `ID_QUIZ`=".$_POST['id-quiz'];
 $query .= " and `ID_TURMA`=".$_POST['id-turma'].")";
 
-//echo $query;
+// echo $query;
 $retorno = mysqli_query($con, $query) or die(mysqli_error($con)); //caso haja um erro na consulta
 
-
-echo "ID_QUIZ: ".$_POST['id-quiz']." - TURMA: #".$_POST['id-turma'];
+echo "ID_QUIZ: ".$_POST['id-quiz']." - TURMA: #".$_POST['id-turma']."</br>";
 
 while($aux = mysqli_fetch_assoc($retorno)) {
   //percorrendo os registros da consulta.
-
-  echo "ID_PERGUNTA: #".$aux['ID_PERGUNTA'];
-  echo $aux['TEXTO'];
-
+echo ("Pergunta: ".$aux['TEXTO']);
   //criando a query de consulta à tabela
   $queryResp  = "SELECT `ID_RESPOSTA`, `RESPOSTA`, `TIPO`, `ID_PERGUNTA`";
   $queryResp .= " FROM `resposta` WHERE `ID_PERGUNTA`=".$aux['ID_PERGUNTA'];
@@ -44,13 +40,16 @@ while($aux = mysqli_fetch_assoc($retorno)) {
 
   while($auxResp = mysqli_fetch_assoc($sqlResp)) {
     //percorrendo os registros da consulta.
-    echo "<div class='alert alert-success'>";
     if ($auxResp['TIPO'] == 'F') {
+      echo "<div class='alert alert-danger'>";
       echo "<i class='fa fa-times-circle fa-1x'></i>  ";
-    } else {	echo "<i class='fa fa-check-circle fa-1x'></i>  ";};
+    } else {
+      echo "<div class='alert alert-success'>";
+      echo "<i class='fa fa-check-circle fa-1x'></i>  ";};
     echo $auxResp['RESPOSTA'];
     echo "</div>";
   }
+  // var_dump($sqlResp);
 
 }
 
@@ -66,5 +65,8 @@ while($aux = mysqli_fetch_assoc($retorno)) {
   // $con = conecta_db();
   // $todos_usuarios = $usuarioDAO->getAll($con);
 
+  $smarty->assign(array(
+    'texto' => "texto final jogar.php"
+  ));
 
   $smarty->display('jogar.tpl');

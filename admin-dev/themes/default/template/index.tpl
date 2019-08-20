@@ -123,20 +123,20 @@
               <div class="col-lg-4">
                 <div class="panel panel-success">
                   <div class="panel-heading">
-                    Quiz {$objeto["ID_QUIZ"]}
+                    Quiz {$quiz["ID_QUIZ"]}
                     <!-- <?php 	echo $aux['ID_QUIZ'];
                     echo "<input type='hidden' name='id-quiz' value=".$aux['ID_QUIZ'].">";
                     ?> -->
                   </div>
                   <div class="panel-body">
                     <!-- {$aux['DESCRICAO']|var_dump} -->
-                    <h1>{$objeto["DESCRICAO"]}</h1>
+                    <h1>{$quiz["DESCRICAO"]}</h1>
                     <p>
-                      Data de Início: {$objeto["DT_INICIO"]}<br/>
-                      Data de Fim: {$objeto["DT_FIM"]}<br/>
-                      Turma: {$objeto["SIGLA"]}<br/>
-                      <input type='hidden' name='id-turma' value="{$objeto["ID_TURMA"]}">
-                      <input type='hidden' name='id-quiz' value="{$objeto["ID_QUIZ"]}">
+                      Data de Início: {$quiz["DT_INICIO"]}<br/>
+                      Data de Fim: {$quiz["DT_FIM"]}<br/>
+                      Turma: {$quiz["SIGLA"]}<br/>
+                      <input type='hidden' name='id-turma' value="{$quiz["ID_TURMA"]}">
+                      <input type='hidden' name='id-quiz' value="{$quiz["ID_QUIZ"]}">
 
 
 
@@ -167,13 +167,12 @@
       </div>
       <!-- /.col-lg-8 -->
 
-      <!-- IMPLEMENTAÇÃO FUTURA DO PAINEL DE NOTIFICAÇÕES DO PROFESSOR-->
+      <!-- IMPLEMENTAÇÃO FUTURA DO PAINEL DE NOTIFICAÇÕES DO PROFESSOR
       <div class="col-lg-4">
         <div class="panel panel-default">
           <div class="panel-heading">
             <i class="fa fa-bell fa-fw"></i> Notifications Panel - Em breve!
           </div>
-          <!-- /.panel-heading -->
           <div class="panel-body">
             <div class="list-group">
               <a href="#" class="list-group-item">
@@ -222,94 +221,64 @@
                 </span>
               </a>
             </div>
-            <!-- /.list-group -->
             <a href="#" class="btn btn-default btn-block">View All Alerts</a>
           </div>
-          <!-- /.panel-body -->
         </div>
 
 
-        <!-- /.panel -->
-        <div class="chat-panel panel panel-default">
-          <div class="panel-heading">
-            <i class="fa fa-comments fa-fw"></i> Chat - Em Breve!
-            <div class="btn-group pull-right">
-              <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
-                <i class="fa fa-chevron-down"></i>
-              </button>
-              <ul class="dropdown-menu slidedown">
-                <li>
-                  <a href="#">
-                    <i class="fa fa-refresh fa-fw"></i> Refresh
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-check-circle fa-fw"></i> Available
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-times fa-fw"></i> Busy
-                  </a>
-                </li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-clock-o fa-fw"></i> Away
-                  </a>
-                </li>
-                <li class="divider"></li>
-                <li>
-                  <a href="#">
-                    <i class="fa fa-sign-out fa-fw"></i> Sign Out
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <!-- /.panel-heading -->
-          <div class="panel-body">
-            <ul class="chat">
-              <li class="left clearfix">
-                <span class="chat-img pull-left">
-                  <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
-                </span>
-                <div class="chat-body clearfix">
-                  <div class="header">
-                    <strong class="primary-font">Jack Sparrow</strong>
-                    <small class="pull-right text-muted">
-                      <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
-                    </small>
-                  </div>
-                  <p>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                  </p>
+
+
+            FIM - IMPLEMENTAÇÃO FUTURA DO PAINEL DE NOTIFICAÇÕES DO PROFESSOR-->
+
+            <div class="chat-panel panel panel-default">
+              <div class="panel-heading">
+                <i class="fa fa-comments fa-fw"></i> Chat - Em Breve!
+                <div class="btn-group pull-right">
+                  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
+                    <i class="fa fa-chevron-down"></i>
+                  </button>
+                  <ul class="dropdown-menu slidedown">
+                    <li>
+                      <a href="#">
+                        <i class="fa fa-refresh fa-fw"></i> Refresh
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fa fa-check-circle fa-fw"></i> Available
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fa fa-times fa-fw"></i> Busy
+                      </a>
+                    </li>
+                    <li>
+                      <a href="#">
+                        <i class="fa fa-clock-o fa-fw"></i> Away
+                      </a>
+                    </li>
+                    <li class="divider"></li>
+                    <li>
+                      <a href="#">
+                        <i class="fa fa-sign-out fa-fw"></i> Sign Out
+                      </a>
+                    </li>
+                  </ul>
                 </div>
-              </li>
-              <li class="right clearfix">
-                <span class="chat-img pull-right">
-                  <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
-                </span>
-                <div class="chat-body clearfix">
-                  <div class="header">
-                    <small class=" text-muted">
-                      <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
-                      <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                    </div>
-                    <p>
-                      Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                    </p>
-                  </div>
-                </li>
-                <li class="left clearfix">
-                  <span class="chat-img pull-left">
-                    <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
-                  </span>
-                  <div class="chat-body clearfix">
-                    <div class="header">
-                      <strong class="primary-font">Jack Sparrow</strong>
-                      <small class="pull-right text-muted">
-                        <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
+              </div>
+              <div class="panel-body">
+                <ul class="chat">
+                  <li class="left clearfix">
+                    <span class="chat-img pull-left">
+                      <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                    </span>
+                    <div class="chat-body clearfix">
+                      <div class="header">
+                        <strong class="primary-font">Jack Sparrow</strong>
+                        <small class="pull-right text-muted">
+                          <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+                        </small>
                       </div>
                       <p>
                         Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
@@ -323,7 +292,7 @@
                     <div class="chat-body clearfix">
                       <div class="header">
                         <small class=" text-muted">
-                          <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
+                          <i class="fa fa-clock-o fa-fw"></i> 13 mins ago</small>
                           <strong class="pull-right primary-font">Bhaumik Patel</strong>
                         </div>
                         <p>
@@ -331,26 +300,55 @@
                         </p>
                       </div>
                     </li>
-                  </ul>
-                </div>
-                <!-- /.panel-body -->
-                <div class="panel-footer">
-                  <div class="input-group">
-                    <input id="btn-input" type="text" class="form-control input-sm" placeholder="Type your message here..." />
-                    <span class="input-group-btn">
-                      <button class="btn btn-warning btn-sm" id="btn-chat">
-                        Send
-                      </button>
-                    </span>
+                    <li class="left clearfix">
+                      <span class="chat-img pull-left">
+                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
+                      </span>
+                      <div class="chat-body clearfix">
+                        <div class="header">
+                          <strong class="primary-font">Jack Sparrow</strong>
+                          <small class="pull-right text-muted">
+                            <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
+                          </div>
+                          <p>
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                          </p>
+                        </div>
+                      </li>
+                      <li class="right clearfix">
+                        <span class="chat-img pull-right">
+                          <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
+                        </span>
+                        <div class="chat-body clearfix">
+                          <div class="header">
+                            <small class=" text-muted">
+                              <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
+                              <strong class="pull-right primary-font">Bhaumik Patel</strong>
+                            </div>
+                            <p>
+                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                            </p>
+                          </div>
+                        </li>
+                      </ul>
+                    </div>
+                    <div class="panel-footer">
+                      <div class="input-group">
+                        <form action="index_base.php?pag=envia_mensagem" method="POST">
+                          <input type="hidden" name="usuario" id="usuario" value="{$sessao["UsuarioID"]}">
+                          <input id="texto_mensagem" name="texto_mensagem" type="text" class="form-control input-sm" placeholder="Type your message here..." />
+                          <span class="input-group-btn">
+                            <button class="btn btn-warning btn-sm" id="btn-chat">
+                              Send
+                            </button>
+                          </span>
+                        </form>
+                      </div>
+                    </div>
                   </div>
                 </div>
-                <!-- /.panel-footer -->
-              </div>
-              <!-- /.panel .chat-panel -->
-            </div>
-            <!-- /.col-lg-4 -->
-            <!-- FIM - IMPLEMENTAÇÃO FUTURA DO PAINEL DE NOTIFICAÇÕES DO PROFESSOR-->
           </div>
+
           <!-- /.row -->
         <!-- /#page-wrapper -->
 

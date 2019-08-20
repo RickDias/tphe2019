@@ -2,13 +2,13 @@
 class perguntaDAO {
     public function insert(perguntaVO $objVO, $link) {
         $query = ("INSERT INTO `pergunta`(`DESCRICAO`, `PONTUACAO`, `ID_DISCIPLINA`, `ID_CATEGORIA`, `ID_USUARIO`) VALUES ('{$objVO->getDescricao()}',0.5,'{$objVO->getId_disciplina()}','{$objVO->getId_categoria()}',2)");
-		
+
 		try {
             if (mysqli_query($link, $query)) {
 				$last_id = mysqli_insert_id($link);
                 mysqli_commit($link);
 				$objVO->setId_pergunta($last_id);
-                
+
 				return $objVO;
             } else {
                 throw new Exception('Erro ao cadastrar!');
@@ -31,14 +31,14 @@ class perguntaDAO {
             $objVO->setId_disciplina(stripslashes($rs['ID_DISCIPLINA']));
             $objVO->setId_categoria(stripslashes($rs['ID_CATEGORIA']));
             $objVO->setId_usuario(stripslashes($rs['ID_USUARIO']));
-			            
+
             $return [] = clone $objVO;
         }
         return $return;
     }
 /*     * ************** FIM GetAll ******************* */
-    
-    
+
+
     public function getRandom($link) {
         mysqli_query($link, "SET NAMES 'UTF8'");
         $objVO = new perguntaVO();
@@ -52,7 +52,7 @@ class perguntaDAO {
             $objVO->setId_disciplina(stripslashes($rs['ID_DISCIPLINA']));
             $objVO->setId_categoria(stripslashes($rs['ID_CATEGORIA']));
             $objVO->setId_usuario(stripslashes($rs['ID_USUARIO']));
-			            
+
             $return [] = clone $objVO;
         }
         return $return;
@@ -69,7 +69,7 @@ class perguntaDAO {
 			$objVO->setId_disciplina(stripslashes($rs['ID_DISCIPLINA']));
 			$objVO->setId_categoria(stripslashes($rs['ID_CATEGORIA']));
 			$objVO->setId_usuario(stripslashes($rs['ID_USUARIO']));
-			
+
             $return [] = clone $objVO;
         }
         return $return;

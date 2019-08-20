@@ -35,17 +35,17 @@
 						</li>
 
 						<li>
-							<a href="..\tphe\_novapergunta.php">Nova Pergunta</a>
+							<a href="index_base.php?pag=nova_pergunta">Nova Pergunta</a>
 						</li>
 
 					</ul>
 					<!-- /.nav-second-level -->
 			</li>
 			<li>
-				<a href="..\tphe\_novamelhoria.php"><i class="fa fa-gears fa-fw"></i> Sugerir Melhorias</a>
+				<a href="index_base.php?pag=nova_melhoria"><i class="fa fa-gears fa-fw"></i> Sugerir Melhorias</a>
 			</li>
 			<li>
-				<a href="_melhoriascadastradas.php"><i class="fa fa-table fa-fw"></i> Ver andamento das Sugestões</a>
+				<a href="index_base.php?pag=ver_melhorias"><i class="fa fa-table fa-fw"></i> Ver andamento das Sugestões</a>
 			</li>
 		</ul>
 	</div>

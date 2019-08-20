@@ -20,16 +20,15 @@ $sql = "SELECT q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
               AND u.`ID_USUARIO` = ".$_SESSION['UsuarioID']."
               AND q.`ID_USUARIO` = ".$_SESSION['UsuarioID'];
 
-$query = mysqli_query($con, $sql) or die(mysqli_error($con)); //caso haja um erro na consulta
-// var_dump($query);
+$resultados = mysqli_query($con, $sql) or die(mysqli_error($con)); //caso haja um erro na consulta
+// $resultados = mysqli_fetch_assoc($query);
+// var_dump($sql);
   //percorrendo os registros da consulta.
-$resultados = $query->num_rows;
-while($object = mysqli_fetch_assoc($query)) {
+// $resultados = $query->num_rows;
   $smarty->assign(array(
-    'objeto' => $object,
-    'resultados' => count($resultados)
+    'resultados' => $resultados,
+    'sessao' => $_SESSION
   ));
-}
 
 
 $smarty->display('index.tpl');
