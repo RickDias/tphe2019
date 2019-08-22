@@ -1,62 +1,36 @@
 <?php
-session_start();
+// session_start();
 
-include('functions.php');
-include('../config/config.php');
+// include('../functions/functions.php');
+// include('../config/config.php');
 
 $id_usuario = $_POST['usuario'];
-$txt_mensagem = $_POST['texto_mensagem'];
-
-$classe_VO = include_VO2('resposta');
-$classe_DAO = include_DAO2('resposta');
+$txt_mensagem = trim(addslashes($_POST['texto_mensagem']));
+$today = date("Y-m-d H:i:s");
+// var_dump($txt_mensagem);exit;
+$classe_VO = include_VO2('admensagem');
+$classe_DAO = include_DAO2('admensagem');
 
 include($classe_VO);
 include($classe_DAO);
 
 	$link = conecta_db();
 
-  $respostaVO= new respostaVO();
+  $admensagemVO= new admensagemVO();
 
-  $respostaVO->setResposta($_POST['txtrespcerta']);
-  $respostaVO->setTipo('V');
-  $respostaVO->setId_pergunta($_POST['idpergunta']);
+	$admensagemVO->setId_usuario($id_usuario);
+  $admensagemVO->setMensagem($txt_mensagem);
+  $admensagemVO->setData($today);
 
-  $respostaDAO = new respostaDAO();
-  $respostaDAO->insert($respostaVO, $link);
+  $admensagemDAO = new admensagemDAO();
+  $admensagemDAO->insert($admensagemVO, $link);
 
-  $respostaVO= new respostaVO();
-
-  $respostaVO->setResposta($_POST['txtresperr1']);
-  $respostaVO->setTipo('F');
-  $respostaVO->setId_pergunta($_POST['idpergunta']);
-
-  $respostaDAO = new respostaDAO();
-  $respostaDAO->insert($respostaVO, $link);
-
-  $respostaVO= new respostaVO();
-
-  $respostaVO->setResposta($_POST['txtresperr2']);
-  $respostaVO->setTipo('F');
-  $respostaVO->setId_pergunta($_POST['idpergunta']);
-
-  $respostaDAO = new respostaDAO();
-  $respostaDAO->insert($respostaVO, $link);
-
-  $respostaVO= new respostaVO();
-
-  $respostaVO->setResposta($_POST['txtresperr3']);
-  $respostaVO->setTipo('F');
-  $respostaVO->setId_pergunta($_POST['idpergunta']);
-
-  $respostaDAO = new respostaDAO();
-  $respostaDAO->insert($respostaVO, $link);
   printf('Registros inseridos com sucesso. ');
 
 	//commita
 
 	desconecta_db($link);
 ?>
-
-<html lang="pt-br">
-    </br></br><a href="../admin-dev/index_base.php" class="alert-link">Voltar para a tela administrativa</a>
-</html>
+<script language="JavaScript">
+window.location="../admin-dev/index_base.php";
+</script>

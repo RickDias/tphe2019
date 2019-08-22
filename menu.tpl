@@ -1,5 +1,5 @@
 <!-- Navigation -->
-<nav id="mainNav" class="navbar navbar-default navbar-custom navbar-fixed-top">
+<nav id="mainNav" style="background:black">
     <div class="container" id="container_menu">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header page-scroll">
@@ -21,9 +21,6 @@
                     <a class="page-scroll" href="#">Link 2</a>
                 </li>
                 <li>
-                    <a class="page-scroll" href="#">Link 3</a>
-                </li>
-                <li>
                     <a class="page-scroll" href="index.php?pag=sobre">Sobre nós</a>
                 </li>
                 {if $cessao == false}
@@ -33,10 +30,13 @@
                 {/if}
                 {if $cessao == true}
                 <li>
+                  <a class="page-scroll" href="index.php?pag=painel_jogador">Painel do Jogador</a>
+                </li>
+                <li>
                   <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
-                      Minha Conta
-                    </button>
+                      <i class="fa fa-bars"></i>
+                  </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                       <a class="dropdown-item disabled" href="index.php?pag=profile">Perfil</a>
                       <a class="dropdown-item" href="#">Another action</a>
@@ -45,6 +45,7 @@
                     </div>
                   </div>
                 </li>
+                
                 {/if}
             </ul>
         </div>

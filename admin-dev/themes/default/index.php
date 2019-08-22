@@ -25,6 +25,30 @@ $resultados = mysqli_query($con, $sql) or die(mysqli_error($con)); //caso haja u
 // var_dump($sql);
   //percorrendo os registros da consulta.
 // $resultados = $query->num_rows;
+$classe_VO = include_VO2('admensagem');
+$classe_DAO = include_DAO2('admensagem');
+
+include($classe_VO);
+include($classe_DAO);
+
+$classe_VO = include_VO2('usuario');
+$classe_DAO = include_DAO2('usuario');
+
+include($classe_VO);
+include($classe_DAO);
+
+$admensagemDAO = new admensagemDAO();
+$avisos = $admensagemDAO->getAll($con);
+// var_dump($avisos);exit;
+if(count($avisos)>0){
+  $usuarioDAO = new usuarioDAO();
+  foreach($avisos as $key=>$aviso){
+    $usuario[] = $usuarioDAO->getLikeUsuario($con,$aviso->getId_usuario());
+    $smarty->assign('usuario', $usuario);
+  }
+  $smarty->assign('avisos', $avisos);
+}
+
   $smarty->assign(array(
     'resultados' => $resultados,
     'sessao' => $_SESSION

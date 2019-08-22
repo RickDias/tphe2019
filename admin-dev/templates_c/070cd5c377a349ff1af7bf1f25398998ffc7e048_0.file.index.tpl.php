@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-20 02:47:57
+/* Smarty version 3.1.33, created on 2019-08-22 02:59:15
   from 'C:\xampp\htdocs\tphe2019\admin-dev\themes\default\template\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5b433d5e26f5_04283948',
+  'unifunc' => 'content_5d5de8e301dbf9_67474960',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '070cd5c377a349ff1af7bf1f25398998ffc7e048' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\admin-dev\\themes\\default\\template\\index.tpl',
-      1 => 1566262076,
+      1 => 1566435553,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5b433d5e26f5_04283948 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d5de8e301dbf9_67474960 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div id="wrapper" style="background:tomato">
     <div class="row">
       <div class="col-lg-12">
@@ -272,7 +272,7 @@ echo '?>';?>
 
             <div class="chat-panel panel panel-default">
               <div class="panel-heading">
-                <i class="fa fa-comments fa-fw"></i> Chat - Em Breve!
+                <i class="fa fa-comments fa-fw"></i> Avisos!
                 <div class="btn-group pull-right">
                   <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown">
                     <i class="fa fa-chevron-down"></i>
@@ -309,23 +309,38 @@ echo '?>';?>
               </div>
               <div class="panel-body">
                 <ul class="chat">
+                  <!-- esquerda foreach -->
+                  <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['avisos']->value, 'aviso', false, 'key');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['aviso']->value) {
+?>
                   <li class="left clearfix">
                     <span class="chat-img pull-left">
                       <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
                     </span>
                     <div class="chat-body clearfix">
                       <div class="header">
-                        <strong class="primary-font">Jack Sparrow</strong>
+                        <strong class="primary-font"><?php echo $_smarty_tpl->tpl_vars['usuario']->value[$_smarty_tpl->tpl_vars['key']->value][0]->nome;?>
+</strong>
                         <small class="pull-right text-muted">
                           <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
                         </small>
                       </div>
                       <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
+                        <?php echo $_smarty_tpl->tpl_vars['aviso']->value->getMensagem();?>
+
                       </p>
                     </div>
                   </li>
-                  <li class="right clearfix">
+                  <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+
+                  <!--/ esquerda foreach -->
+                  <!-- direita foreach -->
+                  <!-- <li class="right clearfix">
                     <span class="chat-img pull-right">
                       <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
                     </span>
@@ -339,49 +354,23 @@ echo '?>';?>
                           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
                         </p>
                       </div>
-                    </li>
-                    <li class="left clearfix">
-                      <span class="chat-img pull-left">
-                        <img src="http://placehold.it/50/55C1E7/fff" alt="User Avatar" class="img-circle" />
-                      </span>
-                      <div class="chat-body clearfix">
-                        <div class="header">
-                          <strong class="primary-font">Jack Sparrow</strong>
-                          <small class="pull-right text-muted">
-                            <i class="fa fa-clock-o fa-fw"></i> 14 mins ago</small>
-                          </div>
-                          <p>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                          </p>
-                        </div>
-                      </li>
-                      <li class="right clearfix">
-                        <span class="chat-img pull-right">
-                          <img src="http://placehold.it/50/FA6F57/fff" alt="User Avatar" class="img-circle" />
-                        </span>
-                        <div class="chat-body clearfix">
-                          <div class="header">
-                            <small class=" text-muted">
-                              <i class="fa fa-clock-o fa-fw"></i> 15 mins ago</small>
-                              <strong class="pull-right primary-font">Bhaumik Patel</strong>
-                            </div>
-                            <p>
-                              Lorem ipsum dolor sit amet, consectetur adipiscing elit. Curabitur bibendum ornare dolor, quis ullamcorper ligula sodales.
-                            </p>
-                          </div>
-                        </li>
+                    </li> -->
+                    <!-- /direita foreach -->
+
+
+
                       </ul>
                     </div>
+
                     <div class="panel-footer">
                       <div class="input-group">
                         <form action="index_base.php?pag=envia_mensagem" method="POST">
-                          <input type="hidden" name="usuario" id="usuario" value="">
-                          <?php echo var_dump($_smarty_tpl->tpl_vars['sessao']->value);?>
-
+                          <input type="hidden" name="usuario" id="usuario" value="<?php echo $_smarty_tpl->tpl_vars['sessao']->value["UsuarioID"];?>
+">
                           <input id="texto_mensagem" name="texto_mensagem" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                           <span class="input-group-btn">
                             <button class="btn btn-warning btn-sm" id="btn-chat">
-                              Send
+                              Enviar
                             </button>
                           </span>
                         </form>
