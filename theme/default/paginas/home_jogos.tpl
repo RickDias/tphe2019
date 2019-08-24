@@ -4,7 +4,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">Jogos</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h3 class="section-subheading text-muted">Veja os jogos disponíveis.</h3>
             </div>
         </div>
         <div class="row text-center">
@@ -14,8 +14,8 @@
                     <i class="fa fa-shopping-cart fa-stack-1x fa-inverse"></i>
                 </span>
                 <h4 class="service-heading">Quiz</h4>
-                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                <a href="#" class="btn btn-xl">Jogar</a>
+                <p class="text-muted">Confira os Quizes disponibilizados.</p>
+                <a href="index.php?pag=jogo&jogo=quiz" class="btn btn-xl">Jogar</a>
             </div>
             <div class="col-md-4">
                 <span class="fa-stack fa-4x">
@@ -24,7 +24,7 @@
                 </span>
                 <h4 class="service-heading">Memória</h4>
                 <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.</p>
-                <a href="index.php?pag=jogos&jogo=palavras_cruzadas" class="btn btn-xl">Jogar</a>
+                <!-- <a href="index.php?pag=jogos&jogo=palavras_cruzadas" class="btn btn-xl">Jogar</a> -->
             </div>
             <div class="col-md-4">
                 <span class="fa-stack fa-4x">

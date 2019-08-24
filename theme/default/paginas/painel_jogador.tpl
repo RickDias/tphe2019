@@ -33,28 +33,20 @@
 </div> -->
     <!-- left side start-->
 		<div class="left-side sticky-left-side">
-
 			<!--logo and iconic logo start-->
 			<div class="logo">
-				<a href="index.html"><img src="theme/default/images/home.png" alt="" /><span>Home</span></a>
+				<a href="index.php?pag=painel_jogador"><img src="theme/default/images/home.png" alt="" /><span>Painel</span></a>
 			</div>
-			<div class="logo-icon text-center">
-				<a href="index.html"><img src="theme/default/images/home.png" alt="" /></a>
-			</div>
-
 			<!--logo and iconic logo end-->
 			<div class="left-side-inner">
 				<div class="scrollbar ">
 				<!--sidebar nav start-->
 					<ul class="nav nav-pills nav-stacked custom-nav">
-						<li class="active"><a href="index.html"><img src="theme/default/images/9.png" alt="" /><span>Football</span></a></li>
-						<li><a href="basketball.html"><img src="theme/default/images/2.png" alt="" /><span>Basketball</span></a></li>
-						<li><a href="boxing.html"><img src="theme/default/images/3.png" alt="" /><span>Boxing/UFC</span></a></li>
-						<li><a href="athletics.html"><img src="theme/default/images/4.png" alt="" /><span>Athletics</span></a></li>
-						<li><a href="cricket.html"><img src="theme/default/images/5.png" alt="" /><span>Cricket</span></a></li>
-						<li><a href="motor.html"><img src="theme/default/images/10.png" alt="" /><span>Motor Sports</span></a></li>
-						<li><a href="tennis.html"><img src="theme/default/images/14.png" alt="" /><span>Tennis</span></a></li>
-						<li><a href="more.html"><img src="theme/default/images/17.png" alt="" /><span>More</span></a></li>
+						<li><a href="index.php?pag=home_jogos"><img src="theme/default/images/9.png" alt="" /><span>Jogos</span></a></li>
+						<li><a href="#"><img src="theme/default/images/2.png" alt="" /><span>OP 2</span></a></li>
+						<li><a href="#"><img src="theme/default/images/3.png" alt="" /><span>OP 3</span></a></li>
+						<li><a href="index.php?pag=profile"><img src="admin-dev/themes/default/img/module-profile.png" alt="" /><span>Meu Perfil</span></a></li>
+						<li><a href="#"><img src="theme/default/images/17.png" alt="" /><span>Mais</span></a></li>
 					</ul>
 				<!--sidebar nav end-->
 				</div>
@@ -64,7 +56,9 @@
 		<!-- main content start-->
 		<div class="main-content">
 			<!-- header-starts -->
-
+			<div style="padding:15px 0 0 15px">
+				<h2>painel do aluno</h2>
+			</div>
 			<div id="page-wrapper">
 				<div class="top-grids">
 					<div class="top-grids-info">
@@ -157,54 +151,33 @@
 						<!-- top-grid-right -->
 						<div class="col-md-3 top-grid-right" style="background:red">
               <!-- ultimos avisos -->
-              <div class="more-news" style="background:pink">
+              <div class="more-news">
                 <div class="more-news-heading">
                   <h3>Ultimos avisos</h3>
                 </div>
                 <div class="more-news-grids">
-                  <div class="col-md-12 more-news-left" style="background:gray">
+                  <div class="col-md-12 more-news-left">
                     <div class="news-grids-bottom">
                       <!-- date -->
                       <div id="design" class="date">
                         <div id="cycler">
+													{foreach key=$key from=$avisos item=$aviso}
                           <div class="date-text">
-                            <h4>Premier League</h4>
+														<!-- {$aviso|var_dump} -->
+                            <h4>{$usuario[$key][0]->nome}</h4>
+														<small class="pull-right text-muted">
+		                          <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+		                        </small>
                             <ul>
-                              <li><a href="single.html"><i class="fa fa-arrow-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                              <li><a href="V_single.html"><i class="fa fa-play-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
+                              <li><i class="fa fa-arrow-right"></i> {$aviso->getMensagem()}</li>
+                              <li><a href="#"><i class="fa fa-play-circle-o"></i> Ver Mensagem</a></li>
                             </ul>
                           </div>
-                          <div class="date-text">
-                            <h4>Championship</h4>
-                            <ul>
-                              <li><a href="single.html"><i class="fa fa-arrow-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                              <li><a href="V_single.html"><i class="fa fa-play-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                              <li><a href="V_single.html"><i class="fa fa-play-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                            </ul>
-                          </div>
-                          <div class="date-text">
-                            <h4>FA Cup</h4>
-                            <ul>
-                              <li><a href="single.html"><i class="fa fa-arrow-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                              <li><a href="V_single.html"><i class="fa fa-play-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                            </ul>
-                          </div>
-                          <div class="date-text">
-                            <h4>Champions League</h4>
-                            <ul>
-                              <li><a href="V_single.html"><i class="fa fa-play-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                            </ul>
-                          </div>
-                          <div class="date-text">
-                            <h4>Champions League</h4>
-                            <ul>
-                              <li><a href="single.html"><i class="fa fa-arrow-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                            </ul>
-                          </div>
+                    			{/foreach}
                         </div>
                         <script>
                           function cycle($item, $cycler){
-                            setTimeout(cycle, 2000, $item.next(), $cycler);
+                            setTimeout(cycle, 8000, $item.next(), $cycler);
 
                             $item.slideUp(1000,function(){
                               $item.appendTo($cycler).show();

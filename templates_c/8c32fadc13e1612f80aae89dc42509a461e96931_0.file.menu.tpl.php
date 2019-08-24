@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-22 01:16:33
+/* Smarty version 3.1.33, created on 2019-08-24 00:58:44
   from 'C:\xampp\htdocs\tphe2019\menu.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5dd0d1aa95c6_48107707',
+  'unifunc' => 'content_5d606fa493ab59_21803215',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8c32fadc13e1612f80aae89dc42509a461e96931' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\menu.tpl',
-      1 => 1566429391,
+      1 => 1566601121,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5dd0d1aa95c6_48107707 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d606fa493ab59_21803215 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- Navigation -->
 <nav id="mainNav" style="background:black">
     <div class="container" id="container_menu">
@@ -53,22 +53,19 @@ function content_5d5dd0d1aa95c6_48107707 (Smarty_Internal_Template $_smarty_tpl)
                 <?php }?>
                 <?php if ($_smarty_tpl->tpl_vars['cessao']->value == true) {?>
                 <li>
-                  <a class="page-scroll" href="index.php?pag=painel_jogador">Painel do Jogador</a>
-                </li>
-                <li>
                   <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
                       <i class="fa fa-bars"></i>
-                  </button>
+                    </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item disabled" href="index.php?pag=profile">Perfil</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                      <a class="dropdown-item" href="index.php?pag=profile">Perfil</a>
+                      <a class="dropdown-item" href="index.php?pag=painel_jogador">Painel do Jogador</a>
+                      <a class="dropdown-item" href="index.php?pag=home_jogos">Jogos</a>
                       <a class="dropdown-item" href="index.php?pag=loggout">Sair</a>
                     </div>
                   </div>
                 </li>
-                
+
                 <?php }?>
             </ul>
         </div>

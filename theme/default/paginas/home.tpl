@@ -1,21 +1,20 @@
 
 <!-- Header -->
 <header>
-    <div class="container">
+    <!-- <div class="container"> -->
         <div class="intro-text">
             <div class="intro-lead-in">Bem vindo ao nosso Game!</div>
             <div class="intro-heading">Desafie-se!</div>
-            <a href="index.php?pag=jogos" class="page-scroll btn btn-xl">Saiba como funciona</a>
-        </div>
+            <a href="index.php?pag=jogos" class="page-scroll btn btn-xl">Ver Jogos Disponíveis</a>
     </div>
 </header>
 <!-- Services Section -->
-<section id="services">
+<!-- <section id="services"> -->
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Jogos</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h2 class="section-heading">Nossa Proposta</h2>
+                <h3 class="section-subheading text-muted">Inicialmente, nosso projeto é composto de 3 jogos</h3>
             </div>
         </div>
         <div class="row text-center">
@@ -45,7 +44,7 @@
             </div>
         </div>
     </div>
-</section>
+<!-- </section> -->
 
 <!-- Portfolio Grid Section -->
 <section id="portfolio" class="bg-light-gray">
@@ -53,7 +52,7 @@
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">Projetos</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h3 class="section-subheading text-muted">Aqui os projetos relacionados, confira.</h3>
             </div>
         </div>
         <div class="row">

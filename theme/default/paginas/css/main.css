@@ -75,8 +75,8 @@
     margin: .3em;
     line-height: 1.6em;
   }
-  .dropdown-item{
-    display: inline-block !important;
+  a.dropdown-item{
+    display: list-item !important;
     color:black !important;
   }
   /* migrar para user css */

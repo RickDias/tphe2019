@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-22 02:00:07
+/* Smarty version 3.1.33, created on 2019-08-24 02:52:13
   from 'C:\xampp\htdocs\tphe2019\theme\default\paginas\painel_jogador.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5ddb0784df82_13601021',
+  'unifunc' => 'content_5d608a3d40d560_40651199',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dfb5d69de8ddfce86a4cbdaaf302640063c644a5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\theme\\default\\paginas\\painel_jogador.tpl',
-      1 => 1566432006,
+      1 => 1566607932,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5ddb0784df82_13601021 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d608a3d40d560_40651199 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <head>
 <?php echo '<script'; ?>
@@ -60,28 +60,20 @@ function content_5d5ddb0784df82_13601021 (Smarty_Internal_Template $_smarty_tpl)
 </div> -->
     <!-- left side start-->
 		<div class="left-side sticky-left-side">
-
 			<!--logo and iconic logo start-->
 			<div class="logo">
-				<a href="index.html"><img src="theme/default/images/home.png" alt="" /><span>Home</span></a>
+				<a href="index.php?pag=painel_jogador"><img src="theme/default/images/home.png" alt="" /><span>Painel</span></a>
 			</div>
-			<div class="logo-icon text-center">
-				<a href="index.html"><img src="theme/default/images/home.png" alt="" /></a>
-			</div>
-
 			<!--logo and iconic logo end-->
 			<div class="left-side-inner">
 				<div class="scrollbar ">
 				<!--sidebar nav start-->
 					<ul class="nav nav-pills nav-stacked custom-nav">
-						<li class="active"><a href="index.html"><img src="theme/default/images/9.png" alt="" /><span>Football</span></a></li>
-						<li><a href="basketball.html"><img src="theme/default/images/2.png" alt="" /><span>Basketball</span></a></li>
-						<li><a href="boxing.html"><img src="theme/default/images/3.png" alt="" /><span>Boxing/UFC</span></a></li>
-						<li><a href="athletics.html"><img src="theme/default/images/4.png" alt="" /><span>Athletics</span></a></li>
-						<li><a href="cricket.html"><img src="theme/default/images/5.png" alt="" /><span>Cricket</span></a></li>
-						<li><a href="motor.html"><img src="theme/default/images/10.png" alt="" /><span>Motor Sports</span></a></li>
-						<li><a href="tennis.html"><img src="theme/default/images/14.png" alt="" /><span>Tennis</span></a></li>
-						<li><a href="more.html"><img src="theme/default/images/17.png" alt="" /><span>More</span></a></li>
+						<li><a href="index.php?pag=home_jogos"><img src="theme/default/images/9.png" alt="" /><span>Jogos</span></a></li>
+						<li><a href="#"><img src="theme/default/images/2.png" alt="" /><span>OP 2</span></a></li>
+						<li><a href="#"><img src="theme/default/images/3.png" alt="" /><span>OP 3</span></a></li>
+						<li><a href="index.php?pag=profile"><img src="admin-dev/themes/default/img/module-profile.png" alt="" /><span>Meu Perfil</span></a></li>
+						<li><a href="#"><img src="theme/default/images/17.png" alt="" /><span>Mais</span></a></li>
 					</ul>
 				<!--sidebar nav end-->
 				</div>
@@ -91,7 +83,9 @@ function content_5d5ddb0784df82_13601021 (Smarty_Internal_Template $_smarty_tpl)
 		<!-- main content start-->
 		<div class="main-content">
 			<!-- header-starts -->
-
+			<div style="padding:15px 0 0 15px">
+				<h2>painel do aluno</h2>
+			</div>
 			<div id="page-wrapper">
 				<div class="top-grids">
 					<div class="top-grids-info">
@@ -184,55 +178,44 @@ function content_5d5ddb0784df82_13601021 (Smarty_Internal_Template $_smarty_tpl)
 						<!-- top-grid-right -->
 						<div class="col-md-3 top-grid-right" style="background:red">
               <!-- ultimos avisos -->
-              <div class="more-news" style="background:pink">
+              <div class="more-news">
                 <div class="more-news-heading">
                   <h3>Ultimos avisos</h3>
                 </div>
                 <div class="more-news-grids">
-                  <div class="col-md-12 more-news-left" style="background:gray">
+                  <div class="col-md-12 more-news-left">
                     <div class="news-grids-bottom">
                       <!-- date -->
                       <div id="design" class="date">
                         <div id="cycler">
+													<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['avisos']->value, 'aviso', false, 'key');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['aviso']->value) {
+?>
                           <div class="date-text">
-                            <h4>Premier League</h4>
+														<!-- <?php echo var_dump($_smarty_tpl->tpl_vars['aviso']->value);?>
+ -->
+                            <h4><?php echo $_smarty_tpl->tpl_vars['usuario']->value[$_smarty_tpl->tpl_vars['key']->value][0]->nome;?>
+</h4>
+														<small class="pull-right text-muted">
+		                          <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
+		                        </small>
                             <ul>
-                              <li><a href="single.html"><i class="fa fa-arrow-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                              <li><a href="V_single.html"><i class="fa fa-play-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
+                              <li><i class="fa fa-arrow-right"></i> <?php echo $_smarty_tpl->tpl_vars['aviso']->value->getMensagem();?>
+</li>
+                              <li><a href="#"><i class="fa fa-play-circle-o"></i> Ver Mensagem</a></li>
                             </ul>
                           </div>
-                          <div class="date-text">
-                            <h4>Championship</h4>
-                            <ul>
-                              <li><a href="single.html"><i class="fa fa-arrow-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                              <li><a href="V_single.html"><i class="fa fa-play-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                              <li><a href="V_single.html"><i class="fa fa-play-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                            </ul>
-                          </div>
-                          <div class="date-text">
-                            <h4>FA Cup</h4>
-                            <ul>
-                              <li><a href="single.html"><i class="fa fa-arrow-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                              <li><a href="V_single.html"><i class="fa fa-play-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                            </ul>
-                          </div>
-                          <div class="date-text">
-                            <h4>Champions League</h4>
-                            <ul>
-                              <li><a href="V_single.html"><i class="fa fa-play-circle-o"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                            </ul>
-                          </div>
-                          <div class="date-text">
-                            <h4>Champions League</h4>
-                            <ul>
-                              <li><a href="single.html"><i class="fa fa-arrow-right"></i> Lorem ipsum dolor sit amet, consectetur adipiscing elit.</a></li>
-                            </ul>
-                          </div>
+                    			<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                         </div>
                         <?php echo '<script'; ?>
 >
                           function cycle($item, $cycler){
-                            setTimeout(cycle, 2000, $item.next(), $cycler);
+                            setTimeout(cycle, 8000, $item.next(), $cycler);
 
                             $item.slideUp(1000,function(){
                               $item.appendTo($cycler).show();

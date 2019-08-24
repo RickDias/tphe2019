@@ -30,9 +30,6 @@ $theme = Configuration::get('theme');
 
     <link href="theme/<?php echo $theme ?>/css/menu.css" rel="stylesheet">
 
-
-    
-
 </head>
 <body id="page-top" class="index">
 
@@ -60,7 +57,7 @@ $theme = Configuration::get('theme');
   ?>
 
   <footer>
-      <div class="container">
+      <div class="container col-md-12">
           <div class="row">
               <div class="col-md-4">
                   <span class="copyright">Copyright &copy; Your Website 2016</span>

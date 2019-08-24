@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-13 02:50:19
+/* Smarty version 3.1.33, created on 2019-08-24 02:20:59
   from 'C:\xampp\htdocs\tphe2019\theme\default\paginas\home.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d52094b2d0d99_17463723',
+  'unifunc' => 'content_5d6082eb6af960_26025683',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8355fa364e46c152fa089b74937905a1b46df765' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\theme\\default\\paginas\\home.tpl',
-      1 => 1565046198,
+      1 => 1566606058,
       2 => 'file',
     ),
   ),
@@ -20,25 +20,24 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d52094b2d0d99_17463723 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d6082eb6af960_26025683 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <!-- Header -->
 <header>
-    <div class="container">
+    <!-- <div class="container"> -->
         <div class="intro-text">
             <div class="intro-lead-in">Bem vindo ao nosso Game!</div>
             <div class="intro-heading">Desafie-se!</div>
-            <a href="index.php?pag=jogos" class="page-scroll btn btn-xl">Saiba como funciona</a>
-        </div>
+            <a href="index.php?pag=jogos" class="page-scroll btn btn-xl">Ver Jogos Disponíveis</a>
     </div>
 </header>
 <!-- Services Section -->
-<section id="services">
+<!-- <section id="services"> -->
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
-                <h2 class="section-heading">Jogos</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h2 class="section-heading">Nossa Proposta</h2>
+                <h3 class="section-subheading text-muted">Inicialmente, nosso projeto é composto de 3 jogos</h3>
             </div>
         </div>
         <div class="row text-center">
@@ -68,7 +67,7 @@ function content_5d52094b2d0d99_17463723 (Smarty_Internal_Template $_smarty_tpl)
             </div>
         </div>
     </div>
-</section>
+<!-- </section> -->
 
 <!-- Portfolio Grid Section -->
 <section id="portfolio" class="bg-light-gray">
@@ -76,7 +75,7 @@ function content_5d52094b2d0d99_17463723 (Smarty_Internal_Template $_smarty_tpl)
         <div class="row">
             <div class="col-lg-12 text-center">
                 <h2 class="section-heading">Projetos</h2>
-                <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                <h3 class="section-subheading text-muted">Aqui os projetos relacionados, confira.</h3>
             </div>
         </div>
         <div class="row">

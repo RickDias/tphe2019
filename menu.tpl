@@ -30,22 +30,19 @@
                 {/if}
                 {if $cessao == true}
                 <li>
-                  <a class="page-scroll" href="index.php?pag=painel_jogador">Painel do Jogador</a>
-                </li>
-                <li>
                   <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
                       <i class="fa fa-bars"></i>
-                  </button>
+                    </button>
                     <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item disabled" href="index.php?pag=profile">Perfil</a>
-                      <a class="dropdown-item" href="#">Another action</a>
-                      <a class="dropdown-item" href="#">Something else here</a>
+                      <a class="dropdown-item" href="index.php?pag=profile">Perfil</a>
+                      <a class="dropdown-item" href="index.php?pag=painel_jogador">Painel do Jogador</a>
+                      <a class="dropdown-item" href="index.php?pag=home_jogos">Jogos</a>
                       <a class="dropdown-item" href="index.php?pag=loggout">Sair</a>
                     </div>
                   </div>
                 </li>
-                
+
                 {/if}
             </ul>
         </div>
