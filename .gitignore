@@ -10,3 +10,5 @@ composer-setup.php
 error_log
 test/
 exemplos/
+templates_c/
+admin-dev/templates_c/
