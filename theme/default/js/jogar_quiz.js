@@ -1,8 +1,8 @@
 
-var currentTab = 1; // Current tab is set to be the first tab (0)
+var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 var clicado = false;
-var type, i;
+var type, i, pontuacao = 0;
 
 function showTab(n) {
   // This function will display the specified tab of the form ...
@@ -16,10 +16,14 @@ function showTab(n) {
   if (n == 0) {
     // document.getElementById("prevBtn").style.display = "none";
     document.getElementById("all_steps").style.display = "none";
+    document.getElementById("timer_count").style.display = "none";
+    document.getElementById("score_quiz").style.display = "none";
     document.getElementById("iniciar").style.display = "block";
   } else {
     // document.getElementById("prevBtn").style.display = "inline";
     document.getElementById("all_steps").style.display = "block";
+    document.getElementById("timer_count").style.display = "block";
+    document.getElementById("score_quiz").style.display = "block";
     document.getElementById("iniciar").style.display = "none";
   }
   if (n == (x.length - 1)) {
@@ -114,12 +118,14 @@ function remove_fill_resp(n){
   }
 }
 
-function confere_resposta(tipo , n){
+function confere_resposta(tipo , n, pontos){
+  parar();
   // console.log();
-
   if(clicado === false){
     if(tipo == "V"){
       document.getElementById("resp_certa").style.display = "block";
+      pontuacao = pontuacao+Number(pontos);
+      $("#score_val").html(pontuacao);
     }else{
       document.getElementById("resp_errada").style.display = "block";
     }
@@ -153,12 +159,12 @@ function tempo(op) {
 		// document.getElementById('parar').style.display = "block";
 		// document.getElementById('comeca').style.display = "none";
 	}
-	var s = 5;
+	var s = 29;
 	// var m = 0;
 	// var h = 0;
 	intervalo = window.setInterval(function() {
 
-		if (s == 0) { s = 30; parar(); confere_resposta("F",0) }
+		if (s == 0) { s = 30; parar(); confere_resposta("F") }
 		// if (m == 60) { h++; s = 0; m = 0; }
 		// if (h < 10) document.getElementById("hora").innerHTML = "0" + h + "h"; else document.getElementById("hora").innerHTML = h + "h";
 		if (s < 10) document.getElementById("segundo").innerHTML = "0" + s; else document.getElementById("segundo").innerHTML = s;
@@ -180,4 +186,4 @@ function volta() {
 function limpa() {
 	// document.getElementById('voltas').innerHTML = "";
 }
-window.onload=tempo;
+// window.onload=tempo;

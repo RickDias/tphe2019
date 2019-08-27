@@ -1,48 +1,10 @@
-<!-- {foreach from=$resultados item=$quiz}
-    <div id="container_stage_1" style=";width:100%;height:100%;">
-      <div id="failbg" class="failbg" style="position: absolute; visibility: hidden; left: 0px; top: 0px; width: 100%; height: 100%; opacity: 0;">
-      </div>
-      <div id="orangebg" class="orangebg" style="position: absolute; visibility: hidden; left: 0px; top: 0px; width: 100%; height: 100%; opacity: 0;">
-      </div>
-      <div id="timerRow" class="col-md-10 col-md-offset-1 timerRow" style="position: absolute; visibility: visible; left: 0px; top: 0px; opacity: 1;">
-        <div id="timerCol1" class="col-md-6" style="position: relative; visibility: visible; left: 0px; top: 0px; opacity: 1;">
-        </div>
-        <div id="timerContainer" class="col-md-6 timerContainer" style="position: relative; visibility: visible; left: 0px; top: 0px; opacity: 1;">
-          <canvas id="quiztimer" class="timer" width="300" height="300" style="position: absolute; left: 0px; top: 0px;">
-          </canvas>
-        </div>
-      </div>
-      <div id="openingText" class="col-md-10 col-md-offset-1 vertical-align" style="position: relative; visibility: visible; z-index: 3; left: 0px; top: 0px; opacity: 1;">
-        <div id="title" style="position: relative; visibility: visible; margin-top: 20px; left: 0px; top: 0px; opacity: 1;">
-          <h1 class="black">Quiz I - {$quiz["DESCRICAO"]}</h1>
-          <p class="p_16_black">Neste quiz, serão mostradas 10 perguntas aleatórias de {$quiz["disciplina"]}</p>
-          <p class="p_16_black">Bons estudos!</p>
-          <div id="goBtn" style="position: relative; visibility: visible; margin-top: 40px; margin-bottom: 20px; left: 0px; top: 0px; width: 100px; height: 40px; opacity: 1; cursor: pointer;" class="btnOutCss">
-	           <a class="nav-link active show" href="#container_stage_2" data-toggle="tab">
-               <input id="btn" type="button" value="Iniciar!" style="width: 100px; height: 40px; cursor: pointer;">
-            </a>
-          </div>
-        </div>
-      </div>
-      <div id="quiz" class="col-md-10 col-md-offset-1" style="position: relative; visibility: visible; left: 0px; top: 0px; opacity: 1;">
-        <div id="quizquestionContainer">
-          <div id="quizoptionContainer" style="left: 0px; top: 0px;">
-          </div>
-          <div id="quizfeedbackContainer">
-          </div>
-        </div>
-      </div>
-      <div id="quiztimeoutContainer" class="timeoutContainer" style="display: none;">
-      </div>
-      <div id="quizscoreContainer" class="scoreContainer" style="display: none;">
-      </div>
-    </div>
-{/foreach} -->
 {foreach key=$key from=$resultados item=$q}
 
-
 <form id="regForm" action="index.php?pag=pag=jogo&jogo=quiz">
-  <div class="codigo">
+  <div class="score_quiz" id="score_quiz">
+    Pontuação:<span id="score_val">0</span>
+  </div>
+  <div class="codigo" id="timer_count">
     <!-- <span id="hora">00h</span><span id="minuto">00m</span> -->
     <span id="segundo">30</span><br>
     <!-- <input type="button" value="Volta" onclick="volta();"><br> -->
@@ -60,9 +22,9 @@
   </div>
 
   <div style="overflow:auto;display:none" id="iniciar" name="iniciar">
+    <a href="index.php?pag=jogo&jogo=quiz" style="" class="">Voltar</a>
     <div style="float:right;">
       <!-- <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
-      <a href="index.php?pag=jogo&jogo=quiz" style="" class="">Voltar</a>
       <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
   </div>
@@ -72,7 +34,7 @@
 <div class="tab" id="tab_{$key_perg}">{$pergunta["DESCRICAO"]}
   {foreach key=$key from=$respostas item=$resposta}
   {if $pergunta["ID_PERGUNTA"] == $resposta["ID_PERGUNTA"]}
-  <div id="div_resposta_{$key}" class="respostas_quiz" onclick="confere_resposta('{$resposta["TIPO"]}','{$key_perg}'); this.onclick=null;">
+  <div id="div_resposta_{$key}" class="respostas_quiz" onclick="confere_resposta('{$resposta["TIPO"]}','{$key_perg}','{$pergunta["PONTUACAO"]}'); this.onclick=null;">
     <p>{$resposta["RESPOSTA"]}</p>
   </div>
   <!-- {$resposta|var_dump} -->

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-27 19:36:15
+/* Smarty version 3.1.33, created on 2019-08-28 00:42:11
   from 'C:\xampp\htdocs\tphe2019\theme\default\paginas\jogar_quiz.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d656a0f2e7255_97197812',
+  'unifunc' => 'content_5d65b1c309b921_56722502',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8120e3d84fb32ba0f9d267acaf7fb86e2c3b61df' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\theme\\default\\paginas\\jogar_quiz.tpl',
-      1 => 1566927373,
+      1 => 1566945729,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d656a0f2e7255_97197812 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d65b1c309b921_56722502 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['resultados']->value, 'quiz');
 if ($_from !== null) {
@@ -78,7 +78,10 @@ foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_var
 
 
 <form id="regForm" action="index.php?pag=pag=jogo&jogo=quiz">
-  <div class="codigo">
+  <div class="score_quiz" id="score_quiz">
+    Pontuação:<span id="score_val">0</span>
+  </div>
+  <div class="codigo" id="timer_count">
     <!-- <span id="hora">00h</span><span id="minuto">00m</span> -->
     <span id="segundo">30</span><br>
     <!-- <input type="button" value="Volta" onclick="volta();"><br> -->
@@ -99,9 +102,9 @@ foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_var
   </div>
 
   <div style="overflow:auto;display:none" id="iniciar" name="iniciar">
+    <a href="index.php?pag=jogo&jogo=quiz" style="" class="">Voltar</a>
     <div style="float:right;">
       <!-- <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
-      <a href="index.php?pag=jogo&jogo=quiz" style="" class="">Voltar</a>
       <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
   </div>
@@ -125,6 +128,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_var
   <div id="div_resposta_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
 " class="respostas_quiz" onclick="confere_resposta('<?php echo $_smarty_tpl->tpl_vars['resposta']->value["TIPO"];?>
 ','<?php echo $_smarty_tpl->tpl_vars['key_perg']->value;?>
+','<?php echo $_smarty_tpl->tpl_vars['pergunta']->value["PONTUACAO"];?>
 '); this.onclick=null;">
     <p><?php echo $_smarty_tpl->tpl_vars['resposta']->value["RESPOSTA"];?>
 </p>
