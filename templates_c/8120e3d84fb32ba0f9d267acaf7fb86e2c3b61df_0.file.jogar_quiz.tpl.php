@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-27 05:01:31
+/* Smarty version 3.1.33, created on 2019-08-27 19:36:15
   from 'C:\xampp\htdocs\tphe2019\theme\default\paginas\jogar_quiz.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d649d0b1d14c5_41213864',
+  'unifunc' => 'content_5d656a0f2e7255_97197812',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8120e3d84fb32ba0f9d267acaf7fb86e2c3b61df' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\theme\\default\\paginas\\jogar_quiz.tpl',
-      1 => 1566874888,
+      1 => 1566927373,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d649d0b1d14c5_41213864 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d656a0f2e7255_97197812 (Smarty_Internal_Template $_smarty_tpl) {
 ?><!-- <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['resultados']->value, 'quiz');
 if ($_from !== null) {
@@ -75,7 +75,18 @@ $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->t
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['q']->value) {
 ?>
+
+
 <form id="regForm" action="index.php?pag=pag=jogo&jogo=quiz">
+  <div class="codigo">
+    <!-- <span id="hora">00h</span><span id="minuto">00m</span> -->
+    <span id="segundo">30</span><br>
+    <!-- <input type="button" value="Volta" onclick="volta();"><br> -->
+    <!-- <div id="parar"><input type="button" value="Parar" onclick="parar();"></div> -->
+    <!-- <div id="comeca" style="display:none;"><input type="button" value="Comeca" onclick="tempo(1);"><br></div> -->
+    <!-- <input type="button" value="Limpa" onclick="limpa();"><br><br> -->
+    <div id="voltas"></div>
+  </div>
 
   <h1 class="black">Quiz <?php echo $_smarty_tpl->tpl_vars['q']->value["ID_QUIZ"];?>
  - <?php echo $_smarty_tpl->tpl_vars['q']->value["DESCRICAO"];?>
@@ -98,11 +109,12 @@ foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_var
  -->
 <!-- One "tab" for each step in the form: -->
 <?php
-$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['perguntas']->value, 'pergunta');
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['perguntas']->value, 'pergunta', false, 'key_perg');
 if ($_from !== null) {
-foreach ($_from as $_smarty_tpl->tpl_vars['pergunta']->value) {
+foreach ($_from as $_smarty_tpl->tpl_vars['key_perg']->value => $_smarty_tpl->tpl_vars['pergunta']->value) {
 ?>
-<div class="tab"><?php echo $_smarty_tpl->tpl_vars['pergunta']->value["DESCRICAO"];?>
+<div class="tab" id="tab_<?php echo $_smarty_tpl->tpl_vars['key_perg']->value;?>
+"><?php echo $_smarty_tpl->tpl_vars['pergunta']->value["DESCRICAO"];?>
 
   <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['respostas']->value, 'resposta', false, 'key');
@@ -110,7 +122,9 @@ if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['resposta']->value) {
 ?>
   <?php if ($_smarty_tpl->tpl_vars['pergunta']->value["ID_PERGUNTA"] == $_smarty_tpl->tpl_vars['resposta']->value["ID_PERGUNTA"]) {?>
-  <div class="respostas_quiz" onclick="confere_resposta('<?php echo $_smarty_tpl->tpl_vars['resposta']->value["TIPO"];?>
+  <div id="div_resposta_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+" class="respostas_quiz" onclick="confere_resposta('<?php echo $_smarty_tpl->tpl_vars['resposta']->value["TIPO"];?>
+','<?php echo $_smarty_tpl->tpl_vars['key_perg']->value;?>
 '); this.onclick=null;">
     <p><?php echo $_smarty_tpl->tpl_vars['resposta']->value["RESPOSTA"];?>
 </p>
@@ -118,7 +132,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_var
   <!-- <?php echo var_dump($_smarty_tpl->tpl_vars['resposta']->value);?>
  -->
   <input type="hidden" value="<?php echo $_smarty_tpl->tpl_vars['resposta']->value["TIPO"];?>
-" name="tipo" id="tipo">
+" id="tipo_resp_<?php echo $_smarty_tpl->tpl_vars['key']->value;?>
+">
   <?php }?>
   <?php
 }

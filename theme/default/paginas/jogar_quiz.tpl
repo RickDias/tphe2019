@@ -39,7 +39,18 @@
     </div>
 {/foreach} -->
 {foreach key=$key from=$resultados item=$q}
+
+
 <form id="regForm" action="index.php?pag=pag=jogo&jogo=quiz">
+  <div class="codigo">
+    <!-- <span id="hora">00h</span><span id="minuto">00m</span> -->
+    <span id="segundo">30</span><br>
+    <!-- <input type="button" value="Volta" onclick="volta();"><br> -->
+    <!-- <div id="parar"><input type="button" value="Parar" onclick="parar();"></div> -->
+    <!-- <div id="comeca" style="display:none;"><input type="button" value="Comeca" onclick="tempo(1);"><br></div> -->
+    <!-- <input type="button" value="Limpa" onclick="limpa();"><br><br> -->
+    <div id="voltas"></div>
+  </div>
 
   <h1 class="black">Quiz {$q["ID_QUIZ"]} - {$q["DESCRICAO"]}</h1>
 
@@ -57,15 +68,15 @@
   </div>
   <!-- {$perguntas|var_dump} -->
 <!-- One "tab" for each step in the form: -->
-{foreach from=$perguntas item=$pergunta}
-<div class="tab">{$pergunta["DESCRICAO"]}
+{foreach key=$key_perg from=$perguntas item=$pergunta}
+<div class="tab" id="tab_{$key_perg}">{$pergunta["DESCRICAO"]}
   {foreach key=$key from=$respostas item=$resposta}
   {if $pergunta["ID_PERGUNTA"] == $resposta["ID_PERGUNTA"]}
-  <div class="respostas_quiz" onclick="confere_resposta('{$resposta["TIPO"]}'); this.onclick=null;">
+  <div id="div_resposta_{$key}" class="respostas_quiz" onclick="confere_resposta('{$resposta["TIPO"]}','{$key_perg}'); this.onclick=null;">
     <p>{$resposta["RESPOSTA"]}</p>
   </div>
   <!-- {$resposta|var_dump} -->
-  <input type="hidden" value="{$resposta["TIPO"]}" name="tipo" id="tipo">
+  <input type="hidden" value="{$resposta["TIPO"]}" id="tipo_resp_{$key}">
   {/if}
   {/foreach}
 </div>
