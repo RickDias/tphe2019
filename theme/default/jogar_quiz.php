@@ -10,26 +10,48 @@ $con = conecta_db();
 $id_quiz= Tools::getValue("id-quiz");
 $id_turma= Tools::getValue("id-turma");
 
-$sql = "SELECT q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
-              date_format(q.`DT_INICIO`, '%d-%m-%Y') AS 'DT_INICIO',
-              date_format(q.`DT_FIM`, '%d-%m-%Y') AS 'DT_FIM', `PUBLICACAO` ,
-              t.`SIGLA`, t.`ID_TURMA`, u.`NOME`, d.`nome` as `disciplina`
-              FROM `quiz` q,`turma_quiz`tq, `turma` t, `usuario` u, `disciplina` d
-              WHERE q.`ID_QUIZ` = ".$id_quiz."
-              AND q.`ID_QUIZ` = tq.`ID_QUIZ`
-              AND tq.`ID_TURMA` = t.`ID_TURMA`
-              AND t.`ID_DISCIPLINA` = d.`ID_DISCIPLINA`
-              AND u.`ID_USUARIO` = ".$_SESSION['UsuarioID']."
-              AND q.`ID_USUARIO` = ".$_SESSION['UsuarioID'];
+// var_dump($id_quiz);
+$perguntas = "SELECT pq.`ID_PERGUNTA`
+        FROM `pergunta_quiz` pq
+        WHERE pq.`ID_QUIZ` = ".$id_quiz." limit 5";
 
-$resultados = mysqli_query($con, $sql) or die(mysqli_error($con));
+$id_perguntas = mysqli_query($con, $perguntas) or die(mysqli_error($con));
+while($aux = mysqli_fetch_assoc($id_perguntas)) {
+  $txt_pergunta = "SELECT p.`ID_PERGUNTA`, p.`DESCRICAO`, p.`PONTUACAO`
+          FROM `pergunta` p
+          WHERE p.`ID_PERGUNTA` = ".$aux["ID_PERGUNTA"];
+  $dados_perguntas = mysqli_query($con, $txt_pergunta) or die(mysqli_error($con));
+
+  while($aux2 = mysqli_fetch_assoc($dados_perguntas)) {
+    $array_perguntas[]=$aux2;
+    $smarty->assign("perguntas", $array_perguntas);
+    $respostas = "SELECT r.`ID_RESPOSTA`, r.`RESPOSTA`, r.`TIPO`, r.`ID_PERGUNTA`
+    FROM `resposta` r
+    WHERE r.`ID_PERGUNTA` = ".$aux2["ID_PERGUNTA"];
+    $dados_respostas = mysqli_query($con, $respostas) or die(mysqli_error($con));
+
+  }
+  while($aux3 = mysqli_fetch_assoc($dados_respostas)) {
+    $array_respostas[]=$aux3;
+    $smarty->assign("respostas", $array_respostas);
+    // $txt_resposta = $aux3;
+  }
+  // var_dump($array_respostas);
+        }
+        // var_dump($txt_pergunta);
 //criando a query de consulta à tabela
 // session_start();
 // if($_SESSION){
 //   $user_id = $_SESSION["UsuarioID"];
 //
+$quiz_sql = "SELECT *
+        FROM `quiz`
+        WHERE `ID_QUIZ` = ".$id_quiz;
+$quiz = mysqli_query($con, $quiz_sql) or die(mysqli_error($con));
+
+
   $smarty->assign(array(
-    'resultados' => $resultados,
+    'resultados' => $quiz,
     // 'cessao' => $_SESSION,
   ));
 //

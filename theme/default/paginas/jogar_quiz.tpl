@@ -1,4 +1,4 @@
-{foreach from=$resultados item=$quiz}
+<!-- {foreach from=$resultados item=$quiz}
     <div id="container_stage_1" style=";width:100%;height:100%;">
       <div id="failbg" class="failbg" style="position: absolute; visibility: hidden; left: 0px; top: 0px; width: 100%; height: 100%; opacity: 0;">
       </div>
@@ -37,4 +37,64 @@
       <div id="quizscoreContainer" class="scoreContainer" style="display: none;">
       </div>
     </div>
+{/foreach} -->
+{foreach key=$key from=$resultados item=$q}
+<form id="regForm" action="index.php?pag=pag=jogo&jogo=quiz">
+
+  <h1 class="black">Quiz {$q["ID_QUIZ"]} - {$q["DESCRICAO"]}</h1>
+
+  <div class="tab">
+          <p class="p_16_black">Neste quiz, serão mostradas 10 perguntas sobre {$q["DESCRICAO"]} definidas pelo professor!</p>
+          <p class="p_16_black">Bons estudos!</p>
+  </div>
+
+  <div style="overflow:auto;display:none" id="iniciar" name="iniciar">
+    <div style="float:right;">
+      <!-- <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+      <a href="index.php?pag=jogo&jogo=quiz" style="" class="">Voltar</a>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    </div>
+  </div>
+  <!-- {$perguntas|var_dump} -->
+<!-- One "tab" for each step in the form: -->
+{foreach from=$perguntas item=$pergunta}
+<div class="tab">{$pergunta["DESCRICAO"]}
+  {foreach key=$key from=$respostas item=$resposta}
+  {if $pergunta["ID_PERGUNTA"] == $resposta["ID_PERGUNTA"]}
+  <div class="respostas_quiz" onclick="confere_resposta('{$resposta["TIPO"]}'); this.onclick=null;">
+    <p>{$resposta["RESPOSTA"]}</p>
+  </div>
+  <!-- {$resposta|var_dump} -->
+  <input type="hidden" value="{$resposta["TIPO"]}" name="tipo" id="tipo">
+  {/if}
+  {/foreach}
+</div>
+{/foreach}
+<div style="overflow:auto;display:none" id="resp_certa" name="resp_certa">
+  Acertou, continue assim!
+  <div style="float:right;">
+    <!-- <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+  </div>
+</div>
+
+<div style="overflow:auto;display:none" id="resp_errada" name="resp_errada">
+  Foi quase!
+  <div style="float:right;">
+    <!-- <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
+    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+  </div>
+</div>
+
+<!-- Circles which indicates the steps of the form: -->
+<div style="text-align:center;margin-top:40px;" id="all_steps" name="all_steps">
+  {foreach key=$key from=$perguntas item=$pag}
+  <span class="step" id="num_step_{$key}" name"num_step_{$key}"></span>
+  {/foreach}
+</div>
+
+</form>
+<script src="theme/default/vendor/jquery/jquery.min.js"></script>
+
+<script src="theme/default/js/jogar_quiz.js"></script>
 {/foreach}

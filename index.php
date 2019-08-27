@@ -91,18 +91,18 @@ $theme = Configuration::get('theme');
     <script src="theme/<?php echo $theme ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
 
     <!-- Plugin JavaScript -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js" integrity="sha384-mE6eXfrb8jxl0rzJDBRanYqgBxtJ6Unn4/1F7q4xRRyIw7Vdg9jP4ycT7x1iVsgb" crossorigin="anonymous"></script> -->
 
     <!-- Contact Form JavaScript -->
-    <script src="theme/<?php echo $theme ?>/js/jqBootstrapValidation.js"></script>
-    <script src="theme/<?php echo $theme ?>/js/contact_me.js"></script>
+    <!-- <script src="theme/<?php echo $theme ?>/js/jqBootstrapValidation.js"></script> -->
+    <!-- <script src="theme/<?php echo $theme ?>/js/contact_me.js"></script> -->
 
     <!-- Theme JavaScript -->
-    <script src="theme/<?php echo $theme ?>/js/agency.min.js"></script>
+    <!-- <script src="theme/<?php echo $theme ?>/js/agency.min.js"></script> -->
 
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script>
-    <script src="theme/<?php echo $theme ?>/paginas/js/jquery.crossword.js"></script>
-    <script src="theme/<?php echo $theme ?>/paginas/js/script.js"></script>
+    <!-- <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.6.2/jquery.min.js"></script> -->
+    <!-- <script src="theme/<?php echo $theme ?>/paginas/js/jquery.crossword.js"></script> -->
+    <!-- <script src="theme/<?php echo $theme ?>/paginas/js/script.js"></script> -->
 
 
 </body>
