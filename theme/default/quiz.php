@@ -34,4 +34,5 @@ $resultados = mysqli_query($con, $sql) or die(mysqli_error($con));
 
 $smarty->display('quiz.tpl');
 
+
 ?>

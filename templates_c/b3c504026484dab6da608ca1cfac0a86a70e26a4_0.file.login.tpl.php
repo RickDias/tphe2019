@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-14 01:14:36
+/* Smarty version 3.1.33, created on 2019-08-29 00:41:33
   from 'C:\xampp\htdocs\tphe2019\theme\default\paginas\login.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d53445c154217_34038017',
+  'unifunc' => 'content_5d67031db665f4_84359378',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'b3c504026484dab6da608ca1cfac0a86a70e26a4' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\theme\\default\\paginas\\login.tpl',
-      1 => 1565737761,
+      1 => 1567032090,
       2 => 'file',
     ),
   ),
@@ -20,12 +20,12 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d53445c154217_34038017 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d67031db665f4_84359378 (Smarty_Internal_Template $_smarty_tpl) {
 ?><section id="contact">
     <div class="container">
         <div class="row">
             <div class="col-lg-12">
-                <h2 class="section-heading">Login</h2>
+                <h2 class="section-heading">Faça login para continuar...</h2>
                 <!--h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3-->
             </div>
         </div>

@@ -13,7 +13,7 @@ require $classe_DAO;
 
 if(Tools::getValue("salva_cadastro")==1){
 
-  var_dump("salvar_enviado");
+  // var_dump("salvar_enviado");
 
   if ($_POST['confirm_password'] == $_POST['user_password']) {
 		// require_once '../config/config.php';
@@ -38,6 +38,8 @@ if(Tools::getValue("salva_cadastro")==1){
 		$usuarioDAO->insert($usuarioVO, $link);
 
 		printf('Registro inserido com sucesso.');
+    header("Location: index.php?pag=login");
+
 
 		//commita
 

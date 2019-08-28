@@ -1,5 +1,5 @@
 <?php
-
+if($_SESSION){
 $smarty = new Smarty;
 $smarty->template_dir = 'theme/default/paginas/';
 $smarty->config_dir = 'theme/default/';
@@ -30,3 +30,8 @@ require $classe_DAO;
   ));
 
   $smarty->display('profile.tpl');
+
+}else{
+  header("Location: index.php?pag=login");
+
+}

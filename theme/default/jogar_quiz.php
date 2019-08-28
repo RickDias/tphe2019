@@ -1,4 +1,5 @@
 <?php
+if($_SESSION){
 // include 'menu.tpl';
 $smarty = new Smarty;
 $smarty->template_dir = 'theme/default/paginas';
@@ -13,7 +14,7 @@ $id_turma= Tools::getValue("id-turma");
 // var_dump($id_quiz);
 $perguntas = "SELECT pq.`ID_PERGUNTA`
         FROM `pergunta_quiz` pq
-        WHERE pq.`ID_QUIZ` = ".$id_quiz." limit 5";
+        WHERE pq.`ID_QUIZ` = ".$id_quiz." limit 10";
 
 $id_perguntas = mysqli_query($con, $perguntas) or die(mysqli_error($con));
 while($aux = mysqli_fetch_assoc($id_perguntas)) {
@@ -59,5 +60,9 @@ $quiz = mysqli_query($con, $quiz_sql) or die(mysqli_error($con));
 
 
 $smarty->display('jogar_quiz.tpl');
+}else{
+  header("Location: index.php?pag=login");
+
+}
 
 ?>

@@ -1,4 +1,6 @@
 <?php
+if($_SESSION){
+
 // include 'menu.tpl';
 $smarty = new Smarty;
 $smarty->template_dir = 'theme/default/paginas';
@@ -44,5 +46,9 @@ if(count($avisos)>0){
 
 
 $smarty->display('painel_jogador.tpl');
+}else{
+  header("Location: index.php?pag=login");
+
+}
 
 ?>
