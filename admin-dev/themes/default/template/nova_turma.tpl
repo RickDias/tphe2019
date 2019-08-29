@@ -29,7 +29,9 @@
 										<div class="form-group">
 											<label>Selecione Disciplina</label>
 													<select class="form-control" name="disciplina" id="disciplina">
-												<option value='1'>{$aux['disciplina']}</option>
+                            {foreach from=$turmas item=$turma}
+                            <option value='1'>{$turma["disciplina"]}</option>
+                            {/foreach}
 											</select>
 										</div>
 										<button type="submit" class="btn btn-default">Gravar Dados</button>

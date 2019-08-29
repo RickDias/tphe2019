@@ -12,9 +12,10 @@ $con = conecta_db();
 $sql = mysqli_query($con, "SELECT `disciplina`.`ID_DISCIPLINA`, `disciplina`.`NOME` as 'disciplina' FROM `disciplina`");
 
 while($aux = mysqli_fetch_assoc($sql)) {
+$turma[]= $aux;
+}
 $smarty->assign(array(
-    'aux' => $aux,
+  'turmas' => $turma,
 
 ));
-}
 $smarty->display('nova_turma.tpl');
