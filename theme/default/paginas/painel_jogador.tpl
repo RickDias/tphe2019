@@ -43,8 +43,9 @@
 				<!--sidebar nav start-->
 					<ul class="nav nav-pills nav-stacked custom-nav">
 						<li><a href="index.php?pag=home_jogos"><img src="theme/default/images/9.png" alt="" /><span>Jogos</span></a></li>
-						<li><a href="#"><img src="theme/default/images/2.png" alt="" /><span>OP 2</span></a></li>
-						<li><a href="#"><img src="theme/default/images/3.png" alt="" /><span>OP 3</span></a></li>
+						<li><a href="#"><img src="theme/default/images/2.png" alt="" /><span>Matricular-se</span></a></li>
+						<li><a href="#"><img src="theme/default/images/3.png" alt="" /><span>Minhas turmas</span></a></li>
+						<li><a href="#"><img src="theme/default/images/4.png" alt="" /><span>Histórico</span></a></li>
 						<li><a href="index.php?pag=profile"><img src="admin-dev/themes/default/img/module-profile.png" alt="" /><span>Meu Perfil</span></a></li>
 						<li><a href="#"><img src="theme/default/images/17.png" alt="" /><span>Mais</span></a></li>
 					</ul>
@@ -69,7 +70,7 @@
                 <!-- cima a baiso esquerda -->
 								<div class="col-md-12 top-grid-left-left" style="background:black">
                   <!-- div grande -->
-									<div class="top-grid-left-left-grids"style="background:tomato">
+									<!-- <div class="top-grid-left-left-grids"style="background:tomato">
 										<div class="col-md-8 top-grid-left-img">
 											<div data-video="Bzt6h5uFWOU" id="video">
 												<img src="theme/default/images/f12.jpg" alt="Use your own screenshot.">
@@ -86,18 +87,21 @@
 											</div>
 										</div>
 										<div class="clearfix"> </div>
-									</div>
+									</div> -->
 									<!-- three-grids -->
 									<div class="three-grids">
                     <!-- menor para foreach -->
-										<div class="three-grid" style="background:silver">
-											<div class="three-grid-info">
+										<div class="col-md-12" style="background:silver">
+											<h3>Quizes disponíveis</h3>
+											{foreach key=$key from=$resultados item=$jogo}
+											<!-- {$jogo|var_dump} -->
+											<div class="col-md-4">
 												<div class="three-grid-img">
-													<a href="single.html"><img src="theme/default/images/f2.jpg" alt="" /></a>
+													<a href="#"><img src="theme/default/images/f{$key+1}.jpg" alt="" /></a>
 												</div>
 												<div class="three-grid-text">
 													<div class="three-grid-text-heading">
-														<a class="text" href="single.html">Fusce ornare congue ligula vel placerat</a>
+														<a class="text" href="#">{$jogo["DESCRICAO"]}</a>
 													</div>
 													<div class="t-grid author-grid">
 														<ul>
@@ -107,10 +111,11 @@
 													</div>
 												</div>
 											</div>
+											{/foreach}
 										</div>
 
                     <!-- nada aqui -->
-										<div class="clearfix">gerson </div>
+										<div class="clearfix"></div>
 									</div>
 									<!-- //three-grids -->
 									<!-- two-grids -->

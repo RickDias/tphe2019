@@ -1,9 +1,10 @@
 <?php
 
 class turmaDAO {
-    
+
     public function insert(turmaVO $objVO, $link) {
-        $query = sprintf("INSERT INTO turma (ANO, semestre, nome, sigla, ID_DISCIPLINA, ID_USUARIO) VALUES (".$objVO->getAno().", ".$objVO->getSemestre().", '".$objVO->getNome()."', '".$objVO->getSigla()."', ".$objVO->getId_disciplina().", ".$objVO->getId_usuario().")"); 
+        $query = sprintf("INSERT INTO turma (ANO, semestre, nome, sigla, ID_DISCIPLINA, ID_USUARIO, codigo_turma) VALUES (".$objVO->getAno().", ".$objVO->getSemestre().", '".$objVO->getNome()."', '".$objVO->getSigla()."', ".$objVO->getId_disciplina().", ".$objVO->getId_usuario().", '".$objVO->getSigla()."', ".$objVO->getId_disciplina().", ".$objVO->getCodigo_turma().")");
+        //echo $query;)");
         //echo $query;
 		try {
             if (mysqli_query($link, $query)) {
@@ -18,7 +19,7 @@ class turmaDAO {
             mysqli_rollback($link);
         }
     }
-    
+
     public function getAll($link) {
         mysqli_query($link, "SET NAMES 'UTF8'");
         $objVO = new turmaVO();
@@ -33,13 +34,14 @@ class turmaDAO {
             $objVO->setSigla(stripslashes($rs['SIGLA']));
             $objVO->setId_usuario(stripslashes($rs['ID_USUARIO']));
             $objVO->setId_disciplina(stripslashes($rs['ID_DISCIPLINA']));
-                       
+            $objVO->setCodigo_turma(stripslashes($rs['codigo_turma']));
+
             $return [] = clone $objVO;
         }
         return $return;
     }
-  
-    
+
+
     public function delete(turmaVO $objVO, $link) {
          if ($objVO->getId_turma() == NULL){
              throw new Exception ("Erro ao tentar excluir a turma, verifique a chave primária.");
@@ -56,9 +58,9 @@ class turmaDAO {
          mysqli_commit($link);
          return mysqli_query($link, $query);
     }
-    
+
     public function update(turmaVO $objVO, $link) {
-        
+
     }
-    
+
 }

@@ -9,6 +9,7 @@ class turmaVO {
     private $sigla;
     private $id_usuario;
     private $id_disciplina;
+    private $codigo_turma;
 
     function getId_turma() {
         return $this->id_turma;
@@ -38,6 +39,10 @@ class turmaVO {
         return $this->id_disciplina;
     }
 
+    function getCodigo_turma() {
+        return $this->codigo_turma;
+    }
+
     function setId_turma($id_turma) {
         $this->id_turma = $id_turma;
     }
@@ -64,6 +69,10 @@ class turmaVO {
 
     function setId_disciplina($id_disciplina) {
         $this->id_disciplina = $id_disciplina;
+    }
+
+    function setCodigo_turma($codigo_turma) {
+        $this->codigo_turma = $codigo_turma;
     }
 
 }

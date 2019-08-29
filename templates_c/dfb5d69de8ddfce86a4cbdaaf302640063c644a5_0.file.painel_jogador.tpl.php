@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-24 02:52:13
+/* Smarty version 3.1.33, created on 2019-08-29 01:52:07
   from 'C:\xampp\htdocs\tphe2019\theme\default\paginas\painel_jogador.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d608a3d40d560_40651199',
+  'unifunc' => 'content_5d6713a7cd2b40_67617885',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dfb5d69de8ddfce86a4cbdaaf302640063c644a5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\theme\\default\\paginas\\painel_jogador.tpl',
-      1 => 1566607932,
+      1 => 1567036326,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d608a3d40d560_40651199 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d6713a7cd2b40_67617885 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <head>
 <?php echo '<script'; ?>
@@ -70,8 +70,9 @@ function content_5d608a3d40d560_40651199 (Smarty_Internal_Template $_smarty_tpl)
 				<!--sidebar nav start-->
 					<ul class="nav nav-pills nav-stacked custom-nav">
 						<li><a href="index.php?pag=home_jogos"><img src="theme/default/images/9.png" alt="" /><span>Jogos</span></a></li>
-						<li><a href="#"><img src="theme/default/images/2.png" alt="" /><span>OP 2</span></a></li>
-						<li><a href="#"><img src="theme/default/images/3.png" alt="" /><span>OP 3</span></a></li>
+						<li><a href="#"><img src="theme/default/images/2.png" alt="" /><span>Matricular-se</span></a></li>
+						<li><a href="#"><img src="theme/default/images/3.png" alt="" /><span>Minhas turmas</span></a></li>
+						<li><a href="#"><img src="theme/default/images/4.png" alt="" /><span>Histórico</span></a></li>
 						<li><a href="index.php?pag=profile"><img src="admin-dev/themes/default/img/module-profile.png" alt="" /><span>Meu Perfil</span></a></li>
 						<li><a href="#"><img src="theme/default/images/17.png" alt="" /><span>Mais</span></a></li>
 					</ul>
@@ -96,7 +97,7 @@ function content_5d608a3d40d560_40651199 (Smarty_Internal_Template $_smarty_tpl)
                 <!-- cima a baiso esquerda -->
 								<div class="col-md-12 top-grid-left-left" style="background:black">
                   <!-- div grande -->
-									<div class="top-grid-left-left-grids"style="background:tomato">
+									<!-- <div class="top-grid-left-left-grids"style="background:tomato">
 										<div class="col-md-8 top-grid-left-img">
 											<div data-video="Bzt6h5uFWOU" id="video">
 												<img src="theme/default/images/f12.jpg" alt="Use your own screenshot.">
@@ -113,18 +114,28 @@ function content_5d608a3d40d560_40651199 (Smarty_Internal_Template $_smarty_tpl)
 											</div>
 										</div>
 										<div class="clearfix"> </div>
-									</div>
+									</div> -->
 									<!-- three-grids -->
 									<div class="three-grids">
                     <!-- menor para foreach -->
-										<div class="three-grid" style="background:silver">
-											<div class="three-grid-info">
+										<div class="col-md-12" style="background:silver">
+											<h3>Quizes disponíveis</h3>
+											<?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['resultados']->value, 'jogo', false, 'key');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['jogo']->value) {
+?>
+											<!-- <?php echo var_dump($_smarty_tpl->tpl_vars['jogo']->value);?>
+ -->
+											<div class="col-md-4">
 												<div class="three-grid-img">
-													<a href="single.html"><img src="theme/default/images/f2.jpg" alt="" /></a>
+													<a href="#"><img src="theme/default/images/f<?php echo $_smarty_tpl->tpl_vars['key']->value+1;?>
+.jpg" alt="" /></a>
 												</div>
 												<div class="three-grid-text">
 													<div class="three-grid-text-heading">
-														<a class="text" href="single.html">Fusce ornare congue ligula vel placerat</a>
+														<a class="text" href="#"><?php echo $_smarty_tpl->tpl_vars['jogo']->value["DESCRICAO"];?>
+</a>
 													</div>
 													<div class="t-grid author-grid">
 														<ul>
@@ -134,10 +145,14 @@ function content_5d608a3d40d560_40651199 (Smarty_Internal_Template $_smarty_tpl)
 													</div>
 												</div>
 											</div>
+											<?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 										</div>
 
                     <!-- nada aqui -->
-										<div class="clearfix">gerson </div>
+										<div class="clearfix"></div>
 									</div>
 									<!-- //three-grids -->
 									<!-- two-grids -->

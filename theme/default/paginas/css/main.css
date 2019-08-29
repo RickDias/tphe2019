@@ -101,3 +101,22 @@
       z-index: 9;
       width: 20%;
   }
+
+.container_aviso{
+  background: silver;
+  border: 1px solid gray;
+  border-radius: 15px;
+  text-align: center;
+}
+.cod_turma{
+  background: white;
+  width: 30%;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 15px;
+  padding: 15px;
+}
+
+.botao_aviso{
+  margin: 15px;
+}

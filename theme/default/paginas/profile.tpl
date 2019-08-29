@@ -7,10 +7,12 @@
 
     <div class="fb-profile-text">
       <!-- nome -->
-      <h1>{$usuario[0]->nome}</h1>
+        <h1>{$usuario[0]->nome}</h1>
+        <!-- <a href="#" style="color:red">editar</a> -->
       <!-- status -->
       <div class="col-md-4">
-        <p>{$usuario[0]->email}</p>
+        <p>{$usuario[0]->email} <a href="#" style="color:red">alterar</a></p>
+        <button id="alt_senha">Alterar senha</button>
         <ul class="list-inline social-buttons">
           <li>
             <a href="{$base_facebook}{$usuario[0]->id_facebook}"><i class="fa fa-facebook"></i></a>
@@ -26,4 +28,4 @@
 <br>
 <br>
 <br>
-{$usuario|var_dump}
+<!-- {$usuario|var_dump} -->
