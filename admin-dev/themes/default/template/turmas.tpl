@@ -23,18 +23,24 @@
               <th>NOME</th>
               <th>SIGLA</th>
               <th>DISCIPLINA</th>
+              <th>Cod Turma</th>
+
             </tr>
           </thead>
           <tbody>
             <!-- {$result|var_dump} -->
+            {foreach from=$result item=$turma}
+            <!-- {$turma|var_dump} -->
             <tr>
-                <td>{$result['ID_TURMA']}</td>
-                <td>{$result['ANO']}</td>
-                <td>{$result['SEMESTRE']}</td>
-                <td>{$result['NOME']}</td>
-                <td>{$result['SIGLA']}</td>
-                <td>{$result['disciplina']}</td>
+                <td>{$turma['ID_TURMA']}</td>
+                <td>{$turma['ANO']}</td>
+                <td>{$turma['SEMESTRE']}</td>
+                <td>{$turma['NOME']}</td>
+                <td>{$turma['SIGLA']}</td>
+                <td>{$turma['disciplina']}</td>
+                <td>{$turma['codigo_turma']}</td>
             </tr>
+            {/foreach}
             </tbody>
           </table>
           <!-- /.table-responsive -->

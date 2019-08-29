@@ -3,9 +3,17 @@
 class turmaDAO {
 
     public function insert(turmaVO $objVO, $link) {
-        $query = sprintf("INSERT INTO turma (ANO, semestre, nome, sigla, ID_DISCIPLINA, ID_USUARIO, codigo_turma) VALUES (".$objVO->getAno().", ".$objVO->getSemestre().", '".$objVO->getNome()."', '".$objVO->getSigla()."', ".$objVO->getId_disciplina().", ".$objVO->getId_usuario().", '".$objVO->getSigla()."', ".$objVO->getId_disciplina().", ".$objVO->getCodigo_turma().")");
-        //echo $query;)");
-        //echo $query;
+        $query = sprintf("INSERT INTO turma (ANO, semestre, nome, sigla, ID_DISCIPLINA, ID_USUARIO, codigo_turma) VALUES(
+            ".$objVO->getAno().",
+            ".$objVO->getSemestre().",
+            '".$objVO->getNome()."',
+            '".$objVO->getSigla()."',
+            ".$objVO->getId_disciplina().",
+            ".$objVO->getId_usuario().",
+            '".$objVO->getCodigo_turma()."'
+          )
+            ");
+            // var_dump($query);
 		try {
             if (mysqli_query($link, $query)) {
                 mysqli_commit($link);

@@ -115,6 +115,9 @@
   margin-right: auto;
   margin-top: 15px;
   padding: 15px;
+  border-radius: 15px;
+  color: tomato;
+  font-weight: bold;
 }
 
 .botao_aviso{

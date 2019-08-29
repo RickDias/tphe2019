@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-15 01:45:05
+/* Smarty version 3.1.33, created on 2019-08-29 02:45:23
   from 'C:\xampp\htdocs\tphe2019\admin-dev\themes\default\template\turmas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d549d019ba1d7_94672165',
+  'unifunc' => 'content_5d672023d44cb8_55030342',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5e44c9fe6715e8be619e3f0810bf9aab6d0f8f35' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\admin-dev\\themes\\default\\template\\turmas.tpl',
-      1 => 1565826302,
+      1 => 1567039523,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d549d019ba1d7_94672165 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d672023d44cb8_55030342 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row">
   <div class="col-lg-12">
     <h1 class="page-header">Turmas Cadastradas</h1>
@@ -46,25 +46,40 @@ function content_5d549d019ba1d7_94672165 (Smarty_Internal_Template $_smarty_tpl)
               <th>NOME</th>
               <th>SIGLA</th>
               <th>DISCIPLINA</th>
+              <th>Cod Turma</th>
+
             </tr>
           </thead>
           <tbody>
             <!-- <?php echo var_dump($_smarty_tpl->tpl_vars['result']->value);?>
  -->
+            <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['result']->value, 'turma');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['turma']->value) {
+?>
+            <!-- <?php echo var_dump($_smarty_tpl->tpl_vars['turma']->value);?>
+ -->
             <tr>
-                <td><?php echo $_smarty_tpl->tpl_vars['result']->value['ID_TURMA'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['turma']->value['ID_TURMA'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['result']->value['ANO'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['turma']->value['ANO'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['result']->value['SEMESTRE'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['turma']->value['SEMESTRE'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['result']->value['NOME'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['turma']->value['NOME'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['result']->value['SIGLA'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['turma']->value['SIGLA'];?>
 </td>
-                <td><?php echo $_smarty_tpl->tpl_vars['result']->value['disciplina'];?>
+                <td><?php echo $_smarty_tpl->tpl_vars['turma']->value['disciplina'];?>
+</td>
+                <td><?php echo $_smarty_tpl->tpl_vars['turma']->value['codigo_turma'];?>
 </td>
             </tr>
+            <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             </tbody>
           </table>
           <!-- /.table-responsive -->

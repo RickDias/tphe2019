@@ -1,6 +1,4 @@
 <?php
-
-
 	session_start();
     //echo $_SESSION['UsuarioNome'].' ('.$_SESSION['UsuarioID'].')'.', bem vindo à página do Professor! <br/>';
     include('functions.php');
@@ -18,7 +16,6 @@
 
 	$turmaVO = new turmaVO();
 
-
 	$turmaVO->setNome($_POST['nome_turma']);
 	$turmaVO->setSigla($_POST['sigla_turma']);
 	$turmaVO->setAno($_POST['ano_turma']);
@@ -30,17 +27,11 @@
 	$turmaDAO = new turmaDAO();
 	//set mysql/false autocomit false
 	//inicia transacao
-
 	$turmaDAO->insert($turmaVO, $link);
-	// var_dump($turmaVO);
-
 	//commita
-
 	desconecta_db($link);
 
-
 ?>
-
 
 <html lang="pt-br">
 <head>
