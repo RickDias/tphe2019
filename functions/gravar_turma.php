@@ -12,7 +12,7 @@
 
 	$link = conecta_db();
 
-	$cod_turma=hash('ripemd160',rand(0,20));
+	$cod_turma=rand(10000,99999);
 
 	$turmaVO = new turmaVO();
 
