@@ -10,6 +10,7 @@ $smarty->config_dir = 'theme/default/';
       'texto' => "Prepare-se! Faça a leitura do QRCode gerado com seu app TPhE"
     ));
     require ('themes/default/jogar.php');
+    // echo '<script> location.replace("index_base.php?pag=jogar"); </script>';
       break;
 
     case 'relat':

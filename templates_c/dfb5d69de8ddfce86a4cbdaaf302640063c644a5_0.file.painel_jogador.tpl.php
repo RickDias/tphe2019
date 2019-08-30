@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-29 01:52:07
+/* Smarty version 3.1.33, created on 2019-08-30 00:48:58
   from 'C:\xampp\htdocs\tphe2019\theme\default\paginas\painel_jogador.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d6713a7cd2b40_67617885',
+  'unifunc' => 'content_5d68565aa28d76_03440078',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     'dfb5d69de8ddfce86a4cbdaaf302640063c644a5' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\theme\\default\\paginas\\painel_jogador.tpl',
-      1 => 1567036326,
+      1 => 1567118937,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d6713a7cd2b40_67617885 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d68565aa28d76_03440078 (Smarty_Internal_Template $_smarty_tpl) {
 ?>
 <head>
 <?php echo '<script'; ?>
@@ -418,13 +418,13 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 >
 	<?php echo '<script'; ?>
  type="text/javascript">
-		$(document).ready(function () {
-			$('#horizontalTab').easyResponsiveTabs({
-				type: 'default', //Types: default, vertical, accordion
-				width: 'auto', //auto or any width like 600px
-				fit: true   // 100% fit in a container
-			});
-		});
+		// $(document).ready(function () {
+		// 	$('#horizontalTab').easyResponsiveTabs({
+		// 		type: 'default', //Types: default, vertical, accordion
+		// 		width: 'auto', //auto or any width like 600px
+		// 		fit: true   // 100% fit in a container
+		// 	});
+		// });
 	<?php echo '</script'; ?>
 >
 	<!-- //ResponsiveTabs -->

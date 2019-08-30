@@ -4,3 +4,42 @@ You should NOT edit any other exisiting back-office CSS file manually: they are 
 .row{
   padding-left: 15px !important;
 }
+.container_perguntas_admin{
+  display: flex;
+  flex-wrap: wrap;
+  justify-content:space-around;
+
+  /* background: silver; */
+}
+.perguntas_admin{
+  display: flex;
+  flex-wrap: wrap;
+  background: linear-gradient(#fff 15%, gray);
+  height: 180px;
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding-bottom: 5px;
+  margin: 5px;
+  /* margin: 5px; */
+}
+.respostas_admin{
+  width: 80%;
+align-self: center;
+margin-left: auto;
+margin-right: auto;
+border-radius: 20px;
+}
+#F{
+  background: #a10000;
+  color: #fff;
+}
+#V{
+background: green;
+}
+#iniciar_sala , #iniciar_sala a{
+  background: silver;
+  padding: 20px;
+  color: black !important;
+  margin:20px;
+  font-weight: bold;
+}
