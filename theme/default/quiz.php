@@ -15,6 +15,7 @@ $sql = "SELECT q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
               FROM `quiz` q,`turma_quiz`tq, `turma` t, `usuario` u
               WHERE q.`ID_QUIZ` = tq.`ID_QUIZ`
               AND tq.`ID_TURMA` = t.`ID_TURMA`
+              AND q.`PUBLICACAO` = 'S'
               AND u.`ID_USUARIO` = ".$_SESSION['UsuarioID']."
               AND q.`ID_USUARIO` = ".$_SESSION['UsuarioID'];
 

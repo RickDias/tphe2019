@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-24 01:37:06
+/* Smarty version 3.1.33, created on 2019-09-10 02:35:43
   from 'C:\xampp\htdocs\tphe2019\theme\default\paginas\quiz.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d6078a2e4cc74_86075416',
+  'unifunc' => 'content_5d76efdfde54f9_90041602',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3d4fa369dd702f43227c0c1897946b33d4146106' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\theme\\default\\paginas\\quiz.tpl',
-      1 => 1566603399,
+      1 => 1568070949,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d6078a2e4cc74_86075416 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d76efdfde54f9_90041602 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div style="">
   <h1>jogos disponíveis para sua turma</h1>
 </div>

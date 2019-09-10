@@ -39,7 +39,8 @@ class respostaDAO {
     public function getRespostas($link, $id) {
         $objVO = new respostaVO();
         $return = array();
-        $query = "SELECT * FROM resposta WHERE ID_PERGUNTA = {$id}";
+        $query = "SELECT * FROM resposta WHERE `ID_PERGUNTA` = $id";
+        // echo($query);
         $resultado = mysqli_query($link, $query);
         while ($rs = mysqli_fetch_array($resultado)) {
             $objVO->setId_resposta(stripslashes($rs['ID_RESPOSTA']));

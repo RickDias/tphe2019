@@ -28,21 +28,22 @@
       <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
   </div>
-  <!-- {$perguntas|var_dump} -->
 <!-- One "tab" for each step in the form: -->
-{foreach key=$key_perg from=$perguntas item=$pergunta}
-<div class="tab" id="tab_{$key_perg}">{$pergunta["DESCRICAO"]}
-  {foreach key=$key from=$respostas item=$resposta}
-  {if $pergunta["ID_PERGUNTA"] == $resposta["ID_PERGUNTA"]}
-  <div id="div_resposta_{$key}" class="respostas_quiz" onclick="confere_resposta('{$resposta["TIPO"]}','{$key_perg}','{$pergunta["PONTUACAO"]}'); this.onclick=null;">
-    <p>{$resposta["RESPOSTA"]}</p>
-  </div>
-  <!-- {$resposta|var_dump} -->
-  <input type="hidden" value="{$resposta["TIPO"]}" id="tipo_resp_{$key}">
-  {/if}
+{foreach key=$key from=$perguntas item=pergunta}
+<div class="tab" id="tab_{$key}">{$pergunta[0]->getDescricao()}
+  {foreach from=$respostas item=$arr_resp}
+    {foreach key=$key_r from=$arr_resp item=$resposta}
+      {if $pergunta[0]->getId_pergunta() == $resposta->getId_pergunta()}
+        <div id="div_resposta_{$key_r}" class="respostas_quiz" onclick="confere_resposta('{$resposta->getTipo()}','{$key}','{$pergunta[0]->getPontuacao()}'); this.onclick=null;">
+          <p>{$resposta->getResposta()}</p>
+          <input type="hidden" value="{$resposta->getTipo()}" id="tipo_resp_{$key_r}">
+        </div>
+        {/if}
+    {/foreach}
   {/foreach}
 </div>
 {/foreach}
+
 <div style="overflow:auto;display:none" id="resp_certa" name="resp_certa">
   Acertou, continue assim!
   <div style="float:right;">

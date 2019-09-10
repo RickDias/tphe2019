@@ -60,7 +60,7 @@ class perguntaDAO {
     public function getPerguntas($link, $id) {
         $objVO = new perguntaVO();
         $return = array();
-        $query = "SELECT * FROM pergunta WHERE ID_PERGUNTA = {$id}";
+      $query = "SELECT * FROM pergunta WHERE ID_PERGUNTA = $id";
         $resultado = mysqli_query($link, $query);
         while ($rs = mysqli_fetch_array($resultado)) {
             $objVO->setId_pergunta(stripslashes($rs['ID_PERGUNTA']));

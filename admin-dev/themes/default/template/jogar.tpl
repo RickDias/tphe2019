@@ -19,9 +19,13 @@
 
 {/foreach}
 <div class="col-md-12" id="iniciar_sala">
-  <a href="#">
+  <form action="index_base.php?pag=sala" method="POST">
+    <input type="hidden" id="id_quiz" name="id_quiz" value="{$quiz["ID_QUIZ"]}">
+    <input type="hidden" id="abrir_sala" name="abrir_sala" value="{$quiz["ID_QUIZ"]}">
     <i class="icon-chevron-sign-right" style="font-size:30px"></i>
-    Iniciar Sala
-  </a>
+    <button class="">
+      Iniciar Sala
+    </button>
+</form>
 </div>
 </div>

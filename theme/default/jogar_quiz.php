@@ -7,57 +7,72 @@ $smarty->config_dir = 'themes/default';
 $smarty->caching = false;
 // $smarty->assign('menu_lateral', include "lateral_jogador.php");
 $con = conecta_db();
-
+$id_usuario = $_SESSION["UsuarioID"];
 $id_quiz= Tools::getValue("id-quiz");
 $id_turma= Tools::getValue("id-turma");
 
-// var_dump($id_quiz);
-$perguntas = "SELECT pq.`ID_PERGUNTA`
-        FROM `pergunta_quiz` pq
-        WHERE pq.`ID_QUIZ` = ".$id_quiz." limit 10";
+$sala_aluno_VO = include_VO('sala_aluno');
+$sala_aluno_DAO = include_DAO('sala_aluno');
+require_once $sala_aluno_VO;
+require_once $sala_aluno_DAO;
 
-$id_perguntas = mysqli_query($con, $perguntas) or die(mysqli_error($con));
-while($aux = mysqli_fetch_assoc($id_perguntas)) {
-  $txt_pergunta = "SELECT p.`ID_PERGUNTA`, p.`DESCRICAO`, p.`PONTUACAO`
-          FROM `pergunta` p
-          WHERE p.`ID_PERGUNTA` = ".$aux["ID_PERGUNTA"];
-  $dados_perguntas = mysqli_query($con, $txt_pergunta) or die(mysqli_error($con));
+$sala_alunoVO = new sala_alunoVO();
+$sala_alunoVO->setId_aluno($id_usuario);
+$sala_alunoVO->setVisivel("S");
+$sala_alunoVO->setId_pontuacao(1);
 
-  while($aux2 = mysqli_fetch_assoc($dados_perguntas)) {
-    $array_perguntas[]=$aux2;
-    $smarty->assign("perguntas", $array_perguntas);
-    $respostas = "SELECT r.`ID_RESPOSTA`, r.`RESPOSTA`, r.`TIPO`, r.`ID_PERGUNTA`
-    FROM `resposta` r
-    WHERE r.`ID_PERGUNTA` = ".$aux2["ID_PERGUNTA"];
-    $dados_respostas = mysqli_query($con, $respostas) or die(mysqli_error($con));
 
+$sala_alunoDAO = new sala_alunoDAO();
+$aluno_salvo = $sala_alunoDAO->getById($con,$id_usuario);
+
+if(Tools::isSubmit("jogar")){
+  if(!$aluno_salvo){
+    $insert_aluno = $sala_alunoDAO->insert($sala_alunoVO,$con);
+  }else{
+    $status = $aluno_salvo[0]->visivel;
+    if ($status == "S"){
+      $status_aluno = $sala_alunoDAO->updateStatus($id_usuario,"N",$con);
+    }else{
+      $status_aluno = $sala_alunoDAO->updateStatus($id_usuario,"S",$con);
+    }
+    // var_dump($status_aluno);
   }
-  while($aux3 = mysqli_fetch_assoc($dados_respostas)) {
-    $array_respostas[]=$aux3;
-    $smarty->assign("respostas", $array_respostas);
-    // $txt_resposta = $aux3;
+}
+
+if ($id_quiz && $id_turma){
+  // pergunta quiz
+  $pergunta_quiz_DAO = include_DAO('pergunta_quiz');
+  require_once $pergunta_quiz_DAO;
+  $pergunta_quizDAO = new pergunta_quizDAO();
+  $perguntas_quiz = $pergunta_quizDAO->getPerguntas($con,$id_quiz);
+  foreach($perguntas_quiz as $key=>$pergunta_quiz){
+    $id_pergunta[$key] = $pergunta_quiz->getId_pergunta();
   }
-  // var_dump($array_respostas);
-        }
-        // var_dump($txt_pergunta);
-//criando a query de consulta à tabela
-// session_start();
-// if($_SESSION){
-//   $user_id = $_SESSION["UsuarioID"];
-//
+  // pergunta
+  $pergunta_DAO = include_DAO('pergunta');
+  require_once $pergunta_DAO;
+  $perguntaDAO = new perguntaDAO();
+  foreach($id_pergunta as $key=>$id_perg){
+    $perguntas[$key] = $perguntaDAO->getPerguntas($con,$id_perg);
+  }
+  $smarty->assign("perguntas", $perguntas);
+
+  $resposta_DAO = include_DAO('resposta');
+  require $resposta_DAO;
+  $respostaDAO = new respostaDAO();
+  foreach($id_pergunta as $key=>$id){
+    $respostas[] = $respostaDAO->getRespostas($con,$id);
+  }
+  $smarty->assign("respostas", $respostas);
+
 $quiz_sql = "SELECT *
         FROM `quiz`
         WHERE `ID_QUIZ` = ".$id_quiz;
 $quiz = mysqli_query($con, $quiz_sql) or die(mysqli_error($con));
 
-
   $smarty->assign(array(
     'resultados' => $quiz,
-    // 'cessao' => $_SESSION,
   ));
-//
-// }
-
 
 $smarty->display('jogar_quiz.tpl');
 }else{
@@ -65,4 +80,6 @@ $smarty->display('jogar_quiz.tpl');
 
 }
 
+
+}
 ?>

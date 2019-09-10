@@ -122,5 +122,13 @@ class Tools
       return $result;
     }
 
+    public static function isSubmit($submit)
+	{
+		return (
+			isset($_POST[$submit]) OR isset($_POST[$submit.'_x']) OR isset($_POST[$submit.'_y'])
+			OR isset($_GET[$submit]) OR isset($_GET[$submit.'_x']) OR isset($_GET[$submit.'_y'])
+		);
+	}
+
 
 }

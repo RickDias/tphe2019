@@ -45,8 +45,6 @@ function showTab(n) {
 
 function nextPrev(n) {
   tempo(1);
-
-  // console.log(n);
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
   // Exit the function if any field in the current tab is invalid:
@@ -129,61 +127,42 @@ function confere_resposta(tipo , n, pontos){
     }else{
       document.getElementById("resp_errada").style.display = "block";
     }
+    mudaCores(n);
   }
+  clicado = true;
+}
 
+function mudaCores(n){
   var aux = 0;
   var aux2 = 4;
   if(n>0){
     aux= (aux+4)*n;
     aux2 = (aux2+4)*n;
   }
-console.log(n);
-  for (i = aux; i < aux2; i++) {
+
+  for (i = 0; i < aux2; i++) {
     $("#tab_"+n+" #div_resposta_"+i).removeClass("respostas_quiz");
-    type = $("#tipo_resp_"+i).val();
+    type = $("#tab_"+n+" #tipo_resp_"+i).val();
     if(type == "F"){
-      $("#div_resposta_"+i).addClass("result_resposta_err");
+      $("#tab_"+n+" #div_resposta_"+i).addClass("result_resposta_err");
     }
     if(type == "V"){
-      $("#div_resposta_"+i).addClass("result_resposta_certa");
+      $("#tab_"+n+" #div_resposta_"+i).addClass("result_resposta_certa");
     }
   }
-  clicado = true;
 }
 
-
+// cronometro
 var intervalo;
-
 function tempo(op) {
-    if (op == 1) {
-		// document.getElementById('parar').style.display = "block";
-		// document.getElementById('comeca').style.display = "none";
-	}
 	var s = 29;
-	// var m = 0;
-	// var h = 0;
 	intervalo = window.setInterval(function() {
-
 		if (s == 0) { s = 30; parar(); confere_resposta("F") }
-		// if (m == 60) { h++; s = 0; m = 0; }
-		// if (h < 10) document.getElementById("hora").innerHTML = "0" + h + "h"; else document.getElementById("hora").innerHTML = h + "h";
 		if (s < 10) document.getElementById("segundo").innerHTML = "0" + s; else document.getElementById("segundo").innerHTML = s;
-		// if (m < 10) document.getElementById("minuto").innerHTML = "0" + m + "m"; else document.getElementById("minuto").innerHTML = m + "m";
 		s--;
 	},1000);
 }
 
 function parar() {
 	window.clearInterval(intervalo);
-	// document.getElementById('parar').style.display = "none";
-	// document.getElementById('comeca').style.display = "block";
 }
-
-function volta() {
-	// document.getElementById('voltas').innerHTML += document.getElementById('hora').firstChild.data + "" + document.getElementById('minuto').firstChild.data + "" + document.getElementById('segundo').firstChild.data + "<br>";
-}
-
-function limpa() {
-	// document.getElementById('voltas').innerHTML = "";
-}
-// window.onload=tempo;
