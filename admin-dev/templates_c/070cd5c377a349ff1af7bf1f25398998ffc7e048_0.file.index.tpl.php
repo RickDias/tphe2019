@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-22 02:59:15
+/* Smarty version 3.1.33, created on 2019-09-13 02:00:51
   from 'C:\xampp\htdocs\tphe2019\admin-dev\themes\default\template\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d5de8e301dbf9_67474960',
+  'unifunc' => 'content_5d7adc33dc1c71_40013680',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '070cd5c377a349ff1af7bf1f25398998ffc7e048' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\admin-dev\\themes\\default\\template\\index.tpl',
-      1 => 1566435553,
+      1 => 1568332844,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d5de8e301dbf9_67474960 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d7adc33dc1c71_40013680 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div id="wrapper" style="background:tomato">
     <div class="row">
       <div class="col-lg-12">
@@ -64,7 +64,8 @@ function content_5d5de8e301dbf9_67474960 (Smarty_Internal_Template $_smarty_tpl)
                 <i class="fa fa-tasks fa-5x"></i>
               </div>
               <div class="col-xs-9 text-right">
-                <div class="huge">12</div>
+                <div class="huge"><?php echo $_smarty_tpl->tpl_vars['resultados']->value->num_rows;?>
+</div>
                 <div>Meus Quizes!</div>
               </div>
             </div>
@@ -140,26 +141,19 @@ function content_5d5de8e301dbf9_67474960 (Smarty_Internal_Template $_smarty_tpl)
           </div>
           <!-- /.panel-heading -->
           <div class="panel-body">
-            <form role="form" action="index_base.php?pag=menu_quiz" method="POST">
-              <!-- <?php echo var_dump($_smarty_tpl->tpl_vars['resultados']->value);?>
- -->
               <?php
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['resultados']->value, 'quiz');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['quiz']->value) {
 ?>
+              <form role="form" action="index_base.php?pag=menu_quiz" method="POST">
               <div class="col-lg-4">
                 <div class="panel panel-success">
                   <div class="panel-heading">
                     Quiz <?php echo $_smarty_tpl->tpl_vars['quiz']->value["ID_QUIZ"];?>
 
-                    <!-- <?php echo '<?php 	';?>echo $aux['ID_QUIZ'];
-                    echo "<input type='hidden' name='id-quiz' value=".$aux['ID_QUIZ'].">";
-                    <?php echo '?>';?> -->
                   </div>
                   <div class="panel-body">
-                    <!-- <?php echo var_dump($_smarty_tpl->tpl_vars['aux']->value['DESCRICAO']);?>
- -->
                     <h1><?php echo $_smarty_tpl->tpl_vars['quiz']->value["DESCRICAO"];?>
 </h1>
                     <p>
@@ -173,9 +167,6 @@ foreach ($_from as $_smarty_tpl->tpl_vars['quiz']->value) {
 ">
                       <input type='hidden' name='id-quiz' value="<?php echo $_smarty_tpl->tpl_vars['quiz']->value["ID_QUIZ"];?>
 ">
-
-
-
                     </p>
                   </div>
                   <div class="panel-footer">
@@ -186,12 +177,12 @@ foreach ($_from as $_smarty_tpl->tpl_vars['quiz']->value) {
                   </div>
                 </div>
               </div>
+            </form>
               <?php
 }
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
               <!-- /.col-lg-4 -->
-            </form>
             <?php echo '<?php
             ';
 echo '?>';?>
@@ -356,9 +347,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
                       </div>
                     </li> -->
                     <!-- /direita foreach -->
-
-
-
                       </ul>
                     </div>
 

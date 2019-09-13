@@ -123,7 +123,7 @@ function confere_resposta(tipo , n, pontos){
     if(tipo == "V"){
       document.getElementById("resp_certa").style.display = "block";
       pontuacao = pontuacao+Number(pontos);
-      $("#score_val").html(pontuacao);
+      $("#score_val").val(pontuacao);
     }else{
       document.getElementById("resp_errada").style.display = "block";
     }

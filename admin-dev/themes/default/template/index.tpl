@@ -41,7 +41,7 @@
                 <i class="fa fa-tasks fa-5x"></i>
               </div>
               <div class="col-xs-9 text-right">
-                <div class="huge">12</div>
+                <div class="huge">{$resultados->num_rows}</div>
                 <div>Meus Quizes!</div>
               </div>
             </div>
@@ -117,19 +117,14 @@
           </div>
           <!-- /.panel-heading -->
           <div class="panel-body">
-            <form role="form" action="index_base.php?pag=menu_quiz" method="POST">
-              <!-- {$resultados|var_dump} -->
               {foreach from=$resultados item=quiz}
+              <form role="form" action="index_base.php?pag=menu_quiz" method="POST">
               <div class="col-lg-4">
                 <div class="panel panel-success">
                   <div class="panel-heading">
                     Quiz {$quiz["ID_QUIZ"]}
-                    <!-- <?php 	echo $aux['ID_QUIZ'];
-                    echo "<input type='hidden' name='id-quiz' value=".$aux['ID_QUIZ'].">";
-                    ?> -->
                   </div>
                   <div class="panel-body">
-                    <!-- {$aux['DESCRICAO']|var_dump} -->
                     <h1>{$quiz["DESCRICAO"]}</h1>
                     <p>
                       Data de Início: {$quiz["DT_INICIO"]}<br/>
@@ -137,9 +132,6 @@
                       Turma: {$quiz["SIGLA"]}<br/>
                       <input type='hidden' name='id-turma' value="{$quiz["ID_TURMA"]}">
                       <input type='hidden' name='id-quiz' value="{$quiz["ID_QUIZ"]}">
-
-
-
                     </p>
                   </div>
                   <div class="panel-footer">
@@ -150,9 +142,9 @@
                   </div>
                 </div>
               </div>
+            </form>
               {/foreach}
               <!-- /.col-lg-4 -->
-            </form>
             <?php
             ?>
 
@@ -307,9 +299,6 @@
                       </div>
                     </li> -->
                     <!-- /direita foreach -->
-
-
-
                       </ul>
                     </div>
 

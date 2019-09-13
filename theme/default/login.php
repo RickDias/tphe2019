@@ -21,7 +21,7 @@ if(Tools::getValue('form_login') == 1){
     $_SESSION['ImgCapa'] = $resultado['img_capa'];
     $_SESSION['DescPerfil'] = $resultado['desc'];
     // include 'admin-dev/index.php';
-    header("Location: index.php");
+    header("Location: index.php?pag=painel_jogador");
   }else{
     echo 'usuario ou senha incorreto!';
   }

@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-08-29 02:45:23
+/* Smarty version 3.1.33, created on 2019-09-13 00:49:33
   from 'C:\xampp\htdocs\tphe2019\admin-dev\themes\default\template\turmas.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d672023d44cb8_55030342',
+  'unifunc' => 'content_5d7acb7dbf7722_95015709',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '5e44c9fe6715e8be619e3f0810bf9aab6d0f8f35' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\admin-dev\\themes\\default\\template\\turmas.tpl',
-      1 => 1567039523,
+      1 => 1568328572,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d672023d44cb8_55030342 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d7acb7dbf7722_95015709 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="row">
   <div class="col-lg-12">
     <h1 class="page-header">Turmas Cadastradas</h1>
@@ -47,6 +47,8 @@ function content_5d672023d44cb8_55030342 (Smarty_Internal_Template $_smarty_tpl)
               <th>SIGLA</th>
               <th>DISCIPLINA</th>
               <th>Cod Turma</th>
+              <th></th>
+
 
             </tr>
           </thead>
@@ -75,6 +77,8 @@ foreach ($_from as $_smarty_tpl->tpl_vars['turma']->value) {
 </td>
                 <td><?php echo $_smarty_tpl->tpl_vars['turma']->value['codigo_turma'];?>
 </td>
+                <td><a href="#">Ver Turma</a></td>
+
             </tr>
             <?php
 }

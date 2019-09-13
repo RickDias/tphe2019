@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-09-10 15:20:08
+/* Smarty version 3.1.33, created on 2019-09-10 17:22:04
   from 'C:\xampp\htdocs\tphe2019\theme\default\paginas\jogar_quiz.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d77a308340b88_95994593',
+  'unifunc' => 'content_5d77bf9c612da9_04627706',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8120e3d84fb32ba0f9d267acaf7fb86e2c3b61df' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\theme\\default\\paginas\\jogar_quiz.tpl',
-      1 => 1568121603,
+      1 => 1568128923,
       2 => 'file',
     ),
   ),
@@ -20,15 +20,17 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d77a308340b88_95994593 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d77bf9c612da9_04627706 (Smarty_Internal_Template $_smarty_tpl) {
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['resultados']->value, 'q', false, 'key');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['q']->value) {
 ?>
-
-<form id="regForm" action="index.php?pag=pag=jogo&jogo=quiz">
-  <div class="score_quiz" id="score_quiz">
-    Pontuação:<span id="score_val">0</span>
+<div class="col-md-9">
+<form id="regForm" action="index.php?pag=jogar_quiz&terminar=1">
+  <div class="score_quiz col-md-8" id="score_quiz">
+    <!-- Pontuação:<span id="score_val">0</span> -->
+    <label for="score_val">Pontuação:</label><br>
+    <input type="text" id="score_val" name="score_val" value="0" disabled class="col-sm-3">
   </div>
   <div class="codigo" id="timer_count">
     <!-- <span id="hora">00h</span><span id="minuto">00m</span> -->
@@ -136,6 +138,44 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 </div>
 
 </form>
+</div>
+
+<div class="col-md-3" id="container_sala__aluno">
+  Jogadores na sala
+  <div class="item_sala_aluno">
+    <?php if ($_smarty_tpl->tpl_vars['alunos']->value) {?>
+    <?php
+$_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['alunos']->value, 'aluno');
+if ($_from !== null) {
+foreach ($_from as $_smarty_tpl->tpl_vars['aluno']->value) {
+?>
+    <div class="col-md-12" id="bloco_aluno">
+
+      <div class="col-md-3">
+        <div class="icon_aluno">
+          S
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <h3><?php echo $_smarty_tpl->tpl_vars['aluno']->value["NOME"];?>
+</h3>
+        <span>id pont: <?php echo $_smarty_tpl->tpl_vars['aluno']->value["id_pontuacao"];?>
+</span>
+      </div>
+
+    </div>
+    <?php
+}
+}
+$_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
+    <?php } else { ?>
+      Sem alunos na sala!
+    <?php }?>
+  </div>
+</div>
+
+
 <?php echo '<script'; ?>
  src="theme/default/vendor/jquery/jquery.min.js"><?php echo '</script'; ?>
 >

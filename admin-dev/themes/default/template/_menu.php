@@ -7,17 +7,6 @@
 			</li>
 
 			<li>
-				<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Relatórios - Em breve!<span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li>
-							<a href="flot.html">Flot Charts</a>
-						</li>
-
-					</ul>
-					<!-- /.nav-second-level -->
-			</li>
-
-			<li>
 				<a href="_turmascadastradas.php"><i class="fa fa-table fa-fw"></i> Consultar Turmas</a>
 			</li>
 

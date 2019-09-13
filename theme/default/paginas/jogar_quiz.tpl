@@ -1,8 +1,10 @@
 {foreach key=$key from=$resultados item=$q}
-
-<form id="regForm" action="index.php?pag=pag=jogo&jogo=quiz">
-  <div class="score_quiz" id="score_quiz">
-    Pontuação:<span id="score_val">0</span>
+<div class="col-md-9">
+<form id="regForm" action="index.php?pag=jogar_quiz&terminar=1">
+  <div class="score_quiz col-md-8" id="score_quiz">
+    <!-- Pontuação:<span id="score_val">0</span> -->
+    <label for="score_val">Pontuação:</label><br>
+    <input type="text" id="score_val" name="score_val" value="0" disabled class="col-sm-3">
   </div>
   <div class="codigo" id="timer_count">
     <!-- <span id="hora">00h</span><span id="minuto">00m</span> -->
@@ -68,6 +70,35 @@
 </div>
 
 </form>
+</div>
+
+<div class="col-md-3" id="container_sala__aluno">
+  Jogadores na sala
+  <div class="item_sala_aluno">
+    {if $alunos}
+    {foreach from=$alunos item=$aluno}
+    <div class="col-md-12" id="bloco_aluno">
+
+      <div class="col-md-3">
+        <div class="icon_aluno">
+          S
+        </div>
+      </div>
+
+      <div class="col-md-9">
+        <h3>{$aluno["NOME"]}</h3>
+        <span>id pont: {$aluno["id_pontuacao"]}</span>
+      </div>
+
+    </div>
+    {/foreach}
+    {else}
+      Sem alunos na sala!
+    {/if}
+  </div>
+</div>
+
+
 <script src="theme/default/vendor/jquery/jquery.min.js"></script>
 
 <script src="theme/default/js/jogar_quiz.js"></script>

@@ -35,6 +35,9 @@
 		<div class="left-side sticky-left-side">
 			<!--logo and iconic logo start-->
 			<div class="logo">
+				<a href="index.php"><img src="theme/default/images/home.png" alt="" /><span>Tphe</span></a>
+			</div>
+			<div class="logo">
 				<a href="index.php?pag=painel_jogador"><img src="theme/default/images/home.png" alt="" /><span>Painel</span></a>
 			</div>
 			<!--logo and iconic logo end-->

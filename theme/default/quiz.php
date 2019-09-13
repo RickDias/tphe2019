@@ -21,6 +21,14 @@ $sql = "SELECT q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
 
 $resultados = mysqli_query($con, $sql) or die(mysqli_error($con));
 
+$sql = sprintf("select sa.`id_aluno`, u.`NOME`, sa.`id_pontuacao`
+from sala_alunos sa
+LEFT JOIN usuario u on (sa.`id_aluno` = u.`ID_USUARIO`)
+where `visivel` = 'S' ");
+$resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+while ( $rs = mysqli_fetch_array( $resultado ) ) {
+   $todos_alunos[] =$rs ;
+}
 // session_start();
 // if($_SESSION){
 //   $user_id = $_SESSION["UsuarioID"];
@@ -28,6 +36,7 @@ $resultados = mysqli_query($con, $sql) or die(mysqli_error($con));
   $smarty->assign(array(
     'resultados' => $resultados,
     'cessao' => $_SESSION,
+    'alunos' => $todos_alunos
   ));
 //
 // }

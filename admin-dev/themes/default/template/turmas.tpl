@@ -24,6 +24,8 @@
               <th>SIGLA</th>
               <th>DISCIPLINA</th>
               <th>Cod Turma</th>
+              <th></th>
+
 
             </tr>
           </thead>
@@ -39,6 +41,8 @@
                 <td>{$turma['SIGLA']}</td>
                 <td>{$turma['disciplina']}</td>
                 <td>{$turma['codigo_turma']}</td>
+                <td><a href="#">Ver Turma</a></td>
+
             </tr>
             {/foreach}
             </tbody>

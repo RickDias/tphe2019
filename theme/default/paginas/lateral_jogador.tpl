@@ -1,11 +1,10 @@
 <div class="left-side sticky-left-side">
-
+  <div class="logo">
+    <a href="index.php"><img src="theme/default/images/home.png" alt="" /><span>Tphe</span></a>
+  </div>
   <!--logo and iconic logo start-->
   <div class="logo">
-    <a href="index.html"><img src="theme/default/images/home.png" alt="" /><span>Home</span></a>
-  </div>
-  <div class="logo-icon text-center">
-    <a href="index.html"><img src="theme/default/images/home.png" alt="" /></a>
+    <a href="index.php?pag=painel_jogador"><img src="theme/default/images/home.png" alt="" /><span>Home</span></a>
   </div>
 
   <!--logo and iconic logo end-->

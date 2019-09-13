@@ -123,3 +123,32 @@
 .botao_aviso{
   margin: 15px;
 }
+
+#container_sala__aluno{
+  min-height: 500px;
+  padding-top: 15px;
+  background: silver;
+
+  /* background: silver; */
+}
+
+.item_sala_aluno{
+  margin-top: 15px;
+  border: 1px solid black;
+  padding: 10px;
+
+}
+#bloco_aluno{
+  border: 1px solid gray;
+  background: white;
+  border-radius: 10px;
+
+}
+
+.icon_aluno{
+  background: silver;
+  margin:5px;
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+}

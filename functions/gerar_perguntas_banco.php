@@ -1,27 +1,14 @@
 <?php
-
 session_start();
 
 include('functions.php');
 include('../config/config.php');
 
-// $classe_VO = include_VO2('quiz');
-// $classe_DAO = include_DAO2('quiz');
-
-// include($classe_VO);
-// include($classe_DAO);
-
-
 	echo "ID_QUIZ: ".$_POST['sel_quiz']."<br/>";
 	echo "ID_TURMA: ".$_POST['sel_turma']."<br/>";
 	echo "ID_CATEGORIA: ".$_POST['sel_categoria']."<br/><br/>";
 
-	// DENTRE AS PERGUNTAS CADASTRADAS PELO USUÁRIO, E FILTRADAS PELA CATEGORIA SELECIONADA, A
-	// FUNÇÃO DEVE ESCOLHER ALEATORIAMENTE 10 PERGUNTAS
-	// E INSERIR AS RELAÇÕES ENTRE AS TABELAS QUIZ E PERGUNTAS_QUIZ
   $link = conecta_db();
-
-	// Tenta se conectar ao servidor MySQL
 
 	//criando a query de consulta à tabela
 	$query  = "SELECT `ID_PERGUNTA`, `DESCRICAO`, `PONTUACAO`, `ID_DISCIPLINA`, `ID_CATEGORIA`, `ID_USUARIO` ";
@@ -29,7 +16,6 @@ include('../config/config.php');
 	$query .= " AND `ID_CATEGORIA` = ".$_POST['sel_categoria'];
 	$query .= " AND `ID_DISCIPLINA`= 1"; //inicialmente, teremos somente Educação Física
 	$query .= " ORDER BY RAND() LIMIT 10";
-	//echo $query;
 	$sql = mysqli_query($link, $query) or die(mysqli_error($link)); //caso haja um erro na consulta
 
 
@@ -41,6 +27,7 @@ include('../config/config.php');
 
 	$pergunta_quizVO = new pergunta_quizVO();
 
+	if($sql){
 	while($aux = mysqli_fetch_assoc($sql)) {
 		//percorrendo os registros da consulta.
 		echo '<br/>ID_PERGUNTA: '.$aux['ID_PERGUNTA'].' - DESCRICAO: '.$aux['DESCRICAO'].'<BR/>';
@@ -71,6 +58,10 @@ include('../config/config.php');
 	if($turma_quizDAO->insert($turma_quizVO, $link)){
     printf('Registro inserido com sucesso.');
   }
+
+}else{
+	echo "A consulta não retornou nenhum resultado!";
+}
 
 	desconecta_db($link);
 

@@ -7,17 +7,6 @@
 			</li>
 
 			<li>
-				<a href="#"><i class="fa fa-bar-chart-o fa-fw"></i> Relatórios - Em breve!<span class="fa arrow"></span></a>
-					<ul class="nav nav-second-level">
-						<li>
-							<a href="flot.html">Flot Charts</a>
-						</li>
-
-					</ul>
-					<!-- /.nav-second-level -->
-			</li>
-
-			<li>
 				<a href="index_base.php?pag=turmas"><i class="fa fa-table fa-fw"></i> Consultar Turmas</a>
 			</li>
 
@@ -44,9 +33,9 @@
 			<li>
 				<a href="index_base.php?pag=nova_melhoria"><i class="fa fa-gears fa-fw"></i> Sugerir Melhorias</a>
 			</li>
-			<li>
+			<!-- <li>
 				<a href="index_base.php?pag=ver_melhorias"><i class="fa fa-table fa-fw"></i> Ver andamento das Sugestões</a>
-			</li>
+			</li> -->
 		</ul>
 	</div>
 	<!-- /.sidebar-collapse -->
