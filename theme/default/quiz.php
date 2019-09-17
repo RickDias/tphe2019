@@ -21,7 +21,7 @@ $sql = "SELECT q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
 
 $resultados = mysqli_query($con, $sql) or die(mysqli_error($con));
 
-$sql = sprintf("select sa.`id_aluno`, u.`NOME`, sa.`id_pontuacao`
+$sql = sprintf("select sa.`id_aluno`, u.`NOME`, sa.`pontos_geral`
 from sala_alunos sa
 LEFT JOIN usuario u on (sa.`id_aluno` = u.`ID_USUARIO`)
 where `visivel` = 'S' ");

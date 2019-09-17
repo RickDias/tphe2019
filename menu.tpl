@@ -1,3 +1,4 @@
+{if !$cessao}
 <!-- Navigation -->
 <nav id="mainNav" style="background:black">
     <div class="container" id="container_menu">
@@ -13,12 +14,6 @@
             <ul class="nav navbar-nav navbar-right">
                 <li class="hidden">
                     <a href="#page-top"></a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="index.php?pag=teste&get=gerson">testes</a>
-                </li>
-                <li>
-                    <a class="page-scroll" href="#">Link 2</a>
                 </li>
                 <li>
                     <a class="page-scroll" href="index.php?pag=sobre">Sobre nós</a>
@@ -50,3 +45,4 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
+{/if}

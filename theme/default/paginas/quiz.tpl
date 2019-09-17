@@ -1,3 +1,5 @@
+<div class="col-md-10">
+
 <div style="">
   <h1>jogos disponíveis para sua turma</h1>
 </div>
@@ -27,7 +29,7 @@
   {/foreach}
 </div>
 
-<div class="col-md-3" id="container_sala__aluno">
+<div class="col-md-3" id="container_sala__aluno" style="float:right">
   Jogadores na sala
   <div class="item_sala_aluno">
     {if $alunos}
@@ -42,7 +44,7 @@
 
       <div class="col-md-9">
         <h3>{$aluno["NOME"]}</h3>
-        <span>id pont: {$aluno["id_pontuacao"]}</span>
+        <span>Pontuação: {$aluno["pontos_geral"]}</span>
       </div>
 
     </div>
@@ -51,4 +53,6 @@
       Sem alunos na sala!
     {/if}
   </div>
+</div>
+
 </div>

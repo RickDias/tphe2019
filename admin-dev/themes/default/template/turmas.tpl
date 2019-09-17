@@ -41,7 +41,7 @@
                 <td>{$turma['SIGLA']}</td>
                 <td>{$turma['disciplina']}</td>
                 <td>{$turma['codigo_turma']}</td>
-                <td><a href="#">Ver Turma</a></td>
+                <td><a href="index_base.php?pag=detalhe_turma&id_turma={$turma['ID_TURMA']}">Ver Turma</a></td>
 
             </tr>
             {/foreach}

@@ -49,7 +49,6 @@ class turmaDAO {
         return $return;
     }
 
-
     public function delete(turmaVO $objVO, $link) {
          if ($objVO->getId_turma() == NULL){
              throw new Exception ("Erro ao tentar excluir a turma, verifique a chave primária.");

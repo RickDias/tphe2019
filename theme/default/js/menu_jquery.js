@@ -1,7 +1,4 @@
 $( document ).ready(function() {
-
-  document.getElementById("mainNav").style.display = "none";
-
 $('#cssmenu > ul > li > a').click(function() {
   $('#cssmenu li').removeClass('active');
   $(this).closest('li').addClass('active');
@@ -21,7 +18,6 @@ $('#cssmenu > ul > li > a').click(function() {
   }
 });
 });
-
 
 // Login Form
 $(function() {
