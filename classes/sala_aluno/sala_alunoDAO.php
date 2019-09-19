@@ -48,7 +48,7 @@ class sala_alunoDAO {
               $objVO->setId(stripslashes($rs['id']));
               $objVO->setId_aluno(stripslashes($rs['id_aluno']));
               $objVO->setVisivel(stripslashes($rs['visivel']));
-              $objVO->setId_pontuacao(stripslashes($rs['id_pontuacao']));
+              $objVO->setId_pontuacao(stripslashes($rs['pontos_geral']));
 
             $return[] = clone $objVO;
           }}

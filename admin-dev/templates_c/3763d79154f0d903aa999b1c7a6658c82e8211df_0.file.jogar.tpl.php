@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-09-13 02:20:59
+/* Smarty version 3.1.33, created on 2019-09-19 02:27:24
   from 'C:\xampp\htdocs\tphe2019\admin-dev\themes\default\template\jogar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d7ae0eb07d3e7_99656413',
+  'unifunc' => 'content_5d82cb6c2d6a53_17248120',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3763d79154f0d903aa999b1c7a6658c82e8211df' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\admin-dev\\themes\\default\\template\\jogar.tpl',
-      1 => 1568334057,
+      1 => 1568852840,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d7ae0eb07d3e7_99656413 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d82cb6c2d6a53_17248120 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['quiz_arr']->value) {?>
 <div align='center' class="col-md-12">
 <?php
@@ -68,6 +68,8 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <div class="col-md-12" id="iniciar_sala">
       <form action="index_base.php?pag=sala" method="POST">
         <input type="hidden" id="id_quiz" name="id_quiz" value="<?php echo $_smarty_tpl->tpl_vars['quiz']->value["ID_QUIZ"];?>
+">
+        <input type="hidden" id="id_quiz" name="id_turma" value="<?php echo $_smarty_tpl->tpl_vars['id_quiz']->value;?>
 ">
         <input type="hidden" id="abrir_sala" name="abrir_sala" value="<?php echo $_smarty_tpl->tpl_vars['quiz']->value["ID_QUIZ"];?>
 ">

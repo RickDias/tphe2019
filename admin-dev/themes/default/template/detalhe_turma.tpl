@@ -47,9 +47,19 @@
                   {/if}
                 </td>
                 <td>{$turma['pontos_geral']}</td>
+                <td>
                 {if $turma['status'] == "I"}
-                  <td><a href="index_base.php?pag=detalhe_aluno&id_aluno={$turma['ID_USUARIO']}">Ver aluno</a></td>
+                    <a href="index_base.php?pag=detalhe_turma&adiciona_aluno=1&id_turma={$turma['ID_TURMA']}&id_aluno={$turma['ID_USUARIO']}"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Adicionar Aluno</a><br>
+                    <a href="index_base.php?pag=detalhe_turma&remove_aluno=1&id_turma={$turma['ID_TURMA']}&id_aluno={$turma['ID_USUARIO']}"><i class="fa fa-thumbs-down" aria-hidden="true"></i> Remover Aluno</a>
                 {/if}
+                {if $turma['status'] == "A"}
+                <a href="index_base.php?pag=detalhe_turma&remove_aluno=1&id_turma={$turma['ID_TURMA']}&id_aluno={$turma['ID_USUARIO']}"><i class="fa fa-thumbs-down" aria-hidden="true"></i> Remover Aluno</a>
+                {/if}
+                {if $turma['status'] == "R"}
+                <a href="index_base.php?pag=detalhe_turma&adiciona_aluno=1&id_turma={$turma['ID_TURMA']}&id_aluno={$turma['ID_USUARIO']}"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Adicionar Aluno</a><br>
+                {/if}
+              </td>
+
 
             </tr>
             {/foreach}

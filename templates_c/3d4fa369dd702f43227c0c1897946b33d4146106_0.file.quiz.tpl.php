@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-09-17 01:08:00
+/* Smarty version 3.1.33, created on 2019-09-18 20:44:15
   from 'C:\xampp\htdocs\tphe2019\theme\default\paginas\quiz.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d8015d0747439_02899279',
+  'unifunc' => 'content_5d827aff42e6f9_51801230',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3d4fa369dd702f43227c0c1897946b33d4146106' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\theme\\default\\paginas\\quiz.tpl',
-      1 => 1568675279,
+      1 => 1568830771,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d8015d0747439_02899279 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d827aff42e6f9_51801230 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div class="col-md-10">
 
 <div style="">

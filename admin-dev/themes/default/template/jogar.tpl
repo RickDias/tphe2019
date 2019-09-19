@@ -20,6 +20,7 @@ Turma : {$turma_arr["nome"]}
     <div class="col-md-12" id="iniciar_sala">
       <form action="index_base.php?pag=sala" method="POST">
         <input type="hidden" id="id_quiz" name="id_quiz" value="{$quiz["ID_QUIZ"]}">
+        <input type="hidden" id="id_quiz" name="id_turma" value="{$id_quiz}">
         <input type="hidden" id="abrir_sala" name="abrir_sala" value="{$quiz["ID_QUIZ"]}">
         <i class="icon-chevron-sign-right" style="font-size:30px"></i>
         <button class="">

@@ -59,15 +59,13 @@
       </p>
     </div>
   </div>
-  <div class="panel-footer">
-    <form action="#" method="POST">
-      <input type='hidden' name='id-turma' value="{$quiz["ID_TURMA"]}">
-      <input type='hidden' name='id-quiz' value="{$quiz["ID_QUIZ"]}">
-      <button type="submit" name="ver_turma" value="jogar" class="btn btn-outline btn-success"><i class="fa fa-play fa-1x"></i> Voltar</button>
-    </form>
-  </div>
 </div>
 {/foreach}
+<div class="panel-footer">
+  <a href="index.php?pag=minhas_turmas" class="btn btn-outline btn-success">
+  <i class="fa fa-backward fa-1x"></i> Voltar
+  </a>
+</div>
 {/if}
 
 
