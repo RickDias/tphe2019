@@ -7,6 +7,8 @@ $smarty->error_reporting = E_ALL & ~E_NOTICE;
 $id_turma = Tools::getValue("id-turma");
 $id_quiz = Tools::getValue("id-quiz");
 $smarty->assign("id_quiz", $id_quiz);
+$smarty->assign("id_turma", $id_turma);
+
 
 $con = conecta_db();
 

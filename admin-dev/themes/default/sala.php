@@ -17,7 +17,7 @@ if($id_quiz){
 }
 
 // abrir sala
-if(Tools::getValue('abrir_sala')){
+if(Tools::getValue('abrir_sala') == 1){
 if($id_quiz){
   $status = "S";
   $update = $quizDAO->updateStatus($id_quiz,$status,$con);
@@ -51,7 +51,7 @@ while($result = mysqli_fetch_assoc($sql)) {
 // abrir sala
 
 // fechar sala
-if(Tools::getValue('fechar_sala')){
+if(Tools::getValue('fechar_sala')==1){
   if($id_quiz){
     $status = "N";
   $update = $quizDAO->updateStatus($id_quiz,$status,$con);
@@ -64,4 +64,5 @@ if(Tools::getValue('fechar_sala')){
   <?php
 
 }
+
 // fechar sala

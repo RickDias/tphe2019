@@ -1,0 +1,107 @@
+<?php
+
+$smarty = new Smarty;
+$smarty->template_dir = 'themes/default/template/';
+$smarty->config_dir = 'theme/default/';
+$smarty->caching = false;
+$smarty->error_reporting = E_ALL & ~E_NOTICE;
+
+$con = conecta_db();
+
+$id_usuario = $_SESSION["UsuarioID"];
+$id_quiz= Tools::getValue("id_quiz");
+$id_turma= Tools::getValue("id_turma");
+if ($id_quiz && $id_turma){
+  // pergunta quiz
+  $pergunta_quiz_DAO = include_DAO2('pergunta_quiz');
+  require_once $pergunta_quiz_DAO;
+  $pergunta_quizDAO = new pergunta_quizDAO();
+  $perguntas_quiz = $pergunta_quizDAO->getPerguntas($con,$id_quiz);
+  foreach($perguntas_quiz as $key=>$pergunta_quiz){
+    $id_pergunta[$key] = $pergunta_quiz->getId_pergunta();
+  }
+  // pergunta
+  $pergunta_DAO = include_DAO2('pergunta');
+  require_once $pergunta_DAO;
+  $perguntaDAO = new perguntaDAO();
+  foreach($id_pergunta as $key=>$id_perg){
+    $perguntas[$key] = $perguntaDAO->getPerguntas($con,$id_perg);
+  }
+  $smarty->assign("perguntas", $perguntas);
+
+  $resposta_DAO = include_DAO2('resposta');
+  require $resposta_DAO;
+  $respostaDAO = new respostaDAO();
+  foreach($id_pergunta as $key=>$id){
+    $respostas[] = $respostaDAO->getRespostas($con,$id);
+  }
+  $smarty->assign("respostas", $respostas);
+
+$quiz_sql = "SELECT *
+        FROM `quiz`
+        WHERE `ID_QUIZ` = ".$id_quiz;
+$quiz = mysqli_query($con, $quiz_sql) or die(mysqli_error($con));
+
+// $sql = sprintf("select sa.`id_aluno`, u.`NOME`, sa.`id_pontuacao`
+// from sala_alunos sa
+// LEFT JOIN usuario u on (sa.`id_aluno` = u.`ID_USUARIO`)
+// where `visivel` = 'S' ");
+// $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+// while ( $rs = mysqli_fetch_array( $resultado ) ) {
+//    $todos_alunos[] =$rs ;
+// }
+
+  $smarty->assign(array(
+    'resultados' => $quiz,
+    // 'alunos' => $todos_alunos
+
+  ));
+
+  if(Tools::getValue("terminar")==1){
+
+    $sql = sprintf("select p.`id_pontuacao`, p.`id_usuario`, p.`pontuacao`
+    from pontuacao p
+    where p.`id_usuario` = '.$id_usuario.' ");
+    $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+
+    $pontuacao = Tools::getValue("score_val");
+
+    if($resultado){
+      $sql2 = sprintf('update pontuacao set pontuacao="%s"
+      where id_usuario = "%s" ', $pontuacao , $id_usuario);
+      //where ID_QUIZ = "%s" ', $objVO->getDescricao() , $objVO->getDt_inicio(), $objVO->getDt_fim(), $objVO->getPublicacao(), $objVO->getId_quiz()  );
+      try {
+        if(!mysqli_query($link, $sql2)){
+          throw new Exception ("Erro ao alterar quiz!");
+        }
+      } catch (Exception $ex) {
+        echo $ex->getMessage();
+        mysqli_rollback($link);
+      }
+      mysqli_commit($link);
+    }else{
+      $query = sprintf('INSERT INTO pontuacao ( id_ususario, pontuacao )'.'VALUES ("%s","%s")',
+               $id_usuario, $pontuacao);
+      try {
+          if (mysqli_query($link, $query)) {
+              mysqli_commit($link);
+              $objVO->setId_quiz(mysqli_insert_id($link));
+              return $objVO;
+          } else {
+              throw new Exception('Erro ao cadastrar!');
+          }
+      } catch (Exception $e) {
+          echo $e->getMessage();
+          mysqli_rollback($link);
+      }
+    }
+
+
+    $status_aluno = $sala_alunoDAO->updateStatus($id_usuario,"N",$con);
+    header("Location: index.php?pag=login");
+  }
+
+$smarty->display('quiz_admin.tpl');
+
+}
+?>

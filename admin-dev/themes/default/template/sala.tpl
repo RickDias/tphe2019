@@ -19,15 +19,14 @@
       <input type="hidden" id="id_quiz" name="id_quiz" value="{$id_quiz}">
       <input type="hidden" id="fechar_sala" name="fechar_sala" value="{$id_quiz}">
       <i class="icon-chevron-sign-right" style="font-size:30px"></i>
-      <button class="" name="fechar_sala">
-        Fechar Sala
-      </button>
-      <button class="" name="iniciar_quiz">
-        Iniciar Quiz
-      </button>
     </form>
+    <a href="index_base.php?pag=sala&fechar_sala=1&id_quiz={$id_quiz}&id_turma={$aluno["id_turma"]}" class="" name="fechar_sala">
+      Fechar Sala
+    </a>
+    <a href="index_base.php?pag=sala&iniciar_quiz=1&id_quiz={$id_quiz}&id_turma={$aluno["id_turma"]}" class="" name="iniciar_quiz">
+      Iniciar Quiz
+    </a>
   </div>
-
 
 </div>
 </div>
