@@ -15,7 +15,6 @@ if($id_quiz){
     'id_quiz' => $id_quiz,
   ));
 }
-
 // abrir sala
 if(Tools::getValue('abrir_sala') == 1){
 if($id_quiz){

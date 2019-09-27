@@ -9,7 +9,6 @@ $id_quiz = Tools::getValue("id-quiz");
 $smarty->assign("id_quiz", $id_quiz);
 $smarty->assign("id_turma", $id_turma);
 
-
 $con = conecta_db();
 
 $perguntas = "SELECT pq.`ID_PERGUNTA`

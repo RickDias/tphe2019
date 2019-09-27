@@ -63,7 +63,13 @@
   <span class="step" id="num_step_{$key}" name"num_step_{$key}"></span>
   {/foreach}
 </div>
+<button type="button" id="" onclick="parar()">Parar Quiz</button>
+</form>
+<form role="form" action="index_base.php?pag=sala&abrir_sala=1" method="POST">
+  <input type='hidden' name='id_quiz' value="{$q["ID_QUIZ"]}">
+  <input type='hidden' name='id_turma' value="{$id_turma}">
 
+  <button type="submit" name="enviar" value="jogar" class="btn btn-outline btn-success"><i class="fa fa-backward fa-1x"></i> Voltar</button>
 </form>
 </div>
 

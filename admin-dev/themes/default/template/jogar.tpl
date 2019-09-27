@@ -18,7 +18,9 @@ Turma : {$turma_arr["nome"]}
     </div>
     {/foreach}
     <div class="col-md-12" id="iniciar_sala">
-      <a href="index_base.php?pag=quiz_admin&iniciar_quiz=1&id_quiz={$id_quiz}&id_turma={$id_turma}" class="">
+      <!-- <a href="index_base.php?pag=quiz_admin&iniciar_quiz=1&id_quiz={$id_quiz}&id_turma={$id_turma}" class=""> -->
+        <a href="index_base.php?pag=sala&abrir_sala=1&id_quiz={$id_quiz}&id_turma={$id_turma}" class="">
+
         Iniciar Sala
       </a>
     </div>

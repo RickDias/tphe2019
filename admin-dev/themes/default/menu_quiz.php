@@ -3,6 +3,8 @@
 $smarty = new Smarty;
 $smarty->template_dir = 'themes/default/template/';
 $smarty->config_dir = 'theme/default/';
+$smarty->error_reporting = E_ALL & ~E_NOTICE;
+
 
   switch ($_POST['enviar']) {
     case 'jogar':

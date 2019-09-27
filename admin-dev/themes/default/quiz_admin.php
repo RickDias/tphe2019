@@ -11,6 +11,8 @@ $con = conecta_db();
 $id_usuario = $_SESSION["UsuarioID"];
 $id_quiz= Tools::getValue("id_quiz");
 $id_turma= Tools::getValue("id_turma");
+$smarty->assign("id_turma", $id_turma);
+
 if ($id_quiz && $id_turma){
   // pergunta quiz
   $pergunta_quiz_DAO = include_DAO2('pergunta_quiz');
