@@ -21,6 +21,14 @@ $sql = "SELECT DISTINCT q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
               AND q.`ID_USUARIO` = ".$_SESSION['UsuarioID'];
 
 $resultados = mysqli_query($con, $sql) or die(mysqli_error($con)); //caso haja um erro na consulta
+
+$consulta_turma = "SELECT count t.`ID_TURMA`
+              FROM `turma` t
+              WHERE t.`ID_USUARIO` = ".$_SESSION['UsuarioID'];
+
+$minhas_turmas = mysqli_query($con, $sql) or die(mysqli_error($con)); //caso haja um erro na consulta
+$smarty->assign('minhas_turmas', $minhas_turmas);
+
 // $resultados = mysqli_fetch_assoc($sql);
 
   // percorrendo os registros da consulta.

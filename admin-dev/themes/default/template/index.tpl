@@ -16,8 +16,8 @@
               </div>
               <div class="col-xs-9 text-right">
 
-                <div class="huge">0</div>
                 <div>Novas mensagens!</div>
+                <div class="huge">0</div>
               </div>
             </div>
           </div>
@@ -41,8 +41,8 @@
                 <i class="fa fa-tasks fa-5x"></i>
               </div>
               <div class="col-xs-9 text-right">
-                <div class="huge">{$resultados->num_rows}</div>
                 <div>Meus Quizes!</div>
+                <div class="huge">{$resultados->num_rows}</div>
               </div>
             </div>
           </div>
@@ -66,8 +66,8 @@
 
               </div>
               <div class="col-xs-9 text-right">
-                <div class="huge">124</div>
                 <div>Minhas Turmas!</div>
+                <div class="huge">{$minhas_turmas->num_rows}</div>
               </div>
             </div>
           </div>
@@ -91,8 +91,8 @@
 
               </div>
               <div class="col-xs-9 text-right">
-                <div class="huge">13</div>
                 <div>Meus Alunos!</div>
+                <div class="huge">13</div>
               </div>
             </div>
           </div>
