@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-09-10 17:22:04
+/* Smarty version 3.1.33, created on 2019-10-01 01:12:36
   from 'C:\xampp\htdocs\tphe2019\theme\default\paginas\jogar_quiz.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d77bf9c612da9_04627706',
+  'unifunc' => 'content_5d928be4f20253_95505131',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '8120e3d84fb32ba0f9d267acaf7fb86e2c3b61df' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\theme\\default\\paginas\\jogar_quiz.tpl',
-      1 => 1568128923,
+      1 => 1569884903,
       2 => 'file',
     ),
   ),
@@ -20,35 +20,29 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d77bf9c612da9_04627706 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d928be4f20253_95505131 (Smarty_Internal_Template $_smarty_tpl) {
 $_from = $_smarty_tpl->smarty->ext->_foreach->init($_smarty_tpl, $_smarty_tpl->tpl_vars['resultados']->value, 'q', false, 'key');
 if ($_from !== null) {
 foreach ($_from as $_smarty_tpl->tpl_vars['key']->value => $_smarty_tpl->tpl_vars['q']->value) {
 ?>
-<div class="col-md-9">
-<form id="regForm" action="index.php?pag=jogar_quiz&terminar=1">
+<div class="col-md-7">
   <div class="score_quiz col-md-8" id="score_quiz">
-    <!-- Pontuação:<span id="score_val">0</span> -->
     <label for="score_val">Pontuação:</label><br>
     <input type="text" id="score_val" name="score_val" value="0" disabled class="col-sm-3">
   </div>
-  <div class="codigo" id="timer_count">
-    <!-- <span id="hora">00h</span><span id="minuto">00m</span> -->
-    <span id="segundo">30</span><br>
-    <!-- <input type="button" value="Volta" onclick="volta();"><br> -->
-    <!-- <div id="parar"><input type="button" value="Parar" onclick="parar();"></div> -->
-    <!-- <div id="comeca" style="display:none;"><input type="button" value="Comeca" onclick="tempo(1);"><br></div> -->
-    <!-- <input type="button" value="Limpa" onclick="limpa();"><br><br> -->
-    <div id="voltas"></div>
-  </div>
+
+  <a href="index.php?pag=jogo&jogo=quiz&sair_quiz=1" style="margin:15px;float:right" class="btn btn-outline btn-danger">Sair</a>
+
+<form id="regForm" action="index.php?pag=jogar_quiz&terminar=1">
 
   <h1 class="black">Quiz <?php echo $_smarty_tpl->tpl_vars['q']->value["ID_QUIZ"];?>
  - <?php echo $_smarty_tpl->tpl_vars['q']->value["DESCRICAO"];?>
 </h1>
 
   <div class="tab">
-          <p class="p_16_black">Neste quiz, serão mostradas 10 perguntas sobre <?php echo $_smarty_tpl->tpl_vars['q']->value["DESCRICAO"];?>
- definidas pelo professor!</p>
+    <br>
+          <p class="p_16_black" style="font-weight:bold">Aguarde o inicio do jogo pelo professor!</p>
+          <p class="p_16_black">Você pode sair a qualquer momento clicando em <b style="color:red">SAIR</b> ao topo, porém <span style="color:red;font-weight:bold">perderá sua pontuação atual!</span></p>
           <p class="p_16_black">Bons estudos!</p>
   </div>
 
@@ -121,6 +115,7 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
   </div>
 </div>
 
+
 <!-- Circles which indicates the steps of the form: -->
 <div style="text-align:center;margin-top:40px;" id="all_steps" name="all_steps">
   <?php
@@ -160,7 +155,7 @@ foreach ($_from as $_smarty_tpl->tpl_vars['aluno']->value) {
       <div class="col-md-9">
         <h3><?php echo $_smarty_tpl->tpl_vars['aluno']->value["NOME"];?>
 </h3>
-        <span>id pont: <?php echo $_smarty_tpl->tpl_vars['aluno']->value["id_pontuacao"];?>
+        <span>Pontuação Geral: <?php echo $_smarty_tpl->tpl_vars['aluno']->value["pontos_geral"];?>
 </span>
       </div>
 

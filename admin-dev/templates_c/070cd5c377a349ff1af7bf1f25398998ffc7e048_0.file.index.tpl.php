@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-09-28 01:03:51
+/* Smarty version 3.1.33, created on 2019-09-28 02:35:49
   from 'C:\xampp\htdocs\tphe2019\admin-dev\themes\default\template\index.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d8e9557b3dd40_99192338',
+  'unifunc' => 'content_5d8eaae5a28414_95869172',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '070cd5c377a349ff1af7bf1f25398998ffc7e048' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\admin-dev\\themes\\default\\template\\index.tpl',
-      1 => 1569625430,
+      1 => 1569625859,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d8e9557b3dd40_99192338 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d8eaae5a28414_95869172 (Smarty_Internal_Template $_smarty_tpl) {
 ?><div id="wrapper" style="background:tomato">
     <div class="row">
       <div class="col-lg-12">
@@ -187,9 +187,6 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
             <?php echo '<?php
             ';
 echo '?>';?>
-
-
-
 
           </div>
           <!-- /.panel-body -->

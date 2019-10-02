@@ -3,7 +3,7 @@
 <div style="">
   <h1>jogos disponíveis para sua turma</h1>
 </div>
-<div class="col-md-8">
+<div class="col-md-10">
   {foreach from=$resultados item=$quiz}
   <div class="col-lg-4">
     <div class="panel panel-success">
@@ -29,30 +29,5 @@
   {/foreach}
 </div>
 
-<div class="col-md-3" id="container_sala__aluno" style="float:right">
-  Jogadores na sala
-  <div class="item_sala_aluno">
-    {if $alunos}
-    {foreach from=$alunos item=$aluno}
-    <div class="col-md-12" id="bloco_aluno">
-
-      <div class="col-md-3">
-        <div class="icon_aluno">
-          S
-        </div>
-      </div>
-
-      <div class="col-md-9">
-        <h3>{$aluno["NOME"]}</h3>
-        <span>Pontuação: {$aluno["pontos_geral"]}</span>
-      </div>
-
-    </div>
-    {/foreach}
-    {else}
-      Sem alunos na sala!
-    {/if}
-  </div>
-</div>
 
 </div>

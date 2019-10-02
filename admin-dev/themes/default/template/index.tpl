@@ -148,9 +148,6 @@
             <?php
             ?>
 
-
-
-
           </div>
           <!-- /.panel-body -->
         </div>

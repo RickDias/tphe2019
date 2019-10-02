@@ -2,30 +2,20 @@
 <div class="col-md-9">
 <form id="regForm" action="index.php?pag=jogar_quiz&terminar=1">
   <div class="codigo" id="timer_count">
-    <!-- <span id="hora">00h</span><span id="minuto">00m</span> -->
     <span id="segundo">30</span><br>
-    <!-- <input type="button" value="Volta" onclick="volta();"><br> -->
-    <!-- <div id="parar"><input type="button" value="Parar" onclick="parar();"></div> -->
-    <!-- <div id="comeca" style="display:none;"><input type="button" value="Comeca" onclick="tempo(1);"><br></div> -->
-    <!-- <input type="button" value="Limpa" onclick="limpa();"><br><br> -->
     <div id="voltas"></div>
   </div>
-
   <h1 class="black">Quiz {$q["ID_QUIZ"]} - {$q["DESCRICAO"]}</h1>
-
   <div class="tab">
           <p class="p_16_black">Neste quiz, serão mostradas 10 perguntas sobre {$q["DESCRICAO"]} definidas pelo professor!</p>
           <p class="p_16_black">Bons estudos!</p>
   </div>
-
   <div style="overflow:auto;display:none" id="iniciar" name="iniciar">
     <a href="index.php?pag=jogo&jogo=quiz" style="" class="">Voltar</a>
     <div style="float:right;">
-      <!-- <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
       <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
     </div>
   </div>
-<!-- One "tab" for each step in the form: -->
 {foreach key=$key from=$perguntas item=pergunta}
 <div class="tab" id="tab_{$key}">{$pergunta[0]->getDescricao()}
   {foreach from=$respostas item=$arr_resp}
@@ -44,15 +34,12 @@
 <div style="overflow:auto;display:none" id="resp_certa" name="resp_certa">
   Acertou, continue assim!
   <div style="float:right;">
-    <!-- <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
     <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
   </div>
 </div>
-
 <div style="overflow:auto;display:none" id="resp_errada" name="resp_errada">
   Foi quase!
   <div style="float:right;">
-    <!-- <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
     <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
   </div>
 </div>
@@ -79,18 +66,15 @@
     {if $alunos}
     {foreach from=$alunos item=$aluno}
     <div class="col-md-12" id="bloco_aluno">
-
       <div class="col-md-3">
         <div class="icon_aluno">
           S
         </div>
       </div>
-
       <div class="col-md-9">
         <h3>{$aluno["NOME"]}</h3>
         <span>id pont: {$aluno["id_pontuacao"]}</span>
       </div>
-
     </div>
     {/foreach}
     {else}

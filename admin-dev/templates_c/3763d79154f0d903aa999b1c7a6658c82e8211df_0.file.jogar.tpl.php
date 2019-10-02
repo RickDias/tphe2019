@@ -1,18 +1,18 @@
 <?php
-/* Smarty version 3.1.33, created on 2019-09-28 00:26:28
+/* Smarty version 3.1.33, created on 2019-09-28 02:35:12
   from 'C:\xampp\htdocs\tphe2019\admin-dev\themes\default\template\jogar.tpl' */
 
 /* @var Smarty_Internal_Template $_smarty_tpl */
 if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   'version' => '3.1.33',
-  'unifunc' => 'content_5d8e8c943d3c88_60194845',
+  'unifunc' => 'content_5d8eaac0ae4b73_35016243',
   'has_nocache_code' => false,
   'file_dependency' => 
   array (
     '3763d79154f0d903aa999b1c7a6658c82e8211df' => 
     array (
       0 => 'C:\\xampp\\htdocs\\tphe2019\\admin-dev\\themes\\default\\template\\jogar.tpl',
-      1 => 1569623168,
+      1 => 1569626351,
       2 => 'file',
     ),
   ),
@@ -20,7 +20,7 @@ if ($_smarty_tpl->_decodeProperties($_smarty_tpl, array (
   array (
   ),
 ),false)) {
-function content_5d8e8c943d3c88_60194845 (Smarty_Internal_Template $_smarty_tpl) {
+function content_5d8eaac0ae4b73_35016243 (Smarty_Internal_Template $_smarty_tpl) {
 if ($_smarty_tpl->tpl_vars['quiz_arr']->value) {?>
 <div align='center' class="col-md-12">
 <?php
@@ -66,13 +66,9 @@ $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
 }
 $_smarty_tpl->smarty->ext->_foreach->restore($_smarty_tpl, 1);?>
     <div class="col-md-12" id="iniciar_sala">
-      <!-- <a href="index_base.php?pag=quiz_admin&iniciar_quiz=1&id_quiz=<?php echo $_smarty_tpl->tpl_vars['id_quiz']->value;?>
-&id_turma=<?php echo $_smarty_tpl->tpl_vars['id_turma']->value;?>
-" class=""> -->
         <a href="index_base.php?pag=sala&abrir_sala=1&id_quiz=<?php echo $_smarty_tpl->tpl_vars['id_quiz']->value;?>
 &id_turma=<?php echo $_smarty_tpl->tpl_vars['id_turma']->value;?>
 " class="">
-
         Iniciar Sala
       </a>
     </div>

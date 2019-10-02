@@ -1,25 +1,20 @@
 {foreach key=$key from=$resultados item=$q}
-<div class="col-md-9">
-<form id="regForm" action="index.php?pag=jogar_quiz&terminar=1">
+<div class="col-md-7">
   <div class="score_quiz col-md-8" id="score_quiz">
-    <!-- Pontuação:<span id="score_val">0</span> -->
     <label for="score_val">Pontuação:</label><br>
     <input type="text" id="score_val" name="score_val" value="0" disabled class="col-sm-3">
   </div>
-  <div class="codigo" id="timer_count">
-    <!-- <span id="hora">00h</span><span id="minuto">00m</span> -->
-    <span id="segundo">30</span><br>
-    <!-- <input type="button" value="Volta" onclick="volta();"><br> -->
-    <!-- <div id="parar"><input type="button" value="Parar" onclick="parar();"></div> -->
-    <!-- <div id="comeca" style="display:none;"><input type="button" value="Comeca" onclick="tempo(1);"><br></div> -->
-    <!-- <input type="button" value="Limpa" onclick="limpa();"><br><br> -->
-    <div id="voltas"></div>
-  </div>
+
+  <a href="index.php?pag=jogo&jogo=quiz&sair_quiz=1" style="margin:15px;float:right" class="btn btn-outline btn-danger">Sair</a>
+
+<form id="regForm" action="index.php?pag=jogar_quiz&terminar=1">
 
   <h1 class="black">Quiz {$q["ID_QUIZ"]} - {$q["DESCRICAO"]}</h1>
 
   <div class="tab">
-          <p class="p_16_black">Neste quiz, serão mostradas 10 perguntas sobre {$q["DESCRICAO"]} definidas pelo professor!</p>
+    <br>
+          <p class="p_16_black" style="font-weight:bold">Aguarde o inicio do jogo pelo professor!</p>
+          <p class="p_16_black">Você pode sair a qualquer momento clicando em <b style="color:red">SAIR</b> ao topo, porém <span style="color:red;font-weight:bold">perderá sua pontuação atual!</span></p>
           <p class="p_16_black">Bons estudos!</p>
   </div>
 
@@ -62,6 +57,7 @@
   </div>
 </div>
 
+
 <!-- Circles which indicates the steps of the form: -->
 <div style="text-align:center;margin-top:40px;" id="all_steps" name="all_steps">
   {foreach key=$key from=$perguntas item=$pag}
@@ -87,7 +83,7 @@
 
       <div class="col-md-9">
         <h3>{$aluno["NOME"]}</h3>
-        <span>id pont: {$aluno["id_pontuacao"]}</span>
+        <span>Pontuação Geral: {$aluno["pontos_geral"]}</span>
       </div>
 
     </div>

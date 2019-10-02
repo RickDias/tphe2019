@@ -45,6 +45,8 @@ $theme = Configuration::get('theme_admin');
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+
 
 </head>
 
@@ -85,7 +87,8 @@ $theme = Configuration::get('theme_admin');
   </div>
 
 <!-- jQuery -->
-<script src="vendor/jquery/jquery.min.js"></script>
+<!-- <script src="vendor/jquery/jquery.min.js"></script> -->
+<!-- <script src="js/jquery-1.11.1.min.js"></script> -->
 <!-- Bootstrap Core JavaScript -->
 <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
 <!-- Metis Menu Plugin JavaScript -->

@@ -5,6 +5,8 @@ $smarty = new Smarty;
 $smarty->template_dir = 'theme/default/paginas';
 $smarty->config_dir = 'themes/default';
 $smarty->caching = false;
+$smarty->error_reporting = E_ALL & ~E_NOTICE;
+
 // $smarty->assign('menu_lateral', include "lateral_jogador.php");
 $con = conecta_db();
 $id_usuario = $_SESSION["UsuarioID"];
@@ -70,7 +72,7 @@ $quiz_sql = "SELECT *
         WHERE `ID_QUIZ` = ".$id_quiz;
 $quiz = mysqli_query($con, $quiz_sql) or die(mysqli_error($con));
 
-$sql = sprintf("select sa.`id_aluno`, u.`NOME`, sa.`id_pontuacao`
+$sql = sprintf("select sa.`id_aluno`, u.`NOME`, sa.`pontos_geral`
 from sala_alunos sa
 LEFT JOIN usuario u on (sa.`id_aluno` = u.`ID_USUARIO`)
 where `visivel` = 'S' ");

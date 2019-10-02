@@ -44,19 +44,8 @@ $quiz_sql = "SELECT *
         WHERE `ID_QUIZ` = ".$id_quiz;
 $quiz = mysqli_query($con, $quiz_sql) or die(mysqli_error($con));
 
-// $sql = sprintf("select sa.`id_aluno`, u.`NOME`, sa.`id_pontuacao`
-// from sala_alunos sa
-// LEFT JOIN usuario u on (sa.`id_aluno` = u.`ID_USUARIO`)
-// where `visivel` = 'S' ");
-// $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
-// while ( $rs = mysqli_fetch_array( $resultado ) ) {
-//    $todos_alunos[] =$rs ;
-// }
-
   $smarty->assign(array(
     'resultados' => $quiz,
-    // 'alunos' => $todos_alunos
-
   ));
 
   if(Tools::getValue("terminar")==1){
@@ -65,13 +54,11 @@ $quiz = mysqli_query($con, $quiz_sql) or die(mysqli_error($con));
     from pontuacao p
     where p.`id_usuario` = '.$id_usuario.' ");
     $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
-
     $pontuacao = Tools::getValue("score_val");
 
     if($resultado){
       $sql2 = sprintf('update pontuacao set pontuacao="%s"
       where id_usuario = "%s" ', $pontuacao , $id_usuario);
-      //where ID_QUIZ = "%s" ', $objVO->getDescricao() , $objVO->getDt_inicio(), $objVO->getDt_fim(), $objVO->getPublicacao(), $objVO->getId_quiz()  );
       try {
         if(!mysqli_query($link, $sql2)){
           throw new Exception ("Erro ao alterar quiz!");
@@ -97,7 +84,6 @@ $quiz = mysqli_query($con, $quiz_sql) or die(mysqli_error($con));
           mysqli_rollback($link);
       }
     }
-
 
     $status_aluno = $sala_alunoDAO->updateStatus($id_usuario,"N",$con);
     header("Location: index.php?pag=login");

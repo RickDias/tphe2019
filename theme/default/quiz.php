@@ -4,9 +4,21 @@ $smarty = new Smarty;
 $smarty->template_dir = 'theme/default/paginas';
 $smarty->config_dir = 'themes/default';
 $smarty->caching = false;
+$smarty->error_reporting = E_ALL & ~E_NOTICE;
+
 // $smarty->assign('menu_lateral', include "lateral_jogador.php");
 $con = conecta_db();
 
+if(Tools::getValue("sair_quiz") == 1){
+
+  $sala_aluno_VO = include_VO('sala_aluno');
+  $sala_aluno_DAO = include_DAO('sala_aluno');
+  require_once $sala_aluno_VO;
+  require_once $sala_aluno_DAO;
+
+  $sala_alunoDAO = new sala_alunoDAO();
+  $sair = $sala_alunoDAO->updateStatus($_SESSION['UsuarioID'],"N",$con);
+}
 //criando a query de consulta à tabela
 $sql = "SELECT q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
               date_format(q.`DT_INICIO`, '%d-%m-%Y') AS 'DT_INICIO',
@@ -16,31 +28,14 @@ $sql = "SELECT q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
               WHERE q.`ID_QUIZ` = tq.`ID_QUIZ`
               AND tq.`ID_TURMA` = t.`ID_TURMA`
               AND q.`PUBLICACAO` = 'S'
-              AND u.`ID_USUARIO` = ".$_SESSION['UsuarioID']."
-              AND q.`ID_USUARIO` = ".$_SESSION['UsuarioID'];
+              AND u.`ID_USUARIO` = ".$_SESSION['UsuarioID'];
 
 $resultados = mysqli_query($con, $sql) or die(mysqli_error($con));
 
-$sql = sprintf("select sa.`id_aluno`, u.`NOME`, sa.`pontos_geral`
-from sala_alunos sa
-LEFT JOIN usuario u on (sa.`id_aluno` = u.`ID_USUARIO`)
-where `visivel` = 'S' ");
-$resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
-while ( $rs = mysqli_fetch_array( $resultado ) ) {
-   $todos_alunos[] =$rs ;
-}
-// session_start();
-// if($_SESSION){
-//   $user_id = $_SESSION["UsuarioID"];
-//
   $smarty->assign(array(
     'resultados' => $resultados,
     'cessao' => $_SESSION,
-    'alunos' => $todos_alunos
   ));
-//
-// }
-
 
 $smarty->display('quiz.tpl');
 

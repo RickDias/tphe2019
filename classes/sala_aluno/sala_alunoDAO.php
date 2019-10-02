@@ -3,7 +3,7 @@
 class sala_alunoDAO {
 
     public function insert(sala_alunoVO $objVO, $link) {
-        $query = sprintf("INSERT INTO sala_alunos (id, id_aluno, visivel, id_pontuacao) VALUES ('".$objVO->getId()."', '".$objVO->getId_aluno()."', '".$objVO->getVisivel()."', ".$objVO->getId_pontuacao().")");
+        $query = sprintf("INSERT INTO sala_alunos (id, id_aluno, visivel, pontos_geral) VALUES ('".$objVO->getId()."', '".$objVO->getId_aluno()."', '".$objVO->getVisivel()."', ".$objVO->getId_pontuacao().")");
 
 		try {
             if (mysqli_query($link, $query)) {
@@ -67,7 +67,7 @@ class sala_alunoDAO {
                   $objVO->setId(stripslashes($rs['id']));
                   $objVO->setId_aluno(stripslashes($rs['id_aluno']));
                   $objVO->setVisivel(stripslashes($rs['visivel']));
-                  $objVO->setId_pontuacao(stripslashes($rs['id_pontuacao']));
+                  $objVO->setId_pontuacao(stripslashes($rs['pontos_geral']));
 
                 $return[] = clone $objVO;
               }}
