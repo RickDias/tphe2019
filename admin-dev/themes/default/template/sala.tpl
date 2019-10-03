@@ -8,8 +8,9 @@
     {if $alunos}
     <div class="col-md-3" id="teste">
       <h3>Alunos na sala</h3>
+      Aluno:<br>
       {foreach from=$alunos key=$key item=$aluno}
-        Aluno: <span id="aluno_nome_{$key}">{$aluno["nome_aluno"]}</span><br>
+        <span id="aluno_nome_{$key}" class="nome_aluno">{$aluno["nome_aluno"]}</span><br>
       {/foreach}
     </div>
     {else}
@@ -54,13 +55,22 @@ function loadlink(){
                  id_turma:{$id_turma}
                },
                success: function( data ) {
+                 var total_element = data.length;
+                 var total_element_html =  $('.nome_aluno').length;
 
                  $.each(data, function(i, val){
                    var nome_aluno = $('#aluno_nome_'+i);
                    // Append tem a função de inserir
+                   nome_aluno.html(data[i]["nome_aluno"]);
+                   console.log(nome_aluno.html());
                    console.log(data[i]["nome_aluno"]);
-                   // nome_aluno.replaceWith(data[i]["nome_aluno"]);
-                   nome_aluno.replaceWith(data[i]["nome_aluno"]);
+                   if( total_element < total_element_html){
+                       $('#aluno_nome_'+(i)).remove();
+                   }
+                   if(i == total_element_html){
+                     // i++;
+                     $('#teste').append('<span id="aluno_nome_'+i+'" class="nome_aluno">'+data[i]["nome_aluno"]+'</span><br>');
+                   }
                });
                  // alert(data);
                },
