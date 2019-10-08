@@ -7,7 +7,11 @@ var type, i, pontuacao = 0;
 function showTab(n) {
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
-  x[n].style.display = "block";
+  if(n == 0){
+    x[1].style.display = "none";
+  }else{
+    x[n].style.display = "block";
+  }
   document.getElementById("resp_errada").style.display = "none";
   document.getElementById("resp_certa").style.display = "none";
   clicado = false;
@@ -16,15 +20,16 @@ function showTab(n) {
   if (n == 0) {
     // document.getElementById("prevBtn").style.display = "none";
     document.getElementById("all_steps").style.display = "none";
-    document.getElementById("timer_count").style.display = "none";
     document.getElementById("score_quiz").style.display = "none";
-    document.getElementById("iniciar").style.display = "block";
+    document.getElementById("iniciar").style.display = "none";
+    document.getElementById("description").style.display = "block";
   } else {
     // document.getElementById("prevBtn").style.display = "inline";
     document.getElementById("all_steps").style.display = "block";
-    document.getElementById("timer_count").style.display = "block";
     document.getElementById("score_quiz").style.display = "block";
     document.getElementById("iniciar").style.display = "none";
+    document.getElementById("description").style.display = "none";
+
   }
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";

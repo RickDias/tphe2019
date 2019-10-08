@@ -60,34 +60,54 @@ $quiz = mysqli_query($con, $quiz_sql) or die(mysqli_error($con));
       $sql2 = sprintf('update pontuacao set pontuacao="%s"
       where id_usuario = "%s" ', $pontuacao , $id_usuario);
       try {
-        if(!mysqli_query($link, $sql2)){
+        if(!mysqli_query($con, $sql2)){
           throw new Exception ("Erro ao alterar quiz!");
         }
       } catch (Exception $ex) {
         echo $ex->getMessage();
-        mysqli_rollback($link);
+        mysqli_rollback($con);
       }
-      mysqli_commit($link);
+      mysqli_commit($con);
     }else{
       $query = sprintf('INSERT INTO pontuacao ( id_ususario, pontuacao )'.'VALUES ("%s","%s")',
                $id_usuario, $pontuacao);
       try {
-          if (mysqli_query($link, $query)) {
-              mysqli_commit($link);
-              $objVO->setId_quiz(mysqli_insert_id($link));
+          if (mysqli_query($con, $query)) {
+              mysqli_commit($con);
+              $objVO->setId_quiz(mysqli_insert_id($con));
               return $objVO;
           } else {
               throw new Exception('Erro ao cadastrar!');
           }
       } catch (Exception $e) {
           echo $e->getMessage();
-          mysqli_rollback($link);
+          mysqli_rollback($con);
       }
     }
 
     $status_aluno = $sala_alunoDAO->updateStatus($id_usuario,"N",$con);
     header("Location: index.php?pag=login");
   }
+
+if(Tools::getValue("iniciar_quiz") == 1){
+  $iniciar = sprintf('update quiz set INICIADO="1"
+  where ID_QUIZ = "%s" ', $id_quiz);
+  try {
+    if(!mysqli_query($con, $iniciar)){
+      $iniciado= 0;
+      throw new Exception ("Erro ao iniciar!");
+    }else{
+      $iniciado= 1;
+    }
+  } catch (Exception $ex) {
+    echo $ex->getMessage();
+    mysqli_rollback($con);
+  }
+  mysqli_commit($con);
+
+  $smarty->assign("iniciado", $iniciado);
+
+}
 
 $smarty->display('quiz_admin.tpl');
 

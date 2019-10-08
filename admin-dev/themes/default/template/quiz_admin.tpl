@@ -1,3 +1,4 @@
+{$iniciado|var_dump}
 {foreach key=$key from=$resultados item=$q}
 <div class="col-md-9">
 <form id="regForm" action="index.php?pag=jogar_quiz&terminar=1">
@@ -55,7 +56,7 @@
 <form role="form" action="index_base.php?pag=sala&abrir_sala=1" method="POST">
   <input type='hidden' name='id_quiz' value="{$q["ID_QUIZ"]}">
   <input type='hidden' name='id_turma' value="{$id_turma}">
-
+  <input type='hidden' name='fechar_quiz' value="1">
   <button type="submit" name="enviar" value="jogar" class="btn btn-outline btn-success"><i class="fa fa-backward fa-1x"></i> Voltar</button>
 </form>
 </div>

@@ -12,6 +12,12 @@ $con = conecta_db();
 $id_usuario = $_SESSION["UsuarioID"];
 $id_quiz= Tools::getValue("id-quiz");
 $id_turma= Tools::getValue("id-turma");
+if($id_quiz || $id_turma){
+  $smarty->assign(array(
+    'id_quiz' => $id_quiz,
+    'id_turma' => $id_turma,
+  ));
+}
 
 $sala_aluno_VO = include_VO('sala_aluno');
 $sala_aluno_DAO = include_DAO('sala_aluno');

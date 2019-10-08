@@ -24,6 +24,24 @@ if($id_quiz){
   $status = "S";
   $update = $quizDAO->updateStatus($id_quiz,$status,$con);
 }
+if(Tools::getValue("fechar_quiz")==1){
+  $fechar = sprintf('update quiz set INICIADO="0"
+  where ID_QUIZ = "%s" ', $id_quiz);
+  try {
+    if(!mysqli_query($con, $fechar)){
+      $iniciado= 1;
+      throw new Exception ("Erro ao iniciar!");
+    }else{
+      $iniciado= 0;
+    }
+  } catch (Exception $ex) {
+    echo $ex->getMessage();
+    mysqli_rollback($con);
+  }
+  mysqli_commit($con);
+
+  $smarty->assign("iniciado", $iniciado);
+}
 $query = "SELECT distinct ta.`ID_TURMA`, ta.`ID_USUARIO`, t.`codigo_turma`,t.`SIGLA`,t.`NOME` as nome_turma,t.`SEMESTRE`,t.`ANO`,u.`NOME` as nome_aluno, u.`ID_USUARIO`
               FROM `turma_aluno` ta , `turma` t, `usuario` u, `sala_alunos` sa, `turma_quiz` tq
               WHERE t.`ID_TURMA` = ta.`ID_TURMA`

@@ -11,7 +11,7 @@
 
   <h1 class="black">Quiz {$q["ID_QUIZ"]} - {$q["DESCRICAO"]}</h1>
 
-  <div class="tab">
+  <div class="tab" id="description">
     <br>
           <p class="p_16_black" style="font-weight:bold">Aguarde o inicio do jogo pelo professor!</p>
           <p class="p_16_black">Você pode sair a qualquer momento clicando em <b style="color:red">SAIR</b> ao topo, porém <span style="color:red;font-weight:bold">perderá sua pontuação atual!</span></p>
@@ -99,3 +99,47 @@
 
 <script src="theme/default/js/jogar_quiz.js"></script>
 {/foreach}
+
+<script>
+
+function loadlink(){
+    $.ajax({
+               type:"POST",
+               url: "check_start.php",
+               async:true,
+               dataType : "json",
+               data: {
+                 id_quiz:{$id_quiz},
+                 id_turma:{$id_turma}
+               },
+               success: function( data ) {
+                 var total_element = data.length;
+
+                 $.each(data, function(i, val){
+                   console.log(data[i]);
+                   if(data[i] == 0){
+                     showTab(0);
+                     // refresh only once
+                     if(!window.location.hash) {
+                       // window.location = window.location + '#loaded';s
+                       // window.location.reload();
+                     }
+                     // $('#teste').append('<span id="aluno_nome_'+i+'" class="nome_aluno">'+data[i]["nome_aluno"]+'</span><br>');
+                   }else{
+                     showTab(1);
+                   }
+               });
+               },
+               error: function( xhr, status) {
+               console.log(xhr);
+               console.log(status);
+               }
+               });
+}
+
+setInterval(function(){
+    loadlink() // this will run after every 5 seconds
+}, 2000);
+
+
+</script>
