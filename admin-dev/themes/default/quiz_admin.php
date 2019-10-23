@@ -12,6 +12,25 @@ $id_usuario = $_SESSION["UsuarioID"];
 $id_quiz= Tools::getValue("id_quiz");
 $id_turma= Tools::getValue("id_turma");
 $smarty->assign("id_turma", $id_turma);
+$rodada = Tools::getValue("rodada");
+$esgotado = Tools::getValue("esgotado");
+
+  if($id_quiz && $rodada != FALSE){
+    $quiz_DAO = include_DAO2('turma_quiz');
+    require_once $quiz_DAO;
+    $quizDAO = new turma_quizDAO();
+    $updateRodada = $quizDAO->updateRodada($id_quiz,$id_turma,$rodada,$con);
+    }
+
+    if($id_quiz && $esgotado != FALSE){
+      $quiz_DAO = include_DAO2('turma_quiz');
+      require_once $quiz_DAO;
+      $quizDAO = new turma_quizDAO();
+      $updateEsgotado = $quizDAO->updateEsgotado($id_quiz,$id_turma,$esgotado,$con);
+    }
+
+
+
 
 if ($id_quiz && $id_turma){
   // pergunta quiz
@@ -48,50 +67,15 @@ $quiz = mysqli_query($con, $quiz_sql) or die(mysqli_error($con));
     'resultados' => $quiz,
   ));
 
-  if(Tools::getValue("terminar")==1){
-
-    $sql = sprintf("select p.`id_pontuacao`, p.`id_usuario`, p.`pontuacao`
-    from pontuacao p
-    where p.`id_usuario` = '.$id_usuario.' ");
-    $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
-    $pontuacao = Tools::getValue("score_val");
-
-    if($resultado){
-      $sql2 = sprintf('update pontuacao set pontuacao="%s"
-      where id_usuario = "%s" ', $pontuacao , $id_usuario);
-      try {
-        if(!mysqli_query($con, $sql2)){
-          throw new Exception ("Erro ao alterar quiz!");
-        }
-      } catch (Exception $ex) {
-        echo $ex->getMessage();
-        mysqli_rollback($con);
-      }
-      mysqli_commit($con);
-    }else{
-      $query = sprintf('INSERT INTO pontuacao ( id_ususario, pontuacao )'.'VALUES ("%s","%s")',
-               $id_usuario, $pontuacao);
-      try {
-          if (mysqli_query($con, $query)) {
-              mysqli_commit($con);
-              $objVO->setId_quiz(mysqli_insert_id($con));
-              return $objVO;
-          } else {
-              throw new Exception('Erro ao cadastrar!');
-          }
-      } catch (Exception $e) {
-          echo $e->getMessage();
-          mysqli_rollback($con);
-      }
-    }
-
-    $status_aluno = $sala_alunoDAO->updateStatus($id_usuario,"N",$con);
-    header("Location: index.php?pag=login");
-  }
 
 if(Tools::getValue("iniciar_quiz") == 1){
-  $iniciar = sprintf('update quiz set INICIADO="1"
-  where ID_QUIZ = "%s" ', $id_quiz);
+  $iniciar = sprintf('update turma_quiz set INICIADO="1"
+  where ID_QUIZ = "%s"  AND ID_TURMA = "%s" ', $id_quiz,$id_turma);
+
+  $rodada = sprintf('update turma_quiz set RODADA="1"
+  where ID_QUIZ = "%s"  AND ID_TURMA = "%s"', $id_quiz,$id_turma);
+  $upRodada = mysqli_query($con, $rodada);
+
   try {
     if(!mysqli_query($con, $iniciar)){
       $iniciado= 0;
@@ -108,6 +92,8 @@ if(Tools::getValue("iniciar_quiz") == 1){
   $smarty->assign("iniciado", $iniciado);
 
 }
+
+
 
 $smarty->display('quiz_admin.tpl');
 

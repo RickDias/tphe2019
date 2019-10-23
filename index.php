@@ -60,7 +60,7 @@ $theme = Configuration::get('theme');
     ?>
   </div>
 
-  <footer style="position:fixed;z-index:999">
+  <footer style="margin-top:50px">
       <div class="container col-md-12">
           <div class="row">
               <div class="col-md-4">

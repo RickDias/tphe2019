@@ -110,4 +110,6 @@ class quizDAO {
 		 mysqli_commit($link);
 
     }
+
+
 }

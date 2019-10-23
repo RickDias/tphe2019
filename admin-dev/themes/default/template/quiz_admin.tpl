@@ -1,7 +1,7 @@
-{$iniciado|var_dump}
 {foreach key=$key from=$resultados item=$q}
 <div class="col-md-9">
-<form id="regForm" action="index.php?pag=jogar_quiz&terminar=1">
+  <a id="termina_form" href="index_base.php?pag=final_quiz&terminar=1&id_quiz={$q["ID_QUIZ"]}&id_turma={$id_turma}" style="display:none">terminar</a>
+<form id="regForm" action="">
   <div class="codigo" id="timer_count">
     <span id="segundo">30</span><br>
     <div id="voltas"></div>
@@ -14,7 +14,7 @@
   <div style="overflow:auto;display:none" id="iniciar" name="iniciar">
     <a href="index.php?pag=jogo&jogo=quiz" style="" class="">Voltar</a>
     <div style="float:right;">
-      <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+      <button type="button" id="nextBtn" onclick="nextPrev(1)">NextXX</button>
     </div>
   </div>
 {foreach key=$key from=$perguntas item=pergunta}
@@ -22,7 +22,7 @@
   {foreach from=$respostas item=$arr_resp}
     {foreach key=$key_r from=$arr_resp item=$resposta}
       {if $pergunta[0]->getId_pergunta() == $resposta->getId_pergunta()}
-        <div id="div_resposta_{$key_r}" class="respostas_quiz" onclick="confere_resposta('{$resposta->getTipo()}','{$key}','{$pergunta[0]->getPontuacao()}'); this.onclick=null;">
+        <div id="div_resposta_{$key_r}" class="respostas_quiz" onclick="">
           <p>{$resposta->getResposta()}</p>
           <input type="hidden" value="{$resposta->getTipo()}" id="tipo_resp_{$key_r}">
         </div>
@@ -32,18 +32,25 @@
 </div>
 {/foreach}
 
+<a href="#esgotado" style="display:none" id="envia_esgotado" onclick="updateEsgotado(1,{$q["ID_QUIZ"]},{$id_turma})">ESGOTAR</a>
+<a href="#reiniciado" style="display:none" id="envia_reiniciar" onclick="updateEsgotado(2,{$q["ID_QUIZ"]},{$id_turma})">REINICIAR</a>
+
+
 <div style="overflow:auto;display:none" id="resp_certa" name="resp_certa">
-  Acertou, continue assim!
   <div style="float:right;">
-    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    <button type="button" id="nextBtn" onclick="nextPrev(1,{$q["ID_QUIZ"]},{$id_turma})">Próxima pergunta</button>
   </div>
 </div>
 <div style="overflow:auto;display:none" id="resp_errada" name="resp_errada">
-  Foi quase!
   <div style="float:right;">
-    <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button>
+    <button type="button" id="nextBtn" onclick="nextPrev(1,{$q["ID_QUIZ"]},{$id_turma})">Próxima pergunta</button>
   </div>
 </div>
+<!-- <div style="overflow:auto;display:none" id="finalizar" name="finalizar">
+  <div style="float:right;">
+    <button type="button" id="nextBtn" onclick="nextPrev(1,{$q["ID_QUIZ"]},{$id_turma})">Finalizar</button>
+  </div>
+</div> -->
 
 <!-- Circles which indicates the steps of the form: -->
 <div style="text-align:center;margin-top:40px;" id="all_steps" name="all_steps">

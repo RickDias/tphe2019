@@ -7,14 +7,19 @@
 
   <a href="index.php?pag=jogo&jogo=quiz&sair_quiz=1" style="margin:15px;float:right" class="btn btn-outline btn-danger">Sair</a>
 
-<form id="regForm" action="index.php?pag=jogar_quiz&terminar=1">
+<form id="regForm" action="index.php?pag=jogar_quiz_ind&terminar=1">
 
-  <h1 class="black">Quiz {$q["ID_QUIZ"]} - {$q["DESCRICAO"]}</h1>
+  <div class="codigo" id="timer_count">
+    <span id="segundo">30</span><br>
+    <div id="voltas"></div>
+  </div>
+
+  <h1 class="black">Quiz Individual {$q["ID_QUIZ"]} - {$q["DESCRICAO"]}</h1>
 
   <div class="tab" id="description">
     <br>
-          <p class="p_16_black" style="font-weight:bold">Aguarde o inicio do jogo pelo professor!</p>
-          <p class="p_16_black">Você pode sair a qualquer momento clicando em <b style="color:red">SAIR</b> ao topo, porém <span style="color:red;font-weight:bold">perderá sua pontuação atual!</span></p>
+          <!-- <p class="p_16_black" style="font-weight:bold">Aguarde o inicio do jogo pelo professor!</p> -->
+          <p class="p_16_black">Você pode sair a qualquer momento clicando em <b style="color:red">SAIR</b> no topo, porém <span style="color:red;font-weight:bold">perderá sua pontuação atual!</span></p>
           <p class="p_16_black">Bons estudos!</p>
   </div>
   <!-- {$q["RODADA"]|var_dump} -->
@@ -22,8 +27,8 @@
   <div style="overflow:auto;display:none" id="iniciar" name="iniciar">
     <a href="index.php?pag=jogo&jogo=quiz" style="" class="">Voltar</a>
     <div style="float:right;">
-      <!-- <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
-      <button type="button" id="nextBtn" onclick="">Next</button>
+      <!-- <button type="button" id="prevBtn" onclick="nextPrevInd(-1)">Previous</button> -->
+      <button type="button" id="nextBtn" onclick="nextPrevInd(1)">Next</button>
     </div>
   </div>
 <!-- One "tab" for each step in the form: -->
@@ -32,7 +37,7 @@
   {foreach from=$respostas item=$arr_resp}
     {foreach key=$key_r from=$arr_resp item=$resposta}
       {if $pergunta[0]->getId_pergunta() == $resposta->getId_pergunta()}
-        <div id="div_resposta_{$key_r}" class="respostas_quiz" onclick="confere_resposta('{$resposta->getTipo()}','{$key}','{$pergunta[0]->getPontuacao()}','{$id_quiz}','{$id_turma}','{$key_r}','{$id_usuario}','{$resposta->getId_resposta()}'); this.onclick=null;">
+        <div id="div_resposta_{$key_r}" class="respostas_quiz" onclick="confere_resposta_ind('{$resposta->getTipo()}','{$key}','{$pergunta[0]->getPontuacao()}','{$id_quiz}','{$id_usuario}','{$resposta->getId_resposta()}','{$key_r}');" this.onclick=null;">
           <p>{$resposta->getResposta()}</p>
           <input type="hidden" value="{$resposta->getTipo()}" id="tipo_resp_{$key_r}">
         </div>
@@ -50,16 +55,16 @@
 <div style="overflow:auto;display:none" id="resp_certa" name="resp_certa">
   Acertou, continue assim!
   <div style="float:right;">
-    <!-- <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
-    <!-- <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button> -->
+    <!-- <button type="button" id="prevBtn" onclick="nextPrevInd(-1)">Previous</button> -->
+    <button type="button" id="nextBtn" onclick="nextPrevInd(1)">Next</button>
   </div>
 </div>
 
 <div style="overflow:auto;display:none" id="resp_errada" name="resp_errada">
   Foi quase!
   <div style="float:right;">
-    <!-- <button type="button" id="prevBtn" onclick="nextPrev(-1)">Previous</button> -->
-    <!-- <button type="button" id="nextBtn" onclick="nextPrev(1)">Next</button> -->
+    <!-- <button type="button" id="prevBtn" onclick="nextPrevInd(-1)">Previous</button> -->
+    <button type="button" id="nextBtn" onclick="nextPrevInd(1)">Next</button>
   </div>
 </div>
 
@@ -75,7 +80,7 @@
 </div>
 
 <div class="col-md-3" id="container_sala__aluno">
-  Jogadores na sala
+  <h4>Jogadores na sala</h4>
   <div class="item_sala_aluno">
     {if $alunos}
     {foreach from=$alunos item=$aluno}
@@ -103,51 +108,5 @@
 
 <script src="theme/default/vendor/jquery/jquery.min.js"></script>
 
-<script src="theme/default/js/jogar_quiz.js"></script>
+<script src="theme/default/js/jogar_quiz_ind.js"></script>
 {/foreach}
-
-<script>
-
-function loadlink(){
-    $.ajax({
-               type:"POST",
-               url: "check_start.php",
-               async:true,
-               dataType : "json",
-               data: {
-                 ver_rodada:1,
-                 id_quiz:{$id_quiz},
-                 id_turma:{$id_turma}
-               },
-               success: function( data ) {
-                 var total_element = data.length;
-
-                 $.each(data, function(i, val){
-                   console.log(data[i]);
-                   if(data[i] == 0){
-                     showTab(0);
-                     // refresh only once
-                     if(!window.location.hash) {
-                       // window.location = window.location + '#loaded';s
-                       // window.location.reload();
-                     }
-                     // $('#teste').append('<span id="aluno_nome_'+i+'" class="nome_aluno">'+data[i]["nome_aluno"]+'</span><br>');
-                   }else{
-                     // hideTab(data[i] - 1);
-                     showTab(data[i]);
-                   }
-               });
-               },
-               error: function( xhr, status) {
-               console.log(xhr);
-               console.log(status);
-               }
-               });
-}
-
-setInterval(function(){
-    loadlink() // this will run after every 5 seconds
-}, 2000);
-
-
-</script>

@@ -1,5 +1,4 @@
 <?php
-
 $smarty = new Smarty;
 $smarty->template_dir = 'themes/default/template/';
 $smarty->config_dir = 'theme/default/';
@@ -7,9 +6,9 @@ $smarty->error_reporting = E_ALL & ~E_NOTICE;
 
 
 $con = conecta_db();
-$classe_DAO = include_DAO2('quiz');
+$classe_DAO = include_DAO2('turma_quiz');
 require $classe_DAO;
-$quizDAO = new quizDAO();
+$quizDAO = new turma_quizDAO();
 $id_quiz = Tools::getValue('id_quiz');
 $id_turma = Tools::getValue('id_turma');
 if($id_quiz){
@@ -19,14 +18,32 @@ if($id_quiz){
   ));
 }
 // abrir sala
+if(Tools::getValue('fechar_sala') == 1){
+  if($id_quiz){
+    $status = "0";
+    $update = $quizDAO->updateStatus($id_quiz,$id_turma,$status,$con);
+    ?>
+    <script language="JavaScript">
+    window.location="index_base.php";
+    </script>
+    <?php
+
+  }
+}
 if(Tools::getValue('abrir_sala') == 1){
 if($id_quiz){
-  $status = "S";
-  $update = $quizDAO->updateStatus($id_quiz,$status,$con);
+  $status = "1";
+  $update = $quizDAO->updateStatus($id_quiz,$id_turma,$status,$con);
+  if(Tools::getValue("rodada") != null){
+    $rodada = Tools::getValue("rodada");
+    $update = $quizDAO->updateRodada($id_quiz,$id_turma,$rodada,$con);
+  }else{
+    $update = $quizDAO->updateRodada($id_quiz,$id_turma,"0",$con);
+  }
 }
 if(Tools::getValue("fechar_quiz")==1){
-  $fechar = sprintf('update quiz set INICIADO="0"
-  where ID_QUIZ = "%s" ', $id_quiz);
+  $fechar = sprintf('update turma_quiz set INICIADO="0"
+  where ID_QUIZ = "%s" AND ID_TURMA = "%s" ', $id_quiz,$id_turma);
   try {
     if(!mysqli_query($con, $fechar)){
       $iniciado= 1;

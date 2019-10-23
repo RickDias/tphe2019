@@ -84,7 +84,57 @@
   #user_front_container{
     margin-top: 50px;
     display: flex;
-    background: silver;
+    padding:0px 50px
+    /* background: silver; */
+  }
+
+  .score_user{
+    float: right;
+    border: 1px solid black;
+    background: #c29b00;
+    border-radius: 50%;
+    /* width: 150px; */
+    /* height: 150px; */
+
+  }
+
+  .profile_sett{
+    border: 1px solid gray;
+    background: #c29b00;
+    border-radius: 15px;
+  }
+
+  .container_pf{
+    padding: 15px;
+  }
+
+  #cancel_pass{
+    display: none;
+    margin:10px 0;
+    color: #a94442;
+    cursor:pointer;
+    background: #f2dede;
+    border: 1px solid #ebccd1;
+    border-radius: 15px;
+    padding: 5px;
+  }#cancel_pass:hover{
+    background: #ed8787;
+  }
+  #alt_senha{
+    margin:10px 0;
+    color: #a94442;
+    cursor:pointer;
+    background: #f2dede;
+    border: 1px solid #ebccd1;
+    border-radius: 15px;
+    padding: 5px;
+  }#alt_senha:hover{
+    background: #ed8787;
+
+  }
+
+  .social-buttons{
+    margin: 20px;
   }
 
   .fb-profile img.fb-image-lg{
@@ -125,16 +175,14 @@
 }
 
 #container_sala__aluno{
+  border: 1px solid silver;
   min-height: 500px;
   padding-top: 15px;
-  background: silver;
-
-  /* background: silver; */
+  background: white;
 }
 
 .item_sala_aluno{
   margin-top: 15px;
-  border: 1px solid black;
   padding: 10px;
 
 }
@@ -151,4 +199,12 @@
   padding: 10px;
   width: 100%;
   height: 100%;
+}
+
+
+.classejogador{
+  border: 1px solid silver;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
 }

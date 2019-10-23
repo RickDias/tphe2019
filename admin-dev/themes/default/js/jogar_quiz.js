@@ -25,7 +25,7 @@ function showTab(n) {
     // document.getElementById("prevBtn").style.display = "inline";
     document.getElementById("all_steps").style.display = "block";
     document.getElementById("timer_count").style.display = "block";
-    document.getElementById("score_quiz").style.display = "block";
+    // document.getElementById("score_quiz").style.display = "block";
     document.getElementById("iniciar").style.display = "none";
   }
   if (n == (x.length - 1)) {
@@ -45,7 +45,8 @@ function showTab(n) {
 
 }
 
-function nextPrev(n) {
+function nextPrev(n,quiz,turma) {
+  document.getElementById("envia_reiniciar").click();
   // tempo(1);
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
@@ -55,14 +56,40 @@ function nextPrev(n) {
   x[currentTab].style.display = "none";
   // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
+  updateRodada(currentTab,quiz,turma);
   // if you have reached the end of the form... :
   if (currentTab >= x.length) {
     //...the form gets submitted:
-    document.getElementById("regForm").submit();
+    document.getElementById("termina_form").click();
     return false;
   }
   // Otherwise, display the correct tab:
   showTab(currentTab);
+}
+
+function updateEsgotado(status,turma,quiz)
+{
+  console.log(status,turma,quiz);
+        $.post('index_base.php?pag=quiz_admin&id_turma='+turma+'&id_quiz='+quiz+'&esgotado='+status, function(d)
+        {
+          if(status == 1){
+            console.log('ESGOTADO');
+          }
+          if(status == 0){
+            console.log('REINICIADO');
+          }
+            // $(answer).after("<span>Score Updated!</span>").remove();
+        });
+}
+
+function updateRodada(rodada,quiz,turma)
+{
+  // alert("RODADA");
+        $.post('index_base.php?pag=quiz_admin&id_turma='+turma+'&id_quiz='+quiz+'&rodada='+rodada, function(d)
+        {
+            console.log('Update rodada');
+            // $(answer).after("<span>Score Updated!</span>").remove();
+        });
 }
 
 function validateForm() {
@@ -158,12 +185,16 @@ function mudaCores(n){
 var intervalo;
 function tempo(op) {
 	var s = 29;
+  // var s = 2;
+
 	intervalo = window.setInterval(function() {
-		if (s == 0) { s = 30; parar(); confere_resposta("F") }
+		if (s == 0) {document.getElementById("envia_esgotado").click(); s = 30; parar(); confere_resposta("F");}
 		if (s < 10) document.getElementById("segundo").innerHTML = "0" + s; else document.getElementById("segundo").innerHTML = s;
 		s--;
 	},1000);
 }
+
+
 
 function parar() {
 	window.clearInterval(intervalo);

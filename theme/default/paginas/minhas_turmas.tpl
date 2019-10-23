@@ -1,4 +1,4 @@
-<div class="col-md-10">
+<div class="col-md-10" style="margin-bottom:20%">
 {if $enviado}
 <div class="alert alert-success" role="alert" style="margin:10px">
   {$enviado}
@@ -9,10 +9,10 @@
   <h2>Minhas Turmas</h2>
 </div>
 {foreach from=$turmas item=$turma}
-<div class="col-lg-4">
+<div class="col-md-6" style="padding:35px">
   <div class="panel panel-success">
     <div class="panel-heading">
-      {$turma["NOME"]}
+    <h4>{$turma["nome_turma"]}</h4>
     </div>
     <div class="panel-body">
       <p>

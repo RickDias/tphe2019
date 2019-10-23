@@ -22,12 +22,13 @@ if(Tools::getValue("sair_quiz") == 1){
 //criando a query de consulta à tabela
 $sql = "SELECT q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
               date_format(q.`DT_INICIO`, '%d-%m-%Y') AS 'DT_INICIO',
-              date_format(q.`DT_FIM`, '%d-%m-%Y') AS 'DT_FIM', `PUBLICACAO` ,
+              date_format(q.`DT_FIM`, '%d-%m-%Y') AS 'DT_FIM', q.`PUBLICACAO` ,
               t.`SIGLA`, t.`ID_TURMA`, u.`NOME`
               FROM `quiz` q,`turma_quiz`tq, `turma` t, `usuario` u
               WHERE q.`ID_QUIZ` = tq.`ID_QUIZ`
               AND tq.`ID_TURMA` = t.`ID_TURMA`
-              AND q.`PUBLICACAO` = 'S'
+              AND tq.`ATIVO` = '1'
+              AND tq.`INICIADO` = '0'
               AND u.`ID_USUARIO` = ".$_SESSION['UsuarioID'];
 
 $resultados = mysqli_query($con, $sql) or die(mysqli_error($con));
@@ -36,6 +37,28 @@ $resultados = mysqli_query($con, $sql) or die(mysqli_error($con));
     'resultados' => $resultados,
     'cessao' => $_SESSION,
   ));
+
+
+  $sql_ind = "SELECT distinct q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
+                date_format(q.`DT_INICIO`, '%d-%m-%Y') AS 'DT_INICIO',
+                date_format(q.`DT_FIM`, '%d-%m-%Y') AS 'DT_FIM', q.`PUBLICACAO` ,
+                u.`NOME`
+                FROM `quiz` q,`turma_quiz`tq, `turma` t, `usuario` u
+                WHERE q.`publicacao` = 'S'
+                AND q.`ID_USUARIO` = 1
+                AND u.`ID_USUARIO` = ".$_SESSION['UsuarioID'];
+                 // AND tq.`ATIVO` = '1'
+                 // AND tq.`INICIADO` = '0'
+
+  $resultados_ind = mysqli_query($con, $sql_ind) or die(mysqli_error($con));
+  while ( $rs = mysqli_fetch_array( $resultados_ind ) ) {
+    // var_dump($rs);
+    $res[]=$rs;
+    $smarty->assign(array(
+      'jg_ind' => $res,
+    ));
+}
+
 
 $smarty->display('quiz.tpl');
 

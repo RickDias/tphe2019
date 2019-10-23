@@ -11,7 +11,6 @@ $smarty->error_reporting = E_ALL & ~E_NOTICE;
 $con = conecta_db();
 $id_usuario = $_SESSION["UsuarioID"];
 $id_quiz= Tools::getValue("id-quiz");
-$id_turma= Tools::getValue("id-turma");
 //get PONTOS
 if($id_quiz && $id_usuario){
   $pontuacao = "SELECT SUM(p.`pontos`) as pontos
@@ -23,7 +22,11 @@ if($id_quiz && $id_usuario){
   if($score_res->num_rows > 0){
   while ( $rs = mysqli_fetch_array( $score_res ) ) {
     // $todos_alunos[] =$rs ;
-    $smarty->assign("score", $rs[0]);
+    if($rs[0] != NULL){
+      $smarty->assign("score", $rs[0]);
+    }else{
+      $smarty->assign("score", 0);
+    }
   }
 }else{
   $smarty->assign("score", 0);
@@ -31,10 +34,9 @@ if($id_quiz && $id_usuario){
 }
 
 
-if($id_quiz || $id_turma){
+if($id_quiz){
   $smarty->assign(array(
     'id_quiz' => $id_quiz,
-    'id_turma' => $id_turma,
     'id_usuario' => $id_usuario,
 
   ));
@@ -68,7 +70,7 @@ if(Tools::isSubmit("enviar")){
   }
 }
 
-if ($id_quiz && $id_turma){
+if ($id_quiz){
   // pergunta quiz
   $pergunta_quiz_DAO = include_DAO('pergunta_quiz');
   require_once $pergunta_quiz_DAO;
@@ -158,7 +160,7 @@ while ( $rs = mysqli_fetch_array( $resultado ) ) {
     header("Location: index.php?pag=login");
   }
 
-$smarty->display('jogar_quiz.tpl');
+$smarty->display('jogar_quiz_ind.tpl');
 }else{
   header("Location: index.php?pag=login");
 

@@ -1,4 +1,5 @@
 {if $cessao}
+<!-- {$cessao|var_dump} -->
 <head>
 <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
 <!-- Custom CSS -->
@@ -14,7 +15,7 @@
   <div class="left-side sticky-left-side">
     <!--logo and iconic logo start-->
     <div class="logo">
-      <a href="index.php"><img src="theme/default/images/home.png" alt="" /><span>Tphe</span></a>
+      <!-- <a href="index.php"><img src="theme/default/images/home.png" alt="" /><span>Tphe</span></a> -->
     </div>
     <div class="logo">
       <a href="index.php?pag=painel_jogador"><img src="theme/default/images/home.png" alt="" /><span>Painel</span></a>
@@ -29,7 +30,7 @@
           <li><a href="index.php?pag=minhas_turmas"><img src="theme/default/images/3.png" alt="" /><span>Minhas turmas</span></a></li>
           <li><a href="#"><img src="theme/default/images/4.png" alt="" /><span>Histórico</span></a></li>
           <li><a href="index.php?pag=profile"><img src="admin-dev/themes/default/img/module-profile.png" alt="" /><span>Meu Perfil</span></a></li>
-          <li><a href="#"><img src="theme/default/images/17.png" alt="" /><span>Mais</span></a></li>
+          <li><a href="index.php?pag=sobre"><img src="theme/default/images/17.png" alt="" /><span>Sobre nós</span></a></li>
           <li><a href="index.php?pag=loggout"><img src="admin-dev/themes/default/img/icon-cancel.png" alt="" /><span>Sair</span></a></li>
         </ul>
         <!--sidebar nav end-->

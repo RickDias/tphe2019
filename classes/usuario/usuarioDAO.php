@@ -77,7 +77,21 @@ class usuarioDAO {
          return mysqli_query($link, $query);
     }
 
-    public function update(usuarioVO $objVO, $link) {
+    public function updatePass($usuario, $pass, $link) {
+		if ( !$id ) {
+			throw new Exception( 'Valor da chave primária inválido' );
+		}
+		$sql = sprintf('update usuario set SENHA="%s"
+						where ID_USUARIO = "%s" ', $pass, $usuario );
+		try {
+			if(!mysqli_query($link, $sql)){
+                 throw new Exception ("Erro ao alterar quiz!");
+			}
+		} catch (Exception $ex) {
+             echo $ex->getMessage();
+             mysqli_rollback($link);
+         }
+		 mysqli_commit($link);
 
     }
 

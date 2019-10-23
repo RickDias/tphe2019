@@ -1,4 +1,4 @@
-<div class="col-md-10">
+<div class="col-md-10" style="margin-bottom:20%">
 
 
 <form class="well form-horizontal" action="index.php?pag=matricula" method="post"  id="contact_form">

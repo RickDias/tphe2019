@@ -15,7 +15,7 @@
 							<!-- top-big-grids -->
 							<div class="top-big-grids">
                 <!-- cima a baiso esquerda -->
-								<div class="col-md-12 top-grid-left-left" style="background:black">
+								<div class="col-md-12 top-grid-left-left" style="background:;">
                   <!-- div grande -->
 									<!-- <div class="top-grid-left-left-grids"style="background:tomato">
 										<div class="col-md-8 top-grid-left-img">
@@ -38,23 +38,51 @@
 									<!-- three-grids -->
 									<div class="three-grids">
                     <!-- menor para foreach -->
-										<div class="col-md-12" style="background:silver">
-											<h3>Quizes disponíveis</h3>
+										<div class="col-md-12" style="margin-bottom:15px;background:;padding: 15px;border:1px solid gray;border-radius:3px;">
+											<h3>Quizes disponíveis pelo professor</h3>
 											{if $resultados->num_rows > 0}
 											{foreach key=$key from=$resultados item=$jogo}
 											<!-- {$jogo|var_dump} -->
 											<div class="col-md-4">
 												<div class="three-grid-img">
-													<a href="#"><img src="theme/default/images/f{$key+1}.jpg" alt="" /></a>
+													<a href="#"><img src="theme/default/images/c{rand(1,15)}.jpg" alt="" /></a>
 												</div>
-												<div class="three-grid-text">
+												<div class="three-grid-text"  style="border:1px solid silver;">
 													<div class="three-grid-text-heading">
-														<a class="text" href="#">{$jogo["DESCRICAO"]}</a>
+														<a class="text" href="index.php?pag=jogar_quiz&id-turma={$jogo["ID_TURMA"]}&id-quiz={$jogo["ID_QUIZ"]}">{$jogo["DESCRICAO"]} - {$jogo["SIGLA"]}</a>
 													</div>
 													<div class="t-grid author-grid">
 														<ul>
-															<li><a href="#"><i class="fa fa-clock-o"></i> 1h</a></li>
-															<li><a href="#"><i class="fa fa-user"></i> Vestibulum</a></li>
+															<li><a href="#"><i class="fa fa-clock-o"></i> 30s</a></li>
+															<li><a href="#"><i class="fa fa-user"></i> {$jogo["NOME"]}</a></li>
+														</ul>
+													</div>
+												</div>
+											</div>
+											{/foreach}
+											{else}
+											<span>Não há quizes liberados no momento!</span>
+											{/if}
+										</div>
+
+										<!-- individuais teste -->
+										<div class="col-md-12" style="background:;padding: 15px;border:1px solid gray;border-radius:3px;">
+											<h3>Quizes individuais disponíveis</h3>
+											{if $resultados_ind->num_rows > 0}
+											{foreach key=$key from=$resultados_ind item=$jogo_ind}
+											<!-- {$jogo_ind|var_dump} -->
+											<div class="col-md-4">
+												<div class="three-grid-img">
+													<a href="#"><img src="theme/default/images/g{rand(1,15)}.jpg" alt="" /></a>
+												</div>
+												<div class="three-grid-text"  style="border:1px solid silver;">
+													<div class="three-grid-text-heading">
+														<a class="text" href="index.php?pag=jogar_quiz_ind&id-turma={$jogo_ind["ID_TURMA"]}&id-quiz={$jogo_ind["ID_QUIZ"]}">{$jogo_ind["DESCRICAO"]}</a>
+													</div>
+													<div class="t-grid author-grid">
+														<ul>
+															<li><a href="#"><i class="fa fa-clock-o"></i> 30s</a></li>
+															<li><a href="#"><i class="fa fa-user"></i> {$jogo_ind["NOME"]}</a></li>
 														</ul>
 													</div>
 												</div>
@@ -70,22 +98,24 @@
 									</div>
 									<!-- //three-grids -->
 									<!-- two-grids -->
-									<div class="two-grids">
+									<div class="two-grids"style="background:;padding: 15px;border:1px solid gray;border-radius:3px;">
                     <!-- divs mais longas para foreach -->
-										<div class="col-md-6 two-grid-left" style="background:yellow">
+										<h3>Avisos</h3>
+										<div class="col-md-6 two-grid-left" >
 											<div class="two-grid-info">
 												<div class="two-grid-img">
-													<a href="single.html"><img src="theme/default/images/f1.jpg" alt="" /></a>
+													<a href="single.html"><img src="theme/default/images/motor{rand(1,13)}.jpg" alt="" /></a>
 												</div>
 												<div class="two-grid-text">
 													<div class="three-grid-text-heading two-grid-text-heading">
-														<a class="text" href="single.html">Fusce ornare congue ligula vel placerat</a>
-														<p>Nam id sollicitudin felis. Nulla non bibendum arcu. Vestibulum non venenatis risus.Suspendisse venenatis venenatis mi, et cursus risus vehicula non.</p>
+														<a class="text" href="single.html">Aula no dia 12/10</a>
+														<p style="color:black">Pessoal, relembrando que no dia 12/10 será dia letivo com o horário da nossa aula. Faremos testes com os Quizes disponíveis para encontrar
+														 possíveis falhas. Aguardo vocês lá!!!</p>
 													</div>
 													<div class="t-grid author-grid two-grid-author">
 														<ul>
-															<li><a href="#"><i class="fa fa-clock-o"></i> 3h</a></li>
-															<li><a href="#"><i class="fa fa-user"></i> Suspendisse</a></li>
+															<li><a href="#"><i class="fa fa-clock-o"></i> 16:20min</a></li>
+															<li><a href="#"><i class="fa fa-user"></i> Karlise</a></li>
 														</ul>
 													</div>
 												</div>
@@ -105,7 +135,7 @@
 						</div>
 						<!-- //top-grid-left -->
 						<!-- top-grid-right -->
-						<div class="col-md-3 top-grid-right" style="background:red">
+						<div class="col-md-3 top-grid-right" style="background:">
               <!-- ultimos avisos -->
               <div class="more-news">
                 <div class="more-news-heading">
@@ -121,9 +151,9 @@
                           <div class="date-text">
 														<!-- {$aviso|var_dump} -->
                             <h4>{$usuario[$key][0]->nome}</h4>
-														<small class="pull-right text-muted">
+														<!-- <small class="pull-right text-muted">
 		                          <i class="fa fa-clock-o fa-fw"></i> 12 mins ago
-		                        </small>
+		                        </small> -->
                             <ul>
                               <li><i class="fa fa-arrow-right"></i> {$aviso->getMensagem()}</li>
                               <li><a href="#"><i class="fa fa-play-circle-o"></i> Ver Mensagem</a></li>
@@ -155,13 +185,30 @@
 						<div class="clearfix"> </div>
 
 						</div>
+						<!-- player-rank -->
+						<div class="player-rank col-md-3">
+							<div class="ranking-heading">
+								<h3>Top 10 Players</h3>
+							</div>
+							{if $jogadores->num_rows > 0}
+							{foreach key=$key from=$jogadores item=$jogador}
+							<!-- {$jogador|var_dump} -->
+							<div class="classejogador">
+									<span style="font-weight:bold;text-transform: uppercase;">{$key+1}º {$jogador["usuario"]} - <span style="font-size:12px">Lv {$jogador["total"]}</span></span><br>
+									<i class="fa fa-arrow-right"></i><span style="font-weight:bold"> {$jogador["total"]} pontos</span><br>
+									<span class="text-muted" style="font-size:13px"><i class="fa fa-clock-o fa-fw"></i> {$jogador["turma"]}</span>
+							</div>
+							{/foreach}
+							{/if}
+						</div>
+						<!-- //player-rank -->
 						<!-- //top-grid-right -->
 
 						<div class="clearfix"> </div>
 					</div>
           <div>
             <!-- more-sports -->
-            <div class="more-sports col-md-8">
+            <!-- <div class="more-sports col-md-8">
 
 
               <div class="more-sports-heading">
@@ -169,7 +216,7 @@
               </div>
               <div class="more-sports-grids">
                 <!-- foreach extra -->
-                <div class="col-md-4 more-sports-grid">
+                <!-- <div class="col-md-4 more-sports-grid">
                   <div class="more-grids">
                     <div class="col-md-6 more-grid-left">
                       <a href="index.html"><img src="theme/default/images/f15.jpg" alt="" /></a>
@@ -184,63 +231,14 @@
                     </div>
                     <div class="clearfix"> </div>
                   </div>
-                </div>
+                </div> -->
                 <!-- /foreach extra -->
 
-                <div class="clearfix"> </div>
+                <!-- <div class="clearfix"> </div>
               </div>
-            </div>
+            </div> -->
             <!-- //more-sports -->
-            <!-- player-rank -->
-            <div class="player-rank col-md-4">
-              <div class="ranking-heading">
-                <h3>Top 10 Players</h3>
-              </div>
-              <div class="ranking-grids">
-                <table>
-                  <thead>
-                    <th class="th-rank">
-                      Rank
-                    </th>
-                    <th class="th-country">
-                      Name
-                    </th>
-                    <th class="th-t-points">
-                      Position
-                    </th>
-                    <th class="th-p-points">
-                      Club
-                    </th>
-                    <th class="th-p-points">
-                      Nationality
-                    </th>
-                  </thead>
-                  <tbody>
-                    <!-- foreach jogadores rank -->
-                    <tr class="b-color">
-                      <td class="rank">
-                        1.
-                      </td>
-                      <td class="country">
-                        <a href="club.html">Lionel Messi</a>
-                      </td>
-                      <td class="t-points">
-                        Forward
-                      </td>
-                      <td class="t-points p-points">
-                        <a href="club.html">Barcelona</a>
-                      </td>
-                      <td class="t-points p-points">
-                        Argentina
-                      </td>
-                    </tr>
-                    <!-- /foreach jogadores rank -->
 
-                  </tbody>
-                </table>
-              </div>
-            </div>
-            <!-- //player-rank -->
           </div>
 
 				</div>

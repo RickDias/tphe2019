@@ -5,33 +5,26 @@ var clicado = false;
 var type, i, pontuacao = 0;
 
 function showTab(n) {
-  clicado = false;
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
-  if(n == 0){
-    x[1].style.display = "none";
-  }else{
-    x[n-1].style.display = "none";
-    x[n].style.display = "block";
-  }
-  // document.getElementById("resp_errada").style.display = "none";
-  // document.getElementById("resp_certa").style.display = "none";
-
+  x[n].style.display = "block";
+  document.getElementById("resp_errada").style.display = "none";
+  document.getElementById("resp_certa").style.display = "none";
+  clicado = false;
 
   // ... and fix the Previous/Next buttons:
   if (n == 0) {
     // document.getElementById("prevBtn").style.display = "none";
     document.getElementById("all_steps").style.display = "none";
+    document.getElementById("timer_count").style.display = "none";
     document.getElementById("score_quiz").style.display = "none";
-    document.getElementById("iniciar").style.display = "none";
-    document.getElementById("description").style.display = "block";
+    document.getElementById("iniciar").style.display = "block";
   } else {
     // document.getElementById("prevBtn").style.display = "inline";
     document.getElementById("all_steps").style.display = "block";
+    document.getElementById("timer_count").style.display = "block";
     document.getElementById("score_quiz").style.display = "block";
     document.getElementById("iniciar").style.display = "none";
-    document.getElementById("description").style.display = "none";
-
   }
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
@@ -50,7 +43,7 @@ function showTab(n) {
 
 }
 
-function nextPrev(n) {
+function nextPrevInd(n) {
   tempo(1);
   // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
@@ -63,11 +56,36 @@ function nextPrev(n) {
   // if you have reached the end of the form... :
   if (currentTab >= x.length) {
     //...the form gets submitted:
-    // document.getElementById("regForm").submit();
+    document.getElementById("termina_form").click();
     return false;
   }
   // Otherwise, display the correct tab:
   showTab(currentTab);
+}
+
+function updateEsgotado(status,turma,quiz)
+{
+  console.log(status,turma,quiz);
+        $.post('index_base.php?pag=quiz_admin&id_turma='+turma+'&id_quiz='+quiz+'&esgotado='+status, function(d)
+        {
+          if(status == 1){
+            console.log('ESGOTADO');
+          }
+          if(status == 0){
+            console.log('REINICIADO');
+          }
+            // $(answer).after("<span>Score Updated!</span>").remove();
+        });
+}
+
+function updateRodada(rodada,quiz,turma)
+{
+  // alert("RODADA");
+        $.post('index_base.php?pag=quiz_admin&id_turma='+turma+'&id_quiz='+quiz+'&rodada='+rodada, function(d)
+        {
+            console.log('Update rodada');
+            // $(answer).after("<span>Score Updated!</span>").remove();
+        });
 }
 
 function validateForm() {
@@ -123,71 +141,56 @@ function remove_fill_resp(n){
   }
 }
 
-function confere_resposta(tipo , n, pontos, quiz, turma, pergunta_clicada,usuario,resposta){
+function confere_resposta_ind(tipo , n, pontos,quiz,usuario,resposta,pc){
   parar();
-  $.ajax({
-              type:"POST",
-              url: "check_start.php",
-              async:true,
-              dataType : "json",
-              data: {
-                ver_esgotado:1,
-                id_quiz:quiz,
-                id_turma:turma
-              },
-              success: function( data ) {
-                // console.log(data.ESGOTADO);
-                var esg = data.ESGOTADO.toString();
-                // console.log(esg);
-                if(esg == 2){
-                if(clicado === false){
-                  if(tipo == "V"){
-                    // document.getElementById("resp_certa").style.display = "block";
-                    pontuacao = parseFloat(pontuacao+Number(pontos));
-                    var div_score = parseFloat($("#score_val").val());
-                    var p_total = parseFloat(div_score+pontuacao);
-                    $.ajax({
-                                type:"POST",
-                                url: "check_start.php",
-                                async:true,
-                                dataType : "json",
-                                data: {
-                                  update_pontos:1,
-                                  id_quiz:quiz,
-                                  usuario:usuario,
-                                  pontuacao:pontos,
-                                  resposta:resposta
-                                },
-                                success: function( data ) {
-                                  console.log(data);
-                                  if(data == "Pergunta ja respondida!"){
-                                    alert(data);
-                                  }else{
-                                    $("#score_val").val(p_total);
-                                  }
-                                },
-                                  error: function( xhr, status) {
-                                  console.log(xhr);
-                                  console.log(status);
-                                  }
-                                  });
-                  }else{
-
-                    // document.getElementById("resp_errada").style.display = "block";
-                  }
-                  mudaCores(n,pergunta_clicada);
-                }
-                clicado = true;
-              }else{
-                alert("Tempo esgotado! Aguarde a próxima rodada");
-              }
-              },
-              error: function( xhr, status) {
-              console.log(xhr);
-              console.log(status);
-              }
-              }); //= checkEsgotado(quiz,turma);
-
+  // console.log();
+  // if(clicado === false){
+  //   if(tipo == "V"){
+  //     document.getElementById("resp_certa").style.display = "block";
+  //     pontuacao = pontuacao+Number(pontos);
+  //     $("#score_val").val(pontuacao);
+  //   }else{
+  //     document.getElementById("resp_errada").style.display = "block";
+  //   }
+  //   mudaCores(n);
+  // }
+  if(clicado === false){
+    if(tipo == "V"){
+      document.getElementById("resp_certa").style.display = "block";
+      pontuacao = parseFloat(pontuacao+Number(pontos));
+      var div_score = parseFloat($("#score_val").val());
+      var p_total = parseFloat(div_score+pontuacao);
+      $.ajax({
+                  type:"POST",
+                  url: "check_start.php",
+                  async:true,
+                  dataType : "json",
+                  data: {
+                    update_pontos:1,
+                    id_quiz:quiz,
+                    usuario:usuario,
+                    pontuacao:pontos,
+                    resposta:resposta
+                  },
+                  success: function( data ) {
+                    console.log(data);
+                    if(data == "Pergunta ja respondida!"){
+                      alert(data);
+                    }else{
+                      $("#score_val").val(p_total);
+                    }
+                  },
+                    error: function( xhr, status) {
+                    console.log(xhr);
+                    console.log(status);
+                    }
+                    });
+    }else{
+      document.getElementById("resp_errada").style.display = "block";
+    }
+  }
+  mudaCores(n,pc);
+  clicado = true;
 }
 
 function mudaCores(n,pc){
@@ -218,13 +221,16 @@ function mudaCores(n,pc){
 var intervalo;
 function tempo(op) {
 	var s = 29;
+  // var s = 2;
+
 	intervalo = window.setInterval(function() {
-		if (s == 0) { s = 30; parar(); confere_resposta("F") }
-    console.log(s);
-		// if (s < 10) document.getElementById("segundo").innerHTML = "0" + s; else document.getElementById("segundo").innerHTML = s;
+		if (s == 0) {s = 30; parar(); confere_resposta_ind("F");}
+		if (s < 10) document.getElementById("segundo").innerHTML = "0" + s; else document.getElementById("segundo").innerHTML = s;
 		s--;
 	},1000);
 }
+
+
 
 function parar() {
 	window.clearInterval(intervalo);

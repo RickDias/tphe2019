@@ -77,7 +77,7 @@ input.invalid {
   padding: 5px;text-align: center;
   margin: 15px 0 15px;
   font-weight: bold;
-  background: red;
+  background: #f25252;
   color: black;
 }
 .result_resposta_certa{
@@ -86,7 +86,17 @@ input.invalid {
   padding: 5px;text-align: center;
   margin: 15px 0 15px;
   font-weight: bold;
-  background: green;
+  background: #059c14;
+  color: black;
+}
+
+.result_resposta_sel{
+  border: 1px solid gray;
+  border-radius: 10px;
+  padding: 5px;text-align: center;
+  margin: 15px 0 15px;
+  font-weight: bold;
+  background: #1a4da1;
   color: black;
 }
 
