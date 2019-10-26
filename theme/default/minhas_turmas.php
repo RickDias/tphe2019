@@ -12,7 +12,7 @@ if(Tools::getValue("enviado")==1){
 if(Tools::isSubmit("ver_turma")){
 if(Tools::getValue("id-turma")){
 $id_turma = Tools::getValue("id-turma");
-  $sql = "SELECT t.`ID_TURMA`, t.`NOME` as nome_turma, t.`SIGLA`, u.`NOME` as nome_aluno
+  $sql = "SELECT distinct t.`ID_TURMA`, t.`NOME` as nome_turma, t.`SIGLA`, u.`NOME` as nome_aluno
   FROM `turma` t,`turma_aluno`ta, `usuario` u
   WHERE t.`ID_TURMA` = ta.`ID_TURMA`
   AND ta.`ID_USUARIO` = u.`ID_USUARIO`
@@ -26,7 +26,7 @@ $id_turma = Tools::getValue("id-turma");
   }
 }
 }else{
-  $sql = "SELECT t.`ID_TURMA`, ta.`status`, t.`NOME` as nome_turma, t.`SIGLA`, u.`NOME` as nome_aluno
+  $sql = "SELECT distinct t.`ID_TURMA`, ta.`status`, t.`NOME` as nome_turma, t.`SIGLA`, u.`NOME` as nome_aluno
                 FROM `turma` t,`turma_aluno`ta, `usuario` u
                 WHERE t.`ID_TURMA` = ta.`ID_TURMA`
                 AND ta.`ID_USUARIO` = u.`ID_USUARIO`

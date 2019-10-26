@@ -26,7 +26,7 @@ if(Tools::getValue("terminar")==1){
   from pontuacao p, usuario u
   where (p.`id_usuario` = u.`ID_USUARIO`)
   AND p.`id_quiz` = '".$id_quiz."'
-  GROUP BY p.pontos DESC
+  GROUP BY p.id_usuario order by pontos_geral DESC
   ");
   $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
   // update RODADA

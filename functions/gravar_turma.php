@@ -35,7 +35,7 @@
 
 <html lang="pt-br">
 <head>
-	<link href="../theme/default/paginas/css/main.css" rel="stylesheet" type="text/css">
+	<link href="../theme/default/paginas/css/main-default.css" rel="stylesheet" type="text/css">
 </head>
 <div class="container_aviso">
 	<br>Este será o código da turma, sera utilizado para o cadastro dos alunos:

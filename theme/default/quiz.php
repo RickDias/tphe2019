@@ -20,7 +20,7 @@ if(Tools::getValue("sair_quiz") == 1){
   $sair = $sala_alunoDAO->updateStatus($_SESSION['UsuarioID'],"N",$con);
 }
 //criando a query de consulta à tabela
-$sql = "SELECT q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
+$sql = "SELECT distinct q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
               date_format(q.`DT_INICIO`, '%d-%m-%Y') AS 'DT_INICIO',
               date_format(q.`DT_FIM`, '%d-%m-%Y') AS 'DT_FIM', q.`PUBLICACAO` ,
               t.`SIGLA`, t.`ID_TURMA`, u.`NOME`

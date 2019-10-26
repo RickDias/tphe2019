@@ -115,8 +115,11 @@
     cursor:pointer;
     background: #f2dede;
     border: 1px solid #ebccd1;
-    border-radius: 15px;
+    border-left: 5px solid #333;
+    border-radius: 0px 15px 15px 0px;
     padding: 5px;
+    width: 130px;
+
   }#cancel_pass:hover{
     background: #ed8787;
   }
@@ -126,13 +129,23 @@
     cursor:pointer;
     background: #f2dede;
     border: 1px solid #ebccd1;
-    border-radius: 15px;
+    border-left: 5px solid #333;
+    border-radius: 0px 15px 15px 0px;
     padding: 5px;
+    width: 130px;
   }#alt_senha:hover{
     background: #ed8787;
 
   }
 
+.navbar-default{
+  top:50px;
+  padding: 15px 0;
+  background: #fed136;
+  color:black;
+  border-radius: 0px 35px 5px 0px;
+
+}
   .social-buttons{
     margin: 20px;
   }

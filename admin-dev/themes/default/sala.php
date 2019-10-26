@@ -11,6 +11,17 @@ require $classe_DAO;
 $quizDAO = new turma_quizDAO();
 $id_quiz = Tools::getValue('id_quiz');
 $id_turma = Tools::getValue('id_turma');
+
+$sql_turma = "SELECT t.`NOME`, t.`SEMESTRE`
+              FROM `turma` t
+              WHERE t.`ID_TURMA` = ".$id_turma;
+$nome_turma = mysqli_query($con, $sql_turma);
+if($nome_turma->num_rows > 0){
+  while($result = mysqli_fetch_assoc($nome_turma)) {
+    $smarty->assign("nome_turma", $result["NOME"]);
+    $smarty->assign("semestre", $result["SEMESTRE"]);
+
+}}
 if($id_quiz){
   $smarty->assign(array(
     'id_quiz' => $id_quiz,

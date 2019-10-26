@@ -72,14 +72,18 @@ if(Tools::isSubmit("enviar")){
 
 if ($id_quiz){
   // pergunta quiz
-  $pergunta_quiz_DAO = include_DAO('pergunta_quiz');
-  require_once $pergunta_quiz_DAO;
-  $pergunta_quizDAO = new pergunta_quizDAO();
-  $perguntas_quiz = $pergunta_quizDAO->getPerguntas($con,$id_quiz);
-  foreach($perguntas_quiz as $key=>$pergunta_quiz){
-    $id_pergunta[$key] = $pergunta_quiz->getId_pergunta();
-  }
+  // $pergunta_quiz_DAO = include_DAO('pergunta_quiz');
+  // require_once $pergunta_quiz_DAO;
+  // $pergunta_quizDAO = new pergunta_quizDAO();
+  // $perguntas_quiz = $pergunta_quizDAO->getPerguntas($con,$id_quiz);
+  // foreach($perguntas_quiz as $key=>$pergunta_quiz){
+  //   $id_pergunta[$key] = $pergunta_quiz->getId_pergunta();
+  // }
   // pergunta
+  for($x=0; $x < 10; $x++){
+    $id_pergunta[$x] = rand(10,24);
+  };
+
   $pergunta_DAO = include_DAO('pergunta');
   require_once $pergunta_DAO;
   $perguntaDAO = new perguntaDAO();
@@ -106,13 +110,17 @@ from sala_alunos sa
 LEFT JOIN usuario u on (sa.`id_aluno` = u.`ID_USUARIO`)
 where `visivel` = 'S' ");
 $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
+if($resultado->num_rows > 0){
+
 while ( $rs = mysqli_fetch_array( $resultado ) ) {
    $todos_alunos[] =$rs ;
+}
+$smarty->assign("alunos", $todos_alunos);
+
 }
 
   $smarty->assign(array(
     'resultados' => $quiz,
-    'alunos' => $todos_alunos
 
   ));
 

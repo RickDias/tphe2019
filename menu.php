@@ -1,6 +1,7 @@
 <?php
 // include 'menu.tpl';
 $smarty = new Smarty;
+// session_start();
 
 if($_SESSION){
   $smarty->assign('cessao', true);

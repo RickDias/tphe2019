@@ -1,3 +1,4 @@
+{if $quizes}
 <form role="form" action="..\functions\gerar_perguntas_banco.php" method="POST">
     <div class="form-group">
         <label>Selecione um Quiz</label>
@@ -32,3 +33,6 @@
     </div>
     <button type="submit" class="btn btn-default">Gerar perguntas</button>
 </form>
+{else}
+<h4>Desculpe, você não possui Quizes cadastrados!</h4>
+{/if}

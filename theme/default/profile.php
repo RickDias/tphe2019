@@ -7,6 +7,13 @@ $smarty->error_reporting = E_ALL & ~E_NOTICE;
 $smarty->assign("upd_pass", 0);
 $usuario_id = $_SESSION['UsuarioID'];
 
+$theme = Configuration::get('theme');
+if($theme == "default"){
+  $color = "#fed136";
+}
+$smarty->assign("color", $color);
+
+
 $classe_VO = include_VO('usuario');
 $classe_DAO = include_DAO('usuario');
 

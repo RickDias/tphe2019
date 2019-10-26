@@ -1,21 +1,34 @@
 <div class="container-sala">
-<h1> Aguardando Alunos...</h1>
+<h4> Aguardando Alunos...</h4>
 <div class="col-md-12" id="item-sala">
   <div class="col-md-12" id="div_alunos_sala">
     <div class="col-md-9" >
-      <h3 id="turma_nome">Turma - ?</h3>
+      <h3 id="turma_nome">Turma - {$nome_turma}, {$semestre}° Semestre</h3>
     </div>
+    <!-- {$alunos|var_dump} -->
     {if $alunos}
-    <div class="col-md-3" id="teste">
+    <div class="col-md-3" id="container_sala__aluno">
       <h3>Jogadoress na sala</h3>
+      <div class="item_sala_aluno">
       {foreach from=$alunos key=$key item=$aluno}
-        <span id="aluno_nome_{$key}" class="nome_aluno col-md-12">{$aluno["nome_aluno"]}</span>
+      <div class="col-md-12" id="bloco_aluno">
+        <div class="col-md-3">
+          <div class="icon_aluno">
+            {$key+1}
+          </div>
+        </div>
+        <div class="col-md-9">
+          <span id="aluno_nome_{$key}" class="nome_aluno col-md-12">{$aluno["nome_aluno"]}</span>
+        </div>
+      </div>
       {/foreach}
     </div>
+  </div>
+
     {else}
     <div class="col-md-3" id="sem_alunos">
       <h3>Alunos na sala</h3>
-      Sem Alunos na turma!
+      Sem Alunos na Sala!
     </div>
     {/if}
   </div>
@@ -26,12 +39,14 @@
       <input type="hidden" id="fechar_sala" name="fechar_sala" value="{$id_quiz}">
       <i class="icon-chevron-sign-right" style="font-size:30px"></i>
     </form>
+    <center>
     <a href="index_base.php?pag=sala&fechar_sala=1&id_quiz={$id_quiz}&id_turma={$id_turma}" class="btn btn-outline btn-danger" name="fechar_sala">
       Fechar Sala
     </a>
       <a href="index_base.php?pag=quiz_admin&iniciar_quiz=1&id_quiz={$id_quiz}&id_turma={$id_turma}" class="btn btn-outline btn-success">
       Iniciar Quiz
     </a>
+  </center>
   </div>
 
 </div>

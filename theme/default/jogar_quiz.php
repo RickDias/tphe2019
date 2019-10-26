@@ -23,7 +23,9 @@ if($id_quiz && $id_usuario){
   if($score_res->num_rows > 0){
   while ( $rs = mysqli_fetch_array( $score_res ) ) {
     // $todos_alunos[] =$rs ;
-    $smarty->assign("score", $rs[0]);
+    $pontooo = $rs[0];
+    // var_dump($pontooo);
+    $smarty->assign("score", $pontooo);
   }
 }else{
   $smarty->assign("score", 0);

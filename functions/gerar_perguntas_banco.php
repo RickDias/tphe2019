@@ -1,23 +1,28 @@
+<html lang="pt-br">
+<head>
+<link href="../theme/default/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background:#eee">
+	<center>
 <?php
 session_start();
 
 include('functions.php');
 include('../config/config.php');
 
-	echo "ID_QUIZ: ".$_POST['sel_quiz']."<br/>";
-	echo "ID_TURMA: ".$_POST['sel_turma']."<br/>";
-	echo "ID_CATEGORIA: ".$_POST['sel_categoria']."<br/><br/>";
+	// echo "ID_QUIZ: ".$_POST['sel_quiz']."<br/>";
+	// echo "ID_TURMA: ".$_POST['sel_turma']."<br/>";
+	// echo "ID_CATEGORIA: ".$_POST['sel_categoria']."<br/><br/>";
 
   $link = conecta_db();
 
 	//criando a query de consulta à tabela
 	$query  = "SELECT `ID_PERGUNTA`, `DESCRICAO`, `PONTUACAO`, `ID_DISCIPLINA`, `ID_CATEGORIA`, `ID_USUARIO` ";
-	$query .= " FROM `pergunta` WHERE `ID_USUARIO` = ".$_SESSION['UsuarioID'];
-	$query .= " AND `ID_CATEGORIA` = ".$_POST['sel_categoria'];
+	$query .= " FROM `pergunta` WHERE `ID_CATEGORIA` = ".$_POST['sel_categoria'];
 	$query .= " AND `ID_DISCIPLINA`= 1"; //inicialmente, teremos somente Educação Física
 	$query .= " ORDER BY RAND() LIMIT 10";
-	$sql = mysqli_query($link, $query) or die(mysqli_error($link)); //caso haja um erro na consulta
 
+	$sql = mysqli_query($link, $query) or die(mysqli_error($link)); //caso haja um erro na consulta
 
   $classe_VO = include_VO2('pergunta_quiz');
   $classe_DAO = include_DAO2('pergunta_quiz');
@@ -30,7 +35,7 @@ include('../config/config.php');
 	if($sql){
 	while($aux = mysqli_fetch_assoc($sql)) {
 		//percorrendo os registros da consulta.
-		echo '<br/>ID_PERGUNTA: '.$aux['ID_PERGUNTA'].' - DESCRICAO: '.$aux['DESCRICAO'].'<BR/>';
+		echo '<br/><div class="alert alert-warning" role="alert" style="margin:10px">ID_PERGUNTA: '.$aux['ID_PERGUNTA'].' - DESCRICAO: '.$aux['DESCRICAO'].'</div><BR/>';
 
 		$pergunta_quizVO->setId_pergunta($aux['ID_PERGUNTA']);
 		$pergunta_quizVO->setId_quiz($_POST['sel_quiz']);
@@ -53,20 +58,26 @@ include('../config/config.php');
 	$turma_quizVO->setId_turma($_POST['sel_turma']);
 
 	$turma_quizDAO = new turma_quizDAO();
-	echo "Turma: ".$_POST['sel_turma']." e Quiz: ".$_POST['sel_quiz']."<br/>";
+	echo "<h4>Turma: ".$_POST['sel_turma']." e Quiz: ".$_POST['sel_quiz']."</h4><br/>";
 
 	if($turma_quizDAO->insert($turma_quizVO, $link)){
-    printf('Registro inserido com sucesso.');
+    printf('<div class="alert alert-success" role="alert" style="margin:10px">Registro inserido com sucesso.</div>');
   }
 
 }else{
-	echo "A consulta não retornou nenhum resultado!";
+	echo '<div class="alert alert-danger" role="alert" style="margin:10px">A consulta não retornou nenhum resultado!</div>';
 }
 
 	desconecta_db($link);
 
 ?>
-
-<html lang="pt-br">
-    </br></br><a href="../admin-dev/index_base.php" class="alert-link">Voltar para a tela administrativa</a>
+	<div class="container-fluid">
+  	<div class="row">
+  		<div class="col-md-12">
+			</br></br><a href="../admin-dev/index_base.php" class="alert-link">Voltar para a tela administrativa</a>
+			</div>
+		</div>
+	</div>
+</center>
+</body>
 </html>

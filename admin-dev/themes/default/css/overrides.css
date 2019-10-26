@@ -4,7 +4,7 @@ You should NOT edit any other exisiting back-office CSS file manually: they are 
 .row{
   padding-left: 15px !important;
 }
-.container_perguntas_admin{
+  .container_perguntas_admin{
   display: flex;
   flex-wrap: wrap;
   justify-content:space-around;
@@ -12,6 +12,7 @@ You should NOT edit any other exisiting back-office CSS file manually: they are 
   /* background: silver; */
 }
 .perguntas_admin{
+  /* color:#fff; */
   display: flex;
   flex-wrap: wrap;
   background: linear-gradient(#fff 15%, gray);
@@ -28,6 +29,8 @@ align-self: center;
 margin-left: auto;
 margin-right: auto;
 border-radius: 20px;
+color:#fff;
+
 }
 #F{
   background: #a10000;
@@ -36,15 +39,21 @@ border-radius: 20px;
 #V{
 background: green;
 }
-#iniciar_sala , #iniciar_sala a{
-  background: silver;
+#iniciar_sala {
+  /* background: silver; */
+  border: 1px solid gray;
+  border-radius: 15px;
   padding: 20px;
   color: black !important;
   margin:20px;
   font-weight: bold;
+  width: 35%;
 }
 #item-sala{
-  background: silver;
+  /* background: silver; */
+  border: 1px solid gray;
+  border-radius: 5px;
+  padding-bottom: 15px;
 }
 
 .fa-thumbs-up{
@@ -159,4 +168,67 @@ padding: 20px;
 margin-left: 100px;
 font-size: 40px;
 font-weight: bold;
+}
+
+.radio{
+  border: 1px solid gray;
+  border-radius: 5px;
+  width: 20%;
+  text-align: left;
+  padding: 5px;
+  cursor: pointer;
+}.radio:hover{
+  background: #999;
+}
+.option_radio{
+  cursor: pointer;
+  margin-left: 0 !important;
+  float: right !important;
+}
+
+#turma_nome{
+  background: #ddd;
+  padding: 15px;
+  border-left: 5px solid #999;
+  /* width: 60% */
+}
+
+#container_sala__aluno{
+  border: 1px solid silver;
+  min-height: 500px;
+  padding-top: 15px;
+  background: white;
+}
+
+.item_sala_aluno{
+  margin-top: 15px;
+  padding: 10px;
+
+}
+#bloco_aluno{
+  border: 1px solid gray;
+  background: white;
+  border-radius: 10px;
+
+}
+
+.icon_aluno{
+  border-radius: 50%;
+  background: #888;
+  /* margin-left: 5px; */
+  margin: 2px -5px;
+  padding: 5px 15px;
+  color: #eee;
+  font-weight: bold;
+}
+
+.nome_aluno{
+  font-weight: bold;
+  margin-top: 5px;
+}
+.classejogador{
+  border: 1px solid silver;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
 }

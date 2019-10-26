@@ -27,7 +27,8 @@ include($classe_DAO);
 	//inicia transacao
 
 	if($quizDAO->insert($quizVO, $link)){
-    printf('Registro inserido com sucesso.');
+
+    printf('<div class="alert alert-success" role="alert" style="margin:10px">Registro inserido com sucesso.</div>');
   }
 	//commita
 	desconecta_db($link);
@@ -35,5 +36,17 @@ include($classe_DAO);
 
 
 <html lang="pt-br">
-</br></br><a href="../admin-dev/index_base.php" class="alert-link">Voltar para a tela administrativa</a>
+<head>
+<link href="../theme/default/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body style="background:#eee">
+	<div class="container-fluid">
+  	<div class="row">
+  		<div class="col-md-12">
+				</br></br><a href="../admin-dev/index_base.php" class="alert-link">Voltar para a tela administrativa</a>
+			</div>
+		</div>
+	</div>
+
+</body>
 </html>

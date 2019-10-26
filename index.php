@@ -17,26 +17,26 @@ $theme = Configuration::get('theme');
     <meta name="description" content="">
     <meta name="author" content="">
     <!-- Bootstrap Core CSS -->
-    <link href="theme/<?php echo $theme ?>/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="theme/default/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom Fonts -->
-    <link href="theme/<?php echo $theme ?>/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="theme/default/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css">
     <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'>
     <link href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700' rel='stylesheet' type='text/css'>
     <!-- cruzxadas -->
-    <link href="theme/<?php echo $theme ?>/paginas/css/main.css" rel="stylesheet">
+    <link href="theme/default/paginas/css/main-<?php echo $theme ?>.css" rel="stylesheet">
     <!-- Theme CSS -->
-    <link href="theme/<?php echo $theme ?>/css/agency.css" rel="stylesheet">
+    <link href="theme/default/css/agency.css" rel="stylesheet">
 
-    <link href="theme/<?php echo $theme ?>/css/menu.css" rel="stylesheet">
+    <link href="theme/default/css/menu.css" rel="stylesheet">
 
 </head>
 <body id="page-top" class="index">
-  <div class="col-md-12">
+  <div class="">
     <?php
+    include 'menu_jogador.php';
 
-      include 'menu_jogador.php';
       include 'menu.php';
 
     if (Tools::getValue('pag')){
@@ -47,15 +47,15 @@ $theme = Configuration::get('theme');
       if(Tools::getValue('pag') == 'jogos'){
         if (Tools::getValue('jogo')){
           $jogo = Tools::getValue('jogo');
-          require "theme/".$theme."/".$jogo.".php";
+          require "theme/default/".$jogo.".php";
         }else{
-        require "theme/".$theme."/home_jogos.php";
+        require "theme/default/home_jogos.php";
         }
       }else{
-        require "theme/".$theme."/".$tpl.".php"; // onde 'pagina' é a variavel passada pela URL (GET)
+        require "theme/default/".$tpl.".php"; // onde 'pagina' é a variavel passada pela URL (GET)
       }
     }else{
-      require 'theme/'.$theme.'/home.php'; //primeiro acesso, padrao 'home.php'
+      require 'theme/default/home.php'; //primeiro acesso, padrao 'home.php'
     }
     ?>
   </div>
@@ -88,9 +88,9 @@ $theme = Configuration::get('theme');
       </div>
   </footer>
   <!-- jQuery -->
-    <script src="theme/<?php echo $theme ?>/vendor/jquery/jquery.min.js"></script>
+    <script src="theme/default/vendor/jquery/jquery.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
-    <script src="theme/<?php echo $theme ?>/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script src="theme/default/vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
 
 </html>

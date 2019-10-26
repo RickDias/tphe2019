@@ -34,8 +34,12 @@ $id_usuario = $_SESSION["UsuarioID"];
           echo $e->getMessage();
           mysqli_rollback($con);
       }
+      ?>
 
-      header("Location: index.php?pag=minhas_turmas&enviado=1");
+      <script language="JavaScript">
+      window.location="index.php?pag=minhas_turmas&enviado=1";
+      </script>
+      <?php
     }
   }
 }

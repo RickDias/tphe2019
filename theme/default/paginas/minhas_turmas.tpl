@@ -61,7 +61,7 @@
   </div>
 </div>
 {/foreach}
-<div class="panel-footer">
+<div class="panel-footer col-md-12">
   <a href="index.php?pag=minhas_turmas" class="btn btn-outline btn-success">
   <i class="fa fa-backward fa-1x"></i> Voltar
   </a>

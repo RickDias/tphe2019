@@ -30,6 +30,8 @@
           </thead>
           <tbody>
             <!-- {$result|var_dump} -->
+            <!-- {$dados_turma|var_dump} -->
+            {if $dados_turma}
             {foreach from=$dados_turma item=$turma}
             <!-- {$turma|var_dump} -->
             <tr>
@@ -63,6 +65,11 @@
 
             </tr>
             {/foreach}
+            {else}
+            <tr><td colspan="5"><center>
+              <h3>Sem Alunos nesta turma!</h3></center>
+            </td></tr>
+            {/if}
             </tbody>
           </table>
           <!-- /.table-responsive -->

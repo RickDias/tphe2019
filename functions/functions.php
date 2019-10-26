@@ -56,8 +56,14 @@ function include_VO2($VO){
 }
 
 function destroiCessao(){
-  session_start();
+  // session_start();
   unset($_SESSION);
   session_destroy();
-  header("Location: index.php"); exit;
+  ?>
+
+  <script language="JavaScript">
+  window.location="index.php";
+  </script>
+  <?php
+  exit;
 }

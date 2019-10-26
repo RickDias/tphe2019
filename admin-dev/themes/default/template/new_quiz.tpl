@@ -25,12 +25,12 @@
 
 										<div class="radio">
 											<label>
-												<input type="radio" name="optionsRadios" id="optionsRadios1" value="S" checked>Publicar
+												<input class="option_radio" type="radio" name="optionsRadios" id="optionsRadios1" value="S" checked>Publicar
 											</label>
 										</div>
 										<div class="radio">
 											<label>
-												<input type="radio" name="optionsRadios" id="optionsRadios2" value="N">Não publicar
+												<input class="option_radio" type="radio" name="optionsRadios" id="optionsRadios2" value="N">Não publicar
 											</label>
 										</div>
 

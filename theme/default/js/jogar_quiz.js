@@ -143,9 +143,10 @@ function confere_resposta(tipo , n, pontos, quiz, turma, pergunta_clicada,usuari
                 if(clicado === false){
                   if(tipo == "V"){
                     // document.getElementById("resp_certa").style.display = "block";
-                    pontuacao = parseFloat(pontuacao+Number(pontos));
+                    // pontuacao = parseFloat(pontuacao+Number(pontos));
                     var div_score = parseFloat($("#score_val").val());
-                    var p_total = parseFloat(div_score+pontuacao);
+                    var ponto_ganho = parseFloat(pontos);
+                    var p_total = parseFloat(div_score+ponto_ganho);
                     $.ajax({
                                 type:"POST",
                                 url: "check_start.php",

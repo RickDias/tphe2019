@@ -19,7 +19,6 @@
           <div class="container_pf">
             <div class="date-text" style="display: block;">
               <h4>{$usuario[0]->email}</h4>
-              <!-- <a href="#" style="color:red"><i class="fa fa-play-circle-o"></i> Alterar</a> -->
             </div>
             {if $upd_pass}
             {if $upd_ok == 1}
@@ -35,8 +34,9 @@
             <input type="password" id="new_pass" name="new_pass" style="display:none" required="required">
             <input type="submit" id="salva_pass" style="margin:10px 0;display:none" value="Salvar">
             <a id="cancel_pass" style="" onclick="oculta()">Cancelar</a>
-
-
+            <!-- <div  style="padding-top:15px">
+              Tema: <div style="background:white;border:1px solid gray;padding:5px 10px;width:50px;border-radius:15px"><div style="background:{$color};width:30px">&nbsp</div></div>
+            </div> -->
             <ul class="list-inline social-buttons">
               <li>
                 <a href="{$base_facebook}{$usuario[0]->id_facebook}"><i class="fa fa-facebook"></i></a>

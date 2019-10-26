@@ -1,4 +1,3 @@
-{if !$cessao}
 <!-- Navigation -->
 <nav id="mainNav" style="background:black">
     <div class="container" id="container_menu">
@@ -45,4 +44,24 @@
     </div>
     <!-- /.container-fluid -->
 </nav>
+<!-- ---------------------------------- sidebar -->
+{if $cessao}
+<div class="navbar-default sidebar col-md-2" role="navigation">
+	<div class="sidebar-nav navbar-collapse">
+    <div class="logo">
+    </div>
+		<ul class="nav lateral" id="side-menu">
+
+      <li><a href="index.php?pag=painel_jogador"><img src="theme/default/images/home.png" alt="" /><span>Painel</span></a></li>
+      <li><a href="index.php?pag=home_jogos"><img src="theme/default/images/9.png" alt="" /><span>Jogos</span></a></li>
+      <li><a href="index.php?pag=matricula"><img src="theme/default/images/2.png" alt="" /><span>Matricular-se</span></a></li>
+      <li><a href="index.php?pag=minhas_turmas"><img src="theme/default/images/3.png" alt="" /><span>Minhas turmas</span></a></li>
+      <li><a href="#"><img src="theme/default/images/4.png" alt="" /><span>Histórico</span></a></li>
+      <li><a href="index.php?pag=profile"><img src="admin-dev/themes/default/img/module-profile.png" alt="" /><span>Meu Perfil</span></a></li>
+      <li><a href="index.php?pag=sobre"><img src="theme/default/images/17.png" alt="" /><span>Sobre nós</span></a></li>
+      <li><a href="index.php?pag=loggout"><img src="admin-dev/themes/default/img/icon-cancel.png" alt="" /><span>Sair</span></a></li>
+		</ul>
+	</div>
+</div>
+<!-- /.navbar-static-side -->
 {/if}

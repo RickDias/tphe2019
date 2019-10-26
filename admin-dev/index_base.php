@@ -39,13 +39,13 @@ $theme = Configuration::get('theme_admin');
     <link href="dist/css/sb-admin-2.css" rel="stylesheet">
     <!-- Morris Charts CSS -->
     <link href="vendor/morrisjs/morris.css" rel="stylesheet">
-    <link href="themes/<?php echo $theme ?>/css/user_info.css" rel="stylesheet">
-    <link href="themes/<?php echo $theme ?>/css/overrides.css" rel="stylesheet">
+    <link href="themes/default/css/user_info.css" rel="stylesheet">
+    <link href="themes/default/css/overrides.css" rel="stylesheet">
 
     <!-- Custom Fonts -->
     <link href="vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="vendor/jquery/jquery.min.js" type="text/javascript"></script>
 
 
 </head>
@@ -75,9 +75,9 @@ $theme = Configuration::get('theme_admin');
             <?php
             if (Tools::getValue('pag')){
               $tpl = Tools::getValue('pag');
-              require "themes/".$theme."/".$tpl.".php"; // onde 'pagina' é a variavel passada pela URL (GET)
+              require "themes/default/".$tpl.".php"; // onde 'pagina' é a variavel passada pela URL (GET)
             }else{
-              require 'themes/'.$theme.'/index.php'; //primeiro acesso, padrao 'home.php'
+              require 'themes/default/index.php'; //primeiro acesso, padrao 'home.php'
             }
             ?>
   				</div>
