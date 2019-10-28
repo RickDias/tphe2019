@@ -49,7 +49,7 @@
 									<div class="three-grids">
                     <!-- menor para foreach -->
 										<div class="col-md-12" style="margin-bottom:15px;background:;padding: 15px;border:1px solid gray;border-radius:3px;">
-											<h3>Quizes disponíveis pelo professor</h3>
+											<h3>Quizes liberados pelo professor</h3>
 											{if $resultados->num_rows > 0}
 											{foreach key=$key from=$resultados item=$jogo}
 											<!-- {$jogo|var_dump} -->
@@ -203,9 +203,15 @@
 							{if $jogadores->num_rows > 0}
 							{foreach key=$key from=$jogadores item=$jogador}
 							<!-- {$jogador|var_dump} -->
+							{assign var=pontos_total value=$jogador["total"]}
+							{if $pontos_total < 10}
+							{assign var=level value=1}
+							{else}
+							{assign var=level value=$pontos_total/5}
+							{/if}
 							<div class="classejogador">
-									<span style="font-weight:bold;text-transform: uppercase;">{$key+1}º {$jogador["usuario"]} - <span style="font-size:12px">Lv {$jogador["total"]}</span></span><br>
-									<i class="fa fa-arrow-right"></i><span style="font-weight:bold"> {$jogador["total"]} pontos</span><br>
+									<span style="font-weight:bold;text-transform: uppercase;">{$key+1}º {$jogador["usuario"]} - <span style="font-size:12px">Lv {$level|intval}</span></span><br>
+									<i class="fa fa-arrow-right"></i><span style="font-weight:bold"> {(int)$jogador["total"]} pontos</span><br>
 									<span class="text-muted" style="font-size:13px"><i class="fa fa-clock-o fa-fw"></i> {$jogador["turma"]}</span>
 							</div>
 							{/foreach}

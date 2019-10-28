@@ -40,6 +40,16 @@
     {/foreach}
   {/foreach}
 </div>
+<div id="final_jogo" style="display:none">
+  <div class="tab_fim" id="description_fim">
+    <br>
+    <center>
+      <p class="p_16_black" style="font-weight:bold">Você concluiu o Quiz!</p>
+      <p class="p_16_black">Você pode voltar clicando em <b style="color:red">SAIR</b> no topo.</p>
+      <p class="p_16_black">Sua pontuação total terminou em <span style="color:red;font-weight:bold">{$score} pontos</span></p>
+    </center>
+  </div>
+</div>
 <div style="overflow:auto;display:none" class="esgotado" id="temp_esg_{$key}" name="temp_esg_{$key}">
   Tempo esgotado! Aguarde a próxima rodada
   <input type="hidden" value="0" id="div_esg_{$key}">

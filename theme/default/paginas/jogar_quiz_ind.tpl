@@ -18,7 +18,7 @@
 
   <div class="tab" id="description">
     <br>
-          <!-- <p class="p_16_black" style="font-weight:bold">Aguarde o inicio do jogo pelo professor!</p> -->
+          <p class="p_16_black" style="font-weight:bold">Este Quiz individual é gerado de forma randomica!</p>
           <p class="p_16_black">Você pode sair a qualquer momento clicando em <b style="color:red">SAIR</b> no topo, porém <span style="color:red;font-weight:bold">perderá sua pontuação atual!</span></p>
           <p class="p_16_black">Bons estudos!</p>
   </div>
@@ -44,6 +44,16 @@
         {/if}
     {/foreach}
   {/foreach}
+</div>
+<div id="final_jogo" style="display:none">
+  <div class="tab_fim" id="description_fim">
+    <br>
+    <center>
+      <p class="p_16_black" style="font-weight:bold">Você concluiu o Quiz!</p>
+      <p class="p_16_black">Você pode voltar clicando em <b style="color:red">SAIR</b> no topo.</p>
+      <p class="p_16_black">Sua pontuação total terminou em <span style="color:red;font-weight:bold">{$score} pontos</span></p>
+    </center>
+  </div>
 </div>
 <div style="overflow:auto;display:none" class="esgotado" id="temp_esg_{$key}" name="temp_esg_{$key}">
   Tempo esgotado! Aguarde a próxima rodada

@@ -26,13 +26,18 @@ function showTab(n) {
     document.getElementById("score_quiz").style.display = "block";
     document.getElementById("iniciar").style.display = "none";
   }
+  console.log(n);
   if (n == (x.length - 1)) {
     document.getElementById("nextBtn").innerHTML = "Submit";
   } else {
     if (n == 0) {
       document.getElementById("nextBtn").innerHTML = "Iniciar";
     }else{
-      document.getElementById("nextBtn").innerHTML = "Next";
+      if(n == 10){
+        document.getElementById("nextBtn").innerHTML = "Concluir";
+      }else{
+        document.getElementById("nextBtn").innerHTML = "Next";
+      }
     }
   }
   // ... and run a function that displays the correct step indicator:
@@ -54,9 +59,16 @@ function nextPrevInd(n) {
   // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
   // if you have reached the end of the form... :
+  // console.log(currentTab);
+  // console.log(x.length);
   if (currentTab >= x.length) {
-    //...the form gets submitted:
-    document.getElementById("termina_form").click();
+    parar();
+    document.getElementById("resp_errada").style.display = "none";
+    document.getElementById("resp_certa").style.display = "none";
+    document.getElementById("timer_count").style.display = "none";
+    document.getElementById("score_quiz").style.display = "none";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("final_jogo").style.display = "block";
     return false;
   }
   // Otherwise, display the correct tab:

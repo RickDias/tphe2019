@@ -80,9 +80,15 @@ if ($id_quiz){
   //   $id_pergunta[$key] = $pergunta_quiz->getId_pergunta();
   // }
   // pergunta
-  for($x=0; $x < 10; $x++){
-    $id_pergunta[$x] = rand(10,24);
-  };
+  $freq = [];
+  for($x = 0; $x < 10; $x++){
+    $number = mt_rand(10,608);
+    if(!in_array($number, $freq)){
+      $freq[] = $number;
+    }
+}
+// var_dump($freq);
+$id_pergunta = $freq;
 
   $pergunta_DAO = include_DAO('pergunta');
   require_once $pergunta_DAO;

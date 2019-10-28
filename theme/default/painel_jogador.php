@@ -46,7 +46,7 @@ if(count($avisos)>0){
   $smarty->assign('avisos', $avisos);
 }
 
-$sql = "SELECT q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
+$sql = "SELECT distinct q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
               date_format(q.`DT_INICIO`, '%d-%m-%Y') AS 'DT_INICIO',
               date_format(q.`DT_FIM`, '%d-%m-%Y') AS 'DT_FIM', q.`PUBLICACAO` ,
               t.`SIGLA`, t.`ID_TURMA`, u.`NOME`
@@ -76,8 +76,8 @@ $sql_jog = "SELECT distinct sum(p.`pontos`) as total, u.`NOME` as usuario, t.`NO
               FROM `usuario` u, `turma` t, `turma_aluno` ta, pontuacao p
               WHERE u.`ID_USUARIO` = ta.`ID_USUARIO`
               AND ta.`ID_TURMA` = t.`ID_TURMA`
-              AND p.`id_usuario` = u.`ID_USUARIO`
-              group by p.`pontos`
+              AND p.`id_usuario` = ta.`ID_USUARIO`
+              group by p.`id_usuario`
               order by `total` DESC LIMIT 10";
 $jogadores = mysqli_query($con, $sql_jog) or die(mysqli_error($con));
 $smarty->assign('jogadores', $jogadores);

@@ -7,7 +7,7 @@
 
     <div class="fb-profile-text">
       <!-- nome -->
-        <span><h1>{$usuario[0]->nome}<h4>Lv {$pt_user}</h4></h1></span>
+        <span><h1>{$usuario[0]->nome}<h4>Lv {(int)$pt_user}</h4></h1></span>
         <!-- <a href="#" style="color:red">editar</a> -->
       <!-- status -->
       <!-- <div class="score_user">$total_pontos</div> -->

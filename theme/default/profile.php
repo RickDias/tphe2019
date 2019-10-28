@@ -43,24 +43,22 @@ require $classe_DAO;
     }
   }
 
-  $sql_pt = "SELECT distinct sum(p.`pontos`) as total
+  $sql_pt = "SELECT  sum(p.`pontos`) as total
                 FROM pontuacao p
                 WHERE p.`id_usuario` = ".$usuario_id."
-                group by p.`pontos`";
+                group by p.`id_usuario`";
   $resultado_pt = mysqli_query($con,$sql_pt) or die(mysqli_error($con));
 if($resultado_pt->num_rows > 0){
   while ( $rs = mysqli_fetch_array( $resultado_pt ) ) {
-    $aqui = $rs[0];
+    $aqui = (int)$rs["total"];
   }
-  if($aqui < 5){
+  if($aqui < 10){
     $level = 1;
-  }elseif($aqui >=5 && $aqui < 15){
-    $level = 2;
-  }elseif($aqui >=15 && $aqui < 20){
-    $level = 3;
-  }elseif($level >= 20){
-    $level = ">3, criar foreach!";
+  }else{
+    $level = $aqui/5;
   }
+  $smarty->assign("pt_user", (int)$level);
+
 }
 
 
@@ -69,7 +67,6 @@ if($resultado_pt->num_rows > 0){
       'base_facebook' => $base_facebook,
       'img_perfil' => $img_perfil,
       'img_capa' => $img_capa,
-      'pt_user' => $level
   ));
 
   $smarty->display('profile.tpl');

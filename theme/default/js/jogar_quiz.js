@@ -62,8 +62,13 @@ function nextPrev(n) {
   currentTab = currentTab + n;
   // if you have reached the end of the form... :
   if (currentTab >= x.length) {
-    //...the form gets submitted:
-    // document.getElementById("regForm").submit();
+    parar();
+    document.getElementById("resp_errada").style.display = "none";
+    document.getElementById("resp_certa").style.display = "none";
+    document.getElementById("timer_count").style.display = "none";
+    document.getElementById("score_quiz").style.display = "none";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("final_jogo").style.display = "block";
     return false;
   }
   // Otherwise, display the correct tab:

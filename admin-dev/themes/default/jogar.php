@@ -15,6 +15,7 @@ $perguntas = "SELECT pq.`ID_PERGUNTA`
         FROM `pergunta_quiz` pq
         WHERE pq.`ID_QUIZ` = ".$id_quiz." limit 10";
         $id_perguntas = mysqli_query($con, $perguntas) or die(mysqli_error($con));
+        // var_dump($perguntas);
         if($id_perguntas->num_rows > 0){
           while($aux = mysqli_fetch_assoc($id_perguntas)) {
             $txt_pergunta = "SELECT p.`ID_PERGUNTA`, p.`DESCRICAO`, p.`PONTUACAO`
@@ -44,9 +45,14 @@ $perguntas = "SELECT pq.`ID_PERGUNTA`
         }
         $quiz_sql = "SELECT * FROM `quiz` WHERE `ID_QUIZ` = ".$id_quiz;
         $quiz = mysqli_query($con, $quiz_sql) or die(mysqli_error($con));
+        if($quiz->num_rows > 0){
+          while($aux = mysqli_fetch_assoc($quiz)) {
+            $quiz_ret[]=$aux;
+          }
+          $smarty->assign("quiz_arr", $quiz_ret);
+        }
 
         $smarty->assign(array(
-          'quiz_arr' => $quiz,
           'turma_arr' => $turma,
 
         ));
