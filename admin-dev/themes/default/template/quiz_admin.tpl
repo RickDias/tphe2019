@@ -31,7 +31,6 @@
   {/foreach}
 </div>
 {/foreach}
-
 <a href="#esgotado" style="display:none" id="envia_esgotado" onclick="updateEsgotado(1,{$q["ID_QUIZ"]},{$id_turma})">ESGOTAR</a>
 <a href="#reiniciado" style="display:none" id="envia_reiniciar" onclick="updateEsgotado(2,{$q["ID_QUIZ"]},{$id_turma})">REINICIAR</a>
 
@@ -92,7 +91,7 @@
 </div>
 
 
-<script src="theme/default/vendor/jquery/jquery.min.js"></script>
+<script src="vendor/jquery/jquery.min.js"></script>
 
 <script src="themes/default/js/jogar_quiz.js"></script>
 {/foreach}

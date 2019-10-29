@@ -15,12 +15,12 @@ require $classe_DAO;
   // $usuarioVO = new usuarioVO();
   $usuarioDAO = new usuarioDAO();
   $con = conecta_db();
-  $todos_usuarios = $usuarioDAO->getAll($con);
+  $todos_usuarios[0] = $usuarioDAO->getLikeUsuario($con,3);
+  $todos_usuarios[1] = $usuarioDAO->getLikeUsuario($con,5);
   $base_facebook = 'https://facebook.com/profile.php?id=';
 
-
   foreach($todos_usuarios as $usuario){
-    if($usuario->id_tipo_usuario==1){
+    if($usuario[0]->id_tipo_usuario==1){
       $tipo[] ='Administrador';
     }elseif($usuario->id_tipo_usuario==2){
       $tipo[] ='Professor';

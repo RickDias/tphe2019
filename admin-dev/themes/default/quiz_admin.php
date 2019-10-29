@@ -22,15 +22,12 @@ $esgotado = Tools::getValue("esgotado");
     $updateRodada = $quizDAO->updateRodada($id_quiz,$id_turma,$rodada,$con);
     }
 
-    if($id_quiz && $esgotado != FALSE){
-      $quiz_DAO = include_DAO2('turma_quiz');
-      require_once $quiz_DAO;
-      $quizDAO = new turma_quizDAO();
-      $updateEsgotado = $quizDAO->updateEsgotado($id_quiz,$id_turma,$esgotado,$con);
+    if($id_quiz && $esgotado != NULL){
+      $tquiz_DAO = include_DAO2('turma_quiz');
+      require_once $tquiz_DAO;
+      $tquizDAO = new turma_quizDAO();
+      $updateEsgotado = $tquizDAO->updateEsgotado($id_quiz,$id_turma,$esgotado,$con);
     }
-
-
-
 
 if ($id_quiz && $id_turma){
   // pergunta quiz

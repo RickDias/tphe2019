@@ -53,6 +53,8 @@ class usuarioDAO {
             $objVO->setSenha(stripslashes($rs['SENHA']));
             $objVO->setId_tipo_usuario(stripslashes($rs['ID_TIPO_USUARIO']));
             $objVO->setId_facebook(stripslashes($rs['id_facebook']));
+            $objVO->setImg_perfil(stripslashes($rs['img_perfil']));
+            $objVO->setImg_capa(stripslashes($rs['img_capa']));
 
             $return[] = clone $objVO;
             }

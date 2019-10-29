@@ -205,21 +205,23 @@ font-weight: bold;
   padding: 10px;
 
 }
-#bloco_aluno{
+.bloco_aluno{
   border: 1px solid gray;
   background: white;
   border-radius: 10px;
+  margin-bottom: 5px;
 
 }
 
 .icon_aluno{
   border-radius: 50%;
-  background: #888;
-  /* margin-left: 5px; */
+  width:10px;
   margin: 2px -5px;
   padding: 5px 15px;
   color: #eee;
   font-weight: bold;
+  text-shadow: 2px 2px 2px #000000;
+
 }
 
 .nome_aluno{

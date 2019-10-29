@@ -12,6 +12,9 @@ $id_usuario = $_SESSION["UsuarioID"];
 $id_quiz= Tools::getValue("id_quiz");
 $id_turma= Tools::getValue("id_turma");
 $smarty->assign("id_turma", $id_turma);
+$smarty->assign("quiz", $id_quiz);
+$smarty->assign("turma", $id_turma);
+
 
 if(Tools::getValue("terminar")==1){
   // echo("PARABENS");exit;

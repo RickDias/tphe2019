@@ -10,7 +10,6 @@ if(Tools::getValue('form_login') == 1){
 
   if($resultado != false){
     if (!isset($_SESSION)) session_start();
-
     $_SESSION['UsuarioID'] = $resultado['ID_USUARIO'];
     $_SESSION['UsuarioNome'] = $resultado['NOME'];
     $_SESSION['UsuarioEmail'] = $resultado['EMAIL'];

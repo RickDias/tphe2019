@@ -19,15 +19,13 @@ $classe_DAO = include_DAO('usuario');
 
 require $classe_VO;
 require $classe_DAO;
-
   // $usuarioVO = new usuarioVO();
   $usuarioDAO = new usuarioDAO();
   $con = conecta_db();
   $usuario = $usuarioDAO->getLikeUsuario($con,$_SESSION['UsuarioID']);
   $base_facebook = "https://facebook.com/profile.php?id=";
-  $img_perfil = 'admin-dev/img/'.$_SESSION['ImgPerfil'].'.jpg';
-  $img_capa = 'admin-dev/img/'.$_SESSION['ImgCapa'].'.jpg';
-
+  $img_perfil = 'admin-dev/img/'.$usuario[0]->img_perfil.'.jpg';
+  $img_capa = 'admin-dev/img/'.$usuario[0]->img_capa.'.jpg';
   $upd_pass = Tools::getValue("update_pass");
   if($upd_pass == 1){
     $smarty->assign("upd_pass", 1);

@@ -1,4 +1,3 @@
-
 var currentTab = 0; // Current tab is set to be the first tab (0)
 showTab(currentTab); // Display the current tab
 var clicado = false;
@@ -8,23 +7,37 @@ function showTab(n) {
   clicado = false;
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
+  // console.log(x.length-1);
   if(n == 0){
-    x[1].style.display = "none";
+    for(var y=1;y<x.length;y++){
+      x[y].style.display = "none";
+    }
   }else{
-    x[n-1].style.display = "none";
+    // console.log(n);
+    for(var y=0;y<=n;y++){
+      x[y].style.display = "none";
+      document.getElementById("final_jogo").style.display = "none";
+    if(y!=n){
+      continue;
+    }
     x[n].style.display = "block";
+  }
   }
   // document.getElementById("resp_errada").style.display = "none";
   // document.getElementById("resp_certa").style.display = "none";
 
 
   // ... and fix the Previous/Next buttons:
-  if (n == 0) {
+  if (n == 0 || n == (x.length-1)) {
     // document.getElementById("prevBtn").style.display = "none";
     document.getElementById("all_steps").style.display = "none";
     document.getElementById("score_quiz").style.display = "none";
     document.getElementById("iniciar").style.display = "none";
-    document.getElementById("description").style.display = "block";
+    if(n==0){
+      document.getElementById("description").style.display = "block";
+    }else{
+      document.getElementById("final_jogo").style.display = "block";
+    }
   } else {
     // document.getElementById("prevBtn").style.display = "inline";
     document.getElementById("all_steps").style.display = "block";
@@ -33,8 +46,17 @@ function showTab(n) {
     document.getElementById("description").style.display = "none";
 
   }
-  if (n == (x.length - 1)) {
-    document.getElementById("nextBtn").innerHTML = "Submit";
+  // console.log(x.length);
+  // console.log(n);
+  if (n == (x.length-1)) {
+    // document.getElementById("nextBtn").innerHTML = "Submit";
+    document.getElementById("resp_errada").style.display = "none";
+    document.getElementById("resp_certa").style.display = "none";
+    document.getElementById("timer_count").style.display = "none";
+    document.getElementById("score_quiz").style.display = "none";
+    document.getElementById("nextBtn").style.display = "none";
+    document.getElementById("final_jogo").style.display = "block";
+    // return false;
   } else {
     if (n == 0) {
       document.getElementById("nextBtn").innerHTML = "Iniciar";
@@ -61,6 +83,8 @@ function nextPrev(n) {
   // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
   // if you have reached the end of the form... :
+  // console.log(currentTab);
+  // console.log(x.length);
   if (currentTab >= x.length) {
     parar();
     document.getElementById("resp_errada").style.display = "none";

@@ -17,17 +17,21 @@ if($id_quiz && $id_usuario){
   FROM `pontuacao` p,`usuario` u
   WHERE (p.`id_usuario` = u.`ID_USUARIO`)
   AND p.`id_quiz` = ".$id_quiz."
-  AND u.`ID_USUARIO` = ".$id_usuario;
+  AND p.`id_usuario` = ".$id_usuario."
+  group by p.`id_usuario`";
   $score_res = mysqli_query($con,$pontuacao) or die(mysqli_error($con));
   if($score_res->num_rows > 0){
   while ( $rs = mysqli_fetch_array( $score_res ) ) {
-    // $todos_alunos[] =$rs ;
-    if($rs[0] != NULL){
-      $smarty->assign("score", $rs[0]);
+    $score =$rs["pontos"];
+    $smarty->assign("score", $score);
+    if($score < 10){
+      $level[] = 1;
+      $smarty->assign("level", 1);
     }else{
-      $smarty->assign("score", 0);
-    }
+      $level[]=$score/5;
   }
+}
+$smarty->assign("level", $level);
 }else{
   $smarty->assign("score", 0);
 }

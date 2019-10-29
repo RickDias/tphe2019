@@ -1,4 +1,3 @@
-OKK
 <div class="col-lg-12 col-md-8">
         <div class="panel panel-primary">
           <div class="panel-heading">
@@ -37,8 +36,9 @@ OKK
                 Add caso precise
               </div>
               {/foreach}
-              <a href="index_base.php">
-                <div class="col-xs-4 pull-right">
+              <!-- <a href="index_base.php"> -->
+              <a onclick=updateRodada(0,{$quiz},{$turma})>
+                <div class="col-md-2 pull-right" style="border:1px solid #337ab7;border-radius:5px;margin:15px;background:#eee">
                   <span class="pull-left">Concluir</span>
                   <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                 </div>
@@ -48,3 +48,15 @@ OKK
         </div>
       </div>
 <!-- {$res|var_dump} -->
+<script>
+function updateRodada(rodada,quiz,turma)
+{
+  // alert("RODADA");
+        $.post('index_base.php?pag=quiz_admin&id_turma='+turma+'&id_quiz='+quiz+'&rodada='+rodada, function(d)
+        {
+            console.log('Update rodada');
+            // $(answer).after("<span>Score Updated!</span>").remove();
+            window.location.href="index_base.php";
+        });
+}
+</script>

@@ -58,8 +58,11 @@ function nextPrev(n,quiz,turma) {
   currentTab = currentTab + n;
   updateRodada(currentTab,quiz,turma);
   // if you have reached the end of the form... :
+  // console.log(currentTab);
+  // console.log(x.length);
   if (currentTab >= x.length) {
     //...the form gets submitted:
+    updateRodada(x.length,quiz,turma);
     document.getElementById("termina_form").click();
     return false;
   }
@@ -67,15 +70,15 @@ function nextPrev(n,quiz,turma) {
   showTab(currentTab);
 }
 
-function updateEsgotado(status,turma,quiz)
+function updateEsgotado(status,quiz,turma)
 {
-  console.log(status,turma,quiz);
+  // console.log(status,turma,quiz);
         $.post('index_base.php?pag=quiz_admin&id_turma='+turma+'&id_quiz='+quiz+'&esgotado='+status, function(d)
         {
           if(status == 1){
             console.log('ESGOTADO');
           }
-          if(status == 0){
+          if(status == 2){
             console.log('REINICIADO');
           }
             // $(answer).after("<span>Score Updated!</span>").remove();
@@ -184,8 +187,8 @@ function mudaCores(n){
 // cronometro
 var intervalo;
 function tempo(op) {
-	var s = 29;
-  // var s = 2;
+	// var s = 29;
+  var s = 5;
 
 	intervalo = window.setInterval(function() {
 		if (s == 0) {document.getElementById("envia_esgotado").click(); s = 30; parar(); confere_resposta("F");}

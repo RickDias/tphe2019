@@ -93,7 +93,6 @@ class turma_quizDAO {
              mysqli_rollback($link);
          }
      mysqli_commit($link);
-
     }
 
     public function updateStatus( $id_quiz,$id_turma, $status, $link) {

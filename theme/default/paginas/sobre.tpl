@@ -1,14 +1,11 @@
 <!-- About Section -->
 <section id="about">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12 text-center">
-                <h2 class="section-heading">About</h2>
-                <h3 class="section-subheading text-muted">O projeto Tphe.</h3>
-            </div>
-        </div>
-        <div class="row">
-            <div class="col-lg-12">
+      <center>
+        <h2 class="section-heading">Sobre...</h2>
+        <h3 class="section-subheading text-muted">O projeto Tphe.</h3>
+      </center>
+      <div class="col-md-10">
                 <ul class="timeline">
                     <li>
                         <div class="timeline-image">
@@ -76,7 +73,6 @@
                     </li>
                 </ul>
             </div>
-        </div>
     </div>
 </section>
 
@@ -95,16 +91,16 @@
         {foreach from=$usuarios item=usuario}
             <div class="col-sm-4">
                 <div class="team-member">
-                    <img src="img/users/{$usuario->id_usuario}.jpg" class="img-responsive img-circle" style="width:200px" alt="">
-                    <h4> {$usuario->nome} </h4>
+                    <img src="img/users/{$usuario[0]->id_usuario}.jpg" class="img-responsive img-circle" style="width:200px" alt="">
+                    <h4> {$usuario[0]->nome} </h4>
                     <p class="text-muted">
                       {$tipo[$cont]}
                     </p>
                     <ul class="list-inline social-buttons">
                         <li><a href="#"><i class="fa fa-twitter"></i></a>
                         </li>
-                        {if $usuario->id_facebook != 0}
-                        <li><a href="{$base_facebook}{$usuario->id_facebook}" target="_blank"><i class="fa fa-facebook"></i></a>
+                        {if $usuario[0]->id_facebook != 0}
+                        <li><a href="{$base_facebook}{$usuario[0]->id_facebook}" target="_blank"><i class="fa fa-facebook"></i></a>
                         </li>
                         {/if}
                         <li><a href="#"><i class="fa fa-linkedin"></i></a>
@@ -114,7 +110,6 @@
             </div>
             <input type="hidden" value="{$cont++}">
             {/foreach}
-
         </div>
         <div class="row">
             <div class="col-lg-8 col-lg-offset-2 text-center">

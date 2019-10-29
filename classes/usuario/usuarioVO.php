@@ -8,6 +8,9 @@ class usuarioVO {
     public $senha;
     public $id_tipo_usuario;
     public $id_facebook;
+    public $img_capa;
+    public $img_perfil;
+
 
 
     function getId_facebook() {
@@ -33,6 +36,12 @@ class usuarioVO {
     function getId_tipo_usuario() {
         return $this->id_tipo_usuario;
     }
+    function getImg_perfil() {
+        return $this->img_perfil;
+    }
+    function getImg_capa() {
+        return $this->img_capa;
+    }
 
     function setId_usuario($id_usuario) {
         $this->id_usuario = $id_usuario;
@@ -56,6 +65,12 @@ class usuarioVO {
 
     function setId_facebook($id_facebook) {
         $this->id_facebook = $id_facebook;
+    }
+    function setImg_perfil($img_perfil) {
+        $this->img_perfil = $img_perfil;
+    }
+    function setImg_capa($img_capa) {
+        $this->img_capa = $img_capa;
     }
 
 

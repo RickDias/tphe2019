@@ -155,17 +155,6 @@ function remove_fill_resp(n){
 
 function confere_resposta_ind(tipo , n, pontos,quiz,usuario,resposta,pc){
   parar();
-  // console.log();
-  // if(clicado === false){
-  //   if(tipo == "V"){
-  //     document.getElementById("resp_certa").style.display = "block";
-  //     pontuacao = pontuacao+Number(pontos);
-  //     $("#score_val").val(pontuacao);
-  //   }else{
-  //     document.getElementById("resp_errada").style.display = "block";
-  //   }
-  //   mudaCores(n);
-  // }
   if(clicado === false){
     if(tipo == "V"){
       document.getElementById("resp_certa").style.display = "block";

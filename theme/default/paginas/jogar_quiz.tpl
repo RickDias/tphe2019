@@ -2,7 +2,7 @@
 <div class="col-md-7">
   <div class="score_quiz col-md-8" id="score_quiz">
     <label for="score_val">Pontuação:</label><br>
-    <input type="text" id="score_val" name="score_val" value="{$score}" disabled class="col-sm-3">
+    <input type="text" id="score_val" name="score_val" value="0" disabled class="col-sm-3">
   </div>
 
   <a href="index.php?pag=jogo&jogo=quiz&sair_quiz=1" style="margin:15px;float:right" class="btn btn-outline btn-danger">Sair</a>
@@ -40,8 +40,15 @@
     {/foreach}
   {/foreach}
 </div>
+
+<div style="overflow:auto;display:none" class="esgotado" id="temp_esg_{$key}" name="temp_esg_{$key}">
+  Tempo esgotado! Aguarde a próxima rodada
+  <input type="hidden" value="0" id="div_esg_{$key}">
+
+</div>
+{/foreach}
 <div id="final_jogo" style="display:none">
-  <div class="tab_fim" id="description_fim">
+  <div class="tab" id="description_fim">
     <br>
     <center>
       <p class="p_16_black" style="font-weight:bold">Você concluiu o Quiz!</p>
@@ -50,12 +57,6 @@
     </center>
   </div>
 </div>
-<div style="overflow:auto;display:none" class="esgotado" id="temp_esg_{$key}" name="temp_esg_{$key}">
-  Tempo esgotado! Aguarde a próxima rodada
-  <input type="hidden" value="0" id="div_esg_{$key}">
-
-</div>
-{/foreach}
 
 <div style="overflow:auto;display:none" id="resp_certa" name="resp_certa">
   Acertou, continue assim!
@@ -85,21 +86,20 @@
 </div>
 
 <div class="col-md-3" id="container_sala__aluno">
-  Jogadores na sala
+  <h4>Jogadores na sala</h4>
   <div class="item_sala_aluno">
     {if $alunos}
-    {foreach from=$alunos item=$aluno}
+    {foreach from=$alunos key=$al item=$aluno}
     <div class="col-md-12" id="bloco_aluno">
 
       <div class="col-md-3">
-        <div class="icon_aluno">
-          S
+        <div class="icon_aluno" style="background:rgb({mt_rand(0,255)},{mt_rand(0,255)},{mt_rand(0,255)})">
+          {$aluno["NOME"][0]}
         </div>
       </div>
-
-      <div class="col-md-9">
-        <h3>{$aluno["NOME"]}</h3>
-        <span>Pontuação Geral: {$aluno["pontos_geral"]}</span>
+      <div class="col-md-6">
+        <span>{$aluno["NOME"]}</span><br>
+        <span>Lvl {(int)$level[$al]}</span>
       </div>
 
     </div>
@@ -160,4 +160,28 @@ setInterval(function(){
 }, 2000);
 
 
+</script>
+<script type="text/javascript">
+  var IDLE_TIMEOUT = 5;  // 10 minutes of inactivity
+  var _idleSecondsCounter = 0;
+  document.onclick = function() {
+      _idleSecondsCounter = 0;
+  };
+  document.onmousemove = function() {
+      _idleSecondsCounter = 0;
+  };
+  document.onkeypress = function() {
+      _idleSecondsCounter = 0;
+  };
+  window.setInterval(CheckIdleTime, 1000);
+  function CheckIdleTime() {
+      _idleSecondsCounter++;
+      var oPanel = document.getElementById("SecondsUntilExpire");
+      if (oPanel)
+          oPanel.innerHTML = (IDLE_TIMEOUT - _idleSecondsCounter) + "";
+      if (_idleSecondsCounter >= IDLE_TIMEOUT) {
+          // destroy the session in logout.php
+          // document.location.href = "index.php?pag=jogo&jogo=quiz&sair_quiz=1";
+      }
+  }
 </script>

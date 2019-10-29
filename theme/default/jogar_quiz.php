@@ -16,17 +16,22 @@ $id_turma= Tools::getValue("id-turma");
 if($id_quiz && $id_usuario){
   $pontuacao = "SELECT SUM(p.`pontos`) as pontos
   FROM `pontuacao` p,`usuario` u
-  WHERE (p.`id_usuario` = u.`ID_USUARIO`)
+  WHERE p.`id_usuario` = u.`ID_USUARIO`
   AND p.`id_quiz` = ".$id_quiz."
-  AND u.`ID_USUARIO` = ".$id_usuario;
+  AND p.`id_usuario` = ".$id_usuario."
+  group by p.`id_usuario`";
   $score_res = mysqli_query($con,$pontuacao) or die(mysqli_error($con));
   if($score_res->num_rows > 0){
   while ( $rs = mysqli_fetch_array( $score_res ) ) {
-    // $todos_alunos[] =$rs ;
-    $pontooo = $rs[0];
-    // var_dump($pontooo);
-    $smarty->assign("score", $pontooo);
+    $score =$rs["pontos"];
+    if($score < 10){
+      $level[] = 1;
+      $smarty->assign("level", 1);
+    }else{
+      $level[]=$score/5;
   }
+}
+$smarty->assign("level", $level);
 }else{
   $smarty->assign("score", 0);
 }
@@ -155,14 +160,21 @@ while ( $rs = mysqli_fetch_array( $resultado ) ) {
       }
     }
 
-
     $status_aluno = $sala_alunoDAO->updateStatus($id_usuario,"N",$con);
-    header("Location: index.php?pag=login");
+    ?>
+    <script language="JavaScript">
+    window.location="index.php?pag=login";
+    </script>
+    <?php
   }
 
 $smarty->display('jogar_quiz.tpl');
 }else{
-  header("Location: index.php?pag=login");
+  ?>
+  <script language="JavaScript">
+  window.location="index.php?pag=login";
+  </script>
+  <?php
 
 }
 

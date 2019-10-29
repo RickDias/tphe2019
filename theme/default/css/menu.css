@@ -60,10 +60,12 @@ input.invalid {
 .respostas_quiz{
   border: 1px solid gray;
   border-radius: 10px;
-  padding: 5px;text-align: center;
+  padding: 5px;
+  text-align: center;
   margin: 15px 0 15px;
   font-weight: bold;
   color: gray;
+  overflow: visible;
 }
 
 .respostas_quiz:hover{

@@ -59,7 +59,7 @@
 												</div>
 												<div class="three-grid-text"  style="border:1px solid silver;">
 													<div class="three-grid-text-heading">
-														<a class="text" href="index.php?pag=jogar_quiz&id-turma={$jogo["ID_TURMA"]}&id-quiz={$jogo["ID_QUIZ"]}">{$jogo["DESCRICAO"]} - {$jogo["SIGLA"]}</a>
+														<a class="text" href="index.php?pag=jogo&jogo=quiz">{$jogo["DESCRICAO"]} - {$jogo["SIGLA"]}</a>
 													</div>
 													<div class="t-grid author-grid">
 														<ul>
@@ -87,7 +87,7 @@
 												</div>
 												<div class="three-grid-text"  style="border:1px solid silver;">
 													<div class="three-grid-text-heading">
-														<a class="text" href="index.php?pag=jogar_quiz_ind&id-turma={$jogo_ind["ID_TURMA"]}&id-quiz={$jogo_ind["ID_QUIZ"]}">{$jogo_ind["DESCRICAO"]}</a>
+														<a class="text" href="index.php?pag=jogo&jogo=quiz">{$jogo_ind["DESCRICAO"]}</a>
 													</div>
 													<div class="t-grid author-grid">
 														<ul>
@@ -114,11 +114,11 @@
 										<div class="col-md-6 two-grid-left" >
 											<div class="two-grid-info">
 												<div class="two-grid-img">
-													<a href="single.html"><img src="theme/default/images/motor{rand(1,13)}.jpg" alt="" /></a>
+													<a href="#"><img src="theme/default/images/motor{rand(1,13)}.jpg" alt="" /></a>
 												</div>
 												<div class="two-grid-text">
 													<div class="three-grid-text-heading two-grid-text-heading">
-														<a class="text" href="single.html">Aula no dia 12/10</a>
+														<a class="text" href="#">Aula no dia 12/10</a>
 														<p style="color:black">Pessoal, relembrando que no dia 12/10 será dia letivo com o horário da nossa aula. Faremos testes com os Quizes disponíveis para encontrar
 														 possíveis falhas. Aguardo vocês lá!!!</p>
 													</div>

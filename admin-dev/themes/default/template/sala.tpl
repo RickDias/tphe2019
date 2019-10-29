@@ -8,25 +8,21 @@
     <!-- {$alunos|var_dump} -->
     {if $alunos}
     <div class="col-md-3" id="div_alunos_true">
-    <!-- <div class="col-md-3" id="container_sala__aluno"> -->
       <h3>Jogadores na sala</h3>
-      <!-- <div class="item_sala_aluno"> -->
       {foreach from=$alunos key=$key item=$aluno}
-      <!-- <div class="col-md-12" id="bloco_aluno"> -->
-        <!-- <div class="col-md-3"> -->
-          <!-- <div class="icon_aluno"> -->
-            <!-- {$key+1} -->
-          <!-- </div> -->
-        <!-- </div> -->
+      <div class="col-md-12 bloco_aluno" id="bloco_aluno_{$aluno["ID_USUARIO"]}">
+        <div class="col-md-3">
+          <div class="icon_aluno" style="background:rgb({mt_rand(0,255)},{mt_rand(0,255)},{mt_rand(0,255)})">
+            {$aluno["nome_aluno"][0]}
+          </div>
+        </div>
         <div class="col-md-9" id="teste">
-          <!-- <span id="aluno_nome_{$key}" class="nome_aluno col-md-12">{$aluno["nome_aluno"]}</span> -->
-          <span id="aluno_nome_{$key}" class="nome_aluno col-md-12">{$aluno["nome_aluno"]}</span>
-        <!-- </div> -->
+          <h5 id="aluno_nome_{$key}" class="nome_aluno">{$aluno["nome_aluno"]}</h5>
+        </div>
       </div>
       {/foreach}
     </div>
   </div>
-
     {else}
     <div class="col-md-3" id="sem_alunos">
       <h3>Jogadores na sala</h3>
@@ -81,14 +77,15 @@ function loadlink(){
                    if(total_element_html == i){
                      if ($('#div_alunos_true').length == 0){
                      // $('#teste').append('Gerson');
-                       $('#div_alunos_sala').append('<div class="col-md-3" id="div_alunos_true"><h3>Jogadores na sala</h3><div class="col-md-9" id="teste"><span id="aluno_nome_'+i+'" class="nome_aluno">'+data[i]["nome_aluno"]+'</span><br></div></div>');
+                       $('#div_alunos_sala').append('<div class="col-md-3" id="div_alunos_true"><h3>Jogadores na sala</h3><div class="col-md-12 bloco_aluno" id="bloco_aluno_'+i+'"><div class="col-md-3"><div class="icon_aluno" style="background:rgb({mt_rand(0,255)},{mt_rand(0,255)},{mt_rand(0,255)})">'+val["nome_aluno"][0]+'</div></div><div class="col-md-9" id="teste"><h5 id="aluno_nome_'+i+'" class="nome_aluno">'+data[i]["nome_aluno"]+'</h5></div></div></div></div>');
                      $('#sem_alunos').remove();
                    }else{
-                     $('#teste').append('<span id="aluno_nome_'+i+'" class="nome_aluno">'+data[i]["nome_aluno"]+'</span><br>');
+                     $('#div_alunos_true').append('<div class="col-md-12 bloco_aluno" id="bloco_aluno_'+i+'"><div class="col-md-3"><div class="icon_aluno" style="background:rgb({mt_rand(0,255)},{mt_rand(0,255)},{mt_rand(0,255)})">'+val["nome_aluno"][0]+'</div></div><div class="col-md-9" id="teste"><h5 id="aluno_nome_'+i+'" class="nome_aluno">'+data[i]["nome_aluno"]+'</h5></div></div>');
                    }
                    }
                    if( total_element < total_element_html){
-                     $('#aluno_nome_'+i).remove();
+                     $('#div_alunos_true').remove();
+                     $('#div_alunos_sala').append('<div class="col-md-3" id="div_alunos_true"><h3>Jogadores na sala</h3><div class="col-md-12 bloco_aluno" id="bloco_aluno_'+i+'"><div class="col-md-3"><div class="icon_aluno" style="background:rgb({mt_rand(0,255)},{mt_rand(0,255)},{mt_rand(0,255)})">'+val["nome_aluno"][0]+'</div></div><div class="col-md-9" id="teste"><h5 id="aluno_nome_'+i+'" class="nome_aluno">'+data[i]["nome_aluno"]+'</h5></div></div></div></div>');
                      // $('#teste').append('Sem Alunos na Sala!');
                    }
                });
@@ -96,7 +93,7 @@ function loadlink(){
                },
                error: function( xhr, status) {
                console.log( "Desculpe, não foi possivel encontrar alunos!" );
-               $('.nome_aluno').remove();
+               $('.bloco_aluno').remove();
                // console.log(xhr);
                // console.log(status);
                }

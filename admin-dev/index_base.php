@@ -1,15 +1,7 @@
 <?php
 session_start();
 if($_SESSION["UsuarioID"] == NULL){
-    unset($_SESSION['UsuarioID']);
-    unset($_SESSION['UsuarioNome']);
-    unset($_SESSION['UsuarioEmail']);
-    unset($_SESSION['UsuarioNivel']);
-    unset($_SESSION['IdFacebook']);
-    unset($_SESSION['Theme']);
-    unset($_SESSION['ImgPerfil']);
-    unset($_SESSION['ImgCapa']);
-
+    unset($_SESSION);
     session_destroy();
     header("Location: index.php"); exit;
 }
@@ -22,7 +14,7 @@ $theme = Configuration::get('theme_admin');
 
 <head>
 
-    <meta charset="utf-8">
+    <meta charset="ISO-8859-1">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="">
