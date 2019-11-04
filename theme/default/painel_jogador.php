@@ -72,7 +72,7 @@ $resultados_ind = mysqli_query($con, $sql_ind) or die(mysqli_error($con));
 $smarty->assign('resultados_ind', $resultados_ind);
 
 
-$sql_jog = "SELECT distinct sum(p.`pontos`) as total, u.`NOME` as usuario, t.`NOME` as turma
+$sql_jog = "SELECT distinct sum(p.`pontos`) as total, u.`NOME` as usuario, t.`NOME` as turma, u.`ID_USUARIO` as id_user
               FROM `usuario` u, `turma` t, `turma_aluno` ta, pontuacao p
               WHERE u.`ID_USUARIO` = ta.`ID_USUARIO`
               AND ta.`ID_TURMA` = t.`ID_TURMA`

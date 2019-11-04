@@ -8,6 +8,7 @@ if($_SESSION){
   $user_id = $_SESSION["UsuarioID"];
   $smarty->assign(array(
     'id_usuario' => $user_id,
+    'usuario' => $_SESSION,
     'cessao' => true,
   ));
 }else{

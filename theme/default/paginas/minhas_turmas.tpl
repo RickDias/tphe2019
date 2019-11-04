@@ -53,10 +53,13 @@
 {foreach from=$toda_turma item=$aluno}
 <div class="col-lg-4">
   <div class="panel panel-success">
-    <div class="panel-body">
-      <p>
-        {$aluno["nome_aluno"]}<br/>
-      </p>
+    <div class="panel-body" id="lista_alunos"  style="background:rgb({mt_rand(0,255)},{mt_rand(0,255)},{mt_rand(0,255)})">
+      <div class="col-md-4 avatar-aluno">
+        <img class="img_avatar" src="admin-dev/img/{$aluno["id_aluno"]}.jpg">
+      </div>
+      <div class="col-md-8" style="padding-top:5%">
+        <span>{$aluno["nome_aluno"]}</span>
+      </div>
     </div>
   </div>
 </div>

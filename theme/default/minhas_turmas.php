@@ -4,6 +4,8 @@ $smarty = new Smarty;
 $smarty->template_dir = 'theme/default/paginas/';
 $smarty->config_dir = 'theme/default/';
 $smarty->error_reporting = E_ALL & ~E_NOTICE;
+$user_id = $_SESSION["UsuarioID"];
+$smarty->assign('user_id', $user_id);
 
 $con = conecta_db();
 if(Tools::getValue("enviado")==1){
@@ -12,7 +14,7 @@ if(Tools::getValue("enviado")==1){
 if(Tools::isSubmit("ver_turma")){
 if(Tools::getValue("id-turma")){
 $id_turma = Tools::getValue("id-turma");
-  $sql = "SELECT distinct t.`ID_TURMA`, t.`NOME` as nome_turma, t.`SIGLA`, u.`NOME` as nome_aluno
+  $sql = "SELECT distinct t.`ID_TURMA`, t.`NOME` as nome_turma, t.`SIGLA`, u.`NOME` as nome_aluno, u.`ID_USUARIO` as id_aluno
   FROM `turma` t,`turma_aluno`ta, `usuario` u
   WHERE t.`ID_TURMA` = ta.`ID_TURMA`
   AND ta.`ID_USUARIO` = u.`ID_USUARIO`

@@ -210,8 +210,11 @@
 							{assign var=level value=$pontos_total/5}
 							{/if}
 							<div class="classejogador">
-									<span style="font-weight:bold;text-transform: uppercase;">{$key+1}º {$jogador["usuario"]} - <span style="font-size:12px">Lv {$level|intval}</span></span><br>
-									<i class="fa fa-arrow-right"></i><span style="font-weight:bold"> {(int)$jogador["total"]} pontos</span><br>
+									<span style="font-weight:bold;text-transform: uppercase;">
+										<img class="img_avatar_rank" src="admin-dev/img/{$jogador["id_user"]}.jpg">
+										{$jogador["usuario"]}
+									</span><br>
+									<i class="fa fa-arrow-right"></i><span style="font-weight:bold"> {(int)$jogador["total"]} pontos</span> - <span style="font-size:12px">Lv {$level|intval}</span><br>
 									<span class="text-muted" style="font-size:13px"><i class="fa fa-clock-o fa-fw"></i> {$jogador["turma"]}</span>
 							</div>
 							{/foreach}

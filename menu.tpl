@@ -14,16 +14,21 @@
                 <li class="hidden">
                     <a href="#page-top"></a>
                 </li>
-                <li>
+                <!-- <li>
                     <a class="page-scroll" href="index.php?pag=sobre">Sobre nós</a>
-                </li>
+                </li> -->
                 {if $cessao == false}
                 <li>
                     <a class="page-scroll" href="index.php?pag=login">Login</a>
                 </li>
                 {/if}
                 {if $cessao == true}
-                <li>
+                {assign var=firstname value=explode(" ", $usuario["UsuarioNome"])}
+                <div class="navbar-header page-scroll" style="margin-top:10px;color:#666">
+                  Bem vindo, <span style="font-size:18px;font-weight:bold;color:#fed136">{$firstname[0]}!</span>
+                </div>
+
+                <!-- <li>
                   <div class="dropdown">
                     <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown">
                       <i class="fa fa-bars"></i>
@@ -35,7 +40,7 @@
                       <a class="dropdown-item" href="index.php?pag=loggout">Sair</a>
                     </div>
                   </div>
-                </li>
+                </li> -->
 
                 {/if}
             </ul>
@@ -53,7 +58,7 @@
 		<ul class="nav lateral" id="side-menu">
 
       <li><a href="index.php?pag=painel_jogador"><img src="theme/default/images/home.png" alt="" /><span>Painel</span></a></li>
-      <li><a href="index.php?pag=home_jogos"><img src="theme/default/images/9.png" alt="" /><span>Jogos</span></a></li>
+      <li><a href="index.php?pag=jogo&jogo=quiz"><img src="theme/default/images/9.png" alt="" /><span>Jogos</span></a></li>
       <li><a href="index.php?pag=matricula"><img src="theme/default/images/2.png" alt="" /><span>Matricular-se</span></a></li>
       <li><a href="index.php?pag=minhas_turmas"><img src="theme/default/images/3.png" alt="" /><span>Minhas turmas</span></a></li>
       <li><a href="index.php?pag=historico"><img src="theme/default/images/4.png" alt="" /><span>Histórico</span></a></li>
