@@ -54,8 +54,10 @@ if($resultado_pt->num_rows > 0){
     $level = 1;
   }else{
     $level = $aqui/5;
+    $percent = $level*10;
   }
   $smarty->assign("pt_user", (int)$level);
+  $smarty->assign("percent", (int)$percent);
 
 }
 

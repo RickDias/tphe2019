@@ -18,8 +18,11 @@ $theme = Configuration::get('theme');
     <meta name="author" content="">
     <!-- Bootstrap Core CSS -->
     <link href="theme/default/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="theme/default/vendor/bootstrap/css/bootstrap-grid.css" rel="stylesheet">
+
     <!-- Custom Fonts -->
     <link href="theme/default/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+    <link href="theme/default/vendor/dist/loading-bar.css" rel="stylesheet" type="text/css">
     <!-- <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css"> -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Kaushan+Script' rel='stylesheet' type='text/css'> -->
     <!-- <link href='https://fonts.googleapis.com/css?family=Droid+Serif:400,700,400italic,700italic' rel='stylesheet' type='text/css'> -->
@@ -89,6 +92,7 @@ $theme = Configuration::get('theme');
   </footer>
   <!-- jQuery -->
     <script src="theme/default/vendor/jquery/jquery.min.js"></script>
+    <script src="theme/default/vendor/dist/loading-bar.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="theme/default/vendor/bootstrap/js/bootstrap.min.js"></script>
 </body>
