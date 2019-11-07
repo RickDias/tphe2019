@@ -77,7 +77,7 @@
           </div>
           {if $conquistas}
           {foreach from=$conquistas item=$conquista}
-          <div class="col-sm-12 col-md-2" id="conquistas_profile">
+          <div class="" id="conquistas_profile">
               <img src="admin-dev/img/conquistas/{$conquista[0]}.png" class="img_conquistas" title="{$conquista[1]}">
           </div>
           {/foreach}

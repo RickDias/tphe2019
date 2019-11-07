@@ -87,7 +87,7 @@ function getLevel($user, $con){
 function getConquista($user, $con){
   $sql_conq="SELECT c.`conquista` as conquista, c.`texto` as texto
   FROM conquistas c
-  WHERE c.`id_usuario` = ".$user." group by c.`conquista`";
+  WHERE c.`id_usuario` = ".$user." group by c.`conquista` limit 8";
 
   $conq_res = mysqli_query($con,$sql_conq) or die(mysqli_error($con));
   if($conq_res->num_rows > 0){

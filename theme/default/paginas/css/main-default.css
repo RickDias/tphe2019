@@ -333,6 +333,10 @@
   margin-top: 5px;
 }
 
+#conquistas_profile{
+  display:inline;
+}
+
 @media only screen and (max-width: 767px){
 
   .coluna4{
@@ -393,7 +397,6 @@ display: none;
 .img_conquistas{
   width: 60px;
   height: 60px;
-  /* border-radius: 50%; */
 }
 
 #score_bar_profile{
