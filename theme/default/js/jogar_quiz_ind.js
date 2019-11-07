@@ -161,31 +161,7 @@ function confere_resposta_ind(tipo , n, pontos,quiz,usuario,resposta,pc){
       pontuacao = parseFloat(pontuacao+Number(pontos));
       var div_score = parseFloat($("#score_val").val());
       var p_total = parseFloat(div_score+pontuacao);
-      $.ajax({
-                  type:"POST",
-                  url: "check_start.php",
-                  async:true,
-                  dataType : "json",
-                  data: {
-                    update_pontos:1,
-                    id_quiz:quiz,
-                    usuario:usuario,
-                    pontuacao:pontos,
-                    resposta:resposta
-                  },
-                  success: function( data ) {
-                    console.log(data);
-                    if(data == "Pergunta ja respondida!"){
-                      alert(data);
-                    }else{
-                      $("#score_val").val(p_total);
-                    }
-                  },
-                    error: function( xhr, status) {
-                    console.log(xhr);
-                    console.log(status);
-                    }
-                    });
+      $("#score_val").val(p_total);
     }else{
       document.getElementById("resp_errada").style.display = "block";
     }

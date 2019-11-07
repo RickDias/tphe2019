@@ -19,17 +19,18 @@
   </center>
   <div class="tab" id="description">
     <br>
-          <p class="p_16_black" style="font-weight:bold">Este Quiz individual é gerado de forma randomica!</p>
-          <p class="p_16_black">Você pode sair a qualquer momento clicando em <b style="color:red">SAIR</b> no topo, porém <span style="color:red;font-weight:bold">perderá sua pontuação atual!</span></p>
-          <p class="p_16_black">Bons estudos!</p>
+          <p class="p_16_black" style="font-weight:bold">Este Quiz individual pode ser utilizado para testes!</p>
+          <p class="p_16_black">Você pode sair a qualquer momento clicando em <b style="color:red">SAIR</b> no topo.<br>
+          Lembre-se este quiz é um teste e <span style="color:red;font-weight:bold">não conta pontos!</span></p>
+          <p class="p_16_black" style="font-weight:bold">Bons estudos!</p>
   </div>
   <!-- {$q["RODADA"]|var_dump} -->
 
   <div style="overflow:auto;display:none" id="iniciar" name="iniciar">
-    <a href="index.php?pag=jogo&jogo=quiz" style="" class="">Voltar</a>
+    <a href="index.php?pag=jogo&jogo=quiz" style="" class="btn btn-outline btn-danger">Voltar</a>
     <div style="float:right;">
       <!-- <button type="button" id="prevBtn" onclick="nextPrevInd(-1)">Previous</button> -->
-      <button type="button" id="nextBtn" onclick="nextPrevInd(1)">Next</button>
+      <button type="button" id="nextBtn" onclick="nextPrevInd(1)" class="btn btn-outline btn-success">Próximo</button>
     </div>
   </div>
 <!-- One "tab" for each step in the form: -->
@@ -52,7 +53,7 @@
     <center>
       <p class="p_16_black" style="font-weight:bold">Você concluiu o Quiz!</p>
       <p class="p_16_black">Você pode voltar clicando em <b style="color:red">SAIR</b> no topo.</p>
-      <p class="p_16_black">Sua pontuação total terminou em <span style="color:red;font-weight:bold">{$score} pontos</span></p>
+      <!-- <p class="p_16_black">Sua pontuação total terminou em <span style="color:red;font-weight:bold">{$score} pontos</span></p> -->
     </center>
   </div>
 </div>
@@ -67,7 +68,7 @@
   Acertou, continue assim!
   <div style="float:right;">
     <!-- <button type="button" id="prevBtn" onclick="nextPrevInd(-1)">Previous</button> -->
-    <button type="button" id="nextBtn" onclick="nextPrevInd(1)">Next</button>
+    <button type="button" id="nextBtn" onclick="nextPrevInd(1)" class="btn btn-outline btn-success">Próximo</button>
   </div>
 </div>
 
@@ -75,7 +76,7 @@
   Foi quase!
   <div style="float:right;">
     <!-- <button type="button" id="prevBtn" onclick="nextPrevInd(-1)">Previous</button> -->
-    <button type="button" id="nextBtn" onclick="nextPrevInd(1)">Next</button>
+    <button type="button" id="nextBtn" onclick="nextPrevInd(1)" class="btn btn-outline btn-success">Próximo</button>
   </div>
 </div>
 

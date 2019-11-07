@@ -75,26 +75,17 @@ if(Tools::getValue("update_pontos")==1){
           $insert = false;
         }
       }
-      // $atualizar = 1;
-    }//else{
-      // $atualizar = 0;
-    // }
-// if($resp_bd != $resposta){
-  // if($atualizar == 1){
-    // $up_term = sprintf('UPDATE pontuacao SET `pontos`="%s",`id_resposta`="%s" WHERE `id_usuario`="%s" ', $pontos, $resposta, $id_usuario );
-    // $upd = mysqli_query($con, $up_term);
-    // mysqli_commit($con);
-    // echo json_encode($up_term);
-  // }else{
+    }
 
   if($insert == true){
+    if(Tools::getValue('teste') != 1){
     $ins_term = "insert into pontuacao (`id_usuario`,`pontos`,`id_quiz`,`id_resposta`) VALUES('".$id_usuario."','".$pontos."','".$id_quiz."','".$resposta."')";
     $ins = mysqli_query($con, $ins_term);
     mysqli_commit($con);
     echo json_encode($ins_term);
+  }
 }else{
   echo json_encode("Pergunta ja respondida!");
-
 }
 
 if(Tools::getValue("busca_aluno")==1){
