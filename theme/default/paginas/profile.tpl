@@ -1,5 +1,5 @@
 <div class="container" id="user_front_container" style="color:#ddd">
-  <div class="fb-profile">
+  <div class="fb-profile col-md-12">
     {if $msg}
     <div class="alert alert-success" id="mssg" role="alert" style="margin:10px">
       {$msg}
@@ -77,8 +77,8 @@
           </div>
           {if $conquistas}
           {foreach from=$conquistas item=$conquista}
-          <div class="col-sm-12 col-md-3" id="conquistas_profile">
-              <img src="admin-dev/img/conquistas/{$conquista}.jpg" class="img_conquistas">
+          <div class="col-sm-12 col-md-2" id="conquistas_profile">
+              <img src="admin-dev/img/conquistas/{$conquista[0]}.png" class="img_conquistas" title="{$conquista[1]}">
           </div>
           {/foreach}
           {else}

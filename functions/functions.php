@@ -85,14 +85,14 @@ function getLevel($user, $con){
 }
 
 function getConquista($user, $con){
-  $sql_conq="SELECT c.`conquista`
+  $sql_conq="SELECT c.`conquista` as conquista, c.`texto` as texto
   FROM conquistas c
-  WHERE c.`id_usuario` = ".$user."";
+  WHERE c.`id_usuario` = ".$user." group by c.`conquista`";
 
   $conq_res = mysqli_query($con,$sql_conq) or die(mysqli_error($con));
   if($conq_res->num_rows > 0){
   while ( $rs = mysqli_fetch_array( $conq_res ) ) {
-    $conquistas = $rs["conquista"];
+    $conquistas[] = [$rs["conquista"],$rs["texto"]];
   }
 
   return $conquistas;
