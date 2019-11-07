@@ -12,7 +12,7 @@
 		</head>
 		<!-- left side end-->
 		<!-- main content start-->
-		<div class="col-md-10">
+		<div class="col-md-10 col-sm-12">
 			<!-- header-starts -->
 			<div style="padding:15px 0 0 15px">
 				<h2>painel do aluno</h2>

@@ -5,8 +5,8 @@
 </div>
 {/if}
 {if $turmas}
-<div style="padding:15px 0 0 15px">
-  <h2>Minhas Turmas</h2>
+<div style="margin-top: 5px;padding:15px 0px; background:#333;color:#ddd">
+  <h2 style="padding:0px 15px">Minhas Turmas</h2>
 </div>
 {foreach from=$turmas item=$turma}
 <div class="col-md-6" style="padding:35px">
@@ -44,14 +44,15 @@
 {/if}
 
 {if $toda_turma}
-<div style="padding:15px 0 0 15px">
-  <h2>Ver Turma</h2>
+<div style="margin-top: 5px;padding:15px 0px; background:#333;color:#ddd">
+  <h2 style="padding:0px 15px">Ver Turma</h2>
 </div>
 <div class="panel-heading">
-  {$toda_turma[0]["nome_turma"]}
+  <center><h3>{$toda_turma[0]["nome_turma"]}</h3></center>
 </div>
+<div class="col-md-12">
 {foreach from=$toda_turma key=key item=$aluno}
-<div class="col-lg-4">
+<div class="col-md-4">
   <div class="panel panel-success">
     <a href="index.php?pag=profile&visita=1&id_user={$aluno["id_aluno"]}" style="color:#222">
       <div class="panel-body" id="lista_alunos"  style="background:rgb({mt_rand(0,255)},{mt_rand(0,255)},{mt_rand(0,255)})">
@@ -86,6 +87,8 @@
   </div>
 </div>
 {/foreach}
+</div>
+
 <div class="panel-footer col-md-12">
   <a href="index.php?pag=minhas_turmas" class="btn btn-outline btn-success">
   <i class="fa fa-backward fa-1x"></i> Voltar

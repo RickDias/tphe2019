@@ -1,8 +1,8 @@
 <div class="col-md-10">
 
-<div style="margin-top:0px;padding:20px 0">
-  <h1>jogos disponíveis para sua turma</h1>
-</div>
+  <div style="margin-top: 5px;padding:15px 0px; background:#333;color:#ddd">
+    <h2 style="padding:0px 15px">Jogos Disponíveis para suas turmas</h2>
+  </div>
 <div class="col-md-12">
   {if $resultados->num_rows > 0}
   {foreach from=$resultados item=$quiz}
@@ -29,7 +29,7 @@
   </div>
   {/foreach}
   {else}
-  <div class="col-md-12" style="margin:20px 0">
+  <div class="col-md-12" style="margin:20px 0px">
   <div class="panel panel-danger">
     <div class="panel-heading">
       Ops...
@@ -49,10 +49,10 @@
   {/if}
 </div>
 
-<div style="">
-  <h1>jogos individuais disponíveis</h1>
-</div>
 <div class="col-md-12">
+  <div style="margin-top: 5px;padding:15px 0px; background:#333;color:#ddd">
+    <h2 style="padding:0px 15px">Jogos de teste disponíveis</h2>
+  </div>
   {if $jg_ind}
   {foreach from=$jg_ind item=$jg}
   <div class="col-md-4" style="margin:20px 0">

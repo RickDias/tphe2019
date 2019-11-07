@@ -1,12 +1,12 @@
 <div class="container" id="user_front_container" style="color:#ddd">
   <div class="fb-profile">
     {if $msg}
-    <div class="alert alert-success" role="alert" style="margin:10px">
+    <div class="alert alert-success" id="mssg" role="alert" style="margin:10px">
       {$msg}
     </div>
     {/if}
     {if $msge}
-    <div class="alert alert-danger" role="alert" style="margin:10px">
+    <div class="alert alert-danger" id="mssg2" role="alert" style="margin:10px">
       {$msge}
     </div>
     {/if}
@@ -25,53 +25,45 @@
       <div class="col-md-12" id="container_alt_img">
         <form id="upd_cover_form" action="index.php?pag=profile" method="POST">
           <input type="hidden" id="update_cover" name="update_cover" value="1">
-        Capas:
+        <center><h4>Capas:</h4></center>
         <div class="div_images" style="background:#555">
           <!-- foreach -->
           <!-- {assign var=x value=0} -->
           {for $x=1 to 12}
           <div class="coluna4">
             <center>
-              <img class="img_covers" src="admin-dev/img/{$x}.2.jpg" alt="Profile image example"/>
-                <input type="radio" value="{$x}" id="{$x}" name="cover_radio">
+              <a onclick="select_radio({$x})">
+                <img class="img_covers" id="img_{$x}" src="admin-dev/img/{$x}.2.jpg" alt="Profile image example"/>
+              </a>
+                <input type="radio" value="{$x}" id="c{$x}" name="cover_radio" style="display:none">
             </center>
           </div>
           {/for}
         </div>
 
-        Perfil:
-        <div class="div_images" style="background:#555">
+        <center><h4>Perfil:</h4></center>
+        <div class="div_images" style="background:#555;">
           <!-- foreach -->
           {for $y=10 to 21}
-          <div class="coluna4">
+          <div class="coluna5">
             <center>
-              <img class="img_profile" src="admin-dev/img/{$y}.jpg" alt="Profile image example"/>
-              <input type="radio" value="{$y}" id="{$y}" name="profile_radio">
+              <a onclick="select_radio2({$y})">
+                <img class="img_profile" id="img2_{$y}" src="admin-dev/img/{$y}.jpg" alt="Profile image example"/>
+              </a>
+              <input type="radio" value="{$y}" id="p{$y}" name="profile_radio" style="display:none">
             </center>
           </div>
           {/for}
         </div>
-        <a class="btn btn-outline btn-info" style="margin:5px" onclick="oculta_img()" id="botao_oculta">Cancelar</a>
+        <center style="margin-bottom:5px">
+        <a class="btn btn-outline btn-danger" style="margin:5px" onclick="oculta_img()" id="botao_oculta">Cancelar</a>
         <button type="submit" class="btn btn-outline btn-success" style="margin:5px" onclick="oculta_img()" id="botao_oculta">Salvar</button>
+      </center>
+
 
       </form>
 
       </div>
-
-      <script>
-      function mostra_img(){
-        $("#container_alt_img").show("slow");
-        $("#botao_oculta").show("slow");
-        $("#span_altera").show("slow");
-      }
-
-      function oculta_img(){
-        $("#container_alt_img").hide("slow");
-        $("#botao_oculta").hide("slow");
-        $("#span_altera").hide("slow");
-      }
-
-      </script>
 
       <!-- nome -->
       <div class="col-md-12" style="display:flex;flex-wrap:wrap;padding:15px;background:#333">
@@ -80,12 +72,12 @@
         </div>
 
         <div style="background:;padding:10px" class="col-md-10">
-          <div class="col-md-12" style="font-weight:bold;background:;margin-bottom:5px">
+          <div class="col-md-12" id="text_conquista" style="font-weight:bold;background:;margin-bottom:5px">
             <h5>Conquistas</h5>
           </div>
           {if $conquistas}
           {foreach from=$conquistas item=$conquista}
-          <div class="col-md-3" style="font-weight:bold;background:;margin:2px;padding:15px;">
+          <div class="col-sm-12 col-md-3" id="conquistas_profile">
               <img src="admin-dev/img/conquistas/{$conquista}.jpg" class="img_conquistas">
           </div>
           {/foreach}
@@ -98,7 +90,7 @@
           {/if}
         </div>
 
-        <div style="background:;text-align:center;padding-top:35px;" class="col-md-2">
+        <div id="score_profile" class="col-sm-12 col-md-2">
           {if $pt_user}
           {foreach $pt_user as $level}
           <!-- {$level|var_dump} -->
@@ -114,7 +106,7 @@
           {assign var=percent value=(int)$percent_base[1]*10}
           <div class="ldBar label-center" id="score_bar_profile" data-value="{$percent}" data-label="4" data-preset="circle">
           </div>
-          <div class="" style="font-weight:bold;background:;width:90px;font-size:20px;">
+          <div class="text_profile_level">
             Nível {$total_level|intval}
           </div>
           {/foreach}
@@ -134,18 +126,10 @@
       <div class="col-md-12" style="padding:0px 10px">
       {foreach $turmas as $turma}
       <!-- {$turma|var_dump} -->
-      <div class="col-md-5" style="border:1px solid black;border-radius:5px;margin:15px;background:#333;color:#ddd;padding:5px;">
+      <div class="col-md-5 lista_turma_profile">
         <span>Turma: <span style="font-weight:bold;font-size:18px;">{$turma["turma"]}</span></span><br><br>
         Total de acertos: {$turma["acertos"]}<br>
         Pontuação nesta turma: {$turma["pontos"]}
-        <!-- Sem dados para as turmas...<br><br> -->
-        <!-- <h3>Quiz:{$turma["DESCRICAO"]}</h3><br> -->
-        <!-- {foreach from=$pontos item=$ponto}
-        {if $turma["ID_QUIZ"] == $ponto["id_quiz"]}
-        {$ponto["id_quiz"]}
-        <h7>Pontos{$ponto["pontos"]}:</h7><br>
-        {/if}
-        {/foreach} -->
       </div>
       {/foreach}
       </div>
@@ -173,9 +157,9 @@
           </div>
           {if $upd_pass}
           {if $upd_ok == 1}
-          <div class="alert alert-success" role="alert">Senha alterada com sucesso!</div>
+          <div class="alert alert-success" id="mssg3" role="alert">Senha alterada com sucesso!</div>
           {else}
-          <div class="alert alert-danger" role="alert">Senha incorreta!</div>
+          <div class="alert alert-danger" id="mssg4" role="alert">Senha incorreta!</div>
           {/if}
           {/if}
           <label for="atual_pass" id="atual_pass_lb" style="display:none">Senha Atual</label>
@@ -225,6 +209,44 @@ function oculta(){
   document.getElementById("cancel_pass").style.display = "none";
   document.getElementById("alt_senha").style.display = "block";
 }
+
+setInterval(function(){
+  $("#mssg").delay(4000).hide("slow");
+  $("#mssg2").delay(4000).hide("slow");
+  $("#mssg3").delay(5000).hide("slow");
+  $("#mssg4").delay(5000).hide("slow");
+}, 4000);
+
+function mostra_img(){
+  $("#container_alt_img").show("slow");
+  $("#botao_oculta").show("slow");
+  $("#span_altera").show("slow");
+}
+
+function oculta_img(){
+  $("#container_alt_img").hide("slow");
+  $("#botao_oculta").hide("slow");
+  $("#span_altera").hide("slow");
+}
+
+function select_radio(id) {
+  for (var i = 0; i <= 12; i++) {
+      $("#img_"+i).css('border', '0px solid #9c1513');
+  }
+  document.getElementById("c"+id).checked = true;
+  $("#img_"+id).css('border', '3px solid #9c1513');
+
+}
+
+function select_radio2(id) {
+  for (var r = 10; r <= 21; r++) {
+      $("#img2_"+r).css('border', '0px solid #9c1513');
+  }
+  document.getElementById("p"+id).checked = true;
+  $("#img2_"+id).css('border', '3px solid #9c1513');
+
+}
+
 </script>
 
 <br>
