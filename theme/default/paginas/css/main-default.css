@@ -82,25 +82,16 @@
   /* migrar para user css */
 
   #user_front_container{
-    margin-top: 50px;
+    margin-top: 5px;
     display: flex;
-    padding:0px 50px
+    padding:0px 5px;
     /* background: silver; */
-  }
-
-  .score_user{
-    float: right;
-    border: 1px solid black;
-    background: #c29b00;
-    border-radius: 50%;
-    /* width: 150px; */
-    /* height: 150px; */
-
   }
 
   .profile_sett{
     border: 1px solid gray;
-    background: #c29b00;
+    background: #fed136;
+    color: #333;
     border-radius: 15px;
     margin: 15px;
   }
@@ -109,35 +100,8 @@
     padding: 15px;
   }
 
-  #cancel_pass{
-    display: none;
-    margin:10px 0;
-    color: #a94442;
-    cursor:pointer;
-    background: #f2dede;
-    border: 1px solid #ebccd1;
-    border-left: 5px solid #333;
-    border-radius: 0px 15px 15px 0px;
-    padding: 5px;
-    width: 130px;
 
-  }#cancel_pass:hover{
-    background: #ed8787;
-  }
-  #alt_senha{
-    margin:10px 0;
-    color: #a94442;
-    cursor:pointer;
-    background: #f2dede;
-    border: 1px solid #ebccd1;
-    border-left: 5px solid #333;
-    border-radius: 0px 15px 15px 0px;
-    padding: 5px;
-    width: 130px;
-  }#alt_senha:hover{
-    background: #ed8787;
 
-  }
 
 .navbar-default{
   top:50px;
@@ -161,7 +125,7 @@
 
   .fb-image-profile
   {
-      margin: -90px 10px 0px 50px;
+      margin: -190px 10px 5px 50px;
       z-index: 9;
       width: 20%;
   }
@@ -202,9 +166,10 @@
 }
 #bloco_aluno{
   border: 1px solid gray;
-  background: #eee;
+  background: #333;
   border-radius: 10px;
   margin-bottom: 5px;
+  color:#ddd;
 
 
 }
@@ -246,20 +211,20 @@
 }
 /* score bar */
 #score_bar_profile{
-  width:150px;
-  height:150px;
-  margin:auto;
-  /* color:gold */
+  width:80px;
+  height:80px;
+  /* margin:auto; */
+  /* color:gold; */
   background: #fed136;
   border-radius: 50%;
   /* stroke:#ed2024; */
 }
-.ldBar-label:after {
-    content: "%"
-    color: #aaa;
+.ldBar-label:after{
+    content: "%";
+    color: #ccc;
     margin-left: 5px;
     font-family: courier new;
-    font-size:18px;
+    font-size:20px;
     font-weight: 200;
   }
 
@@ -270,4 +235,39 @@
   background-repeat: repeat;
   background-size: 200px;
   /* background-position: 15px -15px; */
+}
+
+.img_conquistas{
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+}
+
+.img_covers{
+  width: 250px;
+  height: 100px;
+}
+
+.img_profile{
+  border-radius: 5px;
+  width: 150px;
+  height: 150px;
+}
+
+.div_images{
+  margin-bottom:15px;
+  padding: 15px;
+  border:1px solid gray;
+  border-radius:3px;
+}
+.coluna4{
+  width: 23%;
+  display: inline-block;
+  margin: 0px 8px;
+}
+
+#container_alt_img{
+  margin: 5px 0px;
+  background:#333;
+  display: none;
 }

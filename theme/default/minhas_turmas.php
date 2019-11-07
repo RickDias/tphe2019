@@ -6,8 +6,9 @@ $smarty->config_dir = 'theme/default/';
 $smarty->error_reporting = E_ALL & ~E_NOTICE;
 $user_id = $_SESSION["UsuarioID"];
 $smarty->assign('user_id', $user_id);
-
 $con = conecta_db();
+
+
 if(Tools::getValue("enviado")==1){
   $smarty->assign('enviado', "Sua matrícula foi enviada ao professor, aguarde aprovação para ver sua turma!");
 }
@@ -22,8 +23,10 @@ $id_turma = Tools::getValue("id-turma");
   $resultados = mysqli_query($con, $sql) or die(mysqli_error($con));
   if($resultados->num_rows > 0){
     while ( $rs = mysqli_fetch_array( $resultados ) ) {
+      $level_aluno[] = getLevel($rs["id_aluno"], $con);
       $toda_turma[] =$rs ;
     }
+    $smarty->assign("level_aluno", $level_aluno);
     $smarty->assign('toda_turma', $toda_turma);
   }
 }

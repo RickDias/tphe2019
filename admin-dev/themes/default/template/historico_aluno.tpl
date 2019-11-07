@@ -1,11 +1,12 @@
 <!-- {$turmas|var_dump} -->
-<div class="col-md-8" style="min-height:550px;">
+<div class="col-md-12">
 {if $level_aluno}
 {foreach $level_aluno as $level}
 <div class="classejogador" style="background:#333">
   <div class="container" id="user_info_container">
     <div class="fb-profile">
-      <img align="left" class="fb-image-profile thumbnail" style="margin:5px;" src="admin-dev/img/{$level["ID_USUARIO"]}.jpg">
+      <img align="left" class="fb-image-profile thumbnail" style="margin:5px;" src="img/{$level["ID_USUARIO"]}.jpg">
+      <a class="btn btn-outline btn-danger" href="index_base.php?pag=detalhe_turma&id_turma={$id_turma}">Voltar</a>
       <div class="col-md-8" style="margin-top:15px;color:#ccc">
         <h3>{$level["NOME"]}</h3>
         {assign var=total_pontos value=$level["pontos"]}
@@ -47,8 +48,9 @@
 {/foreach}
 </div>
 {else}
-<div class="col-md-8" style="border:1px solid black;border-radius:5px;margin:15px;">
-  <h6>Sem dados para este aluno no momento!</h6>
+<div class="col-md-8" style="border:1px solid black;border-radius:5px;margin:15px">
+  <h4>Sem dados para este aluno no momento!</h4>
+  <a class="btn btn-outline btn-danger" href="index_base.php?pag=detalhe_turma&id_turma={$id_turma}" style="margin:15px">Voltar</a>
 </div>
 {/if}
 </div>

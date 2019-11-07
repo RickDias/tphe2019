@@ -7,19 +7,8 @@ $smarty->template_dir = 'theme/default/paginas';
 $smarty->config_dir = 'themes/default';
 $smarty->caching = false;
 $smarty->error_reporting = E_ALL & ~E_NOTICE;
+$id_usuario = $_SESSION["UsuarioID"];
 
-// $smarty->assign('menu_lateral', include "lateral_jogador.php");
-
-// session_start();
-// if($_SESSION){
-//   $user_id = $_SESSION["UsuarioID"];
-//
-//   $smarty->assign(array(
-//     'id_usuario' => $user_id,
-//     'cessao' => true,
-//   ));
-//
-// }
 $con = conecta_db();
 
 $classe_VO = include_VO('admensagem');
@@ -72,15 +61,19 @@ $resultados_ind = mysqli_query($con, $sql_ind) or die(mysqli_error($con));
 $smarty->assign('resultados_ind', $resultados_ind);
 
 
-$sql_jog = "SELECT distinct sum(p.`pontos`) as total, u.`NOME` as usuario, t.`NOME` as turma, u.`ID_USUARIO` as id_user
-              FROM `usuario` u, `turma` t, `turma_aluno` ta, pontuacao p
-              WHERE u.`ID_USUARIO` = ta.`ID_USUARIO`
-              AND ta.`ID_TURMA` = t.`ID_TURMA`
-              AND p.`id_usuario` = ta.`ID_USUARIO`
-              group by p.`id_usuario`
-              order by `total` DESC LIMIT 10";
+$sql_jog = "SELECT p.`id_usuario` as id_user, sum(p.`pontos`) as pts
+              FROM `pontuacao` p
+              WHERE p.`id_usuario` != 0
+              group by  p.`id_usuario`
+              order by pts DESC LIMIT 10";
 $jogadores = mysqli_query($con, $sql_jog) or die(mysqli_error($con));
-$smarty->assign('jogadores', $jogadores);
+if($jogadores->num_rows > 0){
+  foreach($jogadores as $id){
+    $level_aluno[] = getLevel($id["id_user"], $con);
+    // var_dump($level_aluno);
+  }
+  $smarty->assign('jogadores', $level_aluno);
+}
 
 $smarty->display('painel_jogador.tpl');
 }else{

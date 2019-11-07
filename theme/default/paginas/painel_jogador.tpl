@@ -198,25 +198,28 @@
 						<!-- player-rank -->
 						<div class="player-rank col-md-3">
 							<div class="ranking-heading">
-								<h3>Top 10 Players</h3>
+								<h3>Top 10 Jogadores</h3>
 							</div>
-							{if $jogadores->num_rows > 0}
+							{if $jogadores}
 							{foreach key=$key from=$jogadores item=$jogador}
-							<!-- {$jogador|var_dump} -->
-							{assign var=pontos_total value=$jogador["total"]}
-							{if $pontos_total < 10}
-							{assign var=level value=1}
-							{else}
-							{assign var=level value=$pontos_total/5}
-							{/if}
-							<div class="classejogador">
+							<!-- {$jogador[0]|var_dump} -->
+							{assign var=total_pontos value=$jogador[0]["pontos"]}
+			        {assign var=total_level value=1}
+			        {if $total_pontos < 10}
+			          {$total_level = 1}
+			        {else}
+			          {$total_level = $total_pontos/5}
+			        {/if}
+							<a href="index.php?pag=profile&visita=1&id_user={$jogador[0]["ID_USUARIO"]}" style="color:#222">
+								<div class="classejogador">
 									<span style="font-weight:bold;text-transform: uppercase;">
-										<img class="img_avatar_rank" src="admin-dev/img/{$jogador["id_user"]}.jpg">
-										{$jogador["usuario"]}
+										<img class="img_avatar_rank" src="admin-dev/img/{$jogador[0]["ID_USUARIO"]}.jpg">
+										{$jogador[0]["NOME"]}
 									</span><br>
-									<i class="fa fa-arrow-right"></i><span style="font-weight:bold"> {(int)$jogador["total"]} pontos</span> - <span style="font-size:12px">Lv {$level|intval}</span><br>
-									<span class="text-muted" style="font-size:13px"><i class="fa fa-clock-o fa-fw"></i> {$jogador["turma"]}</span>
-							</div>
+									<i class="fa fa-arrow-right"></i><span style="font-weight:bold"> {$jogador[0]["pontos"]} pontos</span> - <span style="font-size:12px">Lv {$total_level|intval}</span><br>
+									<span class="text-muted" style="font-size:13px"><i class="fa fa-clock-o fa-fw"></i> Ultimo jogo - há {mt_rand(1,5)} dias</span>
+								</div>
+							</a>
 							{/foreach}
 							{/if}
 						</div>

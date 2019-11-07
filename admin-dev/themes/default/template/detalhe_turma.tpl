@@ -23,9 +23,7 @@
               <th>ALUNO</th>
               <th>STATUS</th>
               <th>SCORE TOTAL</th>
-              <th></th>
-
-
+              <th colspan="2"><center>Opções</center></th>
             </tr>
           </thead>
           <tbody>
@@ -61,8 +59,9 @@
                 <a href="index_base.php?pag=detalhe_turma&adiciona_aluno=1&id_turma={$turma['ID_TURMA']}&id_aluno={$turma['ID_USUARIO']}"><i class="fa fa-thumbs-up" aria-hidden="true"></i> Adicionar Aluno</a><br>
                 {/if}
               </td>
-
-
+              <td>
+                <a href="index_base.php?pag=historico_aluno&id_aluno={$turma['ID_USUARIO']}&id_turma={$turma['ID_TURMA']}">Ver Aluno</a><br>
+              </td>
             </tr>
             {/foreach}
             {else}
@@ -72,6 +71,8 @@
             {/if}
             </tbody>
           </table>
+          <a class="btn btn-outline btn-danger" href="index_base.php?pag=turmas" style="margin:15px">Voltar</a>
+
           <!-- /.table-responsive -->
         </div>
         <!-- /.panel-body -->

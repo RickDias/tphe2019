@@ -13,6 +13,7 @@
   <li>
     Bem vindo à página do Professor, <?php echo $_SESSION['UsuarioNome'];?>! <br/>
   </li>
+    <!--
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <i class="fa fa-envelope fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -41,29 +42,8 @@
                     <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
                 </a>
             </li>
-            <li class="divider"></li>
-            <li>
-                <a href="#">
-                    <div>
-                        <strong>John Smith</strong>
-                        <span class="pull-right text-muted">
-                            <em>Yesterday</em>
-                        </span>
-                    </div>
-                    <div>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque eleifend...</div>
-                </a>
-            </li>
-            <li class="divider"></li>
-            <li>
-                <a class="text-center" href="#">
-                    <strong>Read All Messages</strong>
-                    <i class="fa fa-angle-right"></i>
-                </a>
-            </li>
         </ul>
-        <!-- /.dropdown-messages -->
     </li>
-    <!-- /.dropdown -->
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <i class="fa fa-tasks fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -140,9 +120,7 @@
                 </a>
             </li>
         </ul>
-        <!-- /.dropdown-tasks -->
     </li>
-    <!-- /.dropdown -->
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <i class="fa fa-bell fa-fw"></i> <i class="fa fa-caret-down"></i>
@@ -200,9 +178,8 @@
                 </a>
             </li>
         </ul>
-        <!-- /.dropdown-alerts -->
     </li>
-    <!-- /.dropdown -->
+    -->
     <li class="dropdown">
         <a class="dropdown-toggle" data-toggle="dropdown" href="#">
             <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>

@@ -2,13 +2,15 @@
 if($_SESSION){
 // include 'menu.tpl';
 $smarty = new Smarty;
-$smarty->template_dir = 'theme/default/paginas';
+$smarty->template_dir = 'themes/default/template';
 $smarty->config_dir = 'themes/default';
 $smarty->caching = false;
 $smarty->error_reporting = E_ALL & ~E_NOTICE;
 
 $con = conecta_db();
-$id_usuario = $_SESSION["UsuarioID"];
+$id_usuario = Tools::getValue("id_aluno");
+$id_turma = Tools::getValue("id_turma");
+$smarty->assign("id_turma", $id_turma);
 
 $level_aluno = getLevel($id_usuario, $con);
 $smarty->assign("level_aluno", $level_aluno);
@@ -36,10 +38,10 @@ $smarty->assign("turmas", $turmas);
 // $sql_turmas;
 
 
-$smarty->display('historico.tpl');
+$smarty->display('historico_aluno.tpl');
 
 }else{
-  header("Location: index.php?pag=login");
+  header("Location: index.php");
 
 }
 

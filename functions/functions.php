@@ -67,3 +67,34 @@ function destroiCessao(){
   <?php
   exit;
 }
+
+function getLevel($user, $con){
+  $sql_level="SELECT count(p.`pontos`) AS acertos, sum(p.`pontos`) AS pontos, u.`NOME`, u.`ID_USUARIO`
+  FROM usuario u, pontuacao p
+  WHERE p.`id_usuario` = ".$user."
+  AND u.`ID_USUARIO` = ".$user."
+  GROUP BY p.id_usuario";
+  $level_res = mysqli_query($con,$sql_level) or die(mysqli_error($con));
+  if($level_res->num_rows > 0){
+  while ( $rs = mysqli_fetch_array( $level_res ) ) {
+    $levels[] = $rs;
+  }
+
+  return $levels;
+}
+}
+
+function getConquista($user, $con){
+  $sql_conq="SELECT c.`conquista`
+  FROM conquistas c
+  WHERE c.`id_usuario` = ".$user."";
+
+  $conq_res = mysqli_query($con,$sql_conq) or die(mysqli_error($con));
+  if($conq_res->num_rows > 0){
+  while ( $rs = mysqli_fetch_array( $conq_res ) ) {
+    $conquistas = $rs["conquista"];
+  }
+
+  return $conquistas;
+}
+}

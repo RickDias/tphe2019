@@ -13,29 +13,29 @@ $id_usuario = $_SESSION["UsuarioID"];
 $id_quiz= Tools::getValue("id-quiz");
 $id_turma= Tools::getValue("id-turma");
 //get PONTOS
-if($id_quiz && $id_usuario){
-  $pontuacao = "SELECT SUM(p.`pontos`) as pontos
-  FROM `pontuacao` p,`usuario` u
-  WHERE p.`id_usuario` = u.`ID_USUARIO`
-  AND p.`id_quiz` = ".$id_quiz."
-  AND p.`id_usuario` = ".$id_usuario."
-  group by p.`id_usuario`";
-  $score_res = mysqli_query($con,$pontuacao) or die(mysqli_error($con));
-  if($score_res->num_rows > 0){
-  while ( $rs = mysqli_fetch_array( $score_res ) ) {
-    $score =$rs["pontos"];
-    if($score < 10){
-      $level[] = 1;
-      $smarty->assign("level", 1);
-    }else{
-      $level[]=$score/5;
-  }
-}
-$smarty->assign("level", $level);
-}else{
-  $smarty->assign("score", 0);
-}
-}
+// if($id_quiz && $id_usuario){
+//   $pontuacao = "SELECT SUM(p.`pontos`) as pontos
+//   FROM `pontuacao` p,`usuario` u
+//   WHERE p.`id_usuario` = u.`ID_USUARIO`
+//   AND p.`id_quiz` = ".$id_quiz."
+//   AND p.`id_usuario` = ".$id_usuario."
+//   group by p.`id_usuario`";
+//   $score_res = mysqli_query($con,$pontuacao) or die(mysqli_error($con));
+//   if($score_res->num_rows > 0){
+//   while ( $rs = mysqli_fetch_array( $score_res ) ) {
+//     $score =$rs["pontos"];
+//     if($score < 10){
+//       $level[] = 1;
+//       $smarty->assign("level", 1);
+//     }else{
+//       $level[]=$score/5;
+//   }
+// }
+// $smarty->assign("level", $level);
+// }else{
+//   $smarty->assign("score", 0);
+// }
+// }
 
 
 if($id_quiz || $id_turma){
@@ -113,8 +113,11 @@ where `visivel` = 'S' ");
 $resultado = mysqli_query($con,$sql) or die(mysqli_error($con));
 while ( $rs = mysqli_fetch_array( $resultado ) ) {
    $todos_alunos[] =$rs ;
-}
+   $level_aluno = getLevel($rs["id_aluno"], $con);
 
+}
+$smarty->assign("level", $level_aluno);
+$smarty->assign("score", 0);
   $smarty->assign(array(
     'resultados' => $quiz,
     'alunos' => $todos_alunos

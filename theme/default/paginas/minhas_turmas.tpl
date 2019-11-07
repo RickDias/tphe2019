@@ -50,17 +50,39 @@
 <div class="panel-heading">
   {$toda_turma[0]["nome_turma"]}
 </div>
-{foreach from=$toda_turma item=$aluno}
+{foreach from=$toda_turma key=key item=$aluno}
 <div class="col-lg-4">
   <div class="panel panel-success">
-    <div class="panel-body" id="lista_alunos"  style="background:rgb({mt_rand(0,255)},{mt_rand(0,255)},{mt_rand(0,255)})">
-      <div class="col-md-4 avatar-aluno">
-        <img class="img_avatar" src="admin-dev/img/{$aluno["id_aluno"]}.jpg">
+    <a href="index.php?pag=profile&visita=1&id_user={$aluno["id_aluno"]}" style="color:#222">
+      <div class="panel-body" id="lista_alunos"  style="background:rgb({mt_rand(0,255)},{mt_rand(0,255)},{mt_rand(0,255)})">
+        <div class="col-md-4 avatar-aluno">
+          <img class="img_avatar" src="admin-dev/img/{$aluno["id_aluno"]}.jpg">
+        </div>
+        <div class="col-md-8" style="padding-top:5%">
+          <span style="font-size:20px">{$aluno["nome_aluno"]}</span><br>
+          {if $level_aluno}
+
+          {foreach from=$level_aluno item=level}
+
+          {if $level[0]["ID_USUARIO"] == {$aluno["id_aluno"]}}
+
+          {assign var=total_pontos value=$level[$key]["pontos"]}
+          {assign var=total_level value=1}
+
+          {if $total_pontos < 10}
+            {$total_level = 1}
+          {else}
+            {$total_level = $total_pontos/5}
+          {/if}
+
+          <i class="fa fa-arrow-right"></i><span style="font-weight:bold"> {$level[0]["pontos"]} pontos</span> - <span style="font-size:12px">Lv {$total_level|intval}</span><br>
+          {/if}
+
+          {/foreach}
+          {/if}
+        </div>
       </div>
-      <div class="col-md-8" style="padding-top:5%">
-        <span>{$aluno["nome_aluno"]}</span>
-      </div>
-    </div>
+    </a>
   </div>
 </div>
 {/foreach}

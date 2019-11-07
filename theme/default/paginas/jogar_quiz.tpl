@@ -99,7 +99,16 @@
       </div>
       <div class="col-md-6">
         <span>{$aluno["NOME"]}</span><br>
-        <span>Lvl {(int)$level[$al]}</span>
+        {assign var=total_pontos value=$level[$al]["pontos"]}
+        {assign var=total_level value=1}
+        {if $total_pontos < 10}
+          {$total_level = 1}
+        {else}
+          {$total_level = $total_pontos/5}
+        {/if}
+        <!-- {$level[$al]|var_dump} -->
+        <i class="fa fa-arrow-right"></i><span style="font-weight:bold;color:#fed136"> {$level[$al]["pontos"]} pontos</span> - <span style="font-size:12px">Lv {$total_level|intval}</span><br>
+
       </div>
 
     </div>
