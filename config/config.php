@@ -2,7 +2,7 @@
 /* ***CONFIGURAÇÕES RELATIVO AO BANCO DE DADOS*** */
 
 define("DBHOST", "localhost");
-define("DBUSER", "root");
-define("DBPASS", "");
-define("DBNAME", "tphe");
+define("DBUSER", "tpheusina_dev");
+define("DBPASS", "RickDias1234");
+define("DBNAME", "tpheusina_site");
 ?>
