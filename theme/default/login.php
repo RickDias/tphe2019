@@ -18,7 +18,7 @@ if(Tools::getValue('form_login') == 1){
     $_SESSION['Theme'] = $resultado['theme'];
     $_SESSION['ImgPerfil'] = $resultado['img_perfil'];
     $_SESSION['ImgCapa'] = $resultado['img_capa'];
-    $_SESSION['DescPerfil'] = $resultado['desc'];
+    // $_SESSION['DescPerfil'] = $resultado['desc'];
     // include 'admin-dev/index.php';
     if($resultado['ID_TIPO_USUARIO'] == 3){
       header("Location: index.php?pag=painel_jogador");

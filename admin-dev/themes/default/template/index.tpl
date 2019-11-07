@@ -300,8 +300,8 @@
                     </div>
 
                     <div class="panel-footer">
-                      <div class="input-group">
-                        <form action="index_base.php?pag=envia_mensagem" method="POST">
+                      <div style="display:flex;padding:15px 0px;justify-content:flex-end">
+                        <form action="index_base.php?pag=envia_mensagem" method="POST" style="display:inline-table;">
                           <input type="hidden" name="usuario" id="usuario" value="{$sessao["UsuarioID"]}">
                           <input id="texto_mensagem" name="texto_mensagem" type="text" class="form-control input-sm" placeholder="Type your message here..." />
                           <span class="input-group-btn">
