@@ -149,7 +149,7 @@
               <!-- ultimos avisos -->
               <div class="more-news">
                 <div class="more-news-heading">
-                  <h3>Ultimos avisos</h3>
+                  <h3>Últimas mensagens</h3>
                 </div>
                 <div class="more-news-grids">
                   <div class="col-md-12 more-news-left">
@@ -166,7 +166,7 @@
 		                        </small> -->
                             <ul>
                               <li><i class="fa fa-arrow-right"></i> {$aviso->getMensagem()}</li>
-                              <li><a href="#"><i class="fa fa-play-circle-o"></i> Ver Mensagem</a></li>
+                              <!-- <li><a href="#"><i class="fa fa-play-circle-o"></i> Ver Mensagem</a></li> -->
                             </ul>
                           </div>
                     			{/foreach}
@@ -213,10 +213,10 @@
 							<a href="index.php?pag=profile&visita=1&id_user={$jogador[0]["ID_USUARIO"]}" style="color:#222">
 								<div class="classejogador">
 									<span style="font-weight:bold;text-transform: uppercase;">
-										<img class="img_avatar_rank" src="admin-dev/img/{$jogador[0]["ID_USUARIO"]}.jpg">
+										<img class="img_avatar_rank" src="admin-dev/img/{$jogador[0]["img_perfil"]}.jpg">
 										{$jogador[0]["NOME"]}
 									</span><br>
-									<i class="fa fa-arrow-right"></i><span style="font-weight:bold"> {$jogador[0]["pontos"]} pontos</span> - <span style="font-size:12px">Lv {$total_level|intval}</span><br>
+									<i class="fa fa-arrow-right"></i><span style="font-weight:bold"> {$jogador[0]["pontos"]} pontos</span> - <span style="font-size:12px">Lv {$total_level|intval} | Clique para ver</span><br>
 									<span class="text-muted" style="font-size:13px"><i class="fa fa-clock-o fa-fw"></i> Ultimo jogo - há {mt_rand(1,5)} dias</span>
 								</div>
 							</a>

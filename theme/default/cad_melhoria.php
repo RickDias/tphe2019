@@ -7,7 +7,10 @@ $smarty->cache_dir = 'cache';
 $link = conecta_db();
 
 $id_usuario = $_SESSION["UsuarioID"];
+$user_email = $_SESSION['UsuarioEmail'];
 $smarty->assign("id_user", $id_usuario);
+$smarty->assign("user_email", $user_email);
+
 
 // if($id_ususario == 3){
   $sql_m = "SELECT m.`DESCRICAO`

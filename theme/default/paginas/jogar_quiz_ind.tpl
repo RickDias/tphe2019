@@ -21,13 +21,13 @@
     <br>
           <p class="p_16_black" style="font-weight:bold">Este Quiz individual pode ser utilizado para testes!</p>
           <p class="p_16_black">Você pode sair a qualquer momento clicando em <b style="color:red">SAIR</b> no topo.<br>
-          Lembre-se este quiz é um teste e <span style="color:red;font-weight:bold">não conta pontos!</span></p>
+          Lembre-se este quiz é um teste e <span style="color:red;font-weight:bold">não soma pontos!</span></p>
           <p class="p_16_black" style="font-weight:bold">Bons estudos!</p>
   </div>
   <!-- {$q["RODADA"]|var_dump} -->
 
   <div style="overflow:auto;display:none" id="iniciar" name="iniciar">
-    <a href="index.php?pag=jogo&jogo=quiz" style="" class="btn btn-outline btn-danger">Voltar</a>
+    <!-- <a href="index.php?pag=jogo&jogo=quiz" style="" class="btn btn-outline btn-danger">Voltar</a> -->
     <div style="float:right;">
       <!-- <button type="button" id="prevBtn" onclick="nextPrevInd(-1)">Previous</button> -->
       <button type="button" id="nextBtn" onclick="nextPrevInd(1)" class="btn btn-outline btn-success">Próximo</button>
@@ -92,7 +92,9 @@
 </div>
 
 <div class="col-md-3" id="container_sala__aluno">
-  <h4>Jogadores na sala</h4>
+  <div style="background:#333;padding:15px; margin-bottom:15px;" class="col-md-12">
+    <span style="font-weight:bold;font-size:20px;color:#ddd;">Jogadores neste Quiz</span>
+  </div>
   <div class="item_sala_aluno">
     {if $alunos}
     {foreach from=$alunos key=$al item=$aluno}

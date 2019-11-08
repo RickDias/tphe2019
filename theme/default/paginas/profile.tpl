@@ -134,9 +134,21 @@
       {/foreach}
       </div>
       {else}
+      {if $turmas2}
+      <div class="col-md-12" style="padding:0px 10px">
+        {foreach $turmas2 as $turma2}
+        <div class="col-md-5 lista_turma_profile">
+          <center>
+            <span style="font-weight:bold;font-size:18px;">{$turma2["turma"]}</span><br><br>
+          </center>
+        </div>
+        {/foreach}
+      </div>
+      {else}
       <div class="col-md-8" style="border:1px solid black;border-radius:5px;margin:15px">
         <h6>Sem turmas para este aluno no momento!</h6>
       </div>
+      {/if}
       {/if}
 
 

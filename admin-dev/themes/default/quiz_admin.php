@@ -15,6 +15,21 @@ $smarty->assign("id_turma", $id_turma);
 $rodada = Tools::getValue("rodada");
 $esgotado = Tools::getValue("esgotado");
 
+if(Tools::getValue("remove_aluno") == 1){
+    $query = sprintf('UPDATE sala_alunos
+      SET `visivel` =  "N"
+      WHERE `id_aluno` > "0" ');
+      try {
+          if(!mysqli_query($con, $query)){
+              throw new Exception ("Erro remover usuario!");
+          }
+      } catch (Exception $ex) {
+          echo $ex->getMessage();
+          mysqli_rollback($con);
+      }
+      mysqli_commit($con);
+}
+
   if($id_quiz && $rodada != FALSE){
     $quiz_DAO = include_DAO2('turma_quiz');
     require_once $quiz_DAO;

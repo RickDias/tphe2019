@@ -53,7 +53,7 @@
     <center>
       <p class="p_16_black" style="font-weight:bold">Você concluiu o Quiz!</p>
       <p class="p_16_black">Você pode voltar clicando em <b style="color:red">SAIR</b> no topo.</p>
-      <p class="p_16_black">Sua pontuação total terminou em <span style="color:red;font-weight:bold">{$score} pontos</span></p>
+      <p class="p_16_black">Confira sua pontuação final no <span style="color:red;font-weight:bold">painel do professor</span></p>
     </center>
   </div>
 </div>

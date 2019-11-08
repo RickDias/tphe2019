@@ -8,6 +8,7 @@
  */
 function conecta_db() {
     $link = mysqli_connect(DBHOST, DBUSER, DBPASS, DBNAME) or die("Erro ao conectar com o banco de dados. Verifique a configuração e tente novamente.");
+    $link->set_charset("utf8");
     mysqli_autocommit($link, FALSE);
 
     return $link;
@@ -69,7 +70,7 @@ function destroiCessao(){
 }
 
 function getLevel($user, $con){
-  $sql_level="SELECT count(p.`pontos`) AS acertos, sum(p.`pontos`) AS pontos, u.`NOME`, u.`ID_USUARIO`
+  $sql_level="SELECT count(p.`pontos`) AS acertos, sum(p.`pontos`) AS pontos, u.`NOME`, u.`ID_USUARIO`, u.`img_perfil`
   FROM usuario u, pontuacao p
   WHERE p.`id_usuario` = ".$user."
   AND u.`ID_USUARIO` = ".$user."

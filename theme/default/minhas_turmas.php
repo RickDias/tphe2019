@@ -15,7 +15,7 @@ if(Tools::getValue("enviado")==1){
 if(Tools::isSubmit("ver_turma")){
 if(Tools::getValue("id-turma")){
 $id_turma = Tools::getValue("id-turma");
-  $sql = "SELECT distinct t.`ID_TURMA`, t.`NOME` as nome_turma, t.`SIGLA`, u.`NOME` as nome_aluno, u.`ID_USUARIO` as id_aluno
+  $sql = "SELECT distinct t.`ID_TURMA`, t.`NOME` as nome_turma, t.`SIGLA`, u.`NOME` as nome_aluno, u.`ID_USUARIO` as id_aluno, u.`img_perfil`
   FROM `turma` t,`turma_aluno`ta, `usuario` u
   WHERE t.`ID_TURMA` = ta.`ID_TURMA`
   AND ta.`ID_USUARIO` = u.`ID_USUARIO`

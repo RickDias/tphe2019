@@ -5,6 +5,17 @@
         <h2 class="section-heading">Sobre...</h2>
         <h3 class="section-subheading text-muted">O projeto Tphe.</h3>
       </center>
+      <div class="painel_sobre">
+        <span style="font-weight:bold"></span>
+
+        Este projeto foi desenvolvido para funcionar com o painel do aluno e do professor trocando dados simultâneamente.
+        O Jogo em si <span style="font-weight:bold">precisa de uma interação direta do professor</span>, pois sua tela ficará projetada para toda a turma.
+        O aluno apenas responderá as perguntas.
+        Ao final da rodada será exibido o placar na tela do professor.
+
+        Como o sistema está em fase de testes, disponibilizei um quiz onde o aluno poderá jogar sem a necessidade do professor,
+        porém como o sistema considera a pontuação para formular níveis, este tipo de jogo <span style="font-weight:bold">não distribui pontuação</span>.
+      </div>
       <div class="col-md-10">
                 <ul class="timeline">
                     <li>
@@ -15,10 +26,10 @@
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <h4>2016</h4>
-                                <h4 class="subheading">Our Humble Beginnings</h4>
+                                <h4 class="subheading">O projeto se inicia...</h4>
                             </div>
                             <div class="timeline-body">
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                <p class="text-muted">Por demanda da professora de educação física que precisava de uma forma de incentivar o conteúdo teórico de educação física em sala de aula surgiu o projeto Tphe!</p>
                             </div>
                         </div>
                     </li>
@@ -28,11 +39,11 @@
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>March 2017</h4>
-                                <h4 class="subheading">An Project is Born</h4>
+                                <h4>Inicio de 2017</h4>
+                                <h4 class="subheading">Um projeto nasce</h4>
                             </div>
                             <div class="timeline-body">
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                <p class="text-muted">Com um projeto definido, foi iniciada a programação. Tivemos dificuldades em encontrar voluntários que pudesse de alguma forma ajudar no desenvolvimento, pois a equipe original possuía outros projetos em desenvolvimento!</p>
                             </div>
                         </div>
                     </li>
@@ -42,11 +53,11 @@
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>March 2018</h4>
-                                <h4 class="subheading">Transition to Full Service</h4>
+                                <h4>Inicio de 2018</h4>
+                                <h4 class="subheading">Teoria antes do desenvolvimento</h4>
                             </div>
                             <div class="timeline-body">
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                <p class="text-muted">Desenvolvimento dos diagramas, modelagem do banco e toda a parte teórica do projeto. Com falta de alunos para o desenvolvimento a programção foi se mantendo em segundo plano...</p>
                             </div>
                         </div>
                     </li>
@@ -56,11 +67,11 @@
                         </div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>March 2019</h4>
-                                <h4 class="subheading">Phase Two Expansion</h4>
+                                <h4>E em 2019...</h4>
+                                <h4 class="subheading">A fase 2 finalmente se inicia!</h4>
                             </div>
                             <div class="timeline-body">
-                                <p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p>
+                                <p class="text-muted">Com a falta de voluntários o projeto foi ficando cada vez mais próximo da extinção. Foi onde surgiu a proposta de utilizá-lo em meu TCC, e em Maio de 2019 foi iniciada a programação do sistema em tempo integral!</p>
                             </div>
                         </div>
                     </li>

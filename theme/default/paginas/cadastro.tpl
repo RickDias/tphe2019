@@ -53,15 +53,16 @@ function toggle_turma(){
 				</div>
 					<div class="radio">
 					<label>
-					<input type="radio" name="optionsRadios" id="optionsRadios1" value="2" checked>Sou um Professor
-					</label>
-					</div>
-					<div class="radio">
-					<label>
-					<input type="radio" name="optionsRadios" id="optionsRadios2" value="3" onclick="toggle_turma()">Sou um Aluno
+					<input type="radio" name="optionsRadios" id="optionsRadios2" value="3" onclick="toggle_turma()" checked>Sou um Aluno
 					</label>
           <input name="cod_turma" id="cod_turma" placeholder="Digite o código da turma" class="form-control"  type="password" style="display:none">
 					</div>
+          <div class="radio">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="2">Sou um Professo*<br><br>
+              <span style="font-size:10px;color:#888">*marque somente se realmente for um Professor,<br> pois são sistemas diferentes!</span>
+            </label>
+          </div>
 				</div>
 				</div>
 

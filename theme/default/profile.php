@@ -73,8 +73,21 @@ if(Tools::getValue("visita")==1){
     $turmas[] = $rs;
   }
   $smarty->assign("turmas", $turmas);
-  }
+}
 
+$sql_turmas2 = "SELECT distinct t.`NOME` as turma
+FROM turma t,turma_aluno ta
+WHERE ta.`ID_USUARIO` = ".$usuario_id."
+AND ta.`ID_TURMA` = t.`ID_TURMA`";
+
+$turma_res2 = mysqli_query($con,$sql_turmas2) or die(mysqli_error($con));
+
+if($turma_res2->num_rows > 0){
+while ( $rs = mysqli_fetch_array( $turma_res2 ) ) {
+  $turmas2[] = $rs;
+}
+$smarty->assign("turmas2", $turmas2);
+}
 
 }else{
   $usuario_id = $_SESSION['UsuarioID'];

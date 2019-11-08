@@ -6,7 +6,16 @@
 
   <fieldset>
     <!-- Form Name -->
-    <legend><center><h2><b>Realizar Matrícula</b></h2></center></legend><br>
+    <legend>
+      <center style="font-size:13px;font-weight:bold">
+        <h4>
+          <b>Realizar Matrícula</b>
+        </h4>
+        Para realizar matrícula solicite o código com seu professor. Para fim de teste,
+         utilize o código <span style="color:red;font-weight:bold">92340</span>
+       </center>
+     </legend>
+     <br>
     <!-- Text input-->
     <div class="form-group">
       <label class="col-md-4 control-label">Digite o código da turma</label>

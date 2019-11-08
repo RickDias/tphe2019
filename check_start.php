@@ -108,3 +108,4 @@ if(Tools::getValue("busca_aluno")==1){
 }
 
 }
+}

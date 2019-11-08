@@ -100,7 +100,13 @@
     padding: 15px;
   }
 
-
+.painel_sobre{
+  float: right;
+  display: inline-block;
+  width: 90%;
+  text-align: justify;
+  margin-bottom: 25px;
+}
 
 
 .navbar-default{
@@ -171,7 +177,7 @@
 }
 
 #container_sala__aluno{
-  border: 1px solid silver;
+  /* border: 1px solid silver; */
   min-height: 500px;
   padding-top: 15px;
   background: white;
@@ -326,7 +332,7 @@
   margin:15px;
   background:#333;
   color:#ddd;
-  padding:5px;
+  padding:15px;
 }
 
 #botao_mostra{
@@ -338,7 +344,20 @@
   display:inline;
 }
 
+.img_ajuda{
+  width:500px;
+}
+
 @media only screen and (max-width: 767px){
+
+  #text_conquista{
+    width: 100%;
+  }
+
+
+  .img_ajuda{
+    width:100%;
+  }
 
   .coluna4{
     width: 100%;

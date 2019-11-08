@@ -1,5 +1,5 @@
 <!-- {$turmas|var_dump} -->
-<div class="col-md-8" style="min-height:550px;">
+<div class="col-md-10" style="min-height:550px;">
 {if $level_aluno}
 {foreach $level_aluno as $level}
 <div class="classejogador" style="background:#333">
@@ -24,11 +24,14 @@
 
 <!-- {$level|var_dump} -->
 {/foreach}
-{else}
-<h3>Histórico</h3><br>
+<div style="background:#333;" class="col-md-12">
+  <center>
+    <span style="font-weight:bold;font-size:35px;color:#ddd">Histórico</span>
+  </center>
+</div>
 {/if}
 {if $turmas}
-<div class="col-md-12" style="padding:0px 10px">
+<div class="col-md-12" style="padding:15px 5%;border:1px solid gray;background:#555">
 {foreach $turmas as $turma}
 <!-- {$turma|var_dump} -->
 <div class="col-md-5" style="border:1px solid black;border-radius:5px;margin:15px;background:#333;color:#ddd;padding:5px;">

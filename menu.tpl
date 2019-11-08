@@ -33,6 +33,7 @@
                   <li class="itens_mobile"><a class="page-scroll" href="index.php?pag=profile"><span>Meu Perfil</span></a></li>
                   <li class="itens_mobile"><a class="page-scroll" href="index.php?pag=sobre"><span>Sobre nós</span></a></li>
                   <li class="itens_mobile"><a class="page-scroll" href="index.php?pag=cad_melhoria"><span>Sugerir Melhoria</span></a></li>
+                  <li class="itens_mobile"><a class="page-scroll" href="index.php?pag=ajuda"><span>Ajuda</span></a></li>
                   <li class="itens_mobile"><a class="page-scroll" href="index.php?pag=loggout"><span>Sair</span></a></li>
                 </div>
 
@@ -59,6 +60,7 @@
       <li><a class="li_menu_lat" href="index.php?pag=profile"><img src="admin-dev/themes/default/img/module-profile.png" alt="" /><span class="txt_menu_lat">Meu Perfil</span></a></li>
       <li><a class="li_menu_lat" href="index.php?pag=sobre"><img src="theme/default/images/17.png" alt="" /><span class="txt_menu_lat">Sobre nós</span></a></li>
       <li><a class="li_menu_lat" href="index.php?pag=cad_melhoria"><img src="theme/default/images/10.png" alt="" /><span class="txt_menu_lat">Sugerir Melhoria</span></a></li>
+      <li><a class="li_menu_lat" href="index.php?pag=ajuda"><img src="theme/default/images/12.png" alt="" /><span class="txt_menu_lat">Ajuda</span></a></li>
       <li><a class="li_menu_lat" href="index.php?pag=loggout"><img src="admin-dev/themes/default/img/icon-cancel.png" alt="" /><span class="txt_menu_lat">Sair</span></a></li>
 		</ul>
 	</div>

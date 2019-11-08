@@ -1,7 +1,7 @@
 <div class="col-md-10">
 
   <div style="margin-top: 5px;padding:15px 0px; background:#333;color:#ddd">
-    <h2 style="padding:0px 15px">Jogos Disponíveis para suas turmas</h2>
+    <h4 style="padding:0px 15px">Jogos Disponíveis para suas turmas</h4>
   </div>
 <div class="col-md-12">
   {if $resultados->num_rows > 0}
@@ -51,7 +51,7 @@
 
 <div class="col-md-12">
   <div style="margin-top: 5px;padding:15px 0px; background:#333;color:#ddd">
-    <h2 style="padding:0px 15px">Jogos de teste disponíveis</h2>
+    <h4 style="padding:0px 15px">Jogos de teste disponíveis</h4>
   </div>
   {if $jg_ind}
   {foreach from=$jg_ind item=$jg}

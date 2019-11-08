@@ -21,7 +21,7 @@
 
   <div class="form-group">
     <label>E-mail de contato (Opcional):</label>
-    <input class="form-control" type="text" name="email" id="email" value=""/>
+    <input class="form-control" type="text" name="email" id="email" value="{$user_email}"/>
   </div>
 
   <input type="hidden" value="<?php echo $_SESSION['UsuarioID']; ?>">

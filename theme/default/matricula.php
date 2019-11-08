@@ -22,8 +22,13 @@ $id_usuario = $_SESSION["UsuarioID"];
       $resp_turma_id =$rs["ID_TURMA"] ;
     }
     if($resp_turma_id){
+      if($resp_turma_id == 10){
+        $query = sprintf('INSERT INTO turma_aluno ( `ID_TURMA`, `ID_USUARIO` , `status` )'.'VALUES ("%s","%s","A")',
+                 $resp_turma_id, $id_usuario);
+      }else{
       $query = sprintf('INSERT INTO turma_aluno ( `ID_TURMA`, `ID_USUARIO` )'.'VALUES ("%s","%s")',
                $resp_turma_id, $id_usuario);
+     }
       try {
           if (mysqli_query($con, $query)) {
               mysqli_commit($con);
