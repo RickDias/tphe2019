@@ -108,7 +108,7 @@
   padding: 15px 0;
   background: #333;
   color:#ddd;
-  width: 30vh;
+  width: 32vh;
   height: 40vw;
 
 }
@@ -122,6 +122,7 @@
   color: #222;
 }
 .txt_menu_lat{
+  font-size: 12px !important;
   color: #ddd;
   font-weight: bold;
   padding: 0px 15px;

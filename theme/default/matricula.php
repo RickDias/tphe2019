@@ -47,6 +47,7 @@ $id_usuario = $_SESSION["UsuarioID"];
 
 }
 
+
 $smarty->display('matricula.tpl');
 
 }else{
