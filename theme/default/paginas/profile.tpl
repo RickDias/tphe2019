@@ -14,26 +14,38 @@
 
     {if $avatar_usuario}
     <div style="margin-bottom:-50px;">
+      {if $visita != 1}
       <a style="cursor:pointer" onclick="mostra_img_avatar()" id="botao_mostra_avatar">
-        <img align="left" class="img_edit_avatar_pf" id="a_base" src='admin-dev/img/avatar/base/b{$avatar_usuario["base"]}.png' alt="Profile image example">
-        <img align="left" class="img_edit_avatar_pf" id="a_pele" src='admin-dev/img/avatar/pele/p{$avatar_usuario["pele"]}.png' alt="Profile image example">
-        <img align="left" class="img_edit_avatar_pf" id="a_olho" src='admin-dev/img/avatar/olhos/o{$avatar_usuario["olho"]}.png' alt="Profile image example">
-        <img align="left" class="img_edit_avatar_pf" id=a_boca src='admin-dev/img/avatar/boca/b{$avatar_usuario["boca"]}.png' alt="Profile image example">
-        <img align="left" class="img_edit_avatar_pf" id="a_roupa" src='admin-dev/img/avatar/roupa/r{$avatar_usuario["roupa"]}.png' alt="Profile image example">
-        <img align="left" class="img_edit_avatar_pf" id="a_cabelo" src='admin-dev/img/avatar/cabelo/c{$avatar_usuario["cabelo"]}.png' alt="Profile image example">
+        {else}
+        <a>
+        {/if}
+        <img align="left" class="img_edit_avatar_pf"  src='admin-dev/img/avatar/base/b{$avatar_usuario["base"]}.png' alt="Profile image example">
+        <img align="left" class="img_edit_avatar_pf"  src='admin-dev/img/avatar/pele/p{$avatar_usuario["pele"]}.png' alt="Profile image example">
+        <img align="left" class="img_edit_avatar_pf"  src='admin-dev/img/avatar/olhos/o{$avatar_usuario["olho"]}.png' alt="Profile image example">
+        <img align="left" class="img_edit_avatar_pf"  src='admin-dev/img/avatar/boca/b{$avatar_usuario["boca"]}.png' alt="Profile image example">
+        <img align="left" class="img_edit_avatar_pf"  src='admin-dev/img/avatar/roupa/r{$avatar_usuario["roupa"]}.png' alt="Profile image example">
+        <img align="left" class="img_edit_avatar_pf"  src='admin-dev/img/avatar/cabelo/c{$avatar_usuario["cabelo"]}.png' alt="Profile image example">
+        <div class="btn btn-outline btn-info" style="margin-left: 5px;margin-top:25px;position:absolute"><i class="fa fa-pencil" aria-hidden="true"></i></div>
       </a>
     </div>
-    {else}
-      <img align="left" class="fb-image-profile thumbnail" src="{$img_perfil}" alt="Profile image example">
-        <a class="btn btn-outline btn-info" onclick="mostra_img_avatar()" id="botao_mostra_avatar"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-      </img>
-    {/if}
-
     <!-- capa perfil -->
         <img align="left"class="fb-image-lg" src="{$img_capa}" alt="Profile image example"/>
         {if $visita != 1}
         <a class="btn btn-outline btn-info" style="z-index:999;position:absolute" onclick="mostra_img()" id="botao_mostra"><i class="fa fa-pencil" aria-hidden="true"></i></a>
         {/if}
+    {else}
+    <img align="left"class="fb-image-lg" src="{$img_capa}" alt="Profile image example"/>
+    {if $visita != 1}
+    <a class="btn btn-outline btn-info" style="z-index:999;position:absolute" onclick="mostra_img()" id="botao_mostra"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+    {/if}
+      <img align="left" class="fb-image-profile thumbnail" src="{$img_perfil}" alt="Profile image example">
+      {if $visita != 1}
+        <a class="btn btn-outline btn-info" onclick="mostra_img_avatar()" id="botao_mostra_avatar"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        {/if}
+      </img>
+    {/if}
+
+
 
 
 
@@ -44,7 +56,7 @@
           <input type="hidden" id="update_avatar" name="update_avatar" value="1">
           <div class="">
 
-            <div class="col-md-4">
+            <div class="col-md-4 col_avatar_big">
               {if $avatar_usuario}
               <img align="left" class="img_edit_avatar" id="a_base" src='admin-dev/img/avatar/base/b{$avatar_usuario["base"]}.png' alt="Profile image example">
               <img align="left" class="img_edit_avatar" id="a_pele" src='admin-dev/img/avatar/pele/p{$avatar_usuario["pele"]}.png' alt="Profile image example">
@@ -62,11 +74,11 @@
               {/if}
             </div>
 
-            <div class="col-md-8" style="min-height: 350px;">
+            <div class="col-md-8 col_edit_big" style="min-height: 350px;">
               <div class="tabbable" id="">
                 <ul class="nav nav-tabs" style="color:#333">
                   <li class="nav-item">
-                    <a class="nav-link active" href="#tab1" data-toggle="tab">Background</a>
+                    <a class="nav-link" href="#tab1" data-toggle="tab">Background</a>
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="#tab2" data-toggle="tab">Tom de pele</a>
@@ -87,9 +99,9 @@
                 <div class="tab-content" style="color:#333;">
                   <div class="tab-pane active" id="tab1">
                     {for $x=1 to 8}
-                    <div class="col-md-3">
+                    <div class="mobile">
                       <a onclick="select_radio_base({$x})">
-                        <img style="width:150px;margin-top:15px" id="base_{$x}" src="admin-dev/img/avatar/base/b{$x}.png">
+                        <img class="img_each_data" id="base_{$x}" src="admin-dev/img/avatar/base/b{$x}.png">
                       </a>
                       <input type="radio" value="{$x}" id="bs_{$x}" name="base_radio" style="display:none">
                     </div>
@@ -97,9 +109,9 @@
                   </div>
                   <div class="tab-pane" id="tab2">
                     {for $x=1 to 4}
-                    <div class="col-md-3">
+                    <div class="mobile">
                       <a onclick="select_radio_pele({$x})">
-                        <img style="width:150px;margin-top:15px" id="pele_{$x}" src="admin-dev/img/avatar/pele/p{$x}.png">
+                        <img class="img_each_data" id="pele_{$x}" src="admin-dev/img/avatar/pele/p{$x}.png">
                       </a>
                       <input type="radio" value="{$x}" id="pl_{$x}" name="pele_radio" style="display:none">
                     </div>
@@ -107,9 +119,9 @@
                   </div>
                   <div class="tab-pane" id="tab3">
                     {for $x=1 to 8}
-                    <div class="col-md-3">
+                    <div class="mobile">
                       <a onclick="select_radio_cabelo({$x})">
-                        <img style="width:150px;margin-top:15px" id="cabelo_{$x}" src="admin-dev/img/avatar/cabelo/c{$x}.png">
+                        <img class="img_each_data" id="cabelo_{$x}" src="admin-dev/img/avatar/cabelo/c{$x}.png">
                       </a>
                       <input type="radio" value="{$x}" id="ca_{$x}" name="cabelo_radio" style="display:none">
                     </div>
@@ -117,9 +129,9 @@
                   </div>
                   <div class="tab-pane" id="tab4">
                     {for $x=1 to 8}
-                    <div class="col-md-3">
+                    <div class="mobile">
                       <a onclick="select_radio_olho({$x})">
-                        <img style="width:150px;margin-top:15px" id="olho_{$x}" src="admin-dev/img/avatar/olhos/o{$x}.png">
+                        <img class="img_each_data" id="olho_{$x}" src="admin-dev/img/avatar/olhos/o{$x}.png">
                       </a>
                       <input type="radio" value="{$x}" id="ol_{$x}" name="olho_radio" style="display:none">
                     </div>
@@ -127,9 +139,9 @@
                   </div>
                   <div class="tab-pane" id="tab5">
                     {for $x=1 to 8}
-                    <div class="col-md-3">
+                    <div class="cont_over mobile">
                       <a onclick="select_radio_boca({$x})">
-                        <img style="width:150px;margin-top:15px" id="boca_{$x}" src="admin-dev/img/avatar/boca/b{$x}.png">
+                        <img class="img_each_data" class="att_avatar" id="boca_{$x}" src="admin-dev/img/avatar/boca/b{$x}.png">
                       </a>
                       <input type="radio" value="{$x}" id="bo_{$x}" name="boca_radio" style="display:none">
                     </div>
@@ -137,9 +149,9 @@
                   </div>
                   <div class="tab-pane" id="tab6">
                     {for $x=1 to 8}
-                    <div class="col-md-3">
+                    <div class="mobile">
                       <a onclick="select_radio_roupa({$x})">
-                        <img style="width:150px;margin-top:15px" src="admin-dev/img/avatar/roupa/r{$x}.png">
+                        <img class="img_each_data" src="admin-dev/img/avatar/roupa/r{$x}.png">
                       </a>
                       <input type="radio" value="{$x}" id="ro_{$x}" id="roupa_{$x}" name="roupa_radio" style="display:none">
                     </div>

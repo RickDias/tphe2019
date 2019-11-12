@@ -8,9 +8,16 @@ $smarty->assign("upd_pass", 0);
 $con = conecta_db();
 $smarty->assign("id_user", $_SESSION['UsuarioID']);
 // select avatar
+
+if(Tools::getValue("visita")==1){
+$usuario_id = Tools::getValue("id_user");
+}else{
+$usuario_id = $_SESSION['UsuarioID'];
+}
+
 $sql_avatar = "SELECT a.*
 FROM avatar a
-WHERE a.`usuario` = ".$_SESSION['UsuarioID'];
+WHERE a.`usuario` = ".$usuario_id;
 
 $avatar_salvo = mysqli_query($con,$sql_avatar) or die(mysqli_error($con));
 
@@ -25,7 +32,6 @@ $smarty->assign("avatar_usuario", $avatar_usuario);
 $upd_avatar = Tools::getValue("update_avatar");
 
 if($upd_avatar == 1){
-  $usuario_id = $_SESSION['UsuarioID'];
 
   $base_id = Tools::getValue("base_radio");
   $pele_id = Tools::getValue("pele_radio");

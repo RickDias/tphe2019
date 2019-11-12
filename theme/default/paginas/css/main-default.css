@@ -149,7 +149,7 @@
 
   .fb-image-profile
   {
-      margin: -190px 10px 5px 50px;
+      margin: -200px 5px 5px 50px;
       z-index: 9;
       width: 20%;
   }
@@ -282,7 +282,6 @@
 
 .container_edit_avatar{
   background: #555;
-
 }
 
 .div_images{
@@ -340,13 +339,28 @@
   padding:15px;
 }
 
+.att_avatar{
+  /* overflow: hidden; */
+}
+.cont_over{
+  /* margin: 10px 5px;; */
+  /* border-radius: 20px; */
+  /* overflow: hidden; */
+}
+.att_avatar:hover {
+  border-radius: 50%;
+  border: 2px solid silver;
+  -webkit-transform: scale(2);
+  transform: scale(2);
+}
+
 #botao_mostra{
   margin-left: -50px;
   margin-top: 50px;
 }
-/* #botao_mostra_avatar{
-  margin: 50px 25px -20px 15px;
-} */
+#botao_mostra_avatar{
+  margin: -20px 25px 10px 0px;
+}
 .img_edit_avatar{
   position: absolute;
   width: 90%;
@@ -356,7 +370,7 @@
 .img_edit_avatar_pf{
   position: absolute;
   width: 200px;
-  margin:15px 5px 20px 15px;
+  margin:40px 5px 20px 15px;
   border: 5px solid silver;
   border-radius: 5px;
 }
@@ -369,7 +383,68 @@
   width:500px;
 }
 
+.img_each_data{
+  width:100%;
+  margin:15px 5px;
+  display: inline-block;
+
+}
+
+.mobile{
+  width:22%;
+  margin: 5px;
+  display: inline-block;
+  /* overflow: hidden; */
+}
+
+
 @media only screen and (max-width: 767px){
+
+  .att_avatar{
+    overflow: hidden;
+  }
+  .cont_over{
+    /* overflow: hidden; */
+  }
+  .att_avatar:hover {
+    border-radius: 0%;
+    border: 0px solid silver;
+    -webkit-transform: scale(2);
+    transform: scale(2);
+  }
+
+
+
+.mobile{
+  width:45%;
+  margin: 5px;
+  display: inline-block;
+  overflow: hidden;
+}
+  .img_each_data{
+    margin-top:15px;
+    width:100%;
+  }
+
+  .container_edit_avatar{
+    position: initial;
+  }
+
+  .col_avatar_big{
+    width: 100%;
+    margin-bottom: 300px;
+    display: flex;
+
+  }
+
+  .img_edit_avatar{
+    margin: 0px;
+  }
+
+.col_edit_big{
+  width: 100%;
+  display: flex;
+}
 
   #text_conquista{
     width: 100%;
