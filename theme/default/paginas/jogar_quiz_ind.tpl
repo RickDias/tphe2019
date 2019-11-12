@@ -98,27 +98,13 @@
   <div class="item_sala_aluno">
     {if $alunos}
     {foreach from=$alunos key=$al item=$aluno}
-    <div class="col-md-12" id="bloco_aluno">
-
-      <div class="col-md-3">
-        <div class="icon_aluno" style="background:rgb({mt_rand(0,255)},{mt_rand(0,255)},{mt_rand(0,255)})">
-          {$aluno["NOME"][0]}
-        </div>
-      </div>
-      <div class="col-md-9">
-        <h5>{$aluno["NOME"]}</h5>
-        {assign var=total_pontos value=$level[$al]["pontos"]}
-        {assign var=total_level value=1}
-        {if $total_pontos < 10}
-          {$total_level = 1}
-        {else}
-          {$total_level = $total_pontos/5}
-        {/if}
-        <!-- {$level[$al]|var_dump} -->
-        <i class="fa fa-arrow-right"></i><span style="font-weight:bold;color:#fed136"> {$level[$al]["pontos"]} pontos</span> - <span style="font-size:12px">Lv {$total_level|intval}</span><br>
-
-      </div>
-
+    <div class="classejogador">
+      <span style="font-weight:bold;text-transform: uppercase;">
+        <img class="img_avatar_rank" src="admin-dev/img/{$aluno["img_perfil"]}.jpg">
+        {$aluno["NOME"]}
+      </span><br>
+      <!-- <i class="fa fa-arrow-right"></i><span style="font-weight:bold"> {$jogador[0]["pontos"]} pontos</span> - <span style="font-size:12px">Lv {$total_level|intval} | Clique para ver</span><br> -->
+      <!-- <span class="text-muted" style="font-size:13px"><i class="fa fa-clock-o fa-fw"></i> Ultimo jogo - há {mt_rand(1,5)} dias</span> -->
     </div>
     {/foreach}
     {else}

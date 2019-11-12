@@ -1,5 +1,5 @@
 <div class="container" id="user_front_container" style="color:#ddd">
-  <div class="fb-profile col-md-12">
+  <div class="fb-profile col-md-12 col-sm-8">
     {if $msg}
     <div class="alert alert-success" id="mssg" role="alert" style="margin:10px">
       {$msg}
@@ -10,22 +10,161 @@
       {$msge}
     </div>
     {/if}
-    <!-- {$pt_user|var_dump} -->
-    <!-- capa -->
-    <!-- <div id="bg_profile" style="background-image:url('admin-dev/img/gifs/4.gif')"> -->
-    <img align="left"class="fb-image-lg" src="{$img_capa}" alt="Profile image example"/>
-    {if $visita != 1}
-    <a class="btn btn-outline btn-info" style="z-index:999;position:absolute" onclick="mostra_img()" id="botao_mostra"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-    {/if}
-    <!-- </div> -->
-    <!-- perfil -->
-      <img align="left" class="fb-image-profile thumbnail" src="{$img_perfil}" alt="Profile image example"/>
 
-      <span id="span_altera" style="display:none">Alterar imagem</span>
+
+    {if $avatar_usuario}
+    <div style="margin-bottom:-50px;">
+      <a style="cursor:pointer" onclick="mostra_img_avatar()" id="botao_mostra_avatar">
+        <img align="left" class="img_edit_avatar_pf" id="a_base" src='admin-dev/img/avatar/base/b{$avatar_usuario["base"]}.png' alt="Profile image example">
+        <img align="left" class="img_edit_avatar_pf" id="a_pele" src='admin-dev/img/avatar/pele/p{$avatar_usuario["pele"]}.png' alt="Profile image example">
+        <img align="left" class="img_edit_avatar_pf" id="a_olho" src='admin-dev/img/avatar/olhos/o{$avatar_usuario["olho"]}.png' alt="Profile image example">
+        <img align="left" class="img_edit_avatar_pf" id=a_boca src='admin-dev/img/avatar/boca/b{$avatar_usuario["boca"]}.png' alt="Profile image example">
+        <img align="left" class="img_edit_avatar_pf" id="a_roupa" src='admin-dev/img/avatar/roupa/r{$avatar_usuario["roupa"]}.png' alt="Profile image example">
+        <img align="left" class="img_edit_avatar_pf" id="a_cabelo" src='admin-dev/img/avatar/cabelo/c{$avatar_usuario["cabelo"]}.png' alt="Profile image example">
+      </a>
+    </div>
+    {else}
+      <img align="left" class="fb-image-profile thumbnail" src="{$img_perfil}" alt="Profile image example">
+        <a class="btn btn-outline btn-info" onclick="mostra_img_avatar()" id="botao_mostra_avatar"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+      </img>
+    {/if}
+
+    <!-- capa perfil -->
+        <img align="left"class="fb-image-lg" src="{$img_capa}" alt="Profile image example"/>
+        {if $visita != 1}
+        <a class="btn btn-outline btn-info" style="z-index:999;position:absolute" onclick="mostra_img()" id="botao_mostra"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+        {/if}
+
+
+
+      <div class="col-md-12 container_edit_avatar" style="display:none" id="container_alt_avatar">
+        <h4> Edição de seu avatar</h4>
+        <form id="upd_avatar_form" action="index.php?pag=profile" method="POST">
+
+          <input type="hidden" id="update_avatar" name="update_avatar" value="1">
+          <div class="">
+
+            <div class="col-md-4">
+              {if $avatar_usuario}
+              <img align="left" class="img_edit_avatar" id="a_base" src='admin-dev/img/avatar/base/b{$avatar_usuario["base"]}.png' alt="Profile image example">
+              <img align="left" class="img_edit_avatar" id="a_pele" src='admin-dev/img/avatar/pele/p{$avatar_usuario["pele"]}.png' alt="Profile image example">
+              <img align="left" class="img_edit_avatar" id="a_olho" src='admin-dev/img/avatar/olhos/o{$avatar_usuario["olho"]}.png' alt="Profile image example">
+              <img align="left" class="img_edit_avatar" id=a_boca src='admin-dev/img/avatar/boca/b{$avatar_usuario["boca"]}.png' alt="Profile image example">
+              <img align="left" class="img_edit_avatar" id="a_roupa" src='admin-dev/img/avatar/roupa/r{$avatar_usuario["roupa"]}.png' alt="Profile image example">
+              <img align="left" class="img_edit_avatar" id="a_cabelo" src='admin-dev/img/avatar/cabelo/c{$avatar_usuario["cabelo"]}.png' alt="Profile image example">
+              {else}
+              <img align="left" class="img_edit_avatar" id="a_base" src="admin-dev/img/avatar/base/b1.png" alt="Profile image example">
+              <img align="left" class="img_edit_avatar" id="a_pele" src="admin-dev/img/avatar/pele/p3.png" alt="Profile image example">
+              <img align="left" class="img_edit_avatar" id="a_olho" src="admin-dev/img/avatar/olhos/o4.png" alt="Profile image example">
+              <img align="left" class="img_edit_avatar" id="a_cabelo" src="admin-dev/img/avatar/cabelo/c1.png" alt="Profile image example">
+              <img align="left" class="img_edit_avatar" id=a_boca src="admin-dev/img/avatar/boca/b3.png" alt="Profile image example">
+              <img align="left" class="img_edit_avatar" id="a_roupa" src="admin-dev/img/avatar/roupa/r1.png" alt="Profile image example">
+              {/if}
+            </div>
+
+            <div class="col-md-8" style="min-height: 350px;">
+              <div class="tabbable" id="">
+                <ul class="nav nav-tabs" style="color:#333">
+                  <li class="nav-item">
+                    <a class="nav-link active" href="#tab1" data-toggle="tab">Background</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#tab2" data-toggle="tab">Tom de pele</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#tab3" data-toggle="tab">Cabelo</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#tab4" data-toggle="tab">Tipo de olho</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#tab5" data-toggle="tab">Tipo de boca</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="#tab6" data-toggle="tab">Tipo de roupa</a>
+                  </li>
+                </ul>
+                <div class="tab-content" style="color:#333;">
+                  <div class="tab-pane active" id="tab1">
+                    {for $x=1 to 8}
+                    <div class="col-md-3">
+                      <a onclick="select_radio_base({$x})">
+                        <img style="width:150px;margin-top:15px" id="base_{$x}" src="admin-dev/img/avatar/base/b{$x}.png">
+                      </a>
+                      <input type="radio" value="{$x}" id="bs_{$x}" name="base_radio" style="display:none">
+                    </div>
+                    {/for}
+                  </div>
+                  <div class="tab-pane" id="tab2">
+                    {for $x=1 to 4}
+                    <div class="col-md-3">
+                      <a onclick="select_radio_pele({$x})">
+                        <img style="width:150px;margin-top:15px" id="pele_{$x}" src="admin-dev/img/avatar/pele/p{$x}.png">
+                      </a>
+                      <input type="radio" value="{$x}" id="pl_{$x}" name="pele_radio" style="display:none">
+                    </div>
+                    {/for}
+                  </div>
+                  <div class="tab-pane" id="tab3">
+                    {for $x=1 to 8}
+                    <div class="col-md-3">
+                      <a onclick="select_radio_cabelo({$x})">
+                        <img style="width:150px;margin-top:15px" id="cabelo_{$x}" src="admin-dev/img/avatar/cabelo/c{$x}.png">
+                      </a>
+                      <input type="radio" value="{$x}" id="ca_{$x}" name="cabelo_radio" style="display:none">
+                    </div>
+                    {/for}
+                  </div>
+                  <div class="tab-pane" id="tab4">
+                    {for $x=1 to 8}
+                    <div class="col-md-3">
+                      <a onclick="select_radio_olho({$x})">
+                        <img style="width:150px;margin-top:15px" id="olho_{$x}" src="admin-dev/img/avatar/olhos/o{$x}.png">
+                      </a>
+                      <input type="radio" value="{$x}" id="ol_{$x}" name="olho_radio" style="display:none">
+                    </div>
+                    {/for}
+                  </div>
+                  <div class="tab-pane" id="tab5">
+                    {for $x=1 to 8}
+                    <div class="col-md-3">
+                      <a onclick="select_radio_boca({$x})">
+                        <img style="width:150px;margin-top:15px" id="boca_{$x}" src="admin-dev/img/avatar/boca/b{$x}.png">
+                      </a>
+                      <input type="radio" value="{$x}" id="bo_{$x}" name="boca_radio" style="display:none">
+                    </div>
+                    {/for}
+                  </div>
+                  <div class="tab-pane" id="tab6">
+                    {for $x=1 to 8}
+                    <div class="col-md-3">
+                      <a onclick="select_radio_roupa({$x})">
+                        <img style="width:150px;margin-top:15px" src="admin-dev/img/avatar/roupa/r{$x}.png">
+                      </a>
+                      <input type="radio" value="{$x}" id="ro_{$x}" id="roupa_{$x}" name="roupa_radio" style="display:none">
+                    </div>
+                    {/for}
+                  </div>
+                </div>
+              </div>
+            </div>
+
+          </div>
+
+          <center style="margin-bottom:5px">
+            <a class="btn btn-outline btn-danger" style="margin:5px" onclick="oculta_img_avatar()" id="botao_oculta_avatar">Cancelar</a>
+            <button type="submit" class="btn btn-outline btn-success" style="margin:5px">Salvar</button>
+          </center>
+
+
+      </form>
+
+      </div>
+
       <div class="col-md-12" id="container_alt_img">
         <form id="upd_cover_form" action="index.php?pag=profile" method="POST">
           <input type="hidden" id="update_cover" name="update_cover" value="1">
-        <center><h4>Capas:</h4></center>
+        <center><h4>Alterar Capa:</h4></center>
         <div class="div_images" style="background:#555">
           <!-- foreach -->
           <!-- {assign var=x value=0} -->
@@ -41,9 +180,8 @@
           {/for}
         </div>
 
-        <center><h4>Perfil:</h4></center>
+        <!-- <center><h4>Perfil:</h4></center>
         <div class="div_images" style="background:#555;">
-          <!-- foreach -->
           {for $y=10 to 21}
           <div class="coluna5">
             <center>
@@ -54,7 +192,7 @@
             </center>
           </div>
           {/for}
-        </div>
+        </div> -->
         <center style="margin-bottom:5px">
         <a class="btn btn-outline btn-danger" style="margin:5px" onclick="oculta_img()" id="botao_oculta">Cancelar</a>
         <button type="submit" class="btn btn-outline btn-success" style="margin:5px" onclick="oculta_img()" id="botao_oculta">Salvar</button>
@@ -234,11 +372,19 @@ function mostra_img(){
   $("#botao_oculta").show("slow");
   $("#span_altera").show("slow");
 }
+function mostra_img_avatar(){
+  $("#container_alt_avatar").show("slow");
+  $("#botao_oculta_avatar").show("slow");
+}
 
 function oculta_img(){
   $("#container_alt_img").hide("slow");
   $("#botao_oculta").hide("slow");
-  $("#span_altera").hide("slow");
+}
+
+function oculta_img_avatar(){
+  $("#container_alt_avatar").hide("slow");
+  $("#botao_oculta_avatar").hide("slow");
 }
 
 function select_radio(id) {
@@ -248,6 +394,66 @@ function select_radio(id) {
   document.getElementById("c"+id).checked = true;
   $("#img_"+id).css('border', '3px solid #9c1513');
 
+}
+
+function select_radio_base(id){
+  for (var r = 0; r <= 8; r++) {
+      $("#base_"+r).css('border', '0px solid #9c1513');
+  }
+  document.getElementById("bs_"+id).checked = true;
+  $("#base_"+id).css('border', '3px solid #9c1513');
+  var bs = document.getElementById("a_base");
+  bs.setAttribute("src", "admin-dev/img/avatar/base/b"+id+".png");
+}
+
+function select_radio_pele(id){
+  for (var r = 0; r <= 4; r++) {
+      $("#pele_"+r).css('border', '0px solid #9c1513');
+  }
+  document.getElementById("pl_"+id).checked = true;
+  $("#pele_"+id).css('border', '3px solid #9c1513');
+  var bs = document.getElementById("a_pele");
+  bs.setAttribute("src", "admin-dev/img/avatar/pele/p"+id+".png");
+}
+
+function select_radio_olho(id){
+  for (var r = 0; r <= 8; r++) {
+      $("#olho_"+r).css('border', '0px solid #9c1513');
+  }
+  document.getElementById("ol_"+id).checked = true;
+  $("#olho_"+id).css('border', '3px solid #9c1513');
+  var bs = document.getElementById("a_olho");
+  bs.setAttribute("src", "admin-dev/img/avatar/olhos/o"+id+".png");
+}
+
+function select_radio_boca(id){
+  for (var r = 0; r <= 8; r++) {
+      $("#boca_"+r).css('border', '0px solid #9c1513');
+  }
+  document.getElementById("bo_"+id).checked = true;
+  $("#boca_"+id).css('border', '3px solid #9c1513');
+  var bs = document.getElementById("a_boca");
+  bs.setAttribute("src", "admin-dev/img/avatar/boca/b"+id+".png");
+}
+
+function select_radio_roupa(id){
+  for (var r = 0; r <= 8; r++) {
+      $("#roupa_"+r).css('border', '0px solid #9c1513');
+  }
+  document.getElementById("ro_"+id).checked = true;
+  $("#roupa_"+id).css('border', '3px solid #9c1513');
+  var bs = document.getElementById("a_roupa");
+  bs.setAttribute("src", "admin-dev/img/avatar/roupa/r"+id+".png");
+}
+
+function select_radio_cabelo(id){
+  for (var r = 0; r <= 8; r++) {
+      $("#cabelo_"+r).css('border', '0px solid #9c1513');
+  }
+  document.getElementById("ca_"+id).checked = true;
+  $("#cabelo_"+id).css('border', '3px solid #9c1513');
+  var bs = document.getElementById("a_cabelo");
+  bs.setAttribute("src", "admin-dev/img/avatar/cabelo/c"+id+".png");
 }
 
 function select_radio2(id) {

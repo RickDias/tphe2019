@@ -1,3 +1,4 @@
+<div class="col-md-10">
 {if $quizes}
 <form role="form" action="..\functions\gerar_perguntas_banco.php" method="POST">
     <div class="form-group">
@@ -36,3 +37,4 @@
 {else}
 <h4>Desculpe, você não possui Quizes cadastrados!</h4>
 {/if}
+</div>

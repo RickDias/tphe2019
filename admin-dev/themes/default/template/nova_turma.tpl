@@ -1,5 +1,5 @@
-<div class="row">
-                <div class="col-lg-12">
+<div class="col-md-10">
+                <div class="col-md-12">
                     <h1 class="page-header">Cadastrar uma nova turma!</h1>
                 </div>
                 <!-- /.col-lg-12 -->

@@ -6,6 +6,153 @@ $smarty->config_dir = 'theme/default/';
 $smarty->error_reporting = E_ALL & ~E_NOTICE;
 $smarty->assign("upd_pass", 0);
 $con = conecta_db();
+$smarty->assign("id_user", $_SESSION['UsuarioID']);
+// select avatar
+$sql_avatar = "SELECT a.*
+FROM avatar a
+WHERE a.`usuario` = ".$_SESSION['UsuarioID'];
+
+$avatar_salvo = mysqli_query($con,$sql_avatar) or die(mysqli_error($con));
+
+if($avatar_salvo->num_rows > 0){
+while ( $rs = mysqli_fetch_array( $avatar_salvo ) ) {
+  $avatar_usuario = $rs;
+}
+$smarty->assign("avatar_usuario", $avatar_usuario);
+}
+
+
+$upd_avatar = Tools::getValue("update_avatar");
+
+if($upd_avatar == 1){
+  $usuario_id = $_SESSION['UsuarioID'];
+
+  $base_id = Tools::getValue("base_radio");
+  $pele_id = Tools::getValue("pele_radio");
+  $cabelo_id = Tools::getValue("cabelo_radio");
+  $olho_id = Tools::getValue("olho_radio");
+  $boca_id = Tools::getValue("boca_radio");
+  $roupa_id = Tools::getValue("roupa_radio");
+
+  if($base_id){
+    if($avatar_usuario){
+      $base_sql= sprintf('update avatar set base="%s" where usuario = "%s" ', $base_id, $_SESSION['UsuarioID']);
+    }else{
+      $base_sql= sprintf('insert into avatar (base,usuario) VALUES("%s","%s") ', $base_id, $_SESSION['UsuarioID']);
+    }
+    try {
+      if(!mysqli_query($con, $base_sql)){
+                 $smarty->assign("msge", "Erro ao salvar imagem!");
+      }else{
+        $smarty->assign("msg", "Imagem alterada com sucesso!");
+      }
+    } catch (Exception $ex) {
+             echo $ex->getMessage();
+             mysqli_rollback($con);
+         }
+     mysqli_commit($con);
+  }
+
+  if($pele_id){
+    if($avatar_usuario){
+      $pele_sql= sprintf('update avatar set pele="%s" where usuario = "%s" ', $pele_id, $_SESSION['UsuarioID']);
+    }else{
+      $pele_sql= sprintf('insert into avatar (pele,usuario) VALUES("%s","%s" ', $pele_id, $_SESSION['UsuarioID']);
+    }
+    try {
+      if(!mysqli_query($con, $pele_sql)){
+                 $smarty->assign("msge", "Erro ao salvar imagem!");
+      }else{
+        $smarty->assign("msg", "Imagem alterada com sucesso!");
+      }
+    } catch (Exception $ex) {
+             echo $ex->getMessage();
+             mysqli_rollback($con);
+         }
+     mysqli_commit($con);
+  }
+
+  if($cabelo_id){
+    if($avatar_usuario){
+      $cabelo_sql= sprintf('update avatar set cabelo="%s" where usuario = "%s" ', $cabelo_id, $_SESSION['UsuarioID']);
+    }else{
+      $cabelo_sql= sprintf('insert into avatar (cabelo,usuario) VALUES("%s","%s" ', $cabelo_id, $_SESSION['UsuarioID']);
+    }
+    try {
+      if(!mysqli_query($con, $cabelo_sql)){
+                 $smarty->assign("msge", "Erro ao salvar imagem!");
+      }else{
+        $smarty->assign("msg", "Imagem alterada com sucesso!");
+      }
+    } catch (Exception $ex) {
+             echo $ex->getMessage();
+             mysqli_rollback($con);
+         }
+     mysqli_commit($con);
+  }
+
+  if($olho_id){
+    if($avatar_usuario){
+      $olho_sql= sprintf('update avatar set olho="%s" where usuario = "%s" ', $olho_id, $_SESSION['UsuarioID']);
+    }else{
+      $olho_sql= sprintf('insert into avatar (olho,usuario) VALUES("%s","%s"', $olho_id, $_SESSION['UsuarioID']);
+    }
+    try {
+      if(!mysqli_query($con, $olho_sql)){
+                 $smarty->assign("msge", "Erro ao salvar imagem!");
+      }else{
+        $smarty->assign("msg", "Imagem alterada com sucesso!");
+      }
+    } catch (Exception $ex) {
+             echo $ex->getMessage();
+             mysqli_rollback($con);
+         }
+     mysqli_commit($con);
+  }
+
+  if($boca_id){
+    if($avatar_usuario){
+      $boca_sql= sprintf('update avatar set boca="%s" where usuario = "%s" ', $boca_id, $_SESSION['UsuarioID']);
+    }else{
+      $boca_sql= sprintf('insert into avatar (boca,usuario) VALUES("%s","%s"', $boca_id, $_SESSION['UsuarioID']);
+    }
+    try {
+      if(!mysqli_query($con, $boca_sql)){
+                 $smarty->assign("msge", "Erro ao salvar imagem!");
+      }else{
+        $smarty->assign("msg", "Imagem alterada com sucesso!");
+      }
+    } catch (Exception $ex) {
+             echo $ex->getMessage();
+             mysqli_rollback($con);
+         }
+     mysqli_commit($con);
+  }
+
+  if($roupa_id){
+    if($avatar_usuario){
+      $roupa_sql= sprintf('update avatar set roupa="%s" where usuario = "%s" ', $roupa_id, $_SESSION['UsuarioID']);
+    }else{
+      $roupa_sql= sprintf('insert into avatar (roupa,usuario VALUES("%s","%s") VALUES("%s","%s"', $roupa_id, $_SESSION['UsuarioID']);
+    }
+    try {
+      if(!mysqli_query($con, $roupa_sql)){
+                 $smarty->assign("msge", "Erro ao salvar imagem!");
+      }else{
+        $smarty->assign("msg", "Imagem alterada com sucesso!");
+      }
+    } catch (Exception $ex) {
+             echo $ex->getMessage();
+             mysqli_rollback($con);
+         }
+     mysqli_commit($con);
+  }
+  ?>
+  <script language="JavaScript">
+  window.location="index.php?pag=profile";
+  </script>
+  <?php
+}
 
 $upd_cover = Tools::getValue("update_cover");
 if($upd_cover == 1){

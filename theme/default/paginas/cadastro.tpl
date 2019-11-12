@@ -11,7 +11,7 @@ function toggle_turma(){
 
 			<fieldset>
 				<!-- Form Name -->
-				<legend><center><h2><b>Registre-se</b></h2></center></legend><br>
+				<legend><center><h2><b>Cadastre-se</b></h2></center></legend><br>
 				<!-- Text input-->
 				<div class="form-group">
 					<label class="col-md-4 control-label">Nome Completo</label>
@@ -59,7 +59,7 @@ function toggle_turma(){
 					</div>
           <div class="radio">
             <label>
-              <input type="radio" name="optionsRadios" id="optionsRadios1" value="2">Sou um Professo*<br><br>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" value="2">Sou um Professor*<br><br>
               <span style="font-size:10px;color:#888">*marque somente se realmente for um Professor,<br> pois são sistemas diferentes!</span>
             </label>
           </div>

@@ -1,9 +1,8 @@
-<div class="row">
-  <div class="col-lg-12">
+<div class="col-md-10">
+  <div class="col-md-12">
     <h1 class="page-header">Cadastrar uma nova Pergunta!</h1>
-    <p> Digite o texto da pergunta que deseja cadastrar, informe a disciplina a que pertence e sua respectiva categoria. Clique em Avançar.
-      Na próxima tela, informe a opção que representa a resposta certa, clique em Avançar. Em seguida, informe as 3 opções que representarão
-      as opções de resposta erradas. Ao iniciar o cadastro, vá até o fim.
+    <p>
+      Ao iniciar o cadastro, é necessário ir até o final, caso contrário as perguntas serão salvas sem respostas.
     </p>
   </div>
 

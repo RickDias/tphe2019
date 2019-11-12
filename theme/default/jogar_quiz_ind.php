@@ -96,7 +96,7 @@ $quiz_sql = "SELECT *
         WHERE `ID_QUIZ` = ".$id_quiz;
 $quiz = mysqli_query($con, $quiz_sql) or die(mysqli_error($con));
 
-$sql = sprintf("select sa.`id_aluno` as id_aluno, u.`NOME`, sa.`pontos_geral`
+$sql = sprintf("select sa.`id_aluno` as id_aluno, u.`NOME`, sa.`pontos_geral`, u.`img_perfil`
 from sala_alunos sa
 LEFT JOIN usuario u on (sa.`id_aluno` = u.`ID_USUARIO`)
 where `visivel` = 'S' ");
