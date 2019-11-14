@@ -40,6 +40,10 @@ $theme = Configuration::get('theme');
       include 'menu.php';
 
     if (Tools::getValue('pag')){
+      if($_SESSION){
+        $_SESSION['last_activity'] = time();
+      }
+
       $tpl = Tools::getValue('pag');
       if($tpl=='loggout'){
         $loggout = destroiCessao();
@@ -92,6 +96,45 @@ $theme = Configuration::get('theme');
     <script src="theme/default/vendor/dist/loading-bar.min.js"></script>
     <!-- Bootstrap Core JavaScript -->
     <script src="theme/default/vendor/bootstrap/js/bootstrap.min.js"></script>
+    <script>
+    $(document).ready(function(){
+      $(document).bind("contextmenu",function(e) {
+     e.preventDefault();
+    });
+    $(document).keydown(function(e){
+        if(e.which === 123){
+           return false;
+        }
+    });
+      });
+    </script>
+    <!-- <script>
+    function loadSessionAjax(){
+        $.ajax({
+                   type:"POST",
+                   url: "check_start.php",
+                   async:true,
+                   dataType : "json",
+                   data: {
+                     update_atividade:1
+                   },
+                   success: function( data ) {
+                    console.log(data);
+                    if(data == "false"){
+                      window.location="index.php?pag=loggout";
+                    }
+                   },
+                   error: function( xhr, status) {
+                   console.log(xhr);
+                   console.log(status);
+                   }
+                   });
+    }
+
+    setInterval(function(){
+        loadSessionAjax() // this will run after every 5 seconds
+    }, 2000);
+    </script> -->
 </body>
 
 </html>

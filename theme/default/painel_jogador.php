@@ -39,8 +39,10 @@ $sql = "SELECT distinct q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
               date_format(q.`DT_INICIO`, '%d-%m-%Y') AS 'DT_INICIO',
               date_format(q.`DT_FIM`, '%d-%m-%Y') AS 'DT_FIM', q.`PUBLICACAO` ,
               t.`SIGLA`, t.`ID_TURMA`, u.`NOME`
-              FROM `quiz` q,`turma_quiz`tq, `turma` t, `usuario` u
+              FROM `quiz` q,`turma_quiz`tq, `turma` t, `usuario` u, `turma_aluno` ta
               WHERE q.`ID_QUIZ` = tq.`ID_QUIZ`
+              AND ta.`ID_TURMA` = tq.`ID_TURMA`
+              AND ta.`ID_USUARIO` = u.`ID_USUARIO`
               AND tq.`ID_TURMA` = t.`ID_TURMA`
               AND tq.`ATIVO` = '1'
               AND tq.`INICIADO` = '0'
@@ -70,6 +72,19 @@ $jogadores = mysqli_query($con, $sql_jog) or die(mysqli_error($con));
 if($jogadores->num_rows > 0){
   foreach($jogadores as $id){
     $level_aluno[] = getLevel($id["id_user"], $con);
+    $sql_avatar = "SELECT a.*
+    FROM avatar a
+    WHERE a.`usuario` = ".$id["id_user"];
+
+    $avatar_salvo = mysqli_query($con,$sql_avatar) or die(mysqli_error($con));
+
+    if($avatar_salvo->num_rows > 0){
+    while ( $rs = mysqli_fetch_array( $avatar_salvo ) ) {
+      $avatar_usuario = $rs;
+    }
+    $smarty->assign("avatar_usuario", $avatar_usuario);
+    }
+
     // var_dump($level_aluno);
   }
   $smarty->assign('jogadores', $level_aluno);

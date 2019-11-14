@@ -187,11 +187,11 @@ function mudaCores(n){
 // cronometro
 var intervalo;
 function tempo(op) {
-	var s = 14;
+	var s = 29;
   // var s = 5;
 
 	intervalo = window.setInterval(function() {
-		if (s == 0) {document.getElementById("envia_esgotado").click(); s = 15; parar(); confere_resposta("F");}
+		if (s == 0) {document.getElementById("envia_esgotado").click(); s = 30; parar(); confere_resposta("F");}
 		if (s < 10) document.getElementById("segundo").innerHTML = "0" + s; else document.getElementById("segundo").innerHTML = s;
 		s--;
 	},1000);

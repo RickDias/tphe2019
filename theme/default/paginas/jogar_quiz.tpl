@@ -32,9 +32,9 @@
   {foreach from=$respostas item=$arr_resp}
     {foreach key=$key_r from=$arr_resp item=$resposta}
       {if $pergunta[0]->getId_pergunta() == $resposta->getId_pergunta()}
-        <div id="div_resposta_{$key_r}" class="respostas_quiz" onclick="confere_resposta('{$resposta->getTipo()}','{$key}','{$pergunta[0]->getPontuacao()}','{$id_quiz}','{$id_turma}','{$key_r}','{$id_usuario}','{$resposta->getId_resposta()}'); this.onclick=null;">
+        <div id="div_resposta_{$key_r}" class="respostas_quiz" onclick="confere_resposta('{$pergunta[0]->getId_pergunta()}','{$key}','{$id_quiz}','{$id_turma}','{$key_r}','{$id_usuario}','{$resposta->getId_resposta()}'); this.onclick=null;">
           <p>{$resposta->getResposta()}</p>
-          <input type="hidden" value="{$resposta->getTipo()}" id="tipo_resp_{$key_r}">
+          <input type="hidden" value="{if $resposta->getTipo() == "V"}0{else}o{/if}" id="tipo_resp_{$key_r}">
         </div>
         {/if}
     {/foreach}
@@ -128,7 +128,7 @@ function loadlink(){
                  var total_element = data.length;
 
                  $.each(data, function(i, val){
-                   console.log(data[i]);
+                   // console.log(data[i]);
                    if(data[i] == 0){
                      showTab(0);
                      // refresh only once
@@ -144,8 +144,8 @@ function loadlink(){
                });
                },
                error: function( xhr, status) {
-               console.log(xhr);
-               console.log(status);
+               // console.log(xhr);
+               // console.log(status);
                }
                });
 }

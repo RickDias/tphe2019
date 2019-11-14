@@ -25,7 +25,9 @@
         <img align="left" class="img_edit_avatar_pf"  src='admin-dev/img/avatar/boca/b{$avatar_usuario["boca"]}.png' alt="Profile image example">
         <img align="left" class="img_edit_avatar_pf"  src='admin-dev/img/avatar/roupa/r{$avatar_usuario["roupa"]}.png' alt="Profile image example">
         <img align="left" class="img_edit_avatar_pf"  src='admin-dev/img/avatar/cabelo/c{$avatar_usuario["cabelo"]}.png' alt="Profile image example">
+        {if $visita != 1}
         <div class="btn btn-outline btn-info" style="margin-left: 5px;margin-top:25px;position:absolute"><i class="fa fa-pencil" aria-hidden="true"></i></div>
+        {/if}
       </a>
     </div>
     <!-- capa perfil -->
@@ -231,6 +233,18 @@
               <img src="admin-dev/img/conquistas/{$conquista[0]}.png" class="img_conquistas" title="{$conquista[1]}">
           </div>
           {/foreach}
+
+          {if $pt_user}
+          {foreach $pt_user as $level}
+          {assign var=total_pontos value=$level["pontos"]}
+          {/foreach}
+          {if $total_pontos > 10}
+          <div class="" id="conquistas_profile">
+            <img src="admin-dev/img/conquistas/4.png" class="img_conquistas" style="width:70px;weight:80px" title="Subiu de nivel pela primeira vez!">
+          </div>
+          {/if}
+          {/if}
+
           {else}
           {if $visita ==1}
           Este jogador não possui conquistas...
@@ -238,6 +252,7 @@
           Voce ainda não possui conquistas!
           {/if}
           {/if}
+
         </div>
 
         <div id="score_profile" class="col-sm-12 col-md-2">

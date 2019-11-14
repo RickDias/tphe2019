@@ -5,15 +5,14 @@ var type, i, pontuacao = 0;
 
 function showTab(n) {
   clicado = false;
+
   // This function will display the specified tab of the form ...
   var x = document.getElementsByClassName("tab");
-  // console.log(x.length-1);
   if(n == 0){
     for(var y=1;y<x.length;y++){
       x[y].style.display = "none";
     }
   }else{
-    // console.log(n);
     for(var y=0;y<=n;y++){
       x[y].style.display = "none";
       document.getElementById("final_jogo").style.display = "none";
@@ -23,13 +22,9 @@ function showTab(n) {
     x[n].style.display = "block";
   }
   }
-  // document.getElementById("resp_errada").style.display = "none";
-  // document.getElementById("resp_certa").style.display = "none";
-
 
   // ... and fix the Previous/Next buttons:
   if (n == 0 || n == (x.length-1)) {
-    // document.getElementById("prevBtn").style.display = "none";
     document.getElementById("all_steps").style.display = "none";
     document.getElementById("score_quiz").style.display = "none";
     document.getElementById("iniciar").style.display = "none";
@@ -39,17 +34,13 @@ function showTab(n) {
       document.getElementById("final_jogo").style.display = "block";
     }
   } else {
-    // document.getElementById("prevBtn").style.display = "inline";
     document.getElementById("all_steps").style.display = "block";
     document.getElementById("score_quiz").style.display = "block";
     document.getElementById("iniciar").style.display = "none";
     document.getElementById("description").style.display = "none";
 
   }
-  // console.log(x.length);
-  // console.log(n);
   if (n == (x.length-1)) {
-    // document.getElementById("nextBtn").innerHTML = "Submit";
     document.getElementById("resp_errada").style.display = "none";
     document.getElementById("resp_certa").style.display = "none";
     document.getElementById("timer_count").style.display = "none";
@@ -74,17 +65,10 @@ function showTab(n) {
 
 function nextPrev(n) {
   tempo(1);
-  // This function will figure out which tab to display
   var x = document.getElementsByClassName("tab");
-  // Exit the function if any field in the current tab is invalid:
   if (n == 2 && !validateForm()) return false;
-  // Hide the current tab:
   x[currentTab].style.display = "none";
-  // Increase or decrease the current tab by 1:
   currentTab = currentTab + n;
-  // if you have reached the end of the form... :
-  // console.log(currentTab);
-  // console.log(x.length);
   if (currentTab >= x.length) {
     parar();
     document.getElementById("resp_errada").style.display = "none";
@@ -95,27 +79,19 @@ function nextPrev(n) {
     document.getElementById("final_jogo").style.display = "block";
     return false;
   }
-  // Otherwise, display the correct tab:
   showTab(currentTab);
 }
 
 function validateForm() {
-  // This function deals with validation of the form fields
   var x, y, i, valid = true;
   x = document.getElementsByClassName("tab");
-  // console.log(x);
   y = x[currentTab].getElementsByTagName("input");
-  // A loop that checks every input field in the current tab:
   for (i = 0; i < y.length; i++) {
-    // If a field is empty...
     if (y[i].value == "") {
-      // add an "invalid" class to the field:
       y[i].className += " invalid";
-      // and set the current valid status to false:
       valid = false;
     }
   }
-  // If the valid status is true, mark the step as finished and valid:
   if (valid) {
     document.getElementsByClassName("step")[currentTab].className += " finish";
   }
@@ -123,13 +99,11 @@ function validateForm() {
 }
 
 function fixStepIndicator(n) {
-  // This function removes the "active" class of all steps...
   var i, x = document.getElementsByClassName("step");
   for (i = 0; i < x.length; i++) {
     x[i].className = x[i].className.replace(" active", "");
     $("#num_step_"+i).html(i+1);
   }
-  //... and adds the "active" class to the current step:
   x[n].className += " active";
 }
 
@@ -152,7 +126,7 @@ function remove_fill_resp(n){
   }
 }
 
-function confere_resposta(tipo , n, pontos, quiz, turma, pergunta_clicada,usuario,resposta){
+function confere_resposta(id_pergunta, n, quiz, turma, resposta_clicada,usuario,id_resposta){
   parar();
   $.ajax({
               type:"POST",
@@ -162,19 +136,17 @@ function confere_resposta(tipo , n, pontos, quiz, turma, pergunta_clicada,usuari
               data: {
                 ver_esgotado:1,
                 id_quiz:quiz,
-                id_turma:turma
+                id_turma:turma,
+                id_resposta:id_resposta
               },
               success: function( data ) {
-                // console.log(data.ESGOTADO);
                 var esg = data.ESGOTADO.toString();
-                // console.log(esg);
+                var tipo_resp_banco = data.TIPO;
                 if(esg == 2){
                 if(clicado === false){
-                  if(tipo == "V"){
-                    // document.getElementById("resp_certa").style.display = "block";
-                    // pontuacao = parseFloat(pontuacao+Number(pontos));
+                  if(data.TIPO == "V"){
                     var div_score = parseFloat($("#score_val").val());
-                    var ponto_ganho = parseFloat(pontos);
+                    var ponto_ganho = "0.5";
                     var p_total = parseFloat(div_score+ponto_ganho);
                     $.ajax({
                                 type:"POST",
@@ -185,15 +157,19 @@ function confere_resposta(tipo , n, pontos, quiz, turma, pergunta_clicada,usuari
                                   update_pontos:1,
                                   id_quiz:quiz,
                                   usuario:usuario,
-                                  pontuacao:pontos,
-                                  resposta:resposta
+                                  pontuacao:ponto_ganho,
+                                  resposta:id_resposta,
+                                  pergunta:id_pergunta
                                 },
                                 success: function( data ) {
-                                  console.log(data);
                                   if(data == "Pergunta ja respondida!"){
                                     alert(data);
                                   }else{
-                                    $("#score_val").val(p_total);
+                                    if(data == "Resposta não encontrada!"){
+                                      alert(data);
+                                    }else{
+                                      $("#score_val").val(p_total);
+                                    }
                                   }
                                 },
                                   error: function( xhr, status) {
@@ -205,7 +181,8 @@ function confere_resposta(tipo , n, pontos, quiz, turma, pergunta_clicada,usuari
 
                     // document.getElementById("resp_errada").style.display = "block";
                   }
-                  mudaCores(n,pergunta_clicada);
+                  // console.log(tipo_resp_banco);
+                  mudaCores(n,resposta_clicada,tipo_resp_banco);
                 }
                 clicado = true;
               }else{
@@ -213,8 +190,8 @@ function confere_resposta(tipo , n, pontos, quiz, turma, pergunta_clicada,usuari
               }
               },
               error: function( xhr, status) {
-              console.log(xhr);
-              console.log(status);
+              // console.log(xhr);
+              // console.log(status);
               }
               }); //= checkEsgotado(quiz,turma);
 
@@ -235,10 +212,10 @@ function mudaCores(n,pc){
       continue;
     }
     type = $("#tab_"+n+" #tipo_resp_"+i).val();
-    if(type == "F"){
+    if(type == "o"){
       $("#tab_"+n+" #div_resposta_"+i).addClass("result_resposta_err");
     }
-    if(type == "V"){
+    if(type == "0"){
       $("#tab_"+n+" #div_resposta_"+i).addClass("result_resposta_certa");
     }
   }

@@ -2,6 +2,18 @@
 require 'vendor/autoload.php';
 
 $con = conecta_db();
+
+// if (Tools::getValue("update_atividade") == 1){
+//   session_start();
+//   if($_SESSION){
+//       if( $_SESSION['last_activity'] < time()-$_SESSION['expire_time'] ) {
+//         echo json_encode("false");
+//       }else{
+//       echo json_encode("true");
+//     }
+//   }
+// }
+
 if(Tools::getValue("confere_tempo")==1){
   $id_quiz = Tools::getValue('id_quiz');
   $id_turma = Tools::getValue('id_turma');
@@ -39,11 +51,14 @@ if(Tools::getValue("ver_rodada")==1){
 if(Tools::getValue("ver_esgotado")==1){
   $id_quiz = Tools::getValue('id_quiz');
   $id_turma = Tools::getValue('id_turma');
+  $id_resposta = Tools::getValue('id_resposta');
 
-  $query2 = "SELECT tq.`ESGOTADO`
-  FROM `turma_quiz` tq
+
+  $query2 = "SELECT tq.`ESGOTADO`, r.*
+  FROM `turma_quiz` tq, `resposta` r
   WHERE tq.`ID_TURMA` = ".$id_turma."
-  AND tq.`ID_QUIZ` = ".$id_quiz;
+  AND tq.`ID_QUIZ` = ".$id_quiz."
+  AND r.`ID_RESPOSTA` = ".$id_resposta;
 
   $sql2 = mysqli_query($con, $query2);
   if($sql2->num_rows > 0){
@@ -56,11 +71,11 @@ if(Tools::getValue("ver_esgotado")==1){
 if(Tools::getValue("update_pontos")==1){
   $id_quiz = Tools::getValue('id_quiz');
   $id_usuario = Tools::getValue('usuario');
-  $pontos = Tools::getValue('pontuacao');
+  $pontos = floatval(Tools::getValue('pontuacao'));
   $resposta = Tools::getValue('resposta');
-  $insert = true;
+  $pergunta = Tools::getValue('pergunta');
 
-  // $resp_bd = 0;
+  $insert = true;
 
   $pontuacao = "SELECT p.`pontos`, p.`id_resposta`
   FROM `pontuacao` p,`usuario` u
@@ -79,10 +94,22 @@ if(Tools::getValue("update_pontos")==1){
 
   if($insert == true){
     if(Tools::getValue('teste') != 1){
-    $ins_term = "insert into pontuacao (`id_usuario`,`pontos`,`id_quiz`,`id_resposta`) VALUES('".$id_usuario."','".$pontos."','".$id_quiz."','".$resposta."')";
-    $ins = mysqli_query($con, $ins_term);
-    mysqli_commit($con);
-    echo json_encode($ins_term);
+      if($pontos > 1){
+        $pontos = 1;
+      }
+
+      $sql_busca_resp = "SELECT * from resposta
+      where ID_RESPOSTA = ".$resposta."
+      AND ID_PERGUNTA = ".$pergunta." ";
+      $ret_b_resp = mysqli_query($con, $pontuacao);
+      if($ret_pont->num_rows > 0){
+        $ins_term = "insert into pontuacao (`id_usuario`,`pontos`,`id_quiz`,`id_resposta`) VALUES('".$id_usuario."','".$pontos."','".$id_quiz."','".$resposta."')";
+        $ins = mysqli_query($con, $ins_term);
+        mysqli_commit($con);
+        echo json_encode($ins_term);
+      }else{
+        echo json_encode("Resposta não encontrada!");
+      }
   }
 }else{
   echo json_encode("Pergunta ja respondida!");

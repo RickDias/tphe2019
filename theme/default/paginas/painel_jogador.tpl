@@ -55,7 +55,7 @@
 											<!-- {$jogo|var_dump} -->
 											<div class="col-md-4">
 												<div class="three-grid-img">
-													<a href="#"><img src="theme/default/images/c{rand(1,15)}.jpg" alt="" /></a>
+													<a href="#"><img src="theme/default/images/quiz.jpg" alt="" /></a>
 												</div>
 												<div class="three-grid-text"  style="border:1px solid silver;">
 													<div class="three-grid-text-heading">
@@ -83,7 +83,7 @@
 											<!-- {$jogo_ind|var_dump} -->
 											<div class="col-md-4">
 												<div class="three-grid-img">
-													<a href="#"><img src="theme/default/images/g{rand(1,15)}.jpg" alt="" /></a>
+													<a href="#"><img src="theme/default/images/quiz_t.jpg" alt="" /></a>
 												</div>
 												<div class="three-grid-text"  style="border:1px solid silver;">
 													<div class="three-grid-text-heading">
@@ -114,7 +114,7 @@
 										<div class="col-md-6 two-grid-left" >
 											<div class="two-grid-info">
 												<div class="two-grid-img">
-													<a href="#"><img src="theme/default/images/motor{rand(1,13)}.jpg" alt="" /></a>
+													<a href="#"><img src="theme/default/images/avisos.jpg" alt="" /></a>
 												</div>
 												<div class="two-grid-text">
 													<div class="three-grid-text-heading two-grid-text-heading">
@@ -196,6 +196,7 @@
 
 						</div>
 						<!-- player-rank -->
+						<!-- {$avatar_usuario|var_dump} -->
 						<div class="player-rank col-md-3">
 							<div class="ranking-heading">
 								<h3>Top 10 Jogadores</h3>
@@ -213,11 +214,20 @@
 							<a href="index.php?pag=profile&visita=1&id_user={$jogador[0]["ID_USUARIO"]}" style="color:#222">
 								<div class="classejogador">
 									<span style="font-weight:bold;text-transform: uppercase;">
+										<!-- {if $avatar_usuario[$key]["usuario"] == $jogador[0]["ID_USUARIO"]}
+										<img align="left" class="img_edit_avatar_rank"  src='admin-dev/img/avatar/base/b{$avatar_usuario[$key]["base"]}.png' alt="Profile image example">
+						        <img align="left" class="img_edit_avatar_rank"  src='admin-dev/img/avatar/pele/p{$avatar_usuario[$key]["pele"]}.png' alt="Profile image example">
+						        <img align="left" class="img_edit_avatar_rank"  src='admin-dev/img/avatar/olhos/o{$avatar_usuario[$key]["olho"]}.png' alt="Profile image example">
+						        <img align="left" class="img_edit_avatar_rank"  src='admin-dev/img/avatar/boca/b{$avatar_usuario[$key]["boca"]}.png' alt="Profile image example">
+						        <img align="left" class="img_edit_avatar_rank"  src='admin-dev/img/avatar/roupa/r{$avatar_usuario[$key]["roupa"]}.png' alt="Profile image example">
+						        <img align="left" class="img_edit_avatar_rank"  src='admin-dev/img/avatar/cabelo/c{$avatar_usuario[$key]["cabelo"]}.png' alt="Profile image example">
+										{else} -->
+										<!-- {/if} -->
 										<img class="img_avatar_rank" src="admin-dev/img/{$jogador[0]["img_perfil"]}.jpg">
 										{$jogador[0]["NOME"]}
 									</span><br>
 									<i class="fa fa-arrow-right"></i><span style="font-weight:bold"> {$jogador[0]["pontos"]} pontos</span> - <span style="font-size:12px">Lv {$total_level|intval} | Clique para ver</span><br>
-									<span class="text-muted" style="font-size:13px"><i class="fa fa-clock-o fa-fw"></i> Ultimo jogo - há {mt_rand(1,5)} dias</span>
+									<!-- <span class="text-muted" style="font-size:13px"><i class="fa fa-clock-o fa-fw"></i> Ultimo jogo - há {mt_rand(1,5)} dias</span> -->
 								</div>
 							</a>
 							{/foreach}

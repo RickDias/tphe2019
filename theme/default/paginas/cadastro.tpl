@@ -18,7 +18,7 @@ function toggle_turma(){
 					<div class="col-md-4 inputGroupContainer">
 						<div class="input-group">
 							<span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
-							<input  name="nome_user" placeholder="digite seu nome completo" class="form-control"  type="text">
+							<input  name="nome_user" placeholder="digite seu nome completo" class="form-control"  type="text" required>
 						</div>
 					</div>
 				</div>
@@ -39,7 +39,7 @@ function toggle_turma(){
 				<div class="col-md-4 inputGroupContainer">
 				<div class="input-group">
 				<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-				<input name="user_password" placeholder="Senha (use letras e números, min 8)" class="form-control"  type="password">
+				<input name="user_password" placeholder="Senha (use letras e números, min 8)" class="form-control"  type="password" minlength=8 required>
 				</div>
 				</div>
 				</div>
@@ -49,7 +49,7 @@ function toggle_turma(){
 				<div class="col-md-4 inputGroupContainer">
 				<div class="input-group">
 					<span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
-					<input name="confirm_password" placeholder="Confirme sua Senha" class="form-control"  type="password">
+					<input name="confirm_password" placeholder="Confirme sua Senha" class="form-control" minlength=8 type="password" required>
 				</div>
 					<div class="radio">
 					<label>

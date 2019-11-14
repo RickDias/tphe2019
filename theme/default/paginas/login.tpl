@@ -1,11 +1,15 @@
 <section id="contact">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
+            <div class="col-md-12">
+              {if $txt_cad}
+              <div class="alert alert-success" role="alert" style="margin:10px">
+                {$txt_cad}
+              </div>
+              {/if}
                 <h2 class="section-heading">Faça login para continuar...</h2>
+
                 <!--h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3-->
             </div>
-        </div>
         <form action="index.php?pag=login&form_login=1" method="post">
           <div class="col-md-6" >
             <div class="form-group">

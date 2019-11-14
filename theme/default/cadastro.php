@@ -36,9 +36,8 @@ if(Tools::getValue("salva_cadastro")==1){
 		//inicia transacao
 
 		$usuarioDAO->insert($usuarioVO, $link);
-
 		printf('Registro inserido com sucesso.');
-    header("Location: index.php?pag=login");
+    header("Location: index.php?pag=login&cad_ok=1");
 
 
 		//commita

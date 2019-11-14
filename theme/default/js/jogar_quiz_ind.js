@@ -158,7 +158,7 @@ function confere_resposta_ind(tipo , n, pontos,quiz,usuario,resposta,pc){
   if(clicado === false){
     if(tipo == "V"){
       document.getElementById("resp_certa").style.display = "block";
-      pontuacao = parseFloat(pontuacao+Number(pontos));
+      pontuacao = parseFloat(Number(pontos));
       var div_score = parseFloat($("#score_val").val());
       var p_total = parseFloat(div_score+pontuacao);
       $("#score_val").val(p_total);

@@ -24,8 +24,10 @@ $sql = "SELECT distinct q.`ID_QUIZ`, q.`ID_USUARIO`, q.`DESCRICAO`,
               date_format(q.`DT_INICIO`, '%d-%m-%Y') AS 'DT_INICIO',
               date_format(q.`DT_FIM`, '%d-%m-%Y') AS 'DT_FIM', q.`PUBLICACAO` ,
               t.`SIGLA`, t.`ID_TURMA`, u.`NOME`
-              FROM `quiz` q,`turma_quiz`tq, `turma` t, `usuario` u
+              FROM `quiz` q,`turma_quiz`tq, `turma` t, `usuario` u, `turma_aluno` ta
               WHERE q.`ID_QUIZ` = tq.`ID_QUIZ`
+              AND ta.`ID_TURMA` = tq.`ID_TURMA`
+              AND ta.`ID_USUARIO` = u.`ID_USUARIO`
               AND tq.`ID_TURMA` = t.`ID_TURMA`
               AND tq.`ATIVO` = '1'
               AND tq.`INICIADO` = '0'
