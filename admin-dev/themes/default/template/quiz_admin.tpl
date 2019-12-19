@@ -68,24 +68,29 @@
 </div>
 
 <div class="col-md-3" id="container_sala__aluno">
-  Jogadores na sala
   <div class="item_sala_aluno">
     {if $alunos}
-    {foreach from=$alunos item=$aluno}
-    <div class="col-md-12" id="bloco_aluno">
-      <div class="col-md-3">
-        <div class="icon_aluno">
-          S
+    <div class="col-md-12" id="div_alunos_true">
+      <h3>Jogadores na sala</h3>
+      {foreach from=$alunos key=$key item=$aluno}
+      <div class="col-md-12 bloco_aluno" id="bloco_aluno_{$aluno["ID_USUARIO"]}">
+        <div class="col-md-3">
+          <div class="icon_aluno" style="background:rgb({mt_rand(0,255)},{mt_rand(0,255)},{mt_rand(0,255)})">
+            {$aluno["nome_aluno"][0]}
+          </div>
+        </div>
+        <div class="col-md-9" id="teste">
+          <h5 id="aluno_nome_{$key}" class="nome_aluno">{$aluno["nome_aluno"]}</h5>
         </div>
       </div>
-      <div class="col-md-9">
-        <h3>{$aluno["NOME"]}</h3>
-        <span>id pont: {$aluno["id_pontuacao"]}</span>
-      </div>
+      {/foreach}
     </div>
-    {/foreach}
+  </div>
     {else}
-      Sem alunos na sala!
+    <div class="col-md-3" id="sem_alunos">
+      <h3>Jogadores na sala</h3>
+      Sem Alunos na Sala!
+    </div>
     {/if}
   </div>
 </div>

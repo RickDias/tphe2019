@@ -38,6 +38,11 @@
     background-color: #fff;
   }
 
+  .tab-pane{
+    max-height: 450px;
+    overflow: scroll;
+  }
+
   td span {
     color: #444;
     font-size: 0.8em;

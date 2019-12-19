@@ -187,8 +187,8 @@ function mudaCores(n){
 // cronometro
 var intervalo;
 function tempo(op) {
-	var s = 29;
-  // var s = 5;
+	// var s = 29;
+  var s = 5;
 
 	intervalo = window.setInterval(function() {
 		if (s == 0) {document.getElementById("envia_esgotado").click(); s = 30; parar(); confere_resposta("F");}

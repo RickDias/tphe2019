@@ -210,11 +210,11 @@ if(Tools::getValue("visita")==1){
   $sql_turmas="SELECT DISTINCT t.`NOME` as turma,count(p.`pontos`) AS acertos, sum(p.`pontos`) AS pontos , q.`DESCRICAO`,q.`ID_QUIZ`
   FROM turma t, turma_aluno ta, usuario u, pontuacao p, quiz q, turma_quiz tq
   WHERE ta.`ID_USUARIO` = ".$usuario_id."
+  AND u.`ID_USUARIO` = ".$usuario_id."
+  AND p.`id_usuario` = ".$usuario_id."
   AND ta.`ID_TURMA` = tq.`ID_TURMA`
   AND ta.`ID_TURMA` = t.`ID_TURMA`
   AND tq.`ID_TURMA` = t.`ID_TURMA`
-  AND u.`ID_USUARIO` = ".$usuario_id."
-  AND p.`id_usuario` = ".$usuario_id."
   AND p.`id_quiz` = tq.`ID_QUIZ`
   AND q.`ID_QUIZ` = tq.`ID_QUIZ`
   GROUP BY ta.ID_TURMA";

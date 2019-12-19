@@ -128,6 +128,7 @@ function remove_fill_resp(n){
 
 function confere_resposta(id_pergunta, n, quiz, turma, resposta_clicada,usuario,id_resposta){
   parar();
+
   $.ajax({
               type:"POST",
               url: "check_start.php",
@@ -158,10 +159,11 @@ function confere_resposta(id_pergunta, n, quiz, turma, resposta_clicada,usuario,
                                   id_quiz:quiz,
                                   usuario:usuario,
                                   pontuacao:ponto_ganho,
-                                  resposta:id_resposta,
-                                  pergunta:id_pergunta
+                                  pergunta:id_pergunta,
+                                  resposta:id_resposta
                                 },
                                 success: function( data ) {
+                                  console.log(data);
                                   if(data == "Pergunta ja respondida!"){
                                     alert(data);
                                   }else{

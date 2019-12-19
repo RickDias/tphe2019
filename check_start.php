@@ -101,8 +101,8 @@ if(Tools::getValue("update_pontos")==1){
       $sql_busca_resp = "SELECT * from resposta
       where ID_RESPOSTA = ".$resposta."
       AND ID_PERGUNTA = ".$pergunta." ";
-      $ret_b_resp = mysqli_query($con, $pontuacao);
-      if($ret_pont->num_rows > 0){
+      $ret_b_resp = mysqli_query($con, $sql_busca_resp);
+      if($ret_b_resp->num_rows > 0){
         $ins_term = "insert into pontuacao (`id_usuario`,`pontos`,`id_quiz`,`id_resposta`) VALUES('".$id_usuario."','".$pontos."','".$id_quiz."','".$resposta."')";
         $ins = mysqli_query($con, $ins_term);
         mysqli_commit($con);

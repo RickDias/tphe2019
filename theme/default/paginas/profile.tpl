@@ -100,7 +100,7 @@
                 </ul>
                 <div class="tab-content" style="color:#333;">
                   <div class="tab-pane active" id="tab1">
-                    {for $x=1 to 8}
+                    {for $x=1 to 11}
                     <div class="mobile">
                       <a onclick="select_radio_base({$x})">
                         <img class="img_each_data" id="base_{$x}" src="admin-dev/img/avatar/base/b{$x}.png">
@@ -110,7 +110,7 @@
                     {/for}
                   </div>
                   <div class="tab-pane" id="tab2">
-                    {for $x=1 to 4}
+                    {for $x=1 to 5}
                     <div class="mobile">
                       <a onclick="select_radio_pele({$x})">
                         <img class="img_each_data" id="pele_{$x}" src="admin-dev/img/avatar/pele/p{$x}.png">
@@ -120,7 +120,7 @@
                     {/for}
                   </div>
                   <div class="tab-pane" id="tab3">
-                    {for $x=1 to 8}
+                    {for $x=1 to 16}
                     <div class="mobile">
                       <a onclick="select_radio_cabelo({$x})">
                         <img class="img_each_data" id="cabelo_{$x}" src="admin-dev/img/avatar/cabelo/c{$x}.png">
@@ -130,7 +130,7 @@
                     {/for}
                   </div>
                   <div class="tab-pane" id="tab4">
-                    {for $x=1 to 8}
+                    {for $x=1 to 16}
                     <div class="mobile">
                       <a onclick="select_radio_olho({$x})">
                         <img class="img_each_data" id="olho_{$x}" src="admin-dev/img/avatar/olhos/o{$x}.png">
@@ -140,7 +140,7 @@
                     {/for}
                   </div>
                   <div class="tab-pane" id="tab5">
-                    {for $x=1 to 8}
+                    {for $x=1 to 14}
                     <div class="cont_over mobile">
                       <a onclick="select_radio_boca({$x})">
                         <img class="img_each_data" class="att_avatar" id="boca_{$x}" src="admin-dev/img/avatar/boca/b{$x}.png">
@@ -150,7 +150,7 @@
                     {/for}
                   </div>
                   <div class="tab-pane" id="tab6">
-                    {for $x=1 to 8}
+                    {for $x=1 to 9}
                     <div class="mobile">
                       <a onclick="select_radio_roupa({$x})">
                         <img class="img_each_data" src="admin-dev/img/avatar/roupa/r{$x}.png">
@@ -293,8 +293,8 @@
       <!-- {$turma|var_dump} -->
       <div class="col-md-5 lista_turma_profile">
         <span>Turma: <span style="font-weight:bold;font-size:18px;">{$turma["turma"]}</span></span><br><br>
-        Total de acertos: {$turma["acertos"]}<br>
-        Pontuação nesta turma: {$turma["pontos"]}
+        Total de acertos: {$turma["acertos"]/2}<br>
+        Pontuação nesta turma: {$turma["pontos"]/2}
       </div>
       {/foreach}
       </div>
@@ -424,7 +424,7 @@ function select_radio(id) {
 }
 
 function select_radio_base(id){
-  for (var r = 0; r <= 8; r++) {
+  for (var r = 0; r <= 12; r++) {
       $("#base_"+r).css('border', '0px solid #9c1513');
   }
   document.getElementById("bs_"+id).checked = true;
@@ -434,7 +434,7 @@ function select_radio_base(id){
 }
 
 function select_radio_pele(id){
-  for (var r = 0; r <= 4; r++) {
+  for (var r = 0; r <= 5; r++) {
       $("#pele_"+r).css('border', '0px solid #9c1513');
   }
   document.getElementById("pl_"+id).checked = true;
@@ -444,7 +444,7 @@ function select_radio_pele(id){
 }
 
 function select_radio_olho(id){
-  for (var r = 0; r <= 8; r++) {
+  for (var r = 0; r <= 16; r++) {
       $("#olho_"+r).css('border', '0px solid #9c1513');
   }
   document.getElementById("ol_"+id).checked = true;
@@ -454,7 +454,7 @@ function select_radio_olho(id){
 }
 
 function select_radio_boca(id){
-  for (var r = 0; r <= 8; r++) {
+  for (var r = 0; r <= 14; r++) {
       $("#boca_"+r).css('border', '0px solid #9c1513');
   }
   document.getElementById("bo_"+id).checked = true;
@@ -464,7 +464,7 @@ function select_radio_boca(id){
 }
 
 function select_radio_roupa(id){
-  for (var r = 0; r <= 8; r++) {
+  for (var r = 0; r <= 9; r++) {
       $("#roupa_"+r).css('border', '0px solid #9c1513');
   }
   document.getElementById("ro_"+id).checked = true;
@@ -474,7 +474,7 @@ function select_radio_roupa(id){
 }
 
 function select_radio_cabelo(id){
-  for (var r = 0; r <= 8; r++) {
+  for (var r = 0; r <= 16; r++) {
       $("#cabelo_"+r).css('border', '0px solid #9c1513');
   }
   document.getElementById("ca_"+id).checked = true;
