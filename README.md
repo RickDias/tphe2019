@@ -1,4 +1,4 @@
-# Projeto Tphe - Quiz teórico Educação Física 
+# Projeto Tphe - Quiz teórico sobre Educação Física 
 
 Projeto de TCC realizado em 2019.
 Trata-se de um Quiz voltado a disciplina de Educação Físíca, visando despertar o interesse pelo conteúdo teórico da mesma forma que a prática.
