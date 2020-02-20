@@ -9,6 +9,4 @@ O diferencial está em seu sistema de avatar, onde cada usuário pode criar o se
 
 O painel do professor deve estrar projetado para toda a turma, uma vez que ele é quem realiza a função de iniciar as salas, avançar para a próxima pergunta e finaliza o quiz. O aluno apenas visualiza e responde as perguntas pela sua tela, o cronômetro também é visualizado pelo painel projetado do professor.
 
-Qualquer dúvida e necessidade de auxilio entrar em contato pelo Email: rick_pereira_dias@hotmail.com, colocando o assunto: "TPHE[Ajuda]" (sem aspas). Responderei assim que possível.
-
 
